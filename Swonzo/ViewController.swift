@@ -9,7 +9,6 @@
 import UIKit
 import Lottie
 
-
 class ViewController: UIViewController {
     
     @IBOutlet weak var animationView: AnimationView!
@@ -82,7 +81,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     
-    private let networkingClient = NetworkingClient()
+    private let networkingClient = SwonzoAPI()
     
     @IBAction func executeBalance(_ sender: Any) {
         guard let urlToExecute = URL(string: "https://api.monzo.com/balance") else {

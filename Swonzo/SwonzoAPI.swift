@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
-class NetworkingClient {
+class SwonzoAPI {
     
     typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
 
@@ -28,18 +28,19 @@ class NetworkingClient {
         let parameters: Parameters = [
             "account_id": accountId
         ]
-
-        
         
         Alamofire.request(url,
                           parameters: parameters,
                           encoding: URLEncoding.default,
                           headers: headers).responseSwiftyJSON { dataResponse in
-                           print("WATTUP GANGGSTTAAAAAAAAA")
-                print(dataResponse.request)
-                print(dataResponse.response)
-                print(dataResponse.error)
-                print(dataResponse.value)
+//                print("TESTING")
+////                print("dataResponse.request is: \(dataResponse.request)")
+////                print("dataResponse.response is: \(dataResponse.response)")
+////                print("dataResponse.error is: \(dataResponse.error)")
+//                print("dataResponse.value is: \(dataResponse.value)")
+////                print("dataResponse is: \(dataResponse)")
+//
+        
         }
     }
 }

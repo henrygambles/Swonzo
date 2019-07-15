@@ -10,7 +10,7 @@
 		37AA926463AE75549750B2E6 /* Pods_Swonzo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADB3BFC0493D21FF3319862 /* Pods_Swonzo.framework */; };
 		AD9F62F5BCA417E90D82AB31 /* Pods_SwonzoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C63FAE1A3D3834BC3A7287 /* Pods_SwonzoUITests.framework */; };
 		B749F9FE6F49FEBCB5098D0E /* Pods_SwonzoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500E7CD97F84EEBB0765C118 /* Pods_SwonzoTests.framework */; };
-		BA0748CA22D78DFC00284866 /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0748C922D78DFC00284866 /* NetworkingClient.swift */; };
+		BA0748CA22D78DFC00284866 /* SwonzoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0748C922D78DFC00284866 /* SwonzoAPI.swift */; };
 		BA47344322DA174F004B9FE9 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47344222DA174F004B9FE9 /* TableViewController.swift */; };
 		BA47344722DA2CBE004B9FE9 /* SlatePro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA47344522DA2CBE004B9FE9 /* SlatePro.ttf */; };
 		BA47344822DA2CBE004B9FE9 /* SlatePro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA47344622DA2CBE004B9FE9 /* SlatePro-Medium.ttf */; };
@@ -52,7 +52,7 @@
 		77B3B155A816D76C502038FF /* Pods-Swonzo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swonzo.release.xcconfig"; path = "Target Support Files/Pods-Swonzo/Pods-Swonzo.release.xcconfig"; sourceTree = "<group>"; };
 		9099D9404CACA3B2A0F90D14 /* Pods-SwonzoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwonzoUITests.release.xcconfig"; path = "Target Support Files/Pods-SwonzoUITests/Pods-SwonzoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		96A048C13A03E6E995077D5A /* Pods-SwonzoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwonzoUITests.debug.xcconfig"; path = "Target Support Files/Pods-SwonzoUITests/Pods-SwonzoUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		BA0748C922D78DFC00284866 /* NetworkingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
+		BA0748C922D78DFC00284866 /* SwonzoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoAPI.swift; sourceTree = "<group>"; };
 		BA47344222DA174F004B9FE9 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = ../../../../../Desktop/TableViewController.swift; sourceTree = "<group>"; };
 		BA47344522DA2CBE004B9FE9 /* SlatePro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SlatePro.ttf; path = "../../../../../../Downloads/slate-pro-cufonfonts/SlatePro.ttf"; sourceTree = "<group>"; };
 		BA47344622DA2CBE004B9FE9 /* SlatePro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SlatePro-Medium.ttf"; path = "../../../../../../Downloads/slate-pro-cufonfonts/SlatePro-Medium.ttf"; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 				BA86F1F422DAC1EB00CE865A /* waving-american-flag.json */,
 				BA86F1F622DAC3A400CE865A /* rocket_monzo.json */,
 				BA86F1F222DAC15C00CE865A /* uk-flag-wave.json */,
-				BA0748C922D78DFC00284866 /* NetworkingClient.swift */,
+				BA0748C922D78DFC00284866 /* SwonzoAPI.swift */,
 				BA7D5E3B22D631BB00D7C0BE /* Main.storyboard */,
 				BA7D5E3E22D631BD00D7C0BE /* Assets.xcassets */,
 				BA7D5E4022D631BD00D7C0BE /* LaunchScreen.storyboard */,
@@ -441,7 +441,7 @@
 			files = (
 				BA7D5E3A22D631BB00D7C0BE /* ViewController.swift in Sources */,
 				BA7D5E3822D631BB00D7C0BE /* AppDelegate.swift in Sources */,
-				BA0748CA22D78DFC00284866 /* NetworkingClient.swift in Sources */,
+				BA0748CA22D78DFC00284866 /* SwonzoAPI.swift in Sources */,
 				BA47344322DA174F004B9FE9 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

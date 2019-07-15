@@ -1,0 +1,6 @@
+framework module Pods_Swonzo {
+  umbrella header "Pods-Swonzo-umbrella.h"
+
+  export *
+  module * { export * }
+}

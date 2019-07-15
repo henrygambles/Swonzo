@@ -8,13 +8,15 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
+import Alamofire_SwiftyJSON
 
 class NetworkingClient {
     
     typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
-    
+
     func execute(_ url: URL, completion: @escaping WebServiceResponse) {
-        
+    
         let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6IjI3d3MvblhZNGNsemE2SzB1RGIyIiwianRpIjoiYWNjdG9rXzAwMDA5a3FjQmY3REs2YmpBQ3lKUUEiLCJ0eXAiOiJhdCIsInYiOiI1In0.v_LJhZQmEHKQOjRdsayWzLXEPRdKWiYmxSs2W19lcZarejbutI7tCQxhFrFHLYb5sWLY4ZuR_p5Rlt4jw7yg6g"
         
         let accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
@@ -28,32 +30,51 @@ class NetworkingClient {
         ]
 
         
+        
         Alamofire.request(url,
                           parameters: parameters,
-                          encoding: URLEncoding(destination: .queryString),
-                          headers: headers).validate().responseJSON { response in
-            if let error = response.error {
-                completion(nil, error)
-            } else if let jsonArray = response.result.value as? [[String: Any]] {
-                completion(jsonArray, nil)
-                print("jsonArray is:\(jsonArray)")
-            } else if let jsonDict = response.result.value as? [String: Any] {
-                completion([jsonDict], nil)
-                let values = jsonDict.values
-                let index = jsonDict.values.startIndex
-                print("index is:\(index["accounts"])")
-                print("jsonDict is:\(jsonDict)")
-                print("jsonDict.values.startIndex is:\(jsonDict.values.startIndex))")
-                if let result = response.result.value {
-                    let myResult = result
-                    let MYJSON = result as! NSDictionary
-                    print("AYYYYYYYYYYYYYY")
-                    print("JSON myResult is:\(myResult)")
-                    var myAccount = MYJSON.object(forKey: "accounts")
-//                    print(MYJSON.object(forKey: "accounts"))
-                print("values. is:\(values)")
-                    
-                    
+                          encoding: URLEncoding.default,
+                          headers: headers).responseSwiftyJSON { dataResponse in
+                           print("WATTUP GANGGSTTAAAAAAAAA")
+                print(dataResponse.request)
+                print(dataResponse.response)
+                print(dataResponse.error)
+                print(dataResponse.value)
+        }
+    }
+}
+
+        
+        
+        
+        
+
+//        Alamofire.request(url,
+//                          parameters: parameters,
+//                          encoding: URLEncoding(destination: .queryString),
+//                          headers: headers).validate().responseJSON { response in
+//            if let error = response.error {
+//                completion(nil, error)
+//            } else if let jsonArray = response.result.value as? [[String: Any]] {
+//                completion(jsonArray, nil)
+//                print("jsonArray is:\(jsonArray)")
+//            } else if let jsonDict = response.result.value as? [String: Any] {
+//                completion([jsonDict], nil)
+//                let values = jsonDict.values
+//                let index = jsonDict.values.startIndex
+//                print("index is:\(index["accounts"])")
+//                print("jsonDict is:\(jsonDict)")
+//                print("jsonDict.values.startIndex is:\(jsonDict.values.startIndex))")
+//                if let result = response.result.value {
+//                    let myResult = result
+//                    let MYJSON = result as! NSDictionary
+//                    print("AYYYYYYYYYYYYYY")
+//                    print("JSON myResult is:\(myResult)")
+//                    var myAccount = MYJSON.object(forKey: "accounts")
+////                    print(MYJSON.object(forKey: "accounts"))
+//                print("values. is:\(values)")
+//
+        
            
                     
                     
@@ -92,8 +113,6 @@ class NetworkingClient {
 //                    print(myAccount.object(forKey: "preffered_name"))
 //                    print(JSON.object(forKey: "account_number"))
                   
-                }
-            }
-       }
-    }
-}
+        
+        
+       

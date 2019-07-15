@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A72D33671B4169FF64070A47843182E1"
-               BuildableName = "Pods_Swonzo.framework"
-               BlueprintName = "Pods-Swonzo"
+               BlueprintIdentifier = "85C8CCE84BDC35EF9FF51902E19DCC42"
+               BuildableName = "Alamofire_SwiftyJSON.framework"
+               BlueprintName = "Alamofire-SwiftyJSON"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A72D33671B4169FF64070A47843182E1"
-            BuildableName = "Pods_Swonzo.framework"
-            BlueprintName = "Pods-Swonzo"
+            BlueprintIdentifier = "85C8CCE84BDC35EF9FF51902E19DCC42"
+            BuildableName = "Alamofire_SwiftyJSON.framework"
+            BlueprintName = "Alamofire-SwiftyJSON"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -92,8 +92,10 @@ class ViewController: UIViewController {
         swonzoClient.execute(urlToExecute) { (json, error) in
             if let error = error {
                 self.textView.text = error.localizedDescription
+//                self.textView.text = "Balance: £80,643,854.36"
             } else if let json = json {
                 self.textView.text = json.description
+//                self.textView.text = "Balance: £80,643,854.36"
             }
         }
     }

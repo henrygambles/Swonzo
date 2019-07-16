@@ -11,6 +11,8 @@ import Lottie
 
 class ViewController: UIViewController {
     
+    private let swonzoClient = SwonzoClient()
+    
     @IBOutlet weak var animationView: AnimationView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -48,7 +50,7 @@ class ViewController: UIViewController {
             return
         }
         
-        networkingClient.execute(urlToExecute) { (json, error) in
+        swonzoClient.execute(urlToExecute) { (json, error) in
             if let error = error {
                 self.textView.text = error.localizedDescription
             } else if let json = json {
@@ -66,7 +68,7 @@ class ViewController: UIViewController {
             return
         }
         
-        networkingClient.execute(urlToExecute) { (json, error) in
+        swonzoClient.execute(urlToExecute) { (json, error) in
             if let error = error {
                 self.textView.text = error.localizedDescription
             } else if let json = json {
@@ -81,15 +83,13 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     
-    private let networkingClient = SwonzoAPI()
-    
     @IBAction func executeBalance(_ sender: Any) {
         guard let urlToExecute = URL(string: "https://api.monzo.com/balance") else {
             return
         }
         
         
-        networkingClient.execute(urlToExecute) { (json, error) in
+        swonzoClient.execute(urlToExecute) { (json, error) in
             if let error = error {
                 self.textView.text = error.localizedDescription
             } else if let json = json {
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
             return
         }
         
-        networkingClient.execute(urlToExecute) { (json, error) in
+        swonzoClient.execute(urlToExecute) { (json, error) in
             if let error = error {
                 self.textView.text = error.localizedDescription
             } else if let json = json {
@@ -124,7 +124,7 @@ class ViewController: UIViewController {
             return
         }
         
-        networkingClient.execute(urlToExecute) { (json, error) in
+        swonzoClient.execute(urlToExecute) { (json, error) in
             if let error = error {
                 self.textView.text = error.localizedDescription
             } else if let json = json {
@@ -141,7 +141,7 @@ class ViewController: UIViewController {
             return
         }
         
-        networkingClient.execute(urlToExecute) { (json, error) in
+        swonzoClient.execute(urlToExecute) { (json, error) in
             if let error = error {
                 self.textView.text = error.localizedDescription
             } else if let json = json {
@@ -156,7 +156,7 @@ class ViewController: UIViewController {
             return
         }
         
-        networkingClient.execute(urlToExecute) { (json, error) in
+        swonzoClient.execute(urlToExecute) { (json, error) in
             if let error = error {
                 self.textView.text = error.localizedDescription
             } else if let json = json {

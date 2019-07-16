@@ -21,6 +21,7 @@
 		BA7D5E4222D631BD00D7C0BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5E4022D631BD00D7C0BE /* LaunchScreen.storyboard */; };
 		BA7D5E4D22D631BD00D7C0BE /* SwonzoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E4C22D631BD00D7C0BE /* SwonzoTests.swift */; };
 		BA7D5E5822D631BD00D7C0BE /* SwonzoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E5722D631BD00D7C0BE /* SwonzoUITests.swift */; };
+		BA8228FA22DDFADA003EABFE /* testAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8228F922DDFADA003EABFE /* testAPI.swift */; };
 		BA86F1F322DAC15C00CE865A /* uk-flag-wave.json in Resources */ = {isa = PBXBuildFile; fileRef = BA86F1F222DAC15C00CE865A /* uk-flag-wave.json */; };
 		BA86F1F522DAC1EB00CE865A /* waving-american-flag.json in Resources */ = {isa = PBXBuildFile; fileRef = BA86F1F422DAC1EB00CE865A /* waving-american-flag.json */; };
 		BA86F1F722DAC3A400CE865A /* rocket_monzo.json in Resources */ = {isa = PBXBuildFile; fileRef = BA86F1F622DAC3A400CE865A /* rocket_monzo.json */; };
@@ -69,6 +70,7 @@
 		BA7D5E5322D631BD00D7C0BE /* SwonzoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwonzoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D5E5722D631BD00D7C0BE /* SwonzoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoUITests.swift; sourceTree = "<group>"; };
 		BA7D5E5922D631BD00D7C0BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA8228F922DDFADA003EABFE /* testAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testAPI.swift; sourceTree = "<group>"; };
 		BA86F1F222DAC15C00CE865A /* uk-flag-wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "uk-flag-wave.json"; path = "../../../../../Downloads/uk-flag-wave.json"; sourceTree = "<group>"; };
 		BA86F1F422DAC1EB00CE865A /* waving-american-flag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "waving-american-flag.json"; path = "../../../../../Desktop/waving-american-flag.json"; sourceTree = "<group>"; };
 		BA86F1F622DAC3A400CE865A /* rocket_monzo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = rocket_monzo.json; path = ../../../../../Desktop/rocket_monzo.json; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				BA86F1F622DAC3A400CE865A /* rocket_monzo.json */,
 				BA86F1F222DAC15C00CE865A /* uk-flag-wave.json */,
 				BA0748C922D78DFC00284866 /* SwonzoAPI.swift */,
+				BA8228F922DDFADA003EABFE /* testAPI.swift */,
 				BA7D5E3B22D631BB00D7C0BE /* Main.storyboard */,
 				BA7D5E3E22D631BD00D7C0BE /* Assets.xcassets */,
 				BA7D5E4022D631BD00D7C0BE /* LaunchScreen.storyboard */,
@@ -440,6 +443,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA7D5E3A22D631BB00D7C0BE /* ViewController.swift in Sources */,
+				BA8228FA22DDFADA003EABFE /* testAPI.swift in Sources */,
 				BA7D5E3822D631BB00D7C0BE /* AppDelegate.swift in Sources */,
 				BA0748CA22D78DFC00284866 /* SwonzoAPI.swift in Sources */,
 				BA47344322DA174F004B9FE9 /* TableViewController.swift in Sources */,

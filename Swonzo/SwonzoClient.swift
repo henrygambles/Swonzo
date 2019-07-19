@@ -12,7 +12,7 @@ import SwiftyJSON
 import Alamofire_SwiftyJSON
 
 class SwonzoClient {
-    
+
     typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
     
     func execute(_ url: URL, completion: @escaping WebServiceResponse) {
@@ -40,6 +40,13 @@ class SwonzoClient {
                             } else if let jsonDict = response.result.value as? [String: Any] {
                                 completion([jsonDict], nil)
                                 
+                              
+//                                struct Fruit {
+//                                    let acc_num : String
+//                                    let imageURL : NSURL
+//                                    let description : String
+//                                }
+                                
                                 do {
                                     
                                     let json = try JSON(data: response.data!)
@@ -49,12 +56,25 @@ class SwonzoClient {
                                     let first_name = json["accounts"][0]["owners"][0]["preferred_first_name"].string
                                     let full_name = json["accounts"][0]["owners"][0]["preferred_name"].string
                                     let user_id = json["accounts"][0]["owners"][0]["user_id"].string
-                                   
-                              
-                                    print(account_number)
+//                                    let balance = json[0]["balance"][0].string
+//                                    let balance1 = json[0][0]["balance"].string
+//                                    let balance2 = json["balance"][0][0]["balance"].string
+//                                    let balance3 = json["balance"][0]["balance"].string
+//
+                                    
+//                                        self.customView.text = "hey"
+                                
+                                    print(full_name)
                                     print(acc_id)
+                                    print(user_id)
+                                    print(account_number)
                                     print(sort_code)
                                     print(first_name)
+//                                     print(balance)
+//                                     print(balance1)
+//                                    print(balance2)
+//                                    print(balance3)
+                                  
                                 
                                  
                                             //        self.tableData = results

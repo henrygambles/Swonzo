@@ -50,6 +50,10 @@ SOFTWARE.
 
 
 
+## GoogleMaps
+
+Copyright 2019 Google
+
 ## SwiftyJSON
 
 The MIT License (MIT)

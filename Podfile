@@ -7,6 +7,7 @@ target 'Swonzo' do
   pod 'lottie-ios'
   pod 'SwiftyJSON'
   pod 'Alamofire-SwiftyJSON'
+  pod 'GoogleMaps'
   
   target 'SwonzoTests' do
     inherit! :search_paths

@@ -8,8 +8,11 @@
 
 import UIKit
 import Lottie
+import GoogleMaps
 
 class ViewController: UIViewController {
+    
+
     
     private let swonzoClient = SwonzoClient()
     
@@ -22,12 +25,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
-//
-//        self.tableView.dataSource = self
-//        checkAccount()
-//        checkBalance()
+ 
         startAnimation()
+        checkAccount()
         
         // Do any additional setup after loading the view, typically from a nib.
     }

@@ -87,6 +87,42 @@
             </objects>
             <point key="canvasLocation" x="-138.40000000000001" y="-823.53823088455783"/>
         </scene>
+        <!--Transactions-->
+        <scene sceneID="QgX-Bm-lvv">
+            <objects>
+                <viewController id="dIj-7C-6L1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="elM-cl-r9n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cuN-aO-6dd">
+                                <rect key="frame" x="0.0" y="265" width="375" height="353"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="monzo-card" translatesAutoresizingMaskIntoConstraints="NO" id="NEl-Ql-OI3">
+                                <rect key="frame" x="65" y="63" width="245" height="138"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.078431372549019607" green="0.13725490196078433" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="NEl-Ql-OI3" firstAttribute="top" secondItem="wxq-6A-yfe" secondAttribute="top" constant="43" id="586-iu-T9I"/>
+                            <constraint firstItem="cuN-aO-6dd" firstAttribute="leading" secondItem="elM-cl-r9n" secondAttribute="leading" id="6gb-j6-cY1"/>
+                            <constraint firstAttribute="trailing" secondItem="cuN-aO-6dd" secondAttribute="trailing" id="Clx-NA-TV2"/>
+                            <constraint firstItem="NEl-Ql-OI3" firstAttribute="centerX" secondItem="cuN-aO-6dd" secondAttribute="centerX" id="DmA-zu-Bfp"/>
+                            <constraint firstItem="NEl-Ql-OI3" firstAttribute="leading" secondItem="wxq-6A-yfe" secondAttribute="leading" constant="65" id="evS-F8-9Lh"/>
+                            <constraint firstItem="cuN-aO-6dd" firstAttribute="bottom" secondItem="wxq-6A-yfe" secondAttribute="bottom" id="fMM-KP-m46"/>
+                            <constraint firstItem="cuN-aO-6dd" firstAttribute="top" secondItem="wxq-6A-yfe" secondAttribute="top" constant="245" id="hej-t0-xnf"/>
+                            <constraint firstItem="cuN-aO-6dd" firstAttribute="top" secondItem="NEl-Ql-OI3" secondAttribute="bottom" constant="64" id="uio-lS-lkQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wxq-6A-yfe"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Transactions" image="transactions-tab-bar" id="WkC-sL-bw0"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vRz-4t-W9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-138.40000000000001" y="-126.38680659670166"/>
+        </scene>
         <!--Maps-->
         <scene sceneID="G5o-6u-FvL">
             <objects>
@@ -113,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ej5-K7-kH3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="790" y="65"/>
+            <point key="canvasLocation" x="-138" y="566"/>
         </scene>
         <!--Home-->
         <scene sceneID="s0o-Sn-Daq">
@@ -130,36 +166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdu-VO-rJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="790" y="784"/>
-        </scene>
-        <!--Transactions-->
-        <scene sceneID="qi5-fK-Reo">
-            <objects>
-                <tableViewController id="0Eg-H0-cfI" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Plj-Yy-JgJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aM8-Yo-6KS">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aM8-Yo-6KS" id="f8n-4a-aId">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="0Eg-H0-cfI" id="C2H-LP-SGT"/>
-                            <outlet property="delegate" destination="0Eg-H0-cfI" id="WfY-Ly-UhC"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Transactions" image="transactions-tab-bar" id="fsu-tI-KU3"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CxR-33-jgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="790" y="-672"/>
+            <point key="canvasLocation" x="-138" y="1285"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gPo-Dk-tI6">
@@ -174,9 +181,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="agT-Pc-XYU"/>
-                        <segue destination="0Eg-H0-cfI" kind="relationship" relationship="viewControllers" id="lRe-aX-i3j"/>
                         <segue destination="iAP-9Z-y5L" kind="relationship" relationship="viewControllers" id="35e-vs-3Bl"/>
                         <segue destination="9YI-ha-Eem" kind="relationship" relationship="viewControllers" id="Iqv-MR-I6N"/>
+                        <segue destination="dIj-7C-6L1" kind="relationship" relationship="viewControllers" id="q9v-GF-QNM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b1b-ix-VYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -187,6 +194,7 @@
     <resources>
         <image name="home-tab-bar" width="25" height="25"/>
         <image name="maps-icon-tab-bar" width="25" height="25"/>
+        <image name="monzo-card" width="1672" height="1083"/>
         <image name="monzo_white" width="594" height="230"/>
         <image name="swonzo-icon-tab-bar" width="25" height="25"/>
         <image name="transactions-tab-bar" width="25" height="25"/>

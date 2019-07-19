@@ -25,8 +25,8 @@ class ViewController: UIViewController {
 //        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
 //
 //        self.tableView.dataSource = self
-        checkAccount()
-        checkBalance()
+//        checkAccount()
+//        checkBalance()
         startAnimation()
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
             } else if let json = json {
 //                self.textView.text = json.description
 //                print("yooo")
-//                print(json)
+                print(json)
                 
             }
         }
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
             } else if let json = json {
                 //                self.textView.text = json.description
 //                print("wagwan")
-//                print(json)
+                print(json)
             }
         }
     }

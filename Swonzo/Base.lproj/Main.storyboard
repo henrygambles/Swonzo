@@ -66,8 +66,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kz8-0M-VkJ">
-                                <rect key="frame" x="172" y="483" width="30" height="30"/>
+                                <rect key="frame" x="173" y="483" width="30" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="17"/>
                                 <state key="normal" title="Test"/>
                                 <connections>
                                     <action selector="executeHey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XlB-9p-fgp"/>
@@ -126,25 +127,7 @@
         <!--Maps-->
         <scene sceneID="G5o-6u-FvL">
             <objects>
-                <viewController id="iAP-9Z-y5L" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mx9-aO-Yfn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XeX-QH-VWO" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="XeX-QH-VWO" secondAttribute="trailing" id="1SL-PU-2sL"/>
-                            <constraint firstItem="XeX-QH-VWO" firstAttribute="leading" secondItem="mx9-aO-Yfn" secondAttribute="leading" id="CKs-QV-JoT"/>
-                            <constraint firstItem="XeX-QH-VWO" firstAttribute="top" secondItem="mx9-aO-Yfn" secondAttribute="top" id="Ho1-Xr-Q4A"/>
-                            <constraint firstItem="XeX-QH-VWO" firstAttribute="bottom" secondItem="Y2S-3e-tLr" secondAttribute="bottom" id="ZaE-to-nD6"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Y2S-3e-tLr"/>
-                    </view>
+                <viewController id="iAP-9Z-y5L" customClass="MapViewController" customModule="Swonzo" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Maps" image="maps-icon-tab-bar" id="tDJ-Mp-kBY"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -155,24 +138,28 @@
         <!--Home-->
         <scene sceneID="s0o-Sn-Daq">
             <objects>
-                <viewController id="9YI-ha-Eem" customClass="SwonzoClient" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="sa7-uZ-Hhr" customClass="SwonzoClent">
+                <viewController id="9YI-ha-Eem" customClass="HomeViewController" customModule="Swonzo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Oh-Su-PVp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uEP-L8-0Sq">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h4w-AP-N0H">
+                                <rect key="frame" x="37" y="66" width="300" height="535"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="SlatePro-Medium" family="Slate Pro" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.90196078431372551" green="0.29411764705882354" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="gfy-sZ-37m"/>
+                        <viewLayoutGuide key="safeArea" id="JUs-NW-vH9"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home-tab-bar" id="k0M-G7-3LO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="homeView" destination="h4w-AP-N0H" id="YlV-Qt-g3n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdu-VO-rJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

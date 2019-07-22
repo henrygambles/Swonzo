@@ -5,24 +5,6 @@
 //  Created by Henry Gambles on 22/07/2019.
 //
 
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
- }
- */
-//
-//  SwonzoClient.swift
-//  Swonzo
-//
-//  Created by Henry Gambles on 11/07/2019.
-//  Copyright © 2019 Henry Gambles. All rights reserved.
-//
-
-
 import Foundation
 import Alamofire
 import SwiftyJSON
@@ -37,29 +19,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.homeView.text = "hey there"
-        
-        guard let urlRequest = URL(string: "https://api.monzo.com/accounts") else {
-            return
-        }
-        
-        getData(urlRequest) { (json, error) in
-            if let error = error {
-                self.homeView.text = error.localizedDescription
-            } else if let json = json {
-                self.homeView.text = "Your data be: " + json.description
-            }
-        }
-  
-                                    
-                                    //         Do any additional setup after loading the view.
-    }
-    
-    
-    typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
-    
-    
-    func getData(_ url: URL, completion: @escaping WebServiceResponse) {
         
         let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6Ikh6bSswNFBpeWw2YUQ0blExKzZkIiwianRpIjoiYWNjdG9rXzAwMDA5bDZOYkpsRXgyaWhESk05a1AiLCJ0eXAiOiJhdCIsInYiOiI1In0.yhucPmR8QCme5lpG7iHlrkAZHeVCLiOBru9s7Ag4C4ZfWWY_iKQXy-dBMCaiKtmbhuB-HKmNrvRWTHic7D06ng"
         
@@ -80,20 +39,12 @@ class HomeViewController: UIViewController {
                           encoding:  URLEncoding.default,
                           headers: headers).responseJSON { response in
                             if let error = response.error {
-                                completion(nil, error)
+                                self.homeView.text = "hey there"
                             } else if let jsonArray = response.result.value as? [[String: Any]] {
-                                completion(jsonArray, nil)
+                                self.homeView.text = "whattup"
                             } else if let jsonDict = response.result.value as? [String: Any] {
-                                completion([jsonDict], nil)
                                 
                                 
-                                
-                                
-                                //                                struct Fruit {
-                                //                                    let acc_num : String
-                                //                                    let imageURL : NSURL
-                                //                                    let description : String
-                                //                                }
                                 
                                 do {
                                     
@@ -112,6 +63,10 @@ class HomeViewController: UIViewController {
                                     
                                     //                                        self.customView.text = "hey"
                                     //                                                                        self.homeView.text = "yoooooo"
+                                    
+                                    self.homeView.text = "Hi " + first_name! + "! Welcome to Swonzo.\n\nYour account number is:\n" + account_number! + "\n\nAnd your sort code is:\n" + sort_code! + "\n\nHope it helps!"
+                                    
+                                    print("yoo")
                                     print(full_name)
                                     print(acc_id)
                                     print(user_id)
@@ -131,13 +86,16 @@ class HomeViewController: UIViewController {
                                 } catch {
                                     print("JSON Parsing error:", error)
                                 }
-    
+                                
                             }
-    
+            }
         }
-                            
     
-    }
+    
+    typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
+    
+
+    
     
     
     func execute(_ url: URL, completion: @escaping WebServiceResponse) {
@@ -183,10 +141,7 @@ class HomeViewController: UIViewController {
                                     print(account_number)
                                     print(sort_code)
                                     print(first_name)
-                                    //                                     print(balance)
-                                    //                                     print(balance1)
-                                    //                                    print(balance2)
-                                    //                                    print(balance3)
+                                
                                     
                                     
                                     

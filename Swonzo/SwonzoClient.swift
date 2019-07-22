@@ -10,14 +10,20 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
+import GoogleMaps
+import UIKit
+
 
 class SwonzoClient {
-
+    
+    
+   
+    
     typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
     
     func execute(_ url: URL, completion: @escaping WebServiceResponse) {
         
-        let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6ImluN2NlSDdMQjJYTW1pamtBZFRFIiwianRpIjoiYWNjdG9rXzAwMDA5bDBHcmNoc1BqV1R5anFySFYiLCJ0eXAiOiJhdCIsInYiOiI1In0.ddOEvdRKqQ3GNtlTsQ8zU4KYaqerVdBgiLkv9QNsp4FktT7tbr3z8Bc-Xbczyrw7LpwfUxN3rruXHQQzTOKtpw"
+        let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6Ikh6bSswNFBpeWw2YUQ0blExKzZkIiwianRpIjoiYWNjdG9rXzAwMDA5bDZOYkpsRXgyaWhESk05a1AiLCJ0eXAiOiJhdCIsInYiOiI1In0.yhucPmR8QCme5lpG7iHlrkAZHeVCLiOBru9s7Ag4C4ZfWWY_iKQXy-dBMCaiKtmbhuB-HKmNrvRWTHic7D06ng"
         
         let accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
         
@@ -39,6 +45,8 @@ class SwonzoClient {
                                 completion(jsonArray, nil)
                             } else if let jsonDict = response.result.value as? [String: Any] {
                                 completion([jsonDict], nil)
+                                
+                                
                                 
                               
 //                                struct Fruit {
@@ -63,7 +71,7 @@ class SwonzoClient {
 //
                                     
 //                                        self.customView.text = "hey"
-                                
+//                                    self.swonzoView.text = "yoooooo"
                                     print(full_name)
                                     print(acc_id)
                                     print(user_id)

@@ -12,11 +12,14 @@ import GoogleMaps
 
 class ViewController: UIViewController {
     
-
+    @IBOutlet weak var testyView: UITextView!
+    
+    
     
     private let swonzoClient = SwonzoClient()
     
     @IBOutlet weak var animationView: AnimationView!
+    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -24,13 +27,28 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+//        let camera = GMSCameraPosition.camera(withLatitude: 51.51, longitude: -0.18, zoom: 14.0)
+//        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+//
+//        do {
+//            // Set the map style by passing the URL of the local file.
+//            if let styleURL = Bundle.main.url(forResource: "customMapStyle", withExtension: "json") {
+//                mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+//            } else {
+//                NSLog("Unable to find style.json")
+//            }
+//        } catch {
+//            NSLog("One or more of the map styles failed to load. \(error)")
+//        }
+//
+//        self.view = mapView
+    
         
- 
+        
         startAnimation()
-        checkAccount()
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
+    
 
     func startAnimation() {
         
@@ -54,10 +72,8 @@ class ViewController: UIViewController {
             if let error = error {
                 self.textView.text = error.localizedDescription
             } else if let json = json {
-//                self.textView.text = json.description
-//                print("yooo")
+                self.testyView.text = "yoooo"
                 print(json)
-                
             }
         }
     }
@@ -72,8 +88,6 @@ class ViewController: UIViewController {
             if let error = error {
                 self.textView.text = error.localizedDescription
             } else if let json = json {
-                //                self.textView.text = json.description
-//                print("wagwan")
                 print(json)
             }
         }
@@ -92,10 +106,8 @@ class ViewController: UIViewController {
         swonzoClient.execute(urlToExecute) { (json, error) in
             if let error = error {
                 self.textView.text = error.localizedDescription
-//                self.textView.text = "Balance: £80,643,854.36"
             } else if let json = json {
                 self.textView.text = json.description
-//                self.textView.text = "Balance: £80,643,854.36"
             }
         }
     }
@@ -162,43 +174,15 @@ class ViewController: UIViewController {
             if let error = error {
                 self.textView.text = error.localizedDescription
             } else if let json = json {
-                self.textView.text = json.description
-//                let jsonTest = json.description
-//                print("YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
-//                print(json)
-//                let jsonDict = json.description as! NSDictionary
+//                self.textView.text = json.description
+                self.textView.text = "hey"
         
                 
             }
         }
         
     }
-    
-   
-    
 
- 
-
-    
-//    @IBOutlet private weak var tableView: UITableView!
-//
-//    var items: [String] = [
-//        "👽", "🐱", "🐔", "🐶", "🦊", "🐵", "🐼", "🐷", "💩", "🐰",
-//        "🤖", "🦄", "🐻", "🐲", "🦁", "💀", "🐨", "🐯", "👻", "🦖",
-//        ]
-//
-//extension ViewController: UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return self.items.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
-//        let item = self.items[indexPath.item]
-//        cell.textLabel?.text = item
-//        return cell
-//    }
 
 }
 

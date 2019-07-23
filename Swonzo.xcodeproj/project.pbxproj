@@ -11,6 +11,7 @@
 		AD9F62F5BCA417E90D82AB31 /* Pods_SwonzoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C63FAE1A3D3834BC3A7287 /* Pods_SwonzoUITests.framework */; };
 		B749F9FE6F49FEBCB5098D0E /* Pods_SwonzoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500E7CD97F84EEBB0765C118 /* Pods_SwonzoTests.framework */; };
 		BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */; };
+		BA0CA64322E71C7E003EC8ED /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CA64222E71C7E003EC8ED /* APIClient.swift */; };
 		BA2204E422E3ADCD00D0C83B /* customMapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2204E322E3ADCD00D0C83B /* customMapStyle.json */; };
 		BA47344722DA2CBE004B9FE9 /* SlatePro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA47344522DA2CBE004B9FE9 /* SlatePro.ttf */; };
 		BA47344822DA2CBE004B9FE9 /* SlatePro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA47344622DA2CBE004B9FE9 /* SlatePro-Medium.ttf */; };
@@ -56,6 +57,7 @@
 		9099D9404CACA3B2A0F90D14 /* Pods-SwonzoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwonzoUITests.release.xcconfig"; path = "Target Support Files/Pods-SwonzoUITests/Pods-SwonzoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		96A048C13A03E6E995077D5A /* Pods-SwonzoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwonzoUITests.debug.xcconfig"; path = "Target Support Files/Pods-SwonzoUITests/Pods-SwonzoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoClient.swift; sourceTree = "<group>"; };
+		BA0CA64222E71C7E003EC8ED /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		BA2204E322E3ADCD00D0C83B /* customMapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = customMapStyle.json; sourceTree = "<group>"; };
 		BA47344522DA2CBE004B9FE9 /* SlatePro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SlatePro.ttf; path = "../../../../../../Downloads/slate-pro-cufonfonts/SlatePro.ttf"; sourceTree = "<group>"; };
 		BA47344622DA2CBE004B9FE9 /* SlatePro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SlatePro-Medium.ttf"; path = "../../../../../../Downloads/slate-pro-cufonfonts/SlatePro-Medium.ttf"; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */,
+				BA0CA64222E71C7E003EC8ED /* APIClient.swift */,
 				BA5F2C6D22E5DC8E00230C17 /* ViewConrollers */,
 				BA47344422DA2C92004B9FE9 /* Fonts */,
 				BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */,
@@ -486,6 +489,7 @@
 				BA7D5E3822D631BB00D7C0BE /* AppDelegate.swift in Sources */,
 				BA5F2C6A22E5CC3900230C17 /* HomeViewController.swift in Sources */,
 				BA5F2C6C22E5D0E600230C17 /* MapViewController.swift in Sources */,
+				BA0CA64322E71C7E003EC8ED /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

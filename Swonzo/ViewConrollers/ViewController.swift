@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var testyView: UITextView!
     
-    private let swonzoClient = HomeViewController()
+    private let swonzoClient = SwonzoClient()
     
     @IBOutlet weak var animationView: AnimationView!
     
@@ -123,23 +123,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    
 
-    @IBAction func executeBalanceCheck(_ sender: Any) {
-        
-        guard let urlToExecute = URL(string: "https://api.monzo.com/balance") else {
-            return
-        }
-        
-        swonzoClient.execute(urlToExecute) { (json, error) in
-            if let error = error {
-                self.textView.text = error.localizedDescription
-            } else if let json = json {
-                self.textView.text = json.description
-            }
-        }
-    }
     
     @IBAction func executeHey(_ sender: Any) {
         

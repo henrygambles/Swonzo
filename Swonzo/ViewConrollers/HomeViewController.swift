@@ -59,12 +59,11 @@ class HomeViewController: UIViewController {
                                     //                                    let balance1 = json[0][0]["balance"].string
                                     //                                    let balance2 = json["balance"][0][0]["balance"].string
                                     //                                    let balance3 = json["balance"][0]["balance"].string
-                                    //
+                                 
                                     
-                                    //                                        self.customView.text = "hey"
-                                    //                                                                        self.homeView.text = "yoooooo"
+//                                    self.homeView.text = "Hi " + first_name! + "! Welcome to Swonzo.\n\nYour account number is:\n" + account_number! + "\n\nAnd your sort code is:\n" + sort_code! + "\n\nHope it helps!"
                                     
-                                    self.homeView.text = "Hi " + first_name! + "! Welcome to Swonzo.\n\nYour account number is:\n" + account_number! + "\n\nAnd your sort code is:\n" + sort_code! + "\n\nHope it helps!"
+                                    self.homeView.text = full_name!
                                     
                                     print("yoo")
                                     print(full_name)
@@ -73,15 +72,7 @@ class HomeViewController: UIViewController {
                                     print(account_number)
                                     print(sort_code)
                                     print(first_name)
-                                    //                                     print(balance)
-                                    //                                     print(balance1)
-                                    //                                    print(balance2)
-                                    //                                    print(balance3)
-                                    
-                                    
-                                    
-                                    //        self.tableData = results
-                                    //        self.Indextableview.reloadData()
+                                 
                                     
                                 } catch {
                                     print("JSON Parsing error:", error)

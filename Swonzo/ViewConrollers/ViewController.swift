@@ -109,9 +109,6 @@ class ViewController: UIViewController {
     }
     
     
-    
-    
-    
     @IBAction func executeRequest(_ sender: Any) {
         
         guard let urlToExecute = URL(string: "https://api.monzo.com/accounts") else {

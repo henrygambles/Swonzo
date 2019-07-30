@@ -9,10 +9,14 @@
 import UIKit
 
 class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     // Data model: These strings will be the data for the table view cells
 //    let animals: [String] = ["🔥", "❤️", "💦", "🍆", "🥦"]
-    let animals: [String] = ["£4.20 - Pret a Manger ☕", "£0.69 - Tesco 🛒", "£11.50 - The Smoking Jacket 🚬", "£2.40 - TFL London Underground 🚇", "£5.80 - Paul 🥖", "£78.43 - British Gas 🔥", "$420.99 - Nevada Airlines 👽", "£60 - Cash Withdrawl, Earl's Court 💷", "£12.20 - The Atlas 🍺", "£15.68 - Deliveroo 🍴", "£20 - Cash Withdrawl, Camden Lock 💷", "+£60 - Frank 👌🏼"] 
+    let animals: [String] = ["£4.60 - Pret a Manger ☕", "£5.83 - Tesco 🛒", "£6.00 - BFI Southbank 🎥", "£2.40 - TFL London Underground 🚇", "£5.80 - Paul 🥖", "£78.43 - British Gas 🔥", "$350.99 - Nevada Airlines 👽", "£50 - Cash Withdrawl, Earl's Court 💷", "£12.20 - The Atlas 🍺", "£15.68 - Deliveroo 🍴", "£7.38 - ViaVan 🚕" , "£35 - Harvey Nichols 🛍️"] 
     
     // cell reuse id (cells that scroll out of view can be reused)
     let cellReuseIdentifier = "cell"

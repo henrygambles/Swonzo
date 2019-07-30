@@ -11,19 +11,23 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
+let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6InpSL0xESnJNWmR4dFFUcW5UNzFtIiwianRpIjoiYWNjdG9rXzAwMDA5bExmaVVhdm1iSk93a2l3dDgiLCJ0eXAiOiJhdCIsInYiOiI1In0.EZPq2MASIwqVMidn0tbGGPrrq4e6CfDtb5B5nOJj9-En81u015NHbOq5tFNDGxE-qOiayuQxDxMdhuX_rIRK_w"
+
+let accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
+
+let headers: HTTPHeaders = [
+    "Authorization": "Bearer " + token
+]
+
+let parameters: Parameters = [
+    "account_id": accountId
+]
 
 class SwonzoClient {
 
     typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
     
     func getAccounts() {
-    
-    let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6Ikh6bSswNFBpeWw2YUQ0blExKzZkIiwianRpIjoiYWNjdG9rXzAwMDA5bDZOYkpsRXgyaWhESk05a1AiLCJ0eXAiOiJhdCIsInYiOiI1In0.yhucPmR8QCme5lpG7iHlrkAZHeVCLiOBru9s7Ag4C4ZfWWY_iKQXy-dBMCaiKtmbhuB-HKmNrvRWTHic7D06ng"
-    
-    let headers: HTTPHeaders = [
-        "Authorization": "Bearer " + token
-    ]
-    
     
     Alamofire.request("https://api.monzo.com/accounts",
                       encoding:  URLEncoding.default,
@@ -76,19 +80,6 @@ class SwonzoClient {
 
     func getBalance() {
         
-        let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6Ikh6bSswNFBpeWw2YUQ0blExKzZkIiwianRpIjoiYWNjdG9rXzAwMDA5bDZOYkpsRXgyaWhESk05a1AiLCJ0eXAiOiJhdCIsInYiOiI1In0.yhucPmR8QCme5lpG7iHlrkAZHeVCLiOBru9s7Ag4C4ZfWWY_iKQXy-dBMCaiKtmbhuB-HKmNrvRWTHic7D06ng"
-        
-        let accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + token
-        ]
-
-        
-        let parameters: Parameters = [
-            "account_id": accountId
-        ]
-        
         Alamofire.request("https://api.monzo.com/balance",
                           parameters: parameters,
                           encoding:  URLEncoding.default,
@@ -119,18 +110,6 @@ class SwonzoClient {
     
     func execute(_ url: URL, completion: @escaping WebServiceResponse) {
         
-        let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6Ikh6bSswNFBpeWw2YUQ0blExKzZkIiwianRpIjoiYWNjdG9rXzAwMDA5bDZOYkpsRXgyaWhESk05a1AiLCJ0eXAiOiJhdCIsInYiOiI1In0.yhucPmR8QCme5lpG7iHlrkAZHeVCLiOBru9s7Ag4C4ZfWWY_iKQXy-dBMCaiKtmbhuB-HKmNrvRWTHic7D06ng"
-        
-        let accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + token
-        ]
-        
-        let parameters: Parameters = [
-            "account_id": accountId
-        ]
-        
         Alamofire.request(url,
                           parameters: parameters,
                           encoding:  URLEncoding.default,
@@ -156,7 +135,7 @@ class SwonzoClient {
                                     
                                     
                                     
-                                    print("wagwan")
+                                    print("Parsed JSON")
                                     print(full_name)
                                     print(acc_id)
                                     print(user_id)
@@ -188,12 +167,6 @@ class SwonzoClient {
     
     
     func WhackIt() {
-        
-        let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6Ikh6bSswNFBpeWw2YUQ0blExKzZkIiwianRpIjoiYWNjdG9rXzAwMDA5bDZOYkpsRXgyaWhESk05a1AiLCJ0eXAiOiJhdCIsInYiOiI1In0.yhucPmR8QCme5lpG7iHlrkAZHeVCLiOBru9s7Ag4C4ZfWWY_iKQXy-dBMCaiKtmbhuB-HKmNrvRWTHic7D06ng"
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + token
-        ]
         
         
         Alamofire.request("https://api.monzo.com/accounts",
@@ -250,18 +223,6 @@ class SwonzoClient {
     
     
     func hitIt(_ url: URL, completion: @escaping WebServiceResponse) {
-        
-        let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6Ikh6bSswNFBpeWw2YUQ0blExKzZkIiwianRpIjoiYWNjdG9rXzAwMDA5bDZOYkpsRXgyaWhESk05a1AiLCJ0eXAiOiJhdCIsInYiOiI1In0.yhucPmR8QCme5lpG7iHlrkAZHeVCLiOBru9s7Ag4C4ZfWWY_iKQXy-dBMCaiKtmbhuB-HKmNrvRWTHic7D06ng"
-        
-        let accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + token
-        ]
-        
-        let parameters: Parameters = [
-            "account_id": accountId
-        ]
         
         Alamofire.request(url,
                           parameters: parameters,

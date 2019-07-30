@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var animationView: AnimationView!
     
+    @IBOutlet weak var secondBlurryView: UIView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -27,9 +28,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         startAnimation()
+//        setBlurView2()
+        
     }
     
-
+    func setBlurView2() {
+        // Init a UIVisualEffectView which going to do the blur for us
+        let blurView = UIVisualEffectView()
+        // Make its frame equal the main view frame so that every pixel is under blurred
+        blurView.frame = view.frame
+        // Choose the style of the blur effect to regular.
+        // You can choose dark, light, or extraLight if you wants
+        blurView.effect = UIBlurEffect(style: .regular)
+        // Now add the blur view to the main view
+        secondBlurryView.addSubview(blurView)
+    }
+    
     func startAnimation() {
         
         let animationView = AnimationView(name: "rocket_monzo")
@@ -124,23 +138,28 @@ class ViewController: UIViewController {
         }
     }
 
+
     
     @IBAction func executeHey(_ sender: Any) {
         
-        guard let urlToExecute = URL(string: "https://api.monzo.com/accounts") else {
-            return
-        }
+//        guard let urlToExecute = URL(string: "https://api.monzo.com/accounts") else {
+//            return
+//        }
+//
+//        swonzoClient.execute(urlToExecute) { (json, error) in
+//            if let error = error {
+//                self.textView.text = error.localizedDescription
+//            } else if let json = json {
+////                self.textView.text = json.description
+//                self.textView.text = "hey"
+//            }
+//        }
         
-        swonzoClient.execute(urlToExecute) { (json, error) in
-            if let error = error {
-                self.textView.text = error.localizedDescription
-            } else if let json = json {
-//                self.textView.text = json.description
-                self.textView.text = "hey"
+    
         
-                
-            }
-        }
+        self.textView.text = ""
+        
+        
         
     }
 

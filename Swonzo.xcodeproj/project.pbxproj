@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37AA926463AE75549750B2E6 /* Pods_Swonzo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADB3BFC0493D21FF3319862 /* Pods_Swonzo.framework */; };
+		AD9F62F5BCA417E90D82AB31 /* Pods_SwonzoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C63FAE1A3D3834BC3A7287 /* Pods_SwonzoUITests.framework */; };
+		B749F9FE6F49FEBCB5098D0E /* Pods_SwonzoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 500E7CD97F84EEBB0765C118 /* Pods_SwonzoTests.framework */; };
+		BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */; };
+		BA2204E422E3ADCD00D0C83B /* customMapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2204E322E3ADCD00D0C83B /* customMapStyle.json */; };
+		BA47344722DA2CBE004B9FE9 /* SlatePro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA47344522DA2CBE004B9FE9 /* SlatePro.ttf */; };
+		BA47344822DA2CBE004B9FE9 /* SlatePro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA47344622DA2CBE004B9FE9 /* SlatePro-Medium.ttf */; };
+		BA47E00422E0B0F5000EF78F /* rocket_monzo.json in Resources */ = {isa = PBXBuildFile; fileRef = BA47E00222E0B0F5000EF78F /* rocket_monzo.json */; };
+		BA47E00522E0B0F5000EF78F /* waving-american-flag.json in Resources */ = {isa = PBXBuildFile; fileRef = BA47E00322E0B0F5000EF78F /* waving-american-flag.json */; };
+		BA5F2C6A22E5CC3900230C17 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */; };
+		BA5F2C6C22E5D0E600230C17 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */; };
+		BA6F1E9322E738F900C818E4 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6F1E9222E738F900C818E4 /* TransactionsViewController.swift */; };
+		BA7ACE4622F06A67007AAF73 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */; };
 		BA7D5E3822D631BB00D7C0BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */; };
 		BA7D5E3A22D631BB00D7C0BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E3922D631BB00D7C0BE /* ViewController.swift */; };
 		BA7D5E3D22D631BB00D7C0BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5E3B22D631BB00D7C0BE /* Main.storyboard */; };
@@ -14,6 +27,8 @@
 		BA7D5E4222D631BD00D7C0BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5E4022D631BD00D7C0BE /* LaunchScreen.storyboard */; };
 		BA7D5E4D22D631BD00D7C0BE /* SwonzoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E4C22D631BD00D7C0BE /* SwonzoTests.swift */; };
 		BA7D5E5822D631BD00D7C0BE /* SwonzoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E5722D631BD00D7C0BE /* SwonzoUITests.swift */; };
+		BA86F1F322DAC15C00CE865A /* uk-flag-wave.json in Resources */ = {isa = PBXBuildFile; fileRef = BA86F1F222DAC15C00CE865A /* uk-flag-wave.json */; };
+		BAC4D28D22E21814009891C0 /* nightMap.json in Resources */ = {isa = PBXBuildFile; fileRef = BAC4D28C22E21814009891C0 /* nightMap.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +49,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		294ADE59244C4DEFEBB41872 /* Pods-SwonzoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwonzoTests.release.xcconfig"; path = "Target Support Files/Pods-SwonzoTests/Pods-SwonzoTests.release.xcconfig"; sourceTree = "<group>"; };
+		500E7CD97F84EEBB0765C118 /* Pods_SwonzoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwonzoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51C63FAE1A3D3834BC3A7287 /* Pods_SwonzoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwonzoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6ADB3BFC0493D21FF3319862 /* Pods_Swonzo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swonzo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FBE1702ACF5F08D914AFE97 /* Pods-Swonzo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swonzo.debug.xcconfig"; path = "Target Support Files/Pods-Swonzo/Pods-Swonzo.debug.xcconfig"; sourceTree = "<group>"; };
+		77B3B155A816D76C502038FF /* Pods-Swonzo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swonzo.release.xcconfig"; path = "Target Support Files/Pods-Swonzo/Pods-Swonzo.release.xcconfig"; sourceTree = "<group>"; };
+		9099D9404CACA3B2A0F90D14 /* Pods-SwonzoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwonzoUITests.release.xcconfig"; path = "Target Support Files/Pods-SwonzoUITests/Pods-SwonzoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		96A048C13A03E6E995077D5A /* Pods-SwonzoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwonzoUITests.debug.xcconfig"; path = "Target Support Files/Pods-SwonzoUITests/Pods-SwonzoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoClient.swift; sourceTree = "<group>"; };
+		BA2204E322E3ADCD00D0C83B /* customMapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = customMapStyle.json; sourceTree = "<group>"; };
+		BA47344522DA2CBE004B9FE9 /* SlatePro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SlatePro.ttf; path = "../../../../../../Downloads/slate-pro-cufonfonts/SlatePro.ttf"; sourceTree = "<group>"; };
+		BA47344622DA2CBE004B9FE9 /* SlatePro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SlatePro-Medium.ttf"; path = "../../../../../../Downloads/slate-pro-cufonfonts/SlatePro-Medium.ttf"; sourceTree = "<group>"; };
+		BA47E00222E0B0F5000EF78F /* rocket_monzo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rocket_monzo.json; sourceTree = "<group>"; };
+		BA47E00322E0B0F5000EF78F /* waving-american-flag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "waving-american-flag.json"; sourceTree = "<group>"; };
+		BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		BA6F1E9222E738F900C818E4 /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BA7D5E3422D631BB00D7C0BE /* Swonzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swonzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA7D5E3922D631BB00D7C0BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +80,9 @@
 		BA7D5E5322D631BD00D7C0BE /* SwonzoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwonzoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D5E5722D631BD00D7C0BE /* SwonzoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoUITests.swift; sourceTree = "<group>"; };
 		BA7D5E5922D631BD00D7C0BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA86F1F222DAC15C00CE865A /* uk-flag-wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "uk-flag-wave.json"; path = "../../../../../Downloads/uk-flag-wave.json"; sourceTree = "<group>"; };
+		BAC4D28C22E21814009891C0 /* nightMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nightMap.json; sourceTree = "<group>"; };
+		F3C1C9C9F7D1B4766029B165 /* Pods-SwonzoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwonzoTests.debug.xcconfig"; path = "Target Support Files/Pods-SwonzoTests/Pods-SwonzoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37AA926463AE75549750B2E6 /* Pods_Swonzo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B749F9FE6F49FEBCB5098D0E /* Pods_SwonzoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +106,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD9F62F5BCA417E90D82AB31 /* Pods_SwonzoUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36D977DA484930C6D9023367 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6FBE1702ACF5F08D914AFE97 /* Pods-Swonzo.debug.xcconfig */,
+				77B3B155A816D76C502038FF /* Pods-Swonzo.release.xcconfig */,
+				F3C1C9C9F7D1B4766029B165 /* Pods-SwonzoTests.debug.xcconfig */,
+				294ADE59244C4DEFEBB41872 /* Pods-SwonzoTests.release.xcconfig */,
+				96A048C13A03E6E995077D5A /* Pods-SwonzoUITests.debug.xcconfig */,
+				9099D9404CACA3B2A0F90D14 /* Pods-SwonzoUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BA47344422DA2C92004B9FE9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BA47344622DA2CBE004B9FE9 /* SlatePro-Medium.ttf */,
+				BA47344522DA2CBE004B9FE9 /* SlatePro.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BA5F2C6D22E5DC8E00230C17 /* ViewConrollers */ = {
+			isa = PBXGroup;
+			children = (
+				BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */,
+				BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */,
+				BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */,
+				BA6F1E9222E738F900C818E4 /* TransactionsViewController.swift */,
+				BA7D5E3922D631BB00D7C0BE /* ViewController.swift */,
+			);
+			path = ViewConrollers;
+			sourceTree = "<group>";
+		};
 		BA7D5E2B22D631BB00D7C0BE = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +154,8 @@
 				BA7D5E4B22D631BD00D7C0BE /* SwonzoTests */,
 				BA7D5E5622D631BD00D7C0BE /* SwonzoUITests */,
 				BA7D5E3522D631BB00D7C0BE /* Products */,
+				36D977DA484930C6D9023367 /* Pods */,
+				D6EDAB7B3F39BE019BAFDF78 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,9 +172,17 @@
 		BA7D5E3622D631BB00D7C0BE /* Swonzo */ = {
 			isa = PBXGroup;
 			children = (
+				BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */,
+				BA5F2C6D22E5DC8E00230C17 /* ViewConrollers */,
+				BA47344422DA2C92004B9FE9 /* Fonts */,
 				BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */,
-				BA7D5E3922D631BB00D7C0BE /* ViewController.swift */,
+				BA86F1EF22DAC0BB00CE865A /* Animations */,
+				BA86F1F222DAC15C00CE865A /* uk-flag-wave.json */,
+				BA2204E322E3ADCD00D0C83B /* customMapStyle.json */,
 				BA7D5E3B22D631BB00D7C0BE /* Main.storyboard */,
+				BAC4D28C22E21814009891C0 /* nightMap.json */,
+				BA47E00222E0B0F5000EF78F /* rocket_monzo.json */,
+				BA47E00322E0B0F5000EF78F /* waving-american-flag.json */,
 				BA7D5E3E22D631BD00D7C0BE /* Assets.xcassets */,
 				BA7D5E4022D631BD00D7C0BE /* LaunchScreen.storyboard */,
 				BA7D5E4322D631BD00D7C0BE /* Info.plist */,
@@ -125,6 +208,23 @@
 			path = SwonzoUITests;
 			sourceTree = "<group>";
 		};
+		BA86F1EF22DAC0BB00CE865A /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		D6EDAB7B3F39BE019BAFDF78 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6ADB3BFC0493D21FF3319862 /* Pods_Swonzo.framework */,
+				500E7CD97F84EEBB0765C118 /* Pods_SwonzoTests.framework */,
+				51C63FAE1A3D3834BC3A7287 /* Pods_SwonzoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +232,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA7D5E5C22D631BD00D7C0BE /* Build configuration list for PBXNativeTarget "Swonzo" */;
 			buildPhases = (
+				9D6178E9DA5E119CAAC4A4A2 /* [CP] Check Pods Manifest.lock */,
 				BA7D5E3022D631BB00D7C0BE /* Sources */,
 				BA7D5E3122D631BB00D7C0BE /* Frameworks */,
 				BA7D5E3222D631BB00D7C0BE /* Resources */,
+				5A04FDBC935108588EFCB761 /* [CP] Embed Pods Frameworks */,
+				041EACE45B17C333F703F490 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,6 +252,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA7D5E5F22D631BD00D7C0BE /* Build configuration list for PBXNativeTarget "SwonzoTests" */;
 			buildPhases = (
+				DF1D6C970AD2945D7C1DD083 /* [CP] Check Pods Manifest.lock */,
 				BA7D5E4422D631BD00D7C0BE /* Sources */,
 				BA7D5E4522D631BD00D7C0BE /* Frameworks */,
 				BA7D5E4622D631BD00D7C0BE /* Resources */,
@@ -167,6 +271,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA7D5E6222D631BD00D7C0BE /* Build configuration list for PBXNativeTarget "SwonzoUITests" */;
 			buildPhases = (
+				5E8E37441E6BDAD0C9BE7CF4 /* [CP] Check Pods Manifest.lock */,
 				BA7D5E4F22D631BD00D7C0BE /* Sources */,
 				BA7D5E5022D631BD00D7C0BE /* Frameworks */,
 				BA7D5E5122D631BD00D7C0BE /* Resources */,
@@ -230,8 +335,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA7D5E4222D631BD00D7C0BE /* LaunchScreen.storyboard in Resources */,
+				BA47E00522E0B0F5000EF78F /* waving-american-flag.json in Resources */,
 				BA7D5E3F22D631BD00D7C0BE /* Assets.xcassets in Resources */,
+				BAC4D28D22E21814009891C0 /* nightMap.json in Resources */,
+				BA86F1F322DAC15C00CE865A /* uk-flag-wave.json in Resources */,
+				BA2204E422E3ADCD00D0C83B /* customMapStyle.json in Resources */,
+				BA47344722DA2CBE004B9FE9 /* SlatePro.ttf in Resources */,
 				BA7D5E3D22D631BB00D7C0BE /* Main.storyboard in Resources */,
+				BA47E00422E0B0F5000EF78F /* rocket_monzo.json in Resources */,
+				BA47344822DA2CBE004B9FE9 /* SlatePro-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,13 +363,137 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		041EACE45B17C333F703F490 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Swonzo/Pods-Swonzo-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Swonzo/Pods-Swonzo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A04FDBC935108588EFCB761 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Swonzo/Pods-Swonzo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Swonzo/Pods-Swonzo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E8E37441E6BDAD0C9BE7CF4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwonzoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D6178E9DA5E119CAAC4A4A2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Swonzo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF1D6C970AD2945D7C1DD083 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwonzoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BA7D5E3022D631BB00D7C0BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA6F1E9322E738F900C818E4 /* TransactionsViewController.swift in Sources */,
+				BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */,
 				BA7D5E3A22D631BB00D7C0BE /* ViewController.swift in Sources */,
 				BA7D5E3822D631BB00D7C0BE /* AppDelegate.swift in Sources */,
+				BA7ACE4622F06A67007AAF73 /* LogInViewController.swift in Sources */,
+				BA5F2C6A22E5CC3900230C17 /* HomeViewController.swift in Sources */,
+				BA5F2C6C22E5D0E600230C17 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +666,7 @@
 		};
 		BA7D5E5D22D631BD00D7C0BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FBE1702ACF5F08D914AFE97 /* Pods-Swonzo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -448,6 +685,7 @@
 		};
 		BA7D5E5E22D631BD00D7C0BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77B3B155A816D76C502038FF /* Pods-Swonzo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -466,6 +704,7 @@
 		};
 		BA7D5E6022D631BD00D7C0BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3C1C9C9F7D1B4766029B165 /* Pods-SwonzoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -487,6 +726,7 @@
 		};
 		BA7D5E6122D631BD00D7C0BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 294ADE59244C4DEFEBB41872 /* Pods-SwonzoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +748,7 @@
 		};
 		BA7D5E6322D631BD00D7C0BE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96A048C13A03E6E995077D5A /* Pods-SwonzoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -528,6 +769,7 @@
 		};
 		BA7D5E6422D631BD00D7C0BE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9099D9404CACA3B2A0F90D14 /* Pods-SwonzoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

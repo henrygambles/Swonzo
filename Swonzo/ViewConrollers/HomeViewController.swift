@@ -50,7 +50,8 @@ class HomeViewController: UIViewController {
                                         let full_name = json["accounts"][0]["owners"][0]["preferred_name"].string
                                         let user_id = json["accounts"][0]["owners"][0]["user_id"].string
                              
-                                        self.homeView.text = "Hi " + first_name! + "! Welcome to Swonzo.\n\nYour account number is:\n\n" + account_number! + "\n\nYour sort code is:\n\n" + sort_code! + "\n\nAnd your account id is:\n\n" + acc_id! + "\n\nEnjoy!"
+//                                        self.homeView.text = "Hi " + first_name! + "! Welcome to Swonzo.\n\nYour account number is:\n\n" + account_number! + "\n\nYour sort code is:\n\n" + sort_code! + "\n\nAnd your account id is:\n\n" + acc_id! + "\n\nEnjoy!"
+//                                        self.homeView.text = balanceRequest()
 
                                         print("TESTING")
                                         print(full_name ?? "JSON parsing error")
@@ -84,14 +85,15 @@ class HomeViewController: UIViewController {
                                     print("Balance Test")
                                     
                                     if let result = response.result.value {
-                                        
                                         let MYJSON = result as! NSDictionary
-                                        
                                         let balance = MYJSON.object(forKey: "balance")
-                                        
-                                        print(balance ?? "IDK your balance")
-//                                        self.balanceView.text =
-                                        
+                                        let pounds = balance as! Double / 100
+                                        if pounds < 0 {
+                                            self.homeView.text = "Your balance is -£" + String(format:"%.2f", abs(pounds))
+                                        }
+                                        else {
+                                        self.homeView.text = "Your balance is £" + String(format:"%.2f", pounds)
+                                        }
                                         
                                     }
                                 }

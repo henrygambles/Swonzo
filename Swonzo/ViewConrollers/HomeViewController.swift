@@ -53,12 +53,12 @@ class HomeViewController: UIViewController {
                                         self.homeView.text = "Hi " + first_name! + "! Welcome to Swonzo.\n\nYour account number is:\n\n" + account_number! + "\n\nYour sort code is:\n\n" + sort_code! + "\n\nAnd your account id is:\n\n" + acc_id! + "\n\nEnjoy!"
 
                                         print("TESTING")
-                                        print(full_name)
-                                        print(acc_id)
-                                        print(user_id)
-                                        print(account_number)
-                                        print(sort_code)
-                                        print(first_name)
+                                        print(full_name ?? "JSON parsing error")
+                                        print(acc_id ?? "JSON parsing error")
+                                        print(user_id ?? "JSON parsing error")
+                                        print(account_number ?? "JSON parsing error")
+                                        print(sort_code ?? "JSON parsing error")
+                                        print(first_name ?? "JSON parsing error")
                                    
                                     } catch {
                                         print("JSON Parsing error:", error)
@@ -81,7 +81,7 @@ class HomeViewController: UIViewController {
                                     //                            self.homeView.text = "whattup"
                                 } else if let jsonDict = response.result.value as? [String: Any] {
                                     
-                                    print("More Testies")
+                                    print("Balance Test")
                                     
                                     if let result = response.result.value {
                                         
@@ -89,7 +89,7 @@ class HomeViewController: UIViewController {
                                         
                                         let balance = MYJSON.object(forKey: "balance")
                                         
-                                        print(balance)
+                                        print(balance ?? "IDK your balance")
 //                                        self.balanceView.text =
                                         
                                         
@@ -104,40 +104,6 @@ class HomeViewController: UIViewController {
         
         balanceRequest()
         initialRequest()
-        APIRequest.getAccounts()
-//        APIRequest.getBalance()
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//        guard let urlToExecute = URL(string: "https://api.monzo.com/balance") else {
-//            return
-//        }
-//
-//
-//        APIRequest.hitIt(urlToExecute) { (json, error) in
-//            if let error = error {
-//                self.homeView.text = error.localizedDescription
-//            } else if let json = json {
-//                self.homeView.text = json.description
-//            }
-//        }
-
-    
     }
     
     

@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
-let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6InpSL0xESnJNWmR4dFFUcW5UNzFtIiwianRpIjoiYWNjdG9rXzAwMDA5bExmaVVhdm1iSk93a2l3dDgiLCJ0eXAiOiJhdCIsInYiOiI1In0.EZPq2MASIwqVMidn0tbGGPrrq4e6CfDtb5B5nOJj9-En81u015NHbOq5tFNDGxE-qOiayuQxDxMdhuX_rIRK_w"
+let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6ImdwTk4rSEdDUXc4bDNRcjVEaUR4IiwianRpIjoiYWNjdG9rXzAwMDA5bFEwb01CY3BmYlFpVjkybW4iLCJ0eXAiOiJhdCIsInYiOiI1In0.fBpLb4WqbIhwwG4FOPEKpp_JzryVvaDj-PDqNS6Qut4x3KCWdZWsL-WIfN_e3aAMc6dz_uivace2JwzLYZGXZQ"
 
 let accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
 
@@ -60,12 +60,12 @@ class SwonzoClient {
                               
                                 
                                 print("TESTING")
-                                print(full_name)
-                                print(acc_id)
-                                print(user_id)
-                                print(account_number)
-                                print(sort_code)
-                                print(first_name)
+                                print(full_name ?? "Json not parsed")
+                                print(acc_id ?? "Json not parsed")
+                                print(user_id ?? "Json not parsed")
+                                print(account_number ?? "Json not parsed")
+                                print(sort_code ?? "Json not parsed")
+                                print(first_name ?? "Json not parsed")
                               
                                 
                                 
@@ -136,12 +136,12 @@ class SwonzoClient {
                                     
                                     
                                     print("Parsed JSON")
-                                    print(full_name)
-                                    print(acc_id)
-                                    print(user_id)
-                                    print(account_number)
-                                    print(sort_code)
-                                    print(first_name)
+                                    print(full_name ?? "Json not parsed")
+                                    print(acc_id ?? "Json not parsed")
+                                    print(user_id ?? "Json not parsed")
+                                    print(account_number ?? "Json not parsed")
+                                    print(sort_code ?? "Json not parsed")
+                                    print(first_name ?? "Json not parsed")
                                     
                                     
                                     
@@ -200,12 +200,12 @@ class SwonzoClient {
                                     
                                    
                                     print("TESTING")
-                                    print(full_name)
-                                    print(acc_id)
-                                    print(user_id)
-                                    print(account_number)
-                                    print(sort_code)
-                                    print(first_name)
+                                    print(full_name ?? "Json not parsed")
+                                    print(acc_id ?? "Json not parsed")
+                                    print(user_id ?? "Json not parsed")
+                                    print(account_number ?? "Json not parsed")
+                                    print(sort_code ?? "Json not parsed")
+                                    print(first_name ?? "Json not parsed")
                                     
                                     
                                     
@@ -251,12 +251,12 @@ class SwonzoClient {
                                     
                                     
                                     print("wagwan")
-                                    print(full_name)
-                                    print(acc_id)
-                                    print(user_id)
-                                    print(account_number)
-                                    print(sort_code)
-                                    print(first_name)
+                                    print(full_name ?? "Json not parsed")
+                                    print(acc_id ?? "Json not parsed")
+                                    print(user_id ?? "Json not parsed")
+                                    print(account_number ?? "Json not parsed")
+                                    print(sort_code ?? "Json not parsed")
+                                    print(first_name ?? "Json not parsed")
            
                                     
                                     

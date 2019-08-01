@@ -31,6 +31,9 @@ class ViewController: UIViewController {
         
     }
     
+
+
+    
     func setBlurView2() {
         // Init a UIVisualEffectView which going to do the blur for us
         let blurView = UIVisualEffectView()

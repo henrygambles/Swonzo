@@ -14,6 +14,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    private let swonzoClient = SwonzoClient()
+    
  
     @IBOutlet weak var thirdBlurView: UIView!
     @IBOutlet weak var homeView: UITextView!
@@ -31,6 +33,8 @@ class HomeViewController: UIViewController {
         typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
 
         func initialRequest() {
+            
+            
 
             Alamofire.request("https://api.monzo.com/accounts",
                               encoding:  URLEncoding.default,
@@ -92,7 +96,7 @@ class HomeViewController: UIViewController {
                                             self.homeView.text = "Your balance is -£" + String(format:"%.2f", abs(pounds))
                                         }
                                         else {
-                                        self.homeView.text = "Your balance is £" + String(format:"%.2f", pounds)
+                                            self.homeView.text = "Your balance is £" + String(format:"%.2f", pounds)
                                         }
                                         
                                     }
@@ -110,14 +114,9 @@ class HomeViewController: UIViewController {
     
     
     func setThirdBlurView() {
-        // Init a UIVisualEffectView which going to do the blur for us
         let blurView = UIVisualEffectView()
-        // Make its frame equal the main view frame so that every pixel is under blurred
         blurView.frame = view.frame
-        // Choose the style of the blur effect to regular.
-        // You can choose dark, light, or extraLight if you wants
         blurView.effect = UIBlurEffect(style: .regular)
-        // Now add the blur view to the main view
         thirdBlurView.addSubview(blurView)
     }
 

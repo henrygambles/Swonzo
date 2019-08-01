@@ -13,35 +13,54 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
-
-class TransactionsViewController: UITableViewController  {
-
-    var tableArray = [String] ()
+class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    // Data model: These strings will be the data for the table view cells
+    //    let animals: [String] = ["🔥", "❤️", "💦", "🍆", "🥦"]
+    
+//    var animals: [String] = ["£4.60 - Pret a Manger ☕", "£5.83 - Tesco 🛒", "£6.00 - BFI Southbank 🎥", "£2.40 - TFL London Underground 🚇", "£5.80 - Paul 🥖", "£78.43 - British Gas 🔥", "$350.99 - Nevada Airlines 👽", "£50 - Cash Withdrawl, Earl's Court 💷", "£12.20 - The Atlas 🍺", "£15.68 - Deliveroo 🍴", "£7.38 - ViaVan 🚕" , "£35 - Harvey Nichols 🛍️"]
+    
+    var animals: [String] = []
+    
+    // cell reuse id (cells that scroll out of view can be reused)
+    let cellReuseIdentifier = "cell"
+    
+    
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         
         
-//        parseJSON()
         transactionsRequest()
         
+        // Register the table view cell class and its reuse id
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
+        // (optional) include this line if you want to remove the extra empty cell divider lines
+        // self.tableView.tableFooterView = UIView()
+        
+        // This view controller itself will provide the delegate methods and row data for the table view.
+        tableView.delegate = self as? UITableViewDelegate
+        tableView.dataSource = self as? UITableViewDataSource
+        
+        // Do any additional setup after loading the view.
     }
-    
-
     
     func transactionsRequest() {
         
         Alamofire.request("https://api.monzo.com/transactions",
-            parameters: parameters,
-            encoding:  URLEncoding.default,
-            headers: headers).responseJSON { response in
+                          parameters: parameters,
+                          encoding:  URLEncoding.default,
+                          headers: headers).responseJSON { response in
                             if let error = response.error {
-//                                self.homeView.text = error.localizedDescription
+                                //                                self.homeView.text = error.localizedDescription
                             } else if let jsonArray = response.result.value as? [[String: Any]] {
                             } else if let jsonDict = response.result.value as? [String: Any] {
                                 
@@ -52,17 +71,8 @@ class TransactionsViewController: UITableViewController  {
                                     
                                     let json = try JSON(data: response.data!)
                                     
-                                    if let array = json["transactions"] as? [String] {
-                                        self.tableArray = array
-                                    }
                                     
-                                    print(self.tableArray)
                                     
-                                    DispatchQueue.main.async {
-                                        self.tableView.reloadData()
-                                    }
-                                    
-                                    var transArray = [] as Array
                                     
                                     var i = 1
                                     while i <= 10 {
@@ -87,116 +97,45 @@ class TransactionsViewController: UITableViewController  {
                                             print(loopMoney)
                                         }
                                         print(loopNotes != "" ? loopNotes: "No Notes for this transaction.")
-                                        transArray.append(loopDescripton)
+                                        self.animals.append(loopDescripton as! String ?? "error")
                                         print("TestieTest")
-                                        print(transArray)
-
+                                        print(self.tableView.dataSource)
+                                        self.tableView.reloadData()
+                                        
+                                        
                                     }
-                            
+                                    
                                 } catch {
                                     print("JSON Parsing error:", error)
-                                 }
+                                }
                                 
-                        
-                                    
-                               
+                                
+                                
+                                
                                 
                             }
         }
     }
     
-    func parseJSON() {
-        
-//        let path = Bundle.main.path(forResource: "testTransactions", ofType: "json")
-//        let jsonData = JSONSerialization.data(withJSONObject: json, options: JSONSerialization.WritingOptions.prettyPrinted)
-//
-//        print(jsonData)
-        
-//        let url = URL(string: "http://localhost:9292/page")
-        let url = URL(string: "https://api.myjson.com/bins/vi56v")
-        
-        let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
-            
-            guard error == nil else {
-                print("returning error")
-                return
-            }
-            
-            guard let content = data else {
-                print("not returning data")
-                return
-            }
-            
-            guard let json = (try? JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers)) as? [String: Any] else {
-                print("Error")
-                return
-            }
-            
-            if let array = json["companies"] as? [String] {
-                self.tableArray = array
-            }
-            
-            print(self.tableArray)
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-            
-        }
-        
-        task.resume()
-        
+    // number of rows in table view
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.animals.count
     }
     
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-}
-
-extension TransactionsViewController {
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
+    // create a cell for each table view row
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        // create a new cell if needed or reuse an old one
+        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
         
-        cell.textLabel?.text = self.tableArray[indexPath.row]
+        // set the text from the data model
+        cell.textLabel?.text = self.animals[indexPath.row]
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return self.tableArray.count
-        
+    // method to run when table view cell is tapped
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You tapped cell number \(indexPath.row).")
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(self.tableArray[indexPath.row])
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            // delete item at indexPath
-            self.tableArray.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            print(self.tableArray)
-        }
-        
-        let share = UITableViewRowAction(style: .default, title: "Share") { (action, indexPath) in
-            // share item at indexPath
-            print("I want to share: \(self.tableArray[indexPath.row])")
-        }
-        
-        share.backgroundColor = UIColor.lightGray
-        
-        return [delete, share]
-        
-    }
-    
 }

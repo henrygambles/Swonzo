@@ -20,12 +20,13 @@ class TransactionsViewController: UITableViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
         
-        parseJSON()
+//        parseJSON()
         transactionsRequest()
         
         
@@ -51,15 +52,27 @@ class TransactionsViewController: UITableViewController  {
                                     
                                     let json = try JSON(data: response.data!)
                                     
+                                    if let array = json["transactions"] as? [String] {
+                                        self.tableArray = array
+                                    }
+                                    
+                                    print(self.tableArray)
+                                    
+                                    DispatchQueue.main.async {
+                                        self.tableView.reloadData()
+                                    }
+                                    
+                                    var transArray = [] as Array
                                     
                                     var i = 1
-                                    while i <= 100 {
+                                    while i <= 10 {
                                         i = i + 1
-                                        let pounds = Double(loopAmount!) / 100
+                                        
                                         var loopDateCreated = json["transactions"][i]["created"].string
                                         var loopAmount = json["transactions"][i]["amount"].int
                                         var loopDescripton = json["transactions"][i]["description"].string
                                         var loopNotes = json["transactions"][i]["notes"].string
+                                        let pounds = Double(loopAmount!) / 100
                                         print("\n")
                                         print(i)
                                         print("\n")
@@ -74,7 +87,10 @@ class TransactionsViewController: UITableViewController  {
                                             print(loopMoney)
                                         }
                                         print(loopNotes != "" ? loopNotes: "No Notes for this transaction.")
-                                        
+                                        transArray.append(loopDescripton)
+                                        print("TestieTest")
+                                        print(transArray)
+
                                     }
                             
                                 } catch {

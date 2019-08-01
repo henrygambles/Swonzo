@@ -15,16 +15,11 @@ import SwiftyJSON
 import Alamofire_SwiftyJSON
 
 class TransactionsViewController: UITableViewController  {
-    
-    
-   
 
-    
     var tableArray = [String] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -35,6 +30,8 @@ class TransactionsViewController: UITableViewController  {
         
         
     }
+    
+
     
     func transactionsRequest() {
         
@@ -47,32 +44,46 @@ class TransactionsViewController: UITableViewController  {
                             } else if let jsonArray = response.result.value as? [[String: Any]] {
                             } else if let jsonDict = response.result.value as? [String: Any] {
                                 
-                             
-                                    
-                                    
                                 do {
                                     
+                                    
+                                    print("Transaction TESTING")
+                                    
                                     let json = try JSON(data: response.data!)
-                                    let description20 = json["transactions"][20]["description"].string
-                                    let description70 = json["transactions"][70]["description"].string
-                                    let description50 = json["transactions"][50]["description"].string
-                                    let description90 = json["transactions"][90]["description"].string
-                                    let account_number = json["transactions"][1].string
-                                   
-                                    //                                        self.homeView.text = "Hi " + first_name! + "! Welcome to Swonzo.\n\nYour account number is:\n\n" + account_number! + "\n\nYour sort code is:\n\n" + sort_code! + "\n\nAnd your account id is:\n\n" + acc_id! + "\n\nEnjoy!"
-                                    //                                        self.homeView.text = balanceRequest()
                                     
-                                    print("TESTING")
-//                                    print(json)
-                                    print(description20 ?? "JSON isn't")
-                                    print(description70 ?? "JSON isn't")
-                                    print(description50 ?? "JSON isn't")
-                                    print(description90 ?? "JSON isn't")
-//                                    print(descriptionObject ?? "JSON isn't")
                                     
+                                    var i = 1
+                                    while i <= 100 {
+                                        i = i + 1
+                                        let pounds = Double(loopAmount!) / 100
+                                        var loopDateCreated = json["transactions"][i]["created"].string
+                                        var loopAmount = json["transactions"][i]["amount"].int
+                                        var loopDescripton = json["transactions"][i]["description"].string
+                                        var loopNotes = json["transactions"][i]["notes"].string
+                                        print("\n")
+                                        print(i)
+                                        print("\n")
+                                        print(loopDateCreated ?? "Loop isn't")
+                                        print(loopDescripton ?? "Loop isn't")
+                                        if pounds < 0 {
+                                            let loopMoney = "-£" + String(format:"%.2f",abs(pounds))
+                                            print(loopMoney)
+                                        }
+                                        else {
+                                            let loopMoney = "+£" + String(format:".%.2f",pounds)
+                                            print(loopMoney)
+                                        }
+                                        print(loopNotes != "" ? loopNotes: "No Notes for this transaction.")
+                                        
+                                    }
+                            
                                 } catch {
                                     print("JSON Parsing error:", error)
-                                }
+                                 }
+                                
+                        
+                                    
+                               
                                 
                             }
         }

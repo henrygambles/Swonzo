@@ -26,7 +26,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
 //    var animals: [String] = ["£4.60 - Pret a Manger ☕", "£5.83 - Tesco 🛒", "£6.00 - BFI Southbank 🎥", "£2.40 - TFL London Underground 🚇", "£5.80 - Paul 🥖", "£78.43 - British Gas 🔥", "$350.99 - Nevada Airlines 👽", "£50 - Cash Withdrawl, Earl's Court 💷", "£12.20 - The Atlas 🍺", "£15.68 - Deliveroo 🍴", "£7.38 - ViaVan 🚕" , "£35 - Harvey Nichols 🛍️"]
     
-    var animals: [String] = []
+    var transactions: [String] = []
     
     // cell reuse id (cells that scroll out of view can be reused)
     let cellReuseIdentifier = "cell"
@@ -97,7 +97,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                             print(loopMoney)
                                         }
                                         print(loopNotes != "" ? loopNotes: "No Notes for this transaction.")
-                                        self.animals.append(loopDescripton as! String ?? "error")
+                                        self.transactions.append(loopDescripton as! String ?? "error")
                                         print("TestieTest")
                                         print(self.tableView.dataSource)
                                         self.tableView.reloadData()
@@ -119,7 +119,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.animals.count
+        return self.transactions.count
     }
     
     // create a cell for each table view row
@@ -129,7 +129,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
         
         // set the text from the data model
-        cell.textLabel?.text = self.animals[indexPath.row]
+        cell.textLabel?.text = self.transactions[indexPath.row]
+        
+        cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+        cell.accessoryView?.backgroundColor = UIColor.blue
         
         return cell
     }

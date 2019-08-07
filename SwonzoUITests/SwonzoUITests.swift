@@ -31,4 +31,8 @@ class SwonzoUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+    func testBars() {
+        XCTAssert(XCUIApplication().navigationBars["Home"].exists)
+    }
+    
 }

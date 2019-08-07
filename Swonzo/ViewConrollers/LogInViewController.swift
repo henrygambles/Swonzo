@@ -17,6 +17,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         BlurViewAndFadeIn()
+        textFieldView.accessibilityIdentifier = "tokenTextField"
     }
     
   
@@ -27,8 +28,10 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var textFieldView: UITextField!
     @IBOutlet weak var logInButtonView: UIButton!
     
+    
+    
     @IBAction func tokenInput(_ sender: Any) {
-
+        
     }
     
     @IBAction func logInButton(_ sender: Any) {

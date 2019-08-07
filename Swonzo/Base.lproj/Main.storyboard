@@ -58,10 +58,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmz-Ql-09J">
-                                <rect key="frame" x="145" y="521" width="87" height="33"/>
+                                <rect key="frame" x="143" y="521" width="91" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="17"/>
-                                <state key="normal" title="Transactions"/>
+                                <state key="normal" title="Transactions "/>
                                 <connections>
                                     <action selector="executeTransactions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VEs-cj-yO5"/>
                                 </connections>
@@ -88,6 +88,7 @@
                     <connections>
                         <outlet property="secondBlurryView" destination="mJh-9W-hlM" id="0MW-z6-X9W"/>
                         <outlet property="textView" destination="ac6-jo-2hS" id="Ina-nB-Kkb"/>
+                        <outlet property="transactionsButton" destination="nmz-Ql-09J" id="PP9-u5-E6p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

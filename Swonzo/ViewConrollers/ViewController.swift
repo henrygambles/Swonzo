@@ -12,6 +12,7 @@ import Lottie
 class ViewController: UIViewController {
     
     @IBOutlet weak var testyView: UITextView!
+    @IBOutlet weak var transactionsButton: UIButton!
     
     private let swonzoClient = SwonzoClient()
     

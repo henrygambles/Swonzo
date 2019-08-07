@@ -13,6 +13,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    func doATing() -> String {
+        return "Yay"
+    }
+    
     private let swonzoClient = SwonzoClient()
     
  

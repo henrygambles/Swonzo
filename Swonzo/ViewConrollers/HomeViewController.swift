@@ -111,16 +111,22 @@ class HomeViewController: UIViewController {
                                 if let result = response.result.value {
                                     let MYJSON = result as! NSDictionary
                                     let balance = MYJSON.object(forKey: "balance")
+                                    let spendToday = MYJSON.object(forKey: "spend_today")
                                     let pounds = balance as! Double / 100
-                                    
+                                    let poundsSpent = spendToday as! Double / 100
+                                    var youSpent = "\n\n\nYou've spent £" + String(format:"%.2f",poundsSpent) + " today!"
                                     
                                     if pounds < 0 {
                     
-                                        self.homeView.text = "Your balance is -£" + String(format:"%.2f", abs(pounds))
+                                        
+                                            var balanceIs = "Your balance is -£" + String(format:"%.2f", abs(pounds))
+                                        self.homeView.text = balanceIs + youSpent
                                         
                                         }
                                     else {
-                                        self.homeView.text = "Your balance is £" + String(format:"%.2f", pounds)
+                                            var balanceIs = "Your balance is £" + String(format:"%.2f", pounds)
+                                        self.homeView.text = balanceIs + youSpent
+                                        
                                     }
                                     
                                     self.homeView.alpha = 0

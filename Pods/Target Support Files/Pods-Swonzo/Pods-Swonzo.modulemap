@@ -1,4 +1,4 @@
-framework module Pods_Swonzo {
+module Pods_Swonzo {
   umbrella header "Pods-Swonzo-umbrella.h"
 
   export *

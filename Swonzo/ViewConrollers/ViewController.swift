@@ -8,11 +8,11 @@
 
 import UIKit
 import Lottie
-import GoogleMaps
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var testyView: UITextView!
+    @IBOutlet weak var transactionsButton: UIButton!
     
     private let swonzoClient = SwonzoClient()
     
@@ -29,8 +29,11 @@ class ViewController: UIViewController {
 
         startAnimation()
 //        setBlurView2()
+      
         
     }
+    
+
     
     func setBlurView2() {
         // Init a UIVisualEffectView which going to do the blur for us
@@ -78,6 +81,7 @@ class ViewController: UIViewController {
             return
         }
         
+        
         swonzoClient.execute(urlToExecute) { (json, error) in
             if let error = error {
                 self.textView.text = error.localizedDescription
@@ -94,6 +98,11 @@ class ViewController: UIViewController {
     @IBAction func executeBalance(_ sender: Any) {
         guard let urlToExecute = URL(string: "https://api.monzo.com/balance") else {
             return
+        }
+        
+        self.textView.alpha = 0
+        UIView.animate(withDuration: 1) {
+            self.textView.alpha = 1
         }
         
         
@@ -113,6 +122,11 @@ class ViewController: UIViewController {
             return
         }
         
+        self.textView.alpha = 0
+        UIView.animate(withDuration: 1) {
+            self.textView.alpha = 1
+        }
+        
         swonzoClient.execute(urlToExecute) { (json, error) in
             if let error = error {
                 self.textView.text = error.localizedDescription
@@ -129,6 +143,11 @@ class ViewController: UIViewController {
             return
         }
         
+        self.textView.alpha = 0
+        UIView.animate(withDuration: 1) {
+            self.textView.alpha = 1
+        }
+        
         swonzoClient.execute(urlToExecute) { (json, error) in
             if let error = error {
                 self.textView.text = error.localizedDescription
@@ -141,26 +160,7 @@ class ViewController: UIViewController {
 
     
     @IBAction func executeHey(_ sender: Any) {
-        
-//        guard let urlToExecute = URL(string: "https://api.monzo.com/accounts") else {
-//            return
-//        }
-//
-//        swonzoClient.execute(urlToExecute) { (json, error) in
-//            if let error = error {
-//                self.textView.text = error.localizedDescription
-//            } else if let json = json {
-////                self.textView.text = json.description
-//                self.textView.text = "hey"
-//            }
-//        }
-        
-    
-        
         self.textView.text = ""
-        
-        
-        
     }
 
 

@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
-let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6ImdwTk4rSEdDUXc4bDNRcjVEaUR4IiwianRpIjoiYWNjdG9rXzAwMDA5bFEwb01CY3BmYlFpVjkybW4iLCJ0eXAiOiJhdCIsInYiOiI1In0.fBpLb4WqbIhwwG4FOPEKpp_JzryVvaDj-PDqNS6Qut4x3KCWdZWsL-WIfN_e3aAMc6dz_uivace2JwzLYZGXZQ"
+let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6IjY2Mms5Z0Jlb1hIVmppVWwvV3FhIiwianRpIjoiYWNjdG9rXzAwMDA5bGVhTXZVU0lVRGZNYlpFWk4iLCJ0eXAiOiJhdCIsInYiOiI1In0.WzeIU0QpD056e4X5tn25CTui8SI0434P_3vqNc_07LPZ51b8lEABf53I6dK79lDV_A2Q0TiQuPXvjgbVPxfyIQ"
 
 let accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
 
@@ -46,6 +46,7 @@ class SwonzoClient {
                                     
                                     let json = try JSON(data: response.data!)
                                     let account_number = json["accounts"][0]["account_number"].string
+                                    let account_description = json["accounts"][0]["description"].string
                                     let acc_id = json["accounts"][0]["id"].string
                                     let sort_code = json["accounts"][0]["sort_code"].string
                                     let first_name = json["accounts"][0]["owners"][0]["preferred_first_name"].string
@@ -54,13 +55,14 @@ class SwonzoClient {
                                     
                                     
                                     
-                                    print("Parsed JSON")
+                                    print("Parsed JSON test")
                                     print(full_name ?? "Json not parsed")
                                     print(acc_id ?? "Json not parsed")
                                     print(user_id ?? "Json not parsed")
                                     print(account_number ?? "Json not parsed")
                                     print(sort_code ?? "Json not parsed")
                                     print(first_name ?? "Json not parsed")
+                                    print(account_description ?? "Json not parsed")
                                     
                                     
                                     

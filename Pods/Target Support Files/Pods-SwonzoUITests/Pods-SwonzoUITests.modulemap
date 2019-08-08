@@ -1,4 +1,4 @@
-framework module Pods_SwonzoUITests {
+module Pods_SwonzoUITests {
   umbrella header "Pods-SwonzoUITests-umbrella.h"
 
   export *

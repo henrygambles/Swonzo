@@ -1,18 +1,23 @@
 platform :ios, '12.0'
 
-target 'Swonzo' do
-  use_frameworks!
-  
+def shared_pods
   pod 'Alamofire'
   pod 'lottie-ios'
   pod 'SwiftyJSON'
   pod 'Alamofire-SwiftyJSON'
   pod 'GoogleMaps'
-  
-  target 'SwonzoTests' do
-    inherit! :search_paths
-  end
-  target 'SwonzoUITests' do
-    inherit! :search_paths
-  end
+end
+
+target 'Swonzo' do
+  shared_pods
+end
+
+target 'SwonzoTests' do
+  inherit! :search_paths
+  shared_pods
+end
+
+target 'SwonzoUITests' do
+  inherit! :search_paths
+  shared_pods
 end

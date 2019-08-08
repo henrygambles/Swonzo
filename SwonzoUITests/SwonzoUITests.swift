@@ -8,9 +8,14 @@
 
 import XCTest
 
+
 class SwonzoUITests: XCTestCase {
+    
+    let app = XCUIApplication()
+    
 
     override func setUp() {
+        
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
@@ -26,9 +31,38 @@ class SwonzoUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testLogIn() {
+        app.buttons["Log In"].tap()
+        sleep(1)
     }
-
+    
+    func testTapHomeTab() {
+        //        app.textFields["tokenTextField"].typeText("xyztwh4ththwt")
+        app.buttons["Log In"].tap()
+        app.tabBars.buttons["Home"].tap()
+        sleep(2)
+        //        XCTAssert(app.navigationBars["Home"].exists)
+    }
+    
+    func testTapMapsTab() {
+        app.buttons["Log In"].tap()
+        app.tabBars.buttons["Maps"].tap()
+        sleep(1)
+        app.swipeLeft()
+        app.swipeRight()
+        sleep(2)
+    }
+    
+    func testTapTransactionsTab() {
+        app.buttons["Log In"].tap()
+        app.tabBars.buttons["Transactions "].tap()
+        sleep(3)
+    }
+    
+    func testTapDevTab() {
+        app.buttons["Log In"].tap()
+        app.tabBars.buttons["Dev"].tap()
+        sleep(3)
+    }
 }

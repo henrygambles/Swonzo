@@ -114,7 +114,7 @@ class HomeViewController: UIViewController {
                                     let spendToday = MYJSON.object(forKey: "spend_today")
                                     let pounds = balance as! Double / 100
                                     let poundsSpent = spendToday as! Double / 100
-                                    var youSpent = "\n\n\nYou've spent £" + String(format:"%.2f",poundsSpent) + " today!"
+                                    var youSpent = "\n\n\nYou've spent £" + String(format:"%.2f",abs(poundsSpent)) + " today!"
                                     
                                     if pounds < 0 {
                     

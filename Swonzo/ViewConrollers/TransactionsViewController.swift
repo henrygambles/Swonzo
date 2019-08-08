@@ -21,12 +21,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         return .lightContent
     }
     
-    // Data model: These strings will be the data for the table view cells
-    //    let animals: [String] = ["🔥", "❤️", "💦", "🍆", "🥦"]
-    
-//    var animals: [String] = ["£4.60 - Pret a Manger ☕", "£5.83 - Tesco 🛒", "£6.00 - BFI Southbank 🎥", "£2.40 - TFL London Underground 🚇", "£5.80 - Paul 🥖", "£78.43 - British Gas 🔥", "$350.99 - Nevada Airlines 👽", "£50 - Cash Withdrawl, Earl's Court 💷", "£12.20 - The Atlas 🍺", "£15.68 - Deliveroo 🍴", "£7.38 - ViaVan 🚕" , "£35 - Harvey Nichols 🛍️"]
-    
     var transactions: [String] = []
+    var prices: [String] = []
     
     // cell reuse id (cells that scroll out of view can be reused)
     let cellReuseIdentifier = "cell"
@@ -91,10 +87,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         if pounds < 0 {
                                             let loopMoney = "-£" + String(format:"%.2f",abs(pounds))
                                             print(loopMoney)
+                                            self.prices.append(loopMoney as! String)
                                         }
                                         else {
                                             let loopMoney = "+£" + String(format:".%.2f",pounds)
                                             print(loopMoney)
+                                            self.prices.append(loopMoney as! String)
                                         }
                                         print(loopNotes != "" ? loopNotes: "No Notes for this transaction.")
                                         self.transactions.append(loopDescripton as! String ?? "error")
@@ -131,8 +129,15 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         // set the text from the data model
         cell.textLabel?.text = self.transactions[indexPath.row]
         
-        cell.accessoryType = UITableViewCell.AccessoryType.checkmark
-        cell.accessoryView?.backgroundColor = UIColor.blue
+//        cell.accessoryType = UITableViewCell.AccessoryType.checkmark
+//        cell.accessoryView?.backgroundColor = UIColor.blue
+        
+        let price = prices[indexPath.row]
+        cell.detailTextLabel?.text = price
+        let label = UILabel.init(frame: CGRect(x:0,y:0,width:65,height:20))
+        label.text = price
+        cell.accessoryView = label
+
         
         return cell
     }

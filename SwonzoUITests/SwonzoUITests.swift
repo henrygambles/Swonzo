@@ -56,7 +56,7 @@ class SwonzoUITests: XCTestCase {
     
     func testTapTransactionsTab() {
         app.buttons["Log In"].tap()
-        app.tabBars.buttons["Transactions"].tap()
+        app.tabBars.buttons["Transactions "].tap()
         sleep(3)
     }
     

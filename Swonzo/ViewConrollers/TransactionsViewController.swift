@@ -23,6 +23,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     var transactions: [String] = []
     var prices: [String] = []
+    var categories: [String] = []
+    
+    
     
     // cell reuse id (cells that scroll out of view can be reused)
     let cellReuseIdentifier = "cell"
@@ -75,7 +78,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     print(loopLatest)
                                     let numberOfTransactions = json["transactions"].arrayValue.count
                                     var i = numberOfTransactions
-                                    while i >= numberOfTransactions - 10 {
+                                    while i >= numberOfTransactions - 60 {
                                         i = i - 1
                                         
                                         var loopDateCreated = json["transactions"][i]["created"].string
@@ -83,12 +86,33 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         var loopDescripton = json["transactions"][i]["description"].string
                                         var loopNotes = json["transactions"][i]["notes"].string
                                         var loopCategory = json["transactions"][i]["category"].string
+                                        if loopCategory == "transport" {
+                                            loopCategory = "🚆"
+                                        } else if loopCategory == "groceries" {
+                                            loopCategory = "🍆"
+                                        } else if loopCategory == "eating_out" {
+                                            loopCategory = "🍔"
+                                        } else if loopCategory == "entertainment" {
+                                            loopCategory = "🎥"
+                                        } else if loopCategory == "general" {
+                                            loopCategory = "⚙️"
+                                        } else if loopCategory == "shopping" {
+                                            loopCategory = "🛒"
+                                        } else if loopCategory == "cash" {
+                                            loopCategory = "🍁"
+                                        } else if loopCategory == "personal_care" {
+                                            loopCategory = "❤️"
+                                        }
+                                        
+                                    
+                                        
                                         let pounds = Double(loopAmount ?? 0) / 100
                                         print("\n")
                                         print(i)
                                         print("\n")
                                         print(loopDateCreated ?? "Loop isn't")
                                         print(loopDescripton ?? "Loop isn't")
+                                        print(loopCategory ?? "Loop isn't")
                                         if pounds < 0 {
                                             let loopMoney = "-£" + String(format:"%.2f",abs(pounds))
                                             print(loopMoney)
@@ -101,6 +125,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         }
                                         print(loopNotes != "" ? loopNotes: "No Notes for this transaction.")
                                         self.transactions.append(loopDescripton as! String ?? "error")
+                                        self.categories.append(loopCategory as! String ?? "error")
                                         print(self.tableView.dataSource)
                                         self.tableView.reloadData()
                                         
@@ -137,9 +162,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //        cell.accessoryView?.backgroundColor = UIColor.blue
         
         let price = prices[indexPath.row]
+        let category = categories[indexPath.row]
         cell.detailTextLabel?.text = price
-        let label = UILabel.init(frame: CGRect(x:0,y:0,width:71,height:20))
-        label.text = price
+        let label = UILabel.init(frame: CGRect(x:0,y:0,width:100,height:20))
+        label.text = category + price
         cell.accessoryView = label
 
         

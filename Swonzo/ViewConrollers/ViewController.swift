@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     
     private let swonzoClient = SwonzoClient()
     
+    private let transactions = TransactionsViewController()
+    
     @IBOutlet weak var secondBlurryView: UIView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -27,7 +29,7 @@ class ViewController: UIViewController {
 
         startAnimation()
 //        setBlurView2()
-      
+//      transactions.transactionsRequest()
         
     }
     

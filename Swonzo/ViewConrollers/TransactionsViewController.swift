@@ -69,17 +69,21 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     
                                     
-                                    
-                                    var i = 0
-                                    while i < 10 {
-                                        i = i + 1
+                                    var loopLatest = json["transactions"].arrayValue.last?["description"].string
+                                    print("eeeeeEEEEEEeeee")
+                                    print(json["transactions"].arrayValue.count)
+                                    print(loopLatest)
+                                    let numberOfTransactions = json["transactions"].arrayValue.count
+                                    var i = numberOfTransactions
+                                    while i >= numberOfTransactions - 10 {
+                                        i = i - 1
                                         
                                         var loopDateCreated = json["transactions"][i]["created"].string
                                         var loopAmount = json["transactions"][i]["amount"].int
                                         var loopDescripton = json["transactions"][i]["description"].string
                                         var loopNotes = json["transactions"][i]["notes"].string
                                         var loopCategory = json["transactions"][i]["category"].string
-                                        let pounds = Double(loopAmount!) / 100
+                                        let pounds = Double(loopAmount ?? 0) / 100
                                         print("\n")
                                         print(i)
                                         print("\n")
@@ -96,7 +100,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                             self.prices.append(loopMoney as! String)
                                         }
                                         print(loopNotes != "" ? loopNotes: "No Notes for this transaction.")
-                                        print(loopCategory != "" ? loopNotes: "No Category for this transaction.")
                                         self.transactions.append(loopDescripton as! String ?? "error")
                                         print(self.tableView.dataSource)
                                         self.tableView.reloadData()

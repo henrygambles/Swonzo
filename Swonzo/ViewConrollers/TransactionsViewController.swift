@@ -15,6 +15,7 @@ import SwiftyJSON
 import Alamofire_SwiftyJSON
 class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
     @IBOutlet weak var tableView: UITableView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -85,6 +86,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         var loopAmount = json["transactions"][i]["amount"].int
                                         var loopDescripton = json["transactions"][i]["description"].string
                                         var loopNotes = json["transactions"][i]["notes"].string
+                                        
                                         var loopCategory = json["transactions"][i]["category"].string
                                         if loopCategory == "transport" {
                                             loopCategory = "🚇"
@@ -104,14 +106,14 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                             loopCategory = "❤️"
                                         }
                                         
-                                    
+                                        loopDescripton?.prefix(25)
                                         
                                         let pounds = Double(loopAmount ?? 0) / 100
                                         print("\n")
                                         print(i)
                                         print("\n")
                                         print(loopDateCreated ?? "Loop isn't")
-                                        print(loopDescripton ?? "Loop isn't")
+                                        print(loopDescripton?.prefix(25) ?? "Loop isn't")
                                         print(loopCategory ?? "Loop isn't")
                                         if pounds < 0 {
                                             let loopMoney = "-£" + String(format:"%.2f",abs(pounds))
@@ -165,7 +167,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         let category = categories[indexPath.row]
         cell.detailTextLabel?.text = price
         let label = UILabel.init(frame: CGRect(x:0,y:0,width:100,height:20))
-        label.text = category + price
+        label.text = category + " " + price
         cell.accessoryView = label
 
         

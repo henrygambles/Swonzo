@@ -65,4 +65,13 @@ class SwonzoUITests: XCTestCase {
         app.tabBars.buttons["Dev"].tap()
         sleep(3)
     }
+    
+    func testLoadTransactions() {
+        app.buttons["Log In"].tap()
+        app.tabBars.buttons["Transactions"].tap()
+        sleep(20)
+        app.swipeUp()
+        app.swipeUp()
+        app.swipeUp()
+    }
 }

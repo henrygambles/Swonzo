@@ -70,17 +70,18 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     
                                     
-                                    var i = 1
-                                    while i <= 10 {
+                                    var i = 0
+                                    while i < 10 {
                                         i = i + 1
                                         
                                         var loopDateCreated = json["transactions"][i]["created"].string
                                         var loopAmount = json["transactions"][i]["amount"].int
                                         var loopDescripton = json["transactions"][i]["description"].string
                                         var loopNotes = json["transactions"][i]["notes"].string
+                                        var loopCategory = json["transactions"][i]["category"].string
                                         let pounds = Double(loopAmount!) / 100
                                         print("\n")
-                                        print(i - 1)
+                                        print(i)
                                         print("\n")
                                         print(loopDateCreated ?? "Loop isn't")
                                         print(loopDescripton ?? "Loop isn't")
@@ -95,6 +96,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                             self.prices.append(loopMoney as! String)
                                         }
                                         print(loopNotes != "" ? loopNotes: "No Notes for this transaction.")
+                                        print(loopCategory != "" ? loopNotes: "No Category for this transaction.")
                                         self.transactions.append(loopDescripton as! String ?? "error")
                                         print(self.tableView.dataSource)
                                         self.tableView.reloadData()
@@ -133,7 +135,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         
         let price = prices[indexPath.row]
         cell.detailTextLabel?.text = price
-        let label = UILabel.init(frame: CGRect(x:0,y:0,width:65,height:20))
+        let label = UILabel.init(frame: CGRect(x:0,y:0,width:71,height:20))
         label.text = price
         cell.accessoryView = label
 

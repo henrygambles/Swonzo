@@ -87,9 +87,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         var loopNotes = json["transactions"][i]["notes"].string
                                         var loopCategory = json["transactions"][i]["category"].string
                                         if loopCategory == "transport" {
-                                            loopCategory = "🚆"
+                                            loopCategory = "🚇"
                                         } else if loopCategory == "groceries" {
-                                            loopCategory = "🍆"
+                                            loopCategory = "🛒"
                                         } else if loopCategory == "eating_out" {
                                             loopCategory = "🍔"
                                         } else if loopCategory == "entertainment" {
@@ -97,7 +97,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         } else if loopCategory == "general" {
                                             loopCategory = "⚙️"
                                         } else if loopCategory == "shopping" {
-                                            loopCategory = "🛒"
+                                            loopCategory = "🛍️"
                                         } else if loopCategory == "cash" {
                                             loopCategory = "🍁"
                                         } else if loopCategory == "personal_care" {

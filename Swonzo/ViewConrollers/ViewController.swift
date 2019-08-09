@@ -16,8 +16,6 @@ class ViewController: UIViewController {
     
     private let swonzoClient = SwonzoClient()
     
-    @IBOutlet weak var animationView: AnimationView!
-    
     @IBOutlet weak var secondBlurryView: UIView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

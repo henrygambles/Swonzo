@@ -18,12 +18,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="swanny2" translatesAutoresizingMaskIntoConstraints="NO" id="wng-gJ-pvO">
-                                <rect key="frame" x="67" y="234" width="240" height="199"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Nh-LK-dMC">
+                                <rect key="frame" x="127" y="250" width="120" height="109"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="swonzo_logo_green_vector" translatesAutoresizingMaskIntoConstraints="NO" id="Ica-sv-6de">
+                                <rect key="frame" x="139" y="257" width="97" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.078431372549019607" green="0.13725490196078433" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.078431372550000003" green="0.13725490200000001" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.90196078430000004" green="0.29411764709999999" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9Nh-LK-dMC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="230" id="CIs-dW-x37"/>
+                            <constraint firstItem="9Nh-LK-dMC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="HT2-re-dKG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9Nh-LK-dMC" secondAttribute="bottom" constant="308" id="VUO-BA-nKE"/>
+                            <constraint firstItem="9Nh-LK-dMC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="127" id="zrU-Be-iTL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -33,6 +43,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="swanny2" width="1299" height="870"/>
+        <image name="swonzo_logo_green_vector" width="3840" height="3631"/>
     </resources>
 </document>

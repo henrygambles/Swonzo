@@ -80,7 +80,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         var loopNotes = json["transactions"][i]["notes"].string
                                         let pounds = Double(loopAmount!) / 100
                                         print("\n")
-                                        print(i)
+                                        print(i - 1)
                                         print("\n")
                                         print(loopDateCreated ?? "Loop isn't")
                                         print(loopDescripton ?? "Loop isn't")
@@ -96,7 +96,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         }
                                         print(loopNotes != "" ? loopNotes: "No Notes for this transaction.")
                                         self.transactions.append(loopDescripton as! String ?? "error")
-                                        print("TestieTest")
                                         print(self.tableView.dataSource)
                                         self.tableView.reloadData()
                                         

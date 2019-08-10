@@ -13,6 +13,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
+
 class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -73,61 +74,61 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     
                                     
-                                    var loopLatest = json["transactions"].arrayValue.last?["description"].string
+                                    var latest = json["transactions"].arrayValue.last?["description"].string
                                     print("eeeeeEEEEEEeeee")
                                     print(json["transactions"].arrayValue.count)
-                                    print(loopLatest)
+                                    print(latest)
                                     let numberOfTransactions = json["transactions"].arrayValue.count
                                     var i = numberOfTransactions
-                                    while i >= numberOfTransactions - 60 {
+                                    while i >= numberOfTransactions - 30 {
                                         i = i - 1
                                         
-                                        var loopDateCreated = json["transactions"][i]["created"].string
-                                        var loopAmount = json["transactions"][i]["amount"].int
-                                        var loopDescripton = json["transactions"][i]["description"].string
-                                        var loopNotes = json["transactions"][i]["notes"].string
+                                        var dateCreated = json["transactions"][i]["created"].string
+                                        var amount = json["transactions"][i]["amount"].int
+                                        var descripton = json["transactions"][i]["description"].string
+                                        var notes = json["transactions"][i]["notes"].string
                                         
-                                        var loopCategory = json["transactions"][i]["category"].string
-                                        if loopCategory == "transport" {
-                                            loopCategory = "🚇"
-                                        } else if loopCategory == "groceries" {
-                                            loopCategory = "🛒"
-                                        } else if loopCategory == "eating_out" {
-                                            loopCategory = "🍔"
-                                        } else if loopCategory == "entertainment" {
-                                            loopCategory = "🎥"
-                                        } else if loopCategory == "general" {
-                                            loopCategory = "⚙️"
-                                        } else if loopCategory == "shopping" {
-                                            loopCategory = "🛍️"
-                                        } else if loopCategory == "cash" {
-                                            loopCategory = "🍁"
-                                        } else if loopCategory == "personal_care" {
-                                            loopCategory = "❤️"
+                                        var category = json["transactions"][i]["category"].string
+                                        if category == "transport" {
+                                            category = "🚇"
+                                        } else if category == "groceries" {
+                                            category = "🛒"
+                                        } else if category == "eating_out" {
+                                            category = "🍔"
+                                        } else if category == "entertainment" {
+                                            category = "🎥"
+                                        } else if category == "general" {
+                                            category = "⚙️"
+                                        } else if category == "shopping" {
+                                            category = "🛍️"
+                                        } else if category == "cash" {
+                                            category = "🍁"
+                                        } else if category == "personal_care" {
+                                            category = "❤️"
                                         }
                                         
-                                        loopDescripton?.prefix(25)
+                                        descripton?.prefix(25)
                                         
-                                        let pounds = Double(loopAmount ?? 0) / 100
+                                        let pounds = Double(amount ?? 0) / 100
                                         print("\n")
                                         print(i)
                                         print("\n")
-                                        print(loopDateCreated ?? "Loop isn't")
-                                        print(loopDescripton?.prefix(25) ?? "Loop isn't")
-                                        print(loopCategory ?? "Loop isn't")
+                                        print(dateCreated ?? "Loop isn't")
+                                        print(descripton?.prefix(25) ?? "Loop isn't")
+                                        print(category ?? "Loop isn't")
                                         if pounds < 0 {
-                                            let loopMoney = "-£" + String(format:"%.2f",abs(pounds))
-                                            print(loopMoney)
-                                            self.prices.append(loopMoney as! String)
+                                            let money = "-£" + String(format:"%.2f",abs(pounds))
+                                            print(money)
+                                            self.prices.append(money as! String)
                                         }
                                         else {
-                                            let loopMoney = "+£" + String(format:".%.2f",pounds)
-                                            print(loopMoney)
-                                            self.prices.append(loopMoney as! String)
+                                            let money = "+£" + String(format:".%.2f",pounds)
+                                            print(money)
+                                            self.prices.append(money as! String)
                                         }
-                                        print(loopNotes != "" ? loopNotes: "No Notes for this transaction.")
-                                        self.transactions.append(loopDescripton as! String ?? "error")
-                                        self.categories.append(loopCategory as! String ?? "error")
+                                        print(notes != "" ? notes: "No Notes for this transaction.")
+                                        self.transactions.append(descripton as! String ?? "error")
+                                        self.categories.append(category as! String ?? "error")
                                         print(self.tableView.dataSource)
                                         self.tableView.reloadData()
                                         
@@ -177,5 +178,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You tapped cell number \(indexPath.row).")
+    }
+    
+}
+
+public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    if indexPath.row == TransactionsViewController().transactions.count-1 { //you might decide to load sooner than -1 I guess...
+        //load more into data here
     }
 }

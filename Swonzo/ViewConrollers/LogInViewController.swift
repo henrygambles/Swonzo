@@ -16,7 +16,9 @@ class LogInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        BlurViewAndFadeIn()
+        setBlurryView()
+        hide()
+        let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fadeIn), userInfo: nil, repeats: false)
         textFieldView.accessibilityIdentifier = "tokenTextField"
     }
     
@@ -35,30 +37,47 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func logInButton(_ sender: Any) {
-        performSegue(withIdentifier: "testieSegue", sender: nil)
+        performSegue(withIdentifier: "loginSegue", sender: nil)
     }
+    
+    func setBlurryView() {
+        let blurView = UIVisualEffectView()
+        blurView.frame = view.frame
+        blurView.effect = UIBlurEffect(style: .regular)
+        blurryView.addSubview(blurView)
+    }
+    
+    @objc func fadeIn() {
+        UIView.animate(withDuration: 1) {
+        self.blurryView.alpha = 1
+        self.logoView.alpha = 1
+        self.logInTextView.alpha = 1
+        self.textFieldView.alpha = 1
+        self.logInButtonView.alpha = 1
+        }
+    }
+
+    
+    
   
-    
-    
-    func BlurViewAndFadeIn() {
-//        let blurView = UIVisualEffectView()
-//        blurView.frame = view.frame
-//        blurView.effect = UIBlurEffect(style: .light)
-//        blurryView.addSubview(blurView)
-        // Fade In Animation
+    func hide() {
+        UIView.animate(withDuration: 1) {
         self.blurryView.alpha = 0
         self.logoView.alpha = 0
         self.logInTextView.alpha = 0
         self.textFieldView.alpha = 0
         self.logInButtonView.alpha = 0
-        UIView.animate(withDuration: 1) {
-//            self.blurryView.alpha = 1
-            self.logoView.alpha = 1
-            self.logInTextView.alpha = 1
-            self.textFieldView.alpha = 1
-            self.logInButtonView.alpha = 1
         }
     }
-
-
+    
+//    func blurViewAndFadeIn() {
+//        UIView.animate(withDuration: 1) {
+//            self.blurryView.alpha = 1
+//            self.logoView.alpha = 1
+//            self.logInTextView.alpha = 1
+//            self.textFieldView.alpha = 1
+//            self.logInButtonView.alpha = 1
+//        }
+//    }
 }
+

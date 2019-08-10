@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sg1-Fo-LOa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aoR-rs-6sb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -209,20 +209,31 @@
             </objects>
             <point key="canvasLocation" x="-138.40000000000001" y="1284.1079460269866"/>
         </scene>
-        <!--View Controller-->
+        <!--Splash Screen View Controller-->
         <scene sceneID="udi-My-uFI">
             <objects>
-                <viewController id="aoR-rs-6sb" sceneMemberID="viewController">
+                <viewController id="aoR-rs-6sb" customClass="SplashScreenViewController" customModule="Swonzo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q8a-2j-uEf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qek-Cn-z01" customClass="AnimationView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.078431372549019607" green="0.13725490196078433" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Dkp-ba-dc0"/>
                     </view>
+                    <connections>
+                        <outlet property="animationView" destination="qek-Cn-z01" id="ZTl-pk-QSr"/>
+                        <segue destination="sg1-Fo-LOa" kind="show" identifier="splashSegue" animates="NO" id="g1u-ti-FaB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mR2-4l-w7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2866" y="267"/>
+            <point key="canvasLocation" x="-2866.4000000000001" y="266.71664167916043"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="JNL-8M-7yg">
@@ -304,13 +315,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qh9-Kf-CJw"/>
                     </view>
+                    <navigationItem key="navigationItem" id="5Te-vg-htg"/>
                     <connections>
                         <outlet property="blurryView" destination="yh6-mF-bL5" id="2aG-gR-upI"/>
                         <outlet property="logInButtonView" destination="XIJ-qL-0Lf" id="Bie-B7-HoF"/>
                         <outlet property="logInTextView" destination="Nkh-95-dQv" id="5qC-Aq-zf2"/>
                         <outlet property="logoView" destination="8Jg-mw-ytx" id="nI5-do-0Yz"/>
                         <outlet property="textFieldView" destination="rDy-6E-Php" id="Kc4-GU-2Un"/>
-                        <segue destination="pAn-QE-wOf" kind="presentation" identifier="testieSegue" modalTransitionStyle="crossDissolve" id="NcQ-k1-tJ0"/>
+                        <segue destination="pAn-QE-wOf" kind="presentation" identifier="loginSegue" modalTransitionStyle="crossDissolve" id="NcQ-k1-tJ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eb3-oL-o4A" userLabel="First Responder" sceneMemberID="firstResponder"/>

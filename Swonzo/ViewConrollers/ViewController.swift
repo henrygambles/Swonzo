@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     private let swonzoClient = SwonzoClient()
     
-    @IBOutlet weak var animationView: AnimationView!
+    private let transactions = TransactionsViewController()
     
     @IBOutlet weak var secondBlurryView: UIView!
     
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
 
         startAnimation()
 //        setBlurView2()
-      
+//      transactions.transactionsRequest()
         
     }
     

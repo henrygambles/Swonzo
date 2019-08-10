@@ -13,7 +13,9 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
+
 class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,6 +25,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     var transactions: [String] = []
     var prices: [String] = []
+    var categories: [String] = []
+
     
     // cell reuse id (cells that scroll out of view can be reused)
     let cellReuseIdentifier = "cell"
@@ -69,34 +73,61 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     
                                     
-                                    
-                                    var i = 1
-                                    while i <= 10 {
-                                        i = i + 1
+                                    var latest = json["transactions"].arrayValue.last?["description"].string
+                                    print("eeeeeEEEEEEeeee")
+                                    print(json["transactions"].arrayValue.count)
+                                    print(latest)
+                                    let numberOfTransactions = json["transactions"].arrayValue.count
+                                    var i = numberOfTransactions
+                                    while i >= numberOfTransactions - 30 {
+                                        i = i - 1
                                         
-                                        var loopDateCreated = json["transactions"][i]["created"].string
-                                        var loopAmount = json["transactions"][i]["amount"].int
-                                        var loopDescripton = json["transactions"][i]["description"].string
-                                        var loopNotes = json["transactions"][i]["notes"].string
-                                        let pounds = Double(loopAmount!) / 100
+                                        var dateCreated = json["transactions"][i]["created"].string
+                                        var amount = json["transactions"][i]["amount"].int
+                                        var descripton = json["transactions"][i]["description"].string
+                                        var notes = json["transactions"][i]["notes"].string
+                                        
+                                        var category = json["transactions"][i]["category"].string
+                                        if category == "transport" {
+                                            category = "🚇"
+                                        } else if category == "groceries" {
+                                            category = "🛒"
+                                        } else if category == "eating_out" {
+                                            category = "🍔"
+                                        } else if category == "entertainment" {
+                                            category = "🎥"
+                                        } else if category == "general" {
+                                            category = "⚙️"
+                                        } else if category == "shopping" {
+                                            category = "🛍️"
+                                        } else if category == "cash" {
+                                            category = "🍁"
+                                        } else if category == "personal_care" {
+                                            category = "❤️"
+                                        }
+                                
+                                        descripton?.prefix(25)
+
+                                        let pounds = Double(amount ?? 0) / 100
                                         print("\n")
                                         print(i)
                                         print("\n")
-                                        print(loopDateCreated ?? "Loop isn't")
-                                        print(loopDescripton ?? "Loop isn't")
+                                        print(dateCreated ?? "Loop isn't")
+                                        print(descripton?.prefix(25) ?? "Loop isn't")
+                                        print(category ?? "Loop isn't")
                                         if pounds < 0 {
-                                            let loopMoney = "-£" + String(format:"%.2f",abs(pounds))
-                                            print(loopMoney)
-                                            self.prices.append(loopMoney as! String)
+                                            let money = "-£" + String(format:"%.2f",abs(pounds))
+                                            print(money)
+                                            self.prices.append(money as! String)
                                         }
                                         else {
-                                            let loopMoney = "+£" + String(format:".%.2f",pounds)
-                                            print(loopMoney)
-                                            self.prices.append(loopMoney as! String)
+                                            let money = "+£" + String(format:".%.2f",pounds)
+                                            print(money)
+                                            self.prices.append(money as! String)
                                         }
-                                        print(loopNotes != "" ? loopNotes: "No Notes for this transaction.")
-                                        self.transactions.append(loopDescripton as! String ?? "error")
-                                        print("TestieTest")
+                                        print(notes != "" ? notes: "No Notes for this transaction.")
+                                        self.transactions.append(descripton as! String ?? "error")
+                                        self.categories.append(category as! String ?? "error")
                                         print(self.tableView.dataSource)
                                         self.tableView.reloadData()
                                         
@@ -115,10 +146,16 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+   
+    
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        let count = self.transactions.count
+//        return shouldShowLoadingCell ? count + 1 : count
         return self.transactions.count
     }
+    
+ 
     
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -128,14 +165,13 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         
         // set the text from the data model
         cell.textLabel?.text = self.transactions[indexPath.row]
-        
-//        cell.accessoryType = UITableViewCell.AccessoryType.checkmark
-//        cell.accessoryView?.backgroundColor = UIColor.blue
+
         
         let price = prices[indexPath.row]
+        let category = categories[indexPath.row]
         cell.detailTextLabel?.text = price
-        let label = UILabel.init(frame: CGRect(x:0,y:0,width:65,height:20))
-        label.text = price
+        let label = UILabel.init(frame: CGRect(x:0,y:0,width:100,height:20))
+        label.text = category + " " + price
         cell.accessoryView = label
 
         
@@ -147,3 +183,5 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         print("You tapped cell number \(indexPath.row).")
     }
 }
+
+

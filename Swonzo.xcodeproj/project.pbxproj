@@ -16,6 +16,8 @@
 		BA47E00522E0B0F5000EF78F /* waving-american-flag.json in Resources */ = {isa = PBXBuildFile; fileRef = BA47E00322E0B0F5000EF78F /* waving-american-flag.json */; };
 		BA4A64CA22FDE246003208B6 /* swonzo_logo_green_vector.png in Resources */ = {isa = PBXBuildFile; fileRef = BA4A64C822FDE246003208B6 /* swonzo_logo_green_vector.png */; };
 		BA4A64CB22FDE246003208B6 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = BA4A64C922FDE246003208B6 /* Contents.json */; };
+		BA4A64CF22FE5499003208B6 /* swonzo_ring.png in Resources */ = {isa = PBXBuildFile; fileRef = BA4A64CD22FE5499003208B6 /* swonzo_ring.png */; };
+		BA4A64D022FE5499003208B6 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = BA4A64CE22FE5499003208B6 /* Contents.json */; };
 		BA5F2C6A22E5CC3900230C17 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */; };
 		BA5F2C6C22E5D0E600230C17 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */; };
 		BA62B11B22F2E95E00DBEFC4 /* testTransactions.json in Resources */ = {isa = PBXBuildFile; fileRef = BA62B11A22F2E95E00DBEFC4 /* testTransactions.json */; };
@@ -69,6 +71,8 @@
 		BA47E00322E0B0F5000EF78F /* waving-american-flag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "waving-american-flag.json"; sourceTree = "<group>"; };
 		BA4A64C822FDE246003208B6 /* swonzo_logo_green_vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swonzo_logo_green_vector.png; sourceTree = "<group>"; };
 		BA4A64C922FDE246003208B6 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
+		BA4A64CD22FE5499003208B6 /* swonzo_ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swonzo_ring.png; sourceTree = "<group>"; };
+		BA4A64CE22FE5499003208B6 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BA62B11A22F2E95E00DBEFC4 /* testTransactions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testTransactions.json; sourceTree = "<group>"; };
@@ -148,6 +152,16 @@
 			path = Assets.xcassets/swonzo_logo_green_vector.imageset;
 			sourceTree = "<group>";
 		};
+		BA4A64CC22FE5499003208B6 /* swonzo_ring.imageset */ = {
+			isa = PBXGroup;
+			children = (
+				BA4A64CD22FE5499003208B6 /* swonzo_ring.png */,
+				BA4A64CE22FE5499003208B6 /* Contents.json */,
+			);
+			name = swonzo_ring.imageset;
+			path = Assets.xcassets/swonzo_ring.imageset;
+			sourceTree = "<group>";
+		};
 		BA5F2C6D22E5DC8E00230C17 /* ViewConrollers */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +211,7 @@
 				BA7D5E3E22D631BD00D7C0BE /* Assets.xcassets */,
 				BA4A64C722FDE246003208B6 /* swonzo_logo_green_vector.imageset */,
 				BA7D5E4022D631BD00D7C0BE /* LaunchScreen.storyboard */,
+				BA4A64CC22FE5499003208B6 /* swonzo_ring.imageset */,
 				BA7D5E4322D631BD00D7C0BE /* Info.plist */,
 			);
 			path = Swonzo;
@@ -374,9 +389,11 @@
 				BA62B11B22F2E95E00DBEFC4 /* testTransactions.json in Resources */,
 				BA7D5E4222D631BD00D7C0BE /* LaunchScreen.storyboard in Resources */,
 				BAC85F0622FB691F0096B113 /* SlatePro.ttf in Resources */,
+				BA4A64D022FE5499003208B6 /* Contents.json in Resources */,
 				BA47E00522E0B0F5000EF78F /* waving-american-flag.json in Resources */,
 				BA7D5E3F22D631BD00D7C0BE /* Assets.xcassets in Resources */,
 				BAC4D28D22E21814009891C0 /* nightMap.json in Resources */,
+				BA4A64CF22FE5499003208B6 /* swonzo_ring.png in Resources */,
 				BA89679522FDB86B000EF218 /* harddisk.json in Resources */,
 				BA2204E422E3ADCD00D0C83B /* customMapStyle.json in Resources */,
 				BA4A64CA22FDE246003208B6 /* swonzo_logo_green_vector.png in Resources */,

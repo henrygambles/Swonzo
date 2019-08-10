@@ -26,8 +26,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     var transactions: [String] = []
     var prices: [String] = []
     var categories: [String] = []
-    
-    
+
     
     // cell reuse id (cells that scroll out of view can be reused)
     let cellReuseIdentifier = "cell"
@@ -106,9 +105,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         } else if category == "personal_care" {
                                             category = "❤️"
                                         }
-                                        
+                                
                                         descripton?.prefix(25)
-                                        
+
                                         let pounds = Double(amount ?? 0) / 100
                                         print("\n")
                                         print(i)
@@ -147,10 +146,16 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
+   
+    
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        let count = self.transactions.count
+//        return shouldShowLoadingCell ? count + 1 : count
         return self.transactions.count
     }
+    
+ 
     
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -160,9 +165,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         
         // set the text from the data model
         cell.textLabel?.text = self.transactions[indexPath.row]
-        
-//        cell.accessoryType = UITableViewCell.AccessoryType.checkmark
-//        cell.accessoryView?.backgroundColor = UIColor.blue
+
         
         let price = prices[indexPath.row]
         let category = categories[indexPath.row]
@@ -179,11 +182,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You tapped cell number \(indexPath.row).")
     }
-    
 }
 
-public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    if indexPath.row == TransactionsViewController().transactions.count-1 { //you might decide to load sooner than -1 I guess...
-        //load more into data here
-    }
-}
+

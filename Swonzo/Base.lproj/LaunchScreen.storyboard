@@ -21,8 +21,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Nh-LK-dMC">
                                 <rect key="frame" x="127" y="250" width="120" height="109"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="swonzo_logo_green_vector" translatesAutoresizingMaskIntoConstraints="NO" id="Ica-sv-6de">
-                                <rect key="frame" x="139" y="257" width="97" height="98"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="swonzo_ring" translatesAutoresizingMaskIntoConstraints="NO" id="Ica-sv-6de">
+                                <rect key="frame" x="137" y="254" width="102" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -43,6 +43,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="swonzo_logo_green_vector" width="3840" height="3631"/>
+        <image name="swonzo_ring" width="1460" height="1398"/>
     </resources>
 </document>

@@ -2,7 +2,9 @@
 
 <img src="https://media.giphy.com/media/kjjRGpezebjaw/giphy.gif" width=50%>
 
-[Getting started](#getting-started) | [Testing](#Testing)  | [Credit](#Credit) 
+[What's This?](#What's-This) | [Getting started](#getting-started) | [Testing](#Testing)  | [Credit](#Credit) 
+
+## What's This?
 
 This is an iOS client for connecting with the Monzo API!
 

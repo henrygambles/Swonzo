@@ -2,7 +2,7 @@
 
 <img src="https://media.giphy.com/media/kjjRGpezebjaw/giphy.gif" width=50%>
 
-[What's This?](#What's-This) | [Getting started](#getting-started) | [Testing](#Testing)  | [Credit](#Credit) 
+[What's This?](#whats-this) | [Getting started](#getting-started) | [Testing](#Testing)  | [Credit](#Credit) 
 
 ## What's This?
 
@@ -16,7 +16,7 @@ Either clone this repo or check it out on Testflight!
 
 ## Testing
 
-When in Xcode, hit Command  + U
+To run the test suite in Xcode, hit Command  + U
 
 ## Credit
 

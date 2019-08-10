@@ -79,7 +79,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     print(latest)
                                     let numberOfTransactions = json["transactions"].arrayValue.count
                                     var i = numberOfTransactions
-                                    while i >= numberOfTransactions - 30 {
+                                    while i >= numberOfTransactions - 40 {
                                         i = i - 1
                                         
                                         var dateCreated = json["transactions"][i]["created"].string

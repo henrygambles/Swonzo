@@ -11,6 +11,8 @@ import Alamofire
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
+    private let homeViewController = HomeViewController()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -36,17 +38,20 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func tokenInput(_ sender: Any) {
+        
+    }
+    
+    @IBAction func logInButton(_ sender: Any) {
+        performSegue(withIdentifier: "loginSegue", sender: nil)
         let token = textFieldView.text as! String
         let headers: HTTPHeaders = [
             "Authorization": "Bearer " + token
         ]
         print("YOOOOOOOOOOOO")
-        print(token)
-        print(headers)
-    }
-    
-    @IBAction func logInButton(_ sender: Any) {
-        performSegue(withIdentifier: "loginSegue", sender: nil)
+        //        print(token)
+        //        print(headers)
+        homeViewController.initialRequest()
+        
     }
     
     func setBlurryView() {

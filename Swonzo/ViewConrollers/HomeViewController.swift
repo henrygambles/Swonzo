@@ -63,47 +63,53 @@ class HomeViewController: UIViewController {
     }
     
 
-    func initialRequest() {
+    func initialRequest() -> String {
         print("ALOOOOOOOO")
         Alamofire.request("https://api.monzo.com/accounts",
                           encoding:  URLEncoding.default,
                           headers: headers).responseJSON { response in
                             if let error = response.error {
                                 self.homeView.text = error.localizedDescription
+                                print("ERROR")
+                                print(error.localizedDescription)
                             } else if let jsonArray = response.result.value as? [[String: Any]] {
                                 print("ARRAY")
                             } else if let jsonDict = response.result.value as? [[String: Any]] {
 
                                 print("DICT")
-//                                var accountId : String?
-//                                var parameters: Parameters
-                                
-                                let accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
-                                let parameters: Parameters = [
-                                    "account_id": accountId
-                                ]
-
-//
-//
-//                               //you can late init let vars from swift 1.2
-                                do{
-                                    let json = try JSON(data: response.data!)
-//                                    let accountId = try json["accounts"][0]["id"].string
-                                    print("DOOOIIINNNGGGGGG")
-                                    print(accountId)
-                                    let parameters: Parameters = [
-                                        "account_id": accountId
-                                    ]
-
-                                } catch {
-                                    print("JSON Parsing error:", error) //Example - Fix
-                                }
-
-                                print("DOnnnEEE")
-                                print(accountId)
-
                             }
-        }
+                            
+            print("One")
+                            print(accountId)
+                            
+                            
+                            func getAccountId() -> String {
+                                do {
+                                    
+                                    let json = try JSON(data: response.data!)
+                                    let accountId: String = json["accounts"][0]["id"].string!
+                                    print(accountId)
+                                    
+                                    return accountId
+                                    
+                                } catch {
+                                    print("JSON Parsing error:", error)
+                                }
+                                print("The Return")
+                                print(accountId)
+                                return accountId
+                            }
+                            getAccountId()
+                            let plzplz = getAccountId()
+                            print(plzplz)
+                            print(plzplz)
+                            
+                            
+        
+                            }
+        print("Two")
+        print(accountId)
+        return accountId
         
     }
         

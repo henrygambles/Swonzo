@@ -11,6 +11,9 @@ import SwiftyJSON
 import Alamofire_SwiftyJSON
 import UIKit
 
+//var myAccountId = "OOwwwOOOO"
+
+
 class HomeViewController: UIViewController {
     
 //    var accountId: String = ""
@@ -39,6 +42,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialRequest()
+//        sleep(2)
         balanceRequest()
         setThirdBlurView()
     }
@@ -63,7 +67,15 @@ class HomeViewController: UIViewController {
     }
     
 
-    func initialRequest() -> String {
+    func initialRequest() {
+        
+        let accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
+        
+        
+        let parameters: Parameters = [
+            "account_id": accountId
+        ]
+        
         print("ALOOOOOOOO")
         Alamofire.request("https://api.monzo.com/accounts",
                           encoding:  URLEncoding.default,
@@ -78,9 +90,7 @@ class HomeViewController: UIViewController {
 
                                 print("DICT")
                             }
-                            
-            print("One")
-                            print(accountId)
+                        
                             
                             
                             func getAccountId() -> String {
@@ -97,20 +107,26 @@ class HomeViewController: UIViewController {
                                 }
                                 print("The Return")
                                 print(accountId)
+                                let myAccountId = accountId
                                 return accountId
+                                
                             }
-                            getAccountId()
-                            let plzplz = getAccountId()
-                            print(plzplz)
-                            print(plzplz)
                             
+//                            getAccountId()
+//                            let myAccountId = getAccountId()
+//                            let parameters: Parameters = [
+//                                "account_id": myAccountId
+//                            ]
+                            print(parameters)
+//                            print(myAccountId)
+//                            print(myAccountId)
+                          
                             
         
                             }
-        print("Two")
-        print(accountId)
-        return accountId
         
+        print("wagwan here",accountId)
+
     }
         
         
@@ -188,12 +204,18 @@ class HomeViewController: UIViewController {
                           headers: headers).responseJSON { response in
                             if let error = response.error {
                                 self.homeView.text = error.localizedDescription
+                                print(error.localizedDescription)
                             } else if let jsonArray = response.result.value as? [[String: Any]] {
                                 //                            self.homeView.text = "whattup"
                             } else if let jsonDict = response.result.value as? [String: Any] {
                                 
-                                print(parameters)
+                                print("heyheyhey")
+                                
+                                print("Self.initialrequest()",self.initialRequest())
+                                print("params be like", parameters)
 //                                print(accountId)
+                            
+                                
                                 print("Balance Test")
                                 
                                     let result = response.result.value

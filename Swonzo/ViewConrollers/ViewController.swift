@@ -28,14 +28,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         startAnimation()
-//        setBlurView2()
+//        setDevBlurView()
 //      transactions.transactionsRequest()
         
     }
     
 
     
-    func setBlurView2() {
+    func setDevBlurView() {
         // Init a UIVisualEffectView which going to do the blur for us
         let blurView = UIVisualEffectView()
         // Make its frame equal the main view frame so that every pixel is under blurred
@@ -59,40 +59,6 @@ class ViewController: UIViewController {
         animationView.play()
     }
     
-    func checkBalance() {
-        
-        guard let urlToExecute = URL(string: "https://api.monzo.com/balance") else {
-            return
-        }
-        
-        swonzoClient.execute(urlToExecute) { (json, error) in
-            if let error = error {
-                self.textView.text = error.localizedDescription
-            } else if let json = json {
-                self.testyView.text = "yoooo"
-                print(json)
-            }
-        }
-    }
-    
-    
-    func checkAccount() {
-        guard let urlToExecute = URL(string: "https://api.monzo.com/accounts") else {
-            return
-        }
-        
-        
-        swonzoClient.execute(urlToExecute) { (json, error) in
-            if let error = error {
-                self.textView.text = error.localizedDescription
-            } else if let json = json {
-                print(json)
-            }
-        }
-    }
-    
-    
-    
     @IBOutlet weak var textView: UITextView!
     
     @IBAction func executeBalance(_ sender: Any) {
@@ -111,6 +77,8 @@ class ViewController: UIViewController {
                 self.textView.text = error.localizedDescription
             } else if let json = json {
                 self.textView.text = json.description
+                print(parameters)
+                print(accountId)
             }
         }
     }

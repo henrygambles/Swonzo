@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
-var token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6IlIxNER4cGptSk1yeGNoYXBDZFFaIiwianRpIjoiYWNjdG9rXzAwMDA5bG9JZFRlMUUwNWk2M3RoVE4iLCJ0eXAiOiJhdCIsInYiOiI1In0.Ofw-znzFm_NDOgiVMI_kCCxDTAw-GR4w5Ll4Cxt54KQHccGoRCQSisS2RlCIXZ7bEc3O8yxSLf-tIY9QckP9yA"
+var token = ""
 
 //var accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
 var accountId = "UNCHANGED"
@@ -21,7 +21,7 @@ var headers: HTTPHeaders = [
 ]
 
 var parameters: Parameters = [
-    "account_id": accountId
+    "account_id": "EEEEEEE"
 ]
 
 class SwonzoClient {

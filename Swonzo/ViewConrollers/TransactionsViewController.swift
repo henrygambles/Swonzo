@@ -16,6 +16,7 @@ import Alamofire_SwiftyJSON
 
 class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -79,7 +80,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     print(latest)
                                     let numberOfTransactions = json["transactions"].arrayValue.count
                                     var i = numberOfTransactions
-                                    while i >= numberOfTransactions - 40 {
+                                    while i >= numberOfTransactions - 20 {
                                         i = i - 1
                                         
                                         var dateCreated = json["transactions"][i]["created"].string
@@ -173,7 +174,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         let label = UILabel.init(frame: CGRect(x:0,y:0,width:100,height:20))
         label.text = category + " " + price
         cell.accessoryView = label
-
+        
         
         return cell
     }

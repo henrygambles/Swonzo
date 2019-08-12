@@ -11,15 +11,15 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
-let token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6Ik1jWkFXeFFjbGdSdjBKVXl0cE1qIiwianRpIjoiYWNjdG9rXzAwMDA5bGlLVXJSQ1FYMTQwR1g3eGEiLCJ0eXAiOiJhdCIsInYiOiI1In0.wad-JTA9wNxfg3gYGU1UCUEQk1Abb3ihxcrO8mTrGn33cTFFszoftkd4H7twIBiVtBEeT66jiquqBUhVz7stEw"
+var token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6IlIxNER4cGptSk1yeGNoYXBDZFFaIiwianRpIjoiYWNjdG9rXzAwMDA5bG9JZFRlMUUwNWk2M3RoVE4iLCJ0eXAiOiJhdCIsInYiOiI1In0.Ofw-znzFm_NDOgiVMI_kCCxDTAw-GR4w5Ll4Cxt54KQHccGoRCQSisS2RlCIXZ7bEc3O8yxSLf-tIY9QckP9yA"
 
-let accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
+var accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
 
-let headers: HTTPHeaders = [
-    "Authorization": "Bearer " + token
+var headers: HTTPHeaders = [
+"Authorization": "Bearer " + token
 ]
 
-let parameters: Parameters = [
+var parameters: Parameters = [
     "account_id": accountId
 ]
 

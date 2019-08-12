@@ -66,6 +66,7 @@ class HomeViewController: UIViewController {
                                 
                                 do {
                                     
+                                    
                                     let json = try JSON(data: response.data!)
                                     let account_number = json["accounts"][0]["account_number"].string
                                     let acc_id = json["accounts"][0]["id"].string
@@ -76,6 +77,7 @@ class HomeViewController: UIViewController {
                                     let account_description = json["accounts"][0]["description"].string
                                     //                                        self.homeView.text = "Hi " + first_name! + "! Welcome to Swonzo.\n\nYour account number is:\n\n" + account_number! + "\n\nYour sort code is:\n\n" + sort_code! + "\n\nAnd your account id is:\n\n" + acc_id! + "\n\nEnjoy!"
                                     //                                        self.homeView.text = balanceRequest()
+
                                     
                                     print("TESTING")
                                     print(full_name ?? "JSON parsing error")

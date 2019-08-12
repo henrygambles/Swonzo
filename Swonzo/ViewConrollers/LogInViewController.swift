@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Alamofire
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, UITextFieldDelegate {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -16,10 +17,12 @@ class LogInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fadeIn), userInfo: nil, repeats: false)
+        
+        textFieldView.delegate = self
         setBlurryView()
         hide()
-        let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fadeIn), userInfo: nil, repeats: false)
-        textFieldView.accessibilityIdentifier = "tokenTextField"
     }
     
   
@@ -33,7 +36,13 @@ class LogInViewController: UIViewController {
     
     
     @IBAction func tokenInput(_ sender: Any) {
-        
+        let token = textFieldView.text as! String
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer " + token
+        ]
+        print("YOOOOOOOOOOOO")
+        print(token)
+        print(headers)
     }
     
     @IBAction func logInButton(_ sender: Any) {

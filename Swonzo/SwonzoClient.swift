@@ -11,17 +11,17 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
-var token = ""
+var token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6ImtuUk1xbFNPZWcwc2tET2Y5Z3gwIiwianRpIjoiYWNjdG9rXzAwMDA5bHNabVFiaU1VeUJNenp3SEoiLCJ0eXAiOiJhdCIsInYiOiI1In0.2zlNbTwgwI0uVxY5qtw16eIP1ZPytkLShO4L_fvx8yH8To_QpFxqgHnFZ5yWsspg9YdAM3FujzO3IVOx2jY5Fw"
 
-//var accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
-var accountId = "UNCHANGED"
+var accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
+//var accountId = "UNCHANGED"
 
 var headers: HTTPHeaders = [
 "Authorization": "Bearer " + token
 ]
 
 var parameters: Parameters = [
-    "account_id": "EEEEEEE"
+    "account_id": accountId
 ]
 
 class SwonzoClient {
@@ -65,11 +65,6 @@ class SwonzoClient {
                                     print(first_name ?? "Json not parsed")
                                     print(account_description ?? "Json not parsed")
                                     
-                                    
-                                    
-                                    
-                                    //        self.tableData = results
-                                    //        self.Indextableview.reloadData()
                                     
                                 } catch {
                                     print("JSON Parsing error:", error)

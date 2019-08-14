@@ -8,7 +8,7 @@
 
 This is an iOS client for connecting with the Monzo API!
 
-Go ahead and grab your token.
+Go ahead and grab your token over at https://developers.monzo.com/.
 
 ## Getting started
 
@@ -16,7 +16,10 @@ Either clone this repo or check it out on Testflight!
 
 ## Testing
 
-To run the test suite in Xcode, hit Command  + U
+To run the test suite - open the project in Xcode & hit:
+```
+⌘ + U
+```
 
 ## Credit
 

@@ -14,10 +14,6 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    func doATing() -> String {
-        return "Yay"
-    }
-    
     private let swonzoClient = SwonzoClient()
     private let swonzoLogic = SwonzoLogic()
     
@@ -38,8 +34,6 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
         UIView.animate(withDuration: 3.5, animations: {
             self.homeView.alpha = 1.0
 
@@ -66,35 +60,15 @@ class HomeViewController: UIViewController {
                                 self.homeView.text = error.localizedDescription
                                 print("ERROR")
                                 print(error.localizedDescription)
-                            } else if (response.result.value as? [[String: Any]]) != nil {
-                                print("ARRAY")
-                            } else if (response.result.value as? [[String: Any]]) != nil {
-                                print("DICT")
+                            }; do {
+                                let json = try JSON(data: response.data!)
+                                let accountId: String = json["accounts"][0]["id"].string!
+                                print("YEEEETT", accountId)
+                            } catch {
+                                print("JSON Parsing error:", error)
                             }
-
-                                do {
-                                    
-                                    let json = try JSON(data: response.data!)
-//                                    if (json.null != nil) {
-                                        let accountId: String = json["accounts"][0]["id"].string!
-                                        print("YEEEETT", accountId)
-//                                    }
-
-                                    
-                                } catch {
-                                    print("JSON Parsing error:", error)
-                                }
-                                   
-                            
-                            
-
-                                
         }
-    
         print(parameters)
-       
-                            
-        
     }
     
     
@@ -107,25 +81,12 @@ class HomeViewController: UIViewController {
                             if let error = response.error {
                                 self.homeView.text = error.localizedDescription
                                 print(error.localizedDescription)
-                            } else if let jsonArray = response.result.value as? [[String: Any]] {
-                                //                            self.homeView.text = "whattup"
-                            } else if let jsonDict = response.result.value as? [String: Any] {
-                                
-                        
-                                print("Self.initialrequest()",self.initialRequest())
-                                print("params be like", parameters)
-//
-                                
+                            } else {
                                     let result = response.result.value
                                     let MYJSON = result as! NSDictionary
                                     let balance = MYJSON.object(forKey: "balance")
                                     let spendToday = MYJSON.object(forKey: "spend_today")
-                                
                                 if balance != nil {
-                                    
-                                    print("Balance be ", balance)
-                                    print("Type be ", type(of: balance))
-                                   
                                     self.homeView.text =  "Your balance is " + self.swonzoLogic.jsonBalanceToMoney(balance: balance) + "\n\n\nYou've spent " + self.swonzoLogic.jsonSpendTodayToMoney(spendToday: spendToday) + " today."
                                    
                                     self.homeView.alpha = 0

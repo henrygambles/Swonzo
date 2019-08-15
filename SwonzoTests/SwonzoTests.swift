@@ -22,11 +22,6 @@ class SwonzoTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testDoATing() {
-        let result = homeViewController.doATing()
-        XCTAssertEqual(result, "Yay")
-    }
     
     func testjsonSpendTodayToMoney() {
         let testSpendToday : Double = 3578

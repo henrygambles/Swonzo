@@ -66,19 +66,19 @@ class HomeViewController: UIViewController {
                                 self.homeView.text = error.localizedDescription
                                 print("ERROR")
                                 print(error.localizedDescription)
-                            } else if let jsonArray = response.result.value as? [[String: Any]] {
+                            } else if (response.result.value as? [[String: Any]]) != nil {
                                 print("ARRAY")
-                            } else if let jsonDict = response.result.value as? [[String: Any]] {
+                            } else if (response.result.value as? [[String: Any]]) != nil {
                                 print("DICT")
                             }
 
                                 do {
                                     
                                     let json = try JSON(data: response.data!)
-                                    if (json.null != nil) {
+//                                    if (json.null != nil) {
                                         let accountId: String = json["accounts"][0]["id"].string!
-                                        print(accountId)
-                                    }
+                                        print("YEEEETT", accountId)
+//                                    }
 
                                     
                                 } catch {
@@ -122,6 +122,9 @@ class HomeViewController: UIViewController {
                                     let spendToday = MYJSON.object(forKey: "spend_today")
                                 
                                 if balance != nil {
+                                    
+                                    print("Balance be ", balance)
+                                    print("Type be ", type(of: balance))
                                    
                                     self.homeView.text =  "Your balance is " + self.swonzoLogic.jsonBalanceToMoney(balance: balance) + "\n\n\nYou've spent " + self.swonzoLogic.jsonSpendTodayToMoney(spendToday: spendToday) + " today."
                                    

@@ -8,7 +8,7 @@
 
 This is an iOS client for connecting with the Monzo API!
 
-Go ahead and grab your token over at https://developers.monzo.com/.
+Go ahead and grab your token over at https://developers.monzo.com/!
 
 ## Getting started
 

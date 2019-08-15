@@ -61,9 +61,16 @@ class HomeViewController: UIViewController {
                                 print(error.localizedDescription)
                             }; do {
                                 let json = try JSON(data: response.data!)
-                                let accountId: String = json["accounts"][0]["id"].string!
+                                
+                                if json.description.contains("message") {
+                                     let errorMessage = json["message"].string!
+                                    print("MESSAGE", errorMessage)
+                                } else {
+                                let accountId = json["accounts"][0]["id"].string!
+ 
                                 print("YEEEETT", accountId)
                                 completion(accountId)
+                                }
                             } catch {
                                 print("JSON Parsing error:", error)
                             }

@@ -43,20 +43,31 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             "Authorization": "Bearer " + token
         ]
         print("YOOOOOOOOOOOO")
-        print(token)
+        print("tokenField headers", headers)
+        print("tokenField token", token)
         
     }
     
     @IBAction func logInButton(_ sender: Any) {
+        let token = textFieldView.text as! String
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer " + token
+        ]
+        print("YOOOOOOOOOOOO")
+        print("tokenField headers", headers)
+        print("tokenField token", token)
         performSegue(withIdentifier: "loginSegue", sender: nil)
+        let accountId = self.setAccountId()
+    }
+    
+    func setAccountId() -> String {
         homeViewController.getAccountId() { response in
             let accountId = response
             print("Account ID is: \(accountId)")
+//            return accountId
         }
-        
-        let parameters: Parameters = [
-            "account_id": accountId
-        ]
+        print("Account ID Here is: \(accountId)")
+        return accountId
     }
     
     func setBlurryView() {

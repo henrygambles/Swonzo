@@ -13,8 +13,10 @@ import Alamofire_SwiftyJSON
 
 var token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6ImtuUk1xbFNPZWcwc2tET2Y5Z3gwIiwianRpIjoiYWNjdG9rXzAwMDA5bHNabVFiaU1VeUJNenp3SEoiLCJ0eXAiOiJhdCIsInYiOiI1In0.2zlNbTwgwI0uVxY5qtw16eIP1ZPytkLShO4L_fvx8yH8To_QpFxqgHnFZ5yWsspg9YdAM3FujzO3IVOx2jY5Fw"
 
+//var token = "UNCHANGED TOKEN"
+
 //var accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
-var accountId = "UNCHANGED"
+var accountId = "UNCHANGED ID"
 
 var headers: HTTPHeaders = [
 "Authorization": "Bearer " + token

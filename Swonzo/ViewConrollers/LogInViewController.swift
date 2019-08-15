@@ -49,11 +49,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func logInButton(_ sender: Any) {
         performSegue(withIdentifier: "loginSegue", sender: nil)
+        homeViewController.getAccountId() { response in
+            let accountId = response
+            print("Account ID is: \(accountId)")
+        }
         
-        //        print(token)
-        //        print(headers)
-        homeViewController.initialRequest()
-        
+        let parameters: Parameters = [
+            "account_id": accountId
+        ]
     }
     
     func setBlurryView() {

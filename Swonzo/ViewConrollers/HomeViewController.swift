@@ -27,7 +27,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialRequest()
         balanceRequest()
         setHomeBlurView()
     }
@@ -50,7 +49,7 @@ class HomeViewController: UIViewController {
     }
     
 
-    func initialRequest() {
+    func getAccountId(completion: @escaping (String) -> Void) {
         
  
         Alamofire.request("https://api.monzo.com/accounts",
@@ -64,12 +63,19 @@ class HomeViewController: UIViewController {
                                 let json = try JSON(data: response.data!)
                                 let accountId: String = json["accounts"][0]["id"].string!
                                 print("YEEEETT", accountId)
+                                completion(accountId)
                             } catch {
                                 print("JSON Parsing error:", error)
                             }
         }
-        print(parameters)
+        print(accountId)
     }
+    
+//    getAccountId() { response in
+//    // Do your stuff here
+//    workingData.responseDataString = response
+//    print("Returned String Data is: \(workingData.responseDataString)")
+//    }
     
     
     func balanceRequest() {
@@ -86,6 +92,8 @@ class HomeViewController: UIViewController {
                                     let MYJSON = result as! NSDictionary
                                     let balance = MYJSON.object(forKey: "balance")
                                     let spendToday = MYJSON.object(forKey: "spend_today")
+                                    let errorMessage = MYJSON.object(forKey: "message")
+                                print("result is ", result)
                                 if balance != nil {
                                     self.homeView.text =  "Your balance is " + self.swonzoLogic.jsonBalanceToMoney(balance: balance) + "\n\n\nYou've spent " + self.swonzoLogic.jsonSpendTodayToMoney(spendToday: spendToday) + " today."
                                    
@@ -96,7 +104,7 @@ class HomeViewController: UIViewController {
                                     
                                 }
                                 else {
-                                    self.homeView.text = "Error fetching JSON."
+                                    self.homeView.text = errorMessage as! String
                                 }
                             }
         }

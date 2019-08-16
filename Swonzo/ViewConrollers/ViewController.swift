@@ -121,6 +121,8 @@ class ViewController: UIViewController {
                 self.textView.text = error.localizedDescription
             } else if let json = json {
                 self.textView.text = json.description
+//                let loginDetails = LogInViewController().login()
+//                self.textView.text = loginDetails.accountId as String
             }
         }
     }

@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Foundation
 import Alamofire
+
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
     private let homeViewController = HomeViewController()
+    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -42,33 +45,58 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         let headers: HTTPHeaders = [
             "Authorization": "Bearer " + token
         ]
-        print("YOOOOOOOOOOOO")
-        print("tokenField headers", headers)
-        print("tokenField token", token)
         
     }
     
-    @IBAction func logInButton(_ sender: Any) {
-        let token = textFieldView.text as! String
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + token
-        ]
-        print("YOOOOOOOOOOOO")
-        print("tokenField headers", headers)
-        print("tokenField token", token)
-        performSegue(withIdentifier: "loginSegue", sender: nil)
-        let accountId = self.setAccountId()
-    }
-    
-    func setAccountId() -> String {
+    func setAccountId() {
         homeViewController.getAccountId() { response in
             let accountId = response
+            print("response", response)
             print("Account ID is: \(accountId)")
-//            return accountId
+            UserDefaults.standard.set(accountId, forKey: "AccountID")
         }
-        print("Account ID Here is: \(accountId)")
-        return accountId
     }
+var token =  UserDefaults.standard.string(forKey: "Token")
+
+
+    
+    func login() {
+//        var accountId = self.setAccountId()
+//            print(accountId)
+//        var token = self.textFieldView.text as! String
+//        var headers: HTTPHeaders = [
+//            "Authorization": "Bearer " + token
+//        ]
+//        var parameters: Parameters = [
+//            "account_id": accountId
+//        ]
+//        var loginDetails = LoginDetails(token: token, accountId: accountId, headers: headers, paramters: parameters)
+//        var token =  UserDefaults.standard.string(forKey: "Token")
+//
+//        //var accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
+//        var accountId =  UserDefaults.standard.string(forKey: "AccountID")
+//
+//        var headers: HTTPHeaders = [
+//            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!
+//        ]
+//
+//        var parameters: Parameters = [
+//            "account_id": UserDefaults.standard.string(forKey: "AccountID")!
+//        ]
+        UserDefaults.standard.set(self.textFieldView.text as! String, forKey: "Token")
+        self.setAccountId()
+//        UserDefaults.standard.set(self.setAccountId(), forKey: "AccountID")
+//        print("Login details at login function are: ", loginDetails)
+//        return loginDetails
+    }
+    
+    @IBAction func logInButton(_ sender: Any) {
+        print("Token when button is pressed = ", token)
+        login()
+        performSegue(withIdentifier: "loginSegue", sender: nil)
+        
+    }
+    
     
     func setBlurryView() {
         let blurView = UIVisualEffectView()

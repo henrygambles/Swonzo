@@ -16,6 +16,9 @@ class HomeViewController: UIViewController {
     
     private let swonzoClient = SwonzoClient()
     private let swonzoLogic = SwonzoLogic()
+//    private let logInViewController = LogInViewController()
+
+
     
     @IBOutlet weak var thirdBlurView: UIView!
     @IBOutlet weak var homeView: UITextView!
@@ -48,10 +51,54 @@ class HomeViewController: UIViewController {
         thirdBlurView.addSubview(blurView)
     }
     
-
+//    func getAccountId(completion: @escaping (String) -> Void) {
+//
+//
+//        Alamofire.request("https://api.monzo.com/accounts",
+//                          encoding:  URLEncoding.default,
+//                          headers: headers).responseJSON { response in
+//                            if let error = response.error {
+//                                self.homeView.text = error.localizedDescription
+//                                print("ERROR")
+//                                print(error.localizedDescription)
+//                            }; do {
+//                                let json = try JSON(data: response.data!)
+//
+//                                if (response.result.isSuccess) {
+//                                    let accountId = json["accounts"][0]["id"].string!
+//
+//                                    print("YEEEETT", accountId)
+//                                    completion(accountId)
+//                                }
+//
+//                                else if json.description.contains("message") {
+//                                    let errorMessage = json["message"].string!
+//                                    print("MESSAGE", errorMessage)
+//                                } else {
+//                                    print("Unknown error")
+//                                }
+//                            } catch {
+//                                print("JSON Parsing error:", error)
+//                            }
+//        }
+//        print(accountId)
+//    }
     func getAccountId(completion: @escaping (String) -> Void) {
-        
- 
+
+//                let headers: HTTPHeaders = [
+//                    "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!
+//                ]
+
+//        var token1 = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6IkRlMzdRTGFpQmNhaVpGcU5HSnc3IiwianRpIjoiYWNjdG9rXzAwMDA5bHdyU1hQdnVOdGtHeVZXeW4iLCJ0eXAiOiJhdCIsInYiOiI1In0.TxRCAVFjibDffFbPZdrPQpMX_nnwMQWzhn3D3k1vEkx04CvOMULSeWE4dCNDHYDVJXm3bp0n0ERpTfwfcGv8bw"
+//
+//                var headers: HTTPHeaders = [
+//                    "Authorization": "Bearer " + token1
+//                ]
+//
+
+//        print("getAccountId headers ", headers)
+
+
         Alamofire.request("https://api.monzo.com/accounts",
                           encoding:  URLEncoding.default,
                           headers: headers).responseJSON { response in
@@ -61,31 +108,29 @@ class HomeViewController: UIViewController {
                                 print(error.localizedDescription)
                             }; do {
                                 let json = try JSON(data: response.data!)
-                                
+
                                 if json.description.contains("message") {
-                                     let errorMessage = json["message"].string!
+                                    let errorMessage = json["message"].string!
                                     print("MESSAGE", errorMessage)
                                 } else {
-                                let accountId = json["accounts"][0]["id"].string!
- 
-                                print("YEEEETT", accountId)
-                                completion(accountId)
+                                    let accountId = json["accounts"][0]["id"].string!
+
+                                    print("YEEEETT", accountId)
+                                    completion(accountId)
                                 }
                             } catch {
                                 print("JSON Parsing error:", error)
                             }
         }
         print(accountId)
+        //        print("plz", loginDetails)
     }
-    
-//    getAccountId() { response in
-//    // Do your stuff here
-//    workingData.responseDataString = response
-//    print("Returned String Data is: \(workingData.responseDataString)")
-//    }
+
     
     
     func balanceRequest() {
+        
+//        let loginDetails = LogInViewController().login()
         
         Alamofire.request("https://api.monzo.com/balance",
                           parameters: parameters,

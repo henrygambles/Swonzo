@@ -11,19 +11,32 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
-var token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6ImtuUk1xbFNPZWcwc2tET2Y5Z3gwIiwianRpIjoiYWNjdG9rXzAwMDA5bHNabVFiaU1VeUJNenp3SEoiLCJ0eXAiOiJhdCIsInYiOiI1In0.2zlNbTwgwI0uVxY5qtw16eIP1ZPytkLShO4L_fvx8yH8To_QpFxqgHnFZ5yWsspg9YdAM3FujzO3IVOx2jY5Fw"
+struct LoginDetails {
+    var token: String
+    var accountId: String
+    var headers: HTTPHeaders
+    var paramters: Parameters
+}
 
-//var token = "UNCHANGED TOKEN"
-
-//var accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
-var accountId = "UNCHANGED ID"
+var token1 = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6IkRlMzdRTGFpQmNhaVpGcU5HSnc3IiwianRpIjoiYWNjdG9rXzAwMDA5bHdyU1hQdnVOdGtHeVZXeW4iLCJ0eXAiOiJhdCIsInYiOiI1In0.TxRCAVFjibDffFbPZdrPQpMX_nnwMQWzhn3D3k1vEkx04CvOMULSeWE4dCNDHYDVJXm3bp0n0ERpTfwfcGv8bw"
 
 var headers: HTTPHeaders = [
-"Authorization": "Bearer " + token
+    "Authorization": "Bearer " + token1
 ]
 
+//var token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6IkRlMzdRTGFpQmNhaVpGcU5HSnc3IiwianRpIjoiYWNjdG9rXzAwMDA5bHdyU1hQdnVOdGtHeVZXeW4iLCJ0eXAiOiJhdCIsInYiOiI1In0.TxRCAVFjibDffFbPZdrPQpMX_nnwMQWzhn3D3k1vEkx04CvOMULSeWE4dCNDHYDVJXm3bp0n0ERpTfwfcGv8bw"
+
+var token =  UserDefaults.standard.string(forKey: "Token")
+
+//var accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
+var accountId =  UserDefaults.standard.string(forKey: "AccountID")
+
+//var headers: HTTPHeaders = [
+//    "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!
+//]
+
 var parameters: Parameters = [
-    "account_id": accountId
+    "account_id": UserDefaults.standard.string(forKey: "AccountID")!
 ]
 
 class SwonzoClient {
@@ -31,6 +44,15 @@ class SwonzoClient {
     typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
     
     func execute(_ url: URL, completion: @escaping WebServiceResponse) {
+        
+        let parameters: Parameters = [
+            "account_id": UserDefaults.standard.string(forKey: "AccountID")!
+        ]
+//        var token = UserDefaults.standard.string(forKey: "Token")
+//
+//        var headers: HTTPHeaders = [
+//            "Authorization": "Bearer " + token!
+//        ]
         
         Alamofire.request(url,
                           parameters: parameters,

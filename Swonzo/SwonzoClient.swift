@@ -18,11 +18,11 @@ struct LoginDetails {
     var paramters: Parameters
 }
 
-var token1 = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6IkRlMzdRTGFpQmNhaVpGcU5HSnc3IiwianRpIjoiYWNjdG9rXzAwMDA5bHdyU1hQdnVOdGtHeVZXeW4iLCJ0eXAiOiJhdCIsInYiOiI1In0.TxRCAVFjibDffFbPZdrPQpMX_nnwMQWzhn3D3k1vEkx04CvOMULSeWE4dCNDHYDVJXm3bp0n0ERpTfwfcGv8bw"
+//var token1 = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6IkRlMzdRTGFpQmNhaVpGcU5HSnc3IiwianRpIjoiYWNjdG9rXzAwMDA5bHdyU1hQdnVOdGtHeVZXeW4iLCJ0eXAiOiJhdCIsInYiOiI1In0.TxRCAVFjibDffFbPZdrPQpMX_nnwMQWzhn3D3k1vEkx04CvOMULSeWE4dCNDHYDVJXm3bp0n0ERpTfwfcGv8bw"
 
-var headers: HTTPHeaders = [
-    "Authorization": "Bearer " + token1
-]
+//var headers: HTTPHeaders = [
+//    "Authorization": "Bearer " + token!
+//]
 
 //var token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6IkRlMzdRTGFpQmNhaVpGcU5HSnc3IiwianRpIjoiYWNjdG9rXzAwMDA5bHdyU1hQdnVOdGtHeVZXeW4iLCJ0eXAiOiJhdCIsInYiOiI1In0.TxRCAVFjibDffFbPZdrPQpMX_nnwMQWzhn3D3k1vEkx04CvOMULSeWE4dCNDHYDVJXm3bp0n0ERpTfwfcGv8bw"
 
@@ -31,9 +31,9 @@ var token =  UserDefaults.standard.string(forKey: "Token")
 //var accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
 var accountId =  UserDefaults.standard.string(forKey: "AccountID")
 
-//var headers: HTTPHeaders = [
-//    "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!
-//]
+var headers: HTTPHeaders = [
+    "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!
+]
 
 var parameters: Parameters = [
     "account_id": UserDefaults.standard.string(forKey: "AccountID")!

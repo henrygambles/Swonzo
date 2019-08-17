@@ -56,22 +56,18 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func tokenInput(_ sender: Any) {
-        let token = textFieldView.text as! String
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer " + token
-        ]
+//        let token = textFieldView.text as! String
+//        let headers: HTTPHeaders = [
+//            "Authorization": "Bearer " + token
+//        ]
         
     }
     
     func checkAccountId(completion: @escaping (Bool) -> Void) {
-      
         swonzoClient.getAccountInfo() { response in
-            
-            let accountId = response
-            if response.hasPrefix("acc") {
-            UserDefaults.standard.set(accountId, forKey: "AccountID")
-            print("Account ID \(accountId) saved.")
-//            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+           if response.hasPrefix("acc") {
+            UserDefaults.standard.set(response, forKey: "AccountID")
+            print("Account ID \(response) saved.")
                 let loggedIn = true
                 completion(loggedIn)
             }

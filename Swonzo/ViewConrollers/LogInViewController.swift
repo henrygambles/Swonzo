@@ -33,10 +33,13 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     func checkIfLoggedIn() {
-        if UserDefaults.standard.string(forKey: "FirstName") != nil {
-            recentTokenButton.isHidden = false;
-        } else {
-            recentTokenButton.isHidden = true;
+        checkAccountId() { response in
+            if response == true {
+                self.recentTokenButton.isHidden = false;
+            }
+            else {
+                self.recentTokenButton.isHidden = true;
+            }
         }
     }
     

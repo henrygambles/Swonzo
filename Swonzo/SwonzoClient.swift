@@ -11,26 +11,6 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
-struct LoginDetails {
-    var token: String
-    var accountId: String
-    var headers: HTTPHeaders
-    var paramters: Parameters
-}
-
-//var token1 = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6IkRlMzdRTGFpQmNhaVpGcU5HSnc3IiwianRpIjoiYWNjdG9rXzAwMDA5bHdyU1hQdnVOdGtHeVZXeW4iLCJ0eXAiOiJhdCIsInYiOiI1In0.TxRCAVFjibDffFbPZdrPQpMX_nnwMQWzhn3D3k1vEkx04CvOMULSeWE4dCNDHYDVJXm3bp0n0ERpTfwfcGv8bw"
-
-//var headers: HTTPHeaders = [
-//    "Authorization": "Bearer " + token!
-//]
-
-//var token = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJlYiI6IkRlMzdRTGFpQmNhaVpGcU5HSnc3IiwianRpIjoiYWNjdG9rXzAwMDA5bHdyU1hQdnVOdGtHeVZXeW4iLCJ0eXAiOiJhdCIsInYiOiI1In0.TxRCAVFjibDffFbPZdrPQpMX_nnwMQWzhn3D3k1vEkx04CvOMULSeWE4dCNDHYDVJXm3bp0n0ERpTfwfcGv8bw"
-
-var token =  UserDefaults.standard.string(forKey: "Token")
-
-//var accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
-var accountId =  UserDefaults.standard.string(forKey: "AccountID")
-
 var headers: HTTPHeaders = [
     "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!
 ]
@@ -48,12 +28,7 @@ class SwonzoClient {
         let parameters: Parameters = [
             "account_id": UserDefaults.standard.string(forKey: "AccountID")!
         ]
-//        var token = UserDefaults.standard.string(forKey: "Token")
-//
-//        var headers: HTTPHeaders = [
-//            "Authorization": "Bearer " + token!
-//        ]
-        
+
         Alamofire.request(url,
                           parameters: parameters,
                           encoding:  URLEncoding.default,
@@ -103,7 +78,35 @@ class SwonzoClient {
 
     }
     
-    
+    func getAccountId(completion: @escaping (String) -> Void) {
+        
+        Alamofire.request("https://api.monzo.com/accounts",
+                          encoding:  URLEncoding.default,
+                          headers: headers).responseJSON { response in
+                            if let error = response.error {
+                                HomeViewController().homeView.text = error.localizedDescription
+                                
+                                print("ERROR")
+                                print(error.localizedDescription)
+                            }; do {
+                                let json = try JSON(data: response.data!)
+                                print(json)
+                                if json.description.contains("message") {
+                                    let errorMessage = json["message"].string!
+                                    print("Whoops... ", errorMessage)
+                                    completion(errorMessage)
+                                } else {
+                                    let accountId = json["accounts"][0]["id"].string!
+                                    print("Getting account ID...", accountId)
+                                    completion(accountId)
+                                }
+                            } catch {
+                                print("JSON Parsing error:", error)
+                            }
+        }
+        //        print(accountId)
+        //        print("plz", loginDetails)
+    }
 
 }
 

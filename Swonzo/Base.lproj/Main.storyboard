@@ -289,6 +289,13 @@
                                     <action selector="logInButton:" destination="sg1-Fo-LOa" eventType="touchUpInside" id="KyI-Je-RLB"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yWk-Jp-Znr">
+                                <rect key="frame" x="31" y="273" width="313" height="42"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="23"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.078431372549019607" green="0.13725490196078433" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -298,8 +305,10 @@
                             <constraint firstItem="P98-cy-W5a" firstAttribute="top" secondItem="yh6-mF-bL5" secondAttribute="top" id="DRD-2B-YuG"/>
                             <constraint firstItem="XIJ-qL-0Lf" firstAttribute="leading" secondItem="Qh9-Kf-CJw" secondAttribute="leading" constant="147" id="Hfb-Ek-9pp"/>
                             <constraint firstItem="8Jg-mw-ytx" firstAttribute="leading" secondItem="Qh9-Kf-CJw" secondAttribute="leading" constant="119" id="Jbi-B8-5tz"/>
+                            <constraint firstItem="rDy-6E-Php" firstAttribute="top" secondItem="yWk-Jp-Znr" secondAttribute="bottom" constant="8" symbolic="YES" id="LoT-HI-W9t"/>
                             <constraint firstItem="rDy-6E-Php" firstAttribute="centerX" secondItem="yh6-mF-bL5" secondAttribute="centerX" id="PV6-i0-RRH"/>
                             <constraint firstItem="P98-cy-W5a" firstAttribute="leading" secondItem="yh6-mF-bL5" secondAttribute="leading" id="QSU-Lb-tQM"/>
+                            <constraint firstItem="yWk-Jp-Znr" firstAttribute="top" secondItem="8Jg-mw-ytx" secondAttribute="bottom" constant="67" id="Qh8-WZ-h9u"/>
                             <constraint firstItem="XIJ-qL-0Lf" firstAttribute="centerX" secondItem="rDy-6E-Php" secondAttribute="centerX" id="R7w-Zr-KmW"/>
                             <constraint firstItem="rDy-6E-Php" firstAttribute="leading" secondItem="Qh9-Kf-CJw" secondAttribute="leading" constant="71" id="V5l-xO-vVY"/>
                             <constraint firstItem="8Jg-mw-ytx" firstAttribute="centerX" secondItem="Nkh-95-dQv" secondAttribute="centerX" constant="1" id="W3P-Ys-5aT"/>
@@ -311,6 +320,8 @@
                             <constraint firstItem="8Jg-mw-ytx" firstAttribute="top" secondItem="Qh9-Kf-CJw" secondAttribute="top" constant="73" id="jUS-dJ-mgK"/>
                             <constraint firstItem="rDy-6E-Php" firstAttribute="top" secondItem="Nkh-95-dQv" secondAttribute="bottom" constant="36" id="jrj-Ez-06b"/>
                             <constraint firstItem="yh6-mF-bL5" firstAttribute="bottom" secondItem="Qh9-Kf-CJw" secondAttribute="bottom" id="kvd-yu-fEE"/>
+                            <constraint firstItem="yWk-Jp-Znr" firstAttribute="leading" secondItem="Qh9-Kf-CJw" secondAttribute="leading" constant="31" id="nvh-b8-LqX"/>
+                            <constraint firstItem="yWk-Jp-Znr" firstAttribute="centerX" secondItem="rDy-6E-Php" secondAttribute="centerX" id="rVB-es-kH1"/>
                             <constraint firstItem="Nkh-95-dQv" firstAttribute="top" secondItem="8Jg-mw-ytx" secondAttribute="bottom" constant="29" id="vIW-cc-0Ue"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qh9-Kf-CJw"/>
@@ -318,10 +329,11 @@
                     <navigationItem key="navigationItem" id="5Te-vg-htg"/>
                     <connections>
                         <outlet property="blurryView" destination="yh6-mF-bL5" id="2aG-gR-upI"/>
+                        <outlet property="errorTextView" destination="yWk-Jp-Znr" id="QWJ-md-rOg"/>
                         <outlet property="logInButtonView" destination="XIJ-qL-0Lf" id="Bie-B7-HoF"/>
                         <outlet property="logInTextView" destination="Nkh-95-dQv" id="5qC-Aq-zf2"/>
                         <outlet property="logoView" destination="8Jg-mw-ytx" id="nI5-do-0Yz"/>
-                        <outlet property="textFieldView" destination="rDy-6E-Php" id="Kc4-GU-2Un"/>
+                        <outlet property="textFieldView" destination="rDy-6E-Php" id="aUf-N3-53H"/>
                         <segue destination="pAn-QE-wOf" kind="presentation" identifier="loginSegue" modalTransitionStyle="crossDissolve" id="NcQ-k1-tJ0"/>
                     </connections>
                 </viewController>

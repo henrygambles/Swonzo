@@ -14,6 +14,7 @@ import Alamofire
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
     private let homeViewController = HomeViewController()
+    private let swonzoClient = SwonzoClient()
     
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -32,6 +33,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
   
     
+    @IBOutlet weak var errorTextView: UITextView!
     @IBOutlet weak var logInTextView: UITextView!
     @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak var blurryView: UIView!
@@ -48,52 +50,52 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func setAccountId() {
-        homeViewController.getAccountId() { response in
+    func saveAccountId() {
+        swonzoClient.getAccountId() { response in
             let accountId = response
-            print("response", response)
-            print("Account ID is: \(accountId)")
+            if response.hasPrefix("acc") {
             UserDefaults.standard.set(accountId, forKey: "AccountID")
+            print("Account ID \(accountId) saved.")
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            }
+            else {
+                self.errorTextView.text = response
+            }
         }
     }
+    
 var token =  UserDefaults.standard.string(forKey: "Token")
+    
+    func shake() {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 4
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: textFieldView.center.x - 10, y: textFieldView.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: textFieldView.center.x + 10, y: textFieldView.center.y))
+        textFieldView.layer.add(animation, forKey: "position")
+    }
 
 
     
     func login() {
-//        var accountId = self.setAccountId()
-//            print(accountId)
-//        var token = self.textFieldView.text as! String
-//        var headers: HTTPHeaders = [
-//            "Authorization": "Bearer " + token
-//        ]
-//        var parameters: Parameters = [
-//            "account_id": accountId
-//        ]
-//        var loginDetails = LoginDetails(token: token, accountId: accountId, headers: headers, paramters: parameters)
-//        var token =  UserDefaults.standard.string(forKey: "Token")
-//
-//        //var accountId = "acc_00009WBQ0ZTI9bSOC4i9pZ"
-//        var accountId =  UserDefaults.standard.string(forKey: "AccountID")
-//
-//        var headers: HTTPHeaders = [
-//            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!
-//        ]
-//
-//        var parameters: Parameters = [
-//            "account_id": UserDefaults.standard.string(forKey: "AccountID")!
-//        ]
-        UserDefaults.standard.set(self.textFieldView.text as! String, forKey: "Token")
-        self.setAccountId()
-//        UserDefaults.standard.set(self.setAccountId(), forKey: "AccountID")
-//        print("Login details at login function are: ", loginDetails)
-//        return loginDetails
+        if (self.textFieldView.text?.count)! > 5 {
+            UserDefaults.standard.set(self.textFieldView.text as! String, forKey: "Token")
+            self.saveAccountId()
+//            if (UserDefaults.standard.string(forKey: "AccountID")?.hasPrefix("acc"))! {
+//                performSegue(withIdentifier: "loginSegue", sender: nil)
+//            }   else {
+//                self.errorTextView.text = "account ID error"
+//            }
+        } else {
+            self.errorTextView.text = "Token's too short!"
+            shake()
+        }
     }
     
     @IBAction func logInButton(_ sender: Any) {
         print("Token when button is pressed = ", token)
         login()
-        performSegue(withIdentifier: "loginSegue", sender: nil)
         
     }
     

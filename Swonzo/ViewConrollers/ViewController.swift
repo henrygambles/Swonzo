@@ -77,8 +77,6 @@ class ViewController: UIViewController {
                 self.textView.text = error.localizedDescription
             } else if let json = json {
                 self.textView.text = json.description
-                print(parameters)
-                print(accountId)
             }
         }
     }

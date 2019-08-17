@@ -90,7 +90,6 @@ class SwonzoClient {
                                 print(error.localizedDescription)
                             }; do {
                                 let json = try JSON(data: response.data!)
-                                print(json)
                                 if json.description.contains("message") {
                                     let errorMessage = json["message"].string!
                                     print("Whoops... ", errorMessage)

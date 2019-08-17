@@ -83,7 +83,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-var token =  UserDefaults.standard.string(forKey: "Token")
+
     
     func shake() {
         let animation = CABasicAnimation(keyPath: "position")
@@ -112,6 +112,8 @@ var token =  UserDefaults.standard.string(forKey: "Token")
     }
     
     @IBAction func logInButton(_ sender: Any) {
+        UserDefaults.standard.set(self.textFieldView.text as! String, forKey: "Token")
+        var token =  UserDefaults.standard.string(forKey: "Token")
         print("Token when button is pressed = ", token)
         login()
     }

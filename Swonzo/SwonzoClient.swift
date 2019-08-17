@@ -78,7 +78,7 @@ class SwonzoClient {
 
     }
     
-    func getAccountId(completion: @escaping (String) -> Void) {
+    func getAccountInfo(completion: @escaping (String) -> Void) {
         
         Alamofire.request("https://api.monzo.com/accounts",
                           encoding:  URLEncoding.default,
@@ -97,6 +97,8 @@ class SwonzoClient {
                                     completion(errorMessage)
                                 } else {
                                     let accountId = json["accounts"][0]["id"].string!
+                                    let first_name = json["accounts"][0]["owners"][0]["preferred_first_name"].string
+                                    UserDefaults.standard.set(first_name, forKey: "FirstName")
                                     print("Getting account ID...", accountId)
                                     completion(accountId)
                                 }

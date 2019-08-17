@@ -25,13 +25,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
        
         let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fadeIn), userInfo: nil, repeats: false)
-        
+        self.setupToHideKeyboardOnTapOnView()
         textFieldView.delegate = self
         setBlurryView()
         hide()
     }
     
   
+    
     
     @IBOutlet weak var errorTextView: UITextView!
     @IBOutlet weak var logInTextView: UITextView!
@@ -50,8 +51,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func saveAccountId() {
-        swonzoClient.getAccountId() { response in
+    func checkAccountId() {
+        swonzoClient.getAccountInfo() { response in
             let accountId = response
             if response.hasPrefix("acc") {
             UserDefaults.standard.set(accountId, forKey: "AccountID")
@@ -60,6 +61,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             }
             else {
                 self.errorTextView.text = response
+                self.shake()
             }
         }
     }
@@ -81,12 +83,7 @@ var token =  UserDefaults.standard.string(forKey: "Token")
     func login() {
         if (self.textFieldView.text?.count)! > 5 {
             UserDefaults.standard.set(self.textFieldView.text as! String, forKey: "Token")
-            self.saveAccountId()
-//            if (UserDefaults.standard.string(forKey: "AccountID")?.hasPrefix("acc"))! {
-//                performSegue(withIdentifier: "loginSegue", sender: nil)
-//            }   else {
-//                self.errorTextView.text = "account ID error"
-//            }
+            self.checkAccountId()
         } else {
             self.errorTextView.text = "Token's too short!"
             shake()
@@ -96,7 +93,11 @@ var token =  UserDefaults.standard.string(forKey: "Token")
     @IBAction func logInButton(_ sender: Any) {
         print("Token when button is pressed = ", token)
         login()
-        
+    }
+    
+    @IBAction func recentToken(_ sender: Any) {
+        print(UserDefaults.standard.string(forKey: "FirstName")!)
+        checkAccountId()
     }
     
     
@@ -130,14 +131,23 @@ var token =  UserDefaults.standard.string(forKey: "Token")
         }
     }
     
-//    func blurViewAndFadeIn() {
-//        UIView.animate(withDuration: 1) {
-//            self.blurryView.alpha = 1
-//            self.logoView.alpha = 1
-//            self.logInTextView.alpha = 1
-//            self.textFieldView.alpha = 1
-//            self.logInButtonView.alpha = 1
-//        }
-//    }
+}
+
+extension UIViewController
+{
+    func setupToHideKeyboardOnTapOnView()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(UIViewController.dismissKeyboard))
+        
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard()
+    {
+        view.endEditing(true)
+    }
 }
 

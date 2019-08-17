@@ -16,10 +16,7 @@ class HomeViewController: UIViewController {
     
     private let swonzoClient = SwonzoClient()
     private let swonzoLogic = SwonzoLogic()
-//    private let logInViewController = LogInViewController()
 
-
-    
     @IBOutlet weak var thirdBlurView: UIView!
     @IBOutlet weak var homeView: UITextView!
     @IBOutlet weak var balanceView: UITextView!
@@ -51,46 +48,11 @@ class HomeViewController: UIViewController {
         thirdBlurView.addSubview(blurView)
     }
     
-//    func getAccountId(completion: @escaping (String) -> Void) {
-//
-//
-//        Alamofire.request("https://api.monzo.com/accounts",
-//                          encoding:  URLEncoding.default,
-//                          headers: headers).responseJSON { response in
-//                            if let error = response.error {
-//                                self.homeView.text = error.localizedDescription
-//                                print("ERROR")
-//                                print(error.localizedDescription)
-//                            }; do {
-//                                let json = try JSON(data: response.data!)
-//
-//                                if (response.result.isSuccess) {
-//                                    let accountId = json["accounts"][0]["id"].string!
-//
-//                                    print("YEEEETT", accountId)
-//                                    completion(accountId)
-//                                }
-//
-//                                else if json.description.contains("message") {
-//                                    let errorMessage = json["message"].string!
-//                                    print("MESSAGE", errorMessage)
-//                                } else {
-//                                    print("Unknown error")
-//                                }
-//                            } catch {
-//                                print("JSON Parsing error:", error)
-//                            }
-//        }
-//        print(accountId)
-//    }
-   
+
 
     
     
     func balanceRequest() {
-        
-//        let loginDetails = LogInViewController().login()
-        
         Alamofire.request("https://api.monzo.com/balance",
                           parameters: parameters,
                           encoding:  URLEncoding.default,
@@ -112,7 +74,6 @@ class HomeViewController: UIViewController {
                                     UIView.animate(withDuration: 1) {
                                         self.homeView.alpha = 1
                                     }
-                                    
                                 }
                                 else {
                                     self.homeView.text = errorMessage as! String

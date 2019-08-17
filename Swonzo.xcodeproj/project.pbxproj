@@ -32,6 +32,7 @@
 		BABE7DFD23088E6900BED520 /* checkTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABE7DFC23088E6900BED520 /* checkTokenViewController.swift */; };
 		BABE7DFF2308B5D300BED520 /* rainbow-wave-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BABE7DFE2308B5D200BED520 /* rainbow-wave-loading.json */; };
 		BABE7E012308B6AA00BED520 /* rainbow-circle-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BABE7E002308B6AA00BED520 /* rainbow-circle-loading.json */; };
+		BABE7E032308BA4500BED520 /* skeleton-frame-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BABE7E022308BA4500BED520 /* skeleton-frame-loading.json */; };
 		BAC4D28D22E21814009891C0 /* nightMap.json in Resources */ = {isa = PBXBuildFile; fileRef = BAC4D28C22E21814009891C0 /* nightMap.json */; };
 		BAC85F0322FB69050096B113 /* SlatePro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAC85F0122FB69050096B113 /* SlatePro-Medium.ttf */; };
 		BAC85F0622FB691F0096B113 /* SlatePro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAC85F0522FB691F0096B113 /* SlatePro.ttf */; };
@@ -94,6 +95,7 @@
 		BABE7DFC23088E6900BED520 /* checkTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkTokenViewController.swift; sourceTree = "<group>"; };
 		BABE7DFE2308B5D200BED520 /* rainbow-wave-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "rainbow-wave-loading.json"; sourceTree = "<group>"; };
 		BABE7E002308B6AA00BED520 /* rainbow-circle-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "rainbow-circle-loading.json"; sourceTree = "<group>"; };
+		BABE7E022308BA4500BED520 /* skeleton-frame-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "skeleton-frame-loading.json"; sourceTree = "<group>"; };
 		BAC4D28C22E21814009891C0 /* nightMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nightMap.json; sourceTree = "<group>"; };
 		BAC85F0122FB69050096B113 /* SlatePro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SlatePro-Medium.ttf"; path = "Swonzo/Fonts/SlatePro-Medium.ttf"; sourceTree = SOURCE_ROOT; };
 		BAC85F0522FB691F0096B113 /* SlatePro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SlatePro.ttf; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		BA86F1EF22DAC0BB00CE865A /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				BABE7E022308BA4500BED520 /* skeleton-frame-loading.json */,
 				BABE7DFE2308B5D200BED520 /* rainbow-wave-loading.json */,
 				BABE7E002308B6AA00BED520 /* rainbow-circle-loading.json */,
 				BA89679622FDBADB000EF218 /* tick.json */,
@@ -394,6 +397,7 @@
 				BA89679722FDBADB000EF218 /* tick.json in Resources */,
 				BAC85F0322FB69050096B113 /* SlatePro-Medium.ttf in Resources */,
 				BA7D5E3D22D631BB00D7C0BE /* Main.storyboard in Resources */,
+				BABE7E032308BA4500BED520 /* skeleton-frame-loading.json in Resources */,
 				BA47E00422E0B0F5000EF78F /* rocket_monzo.json in Resources */,
 				BABE7E012308B6AA00BED520 /* rainbow-circle-loading.json in Resources */,
 			);

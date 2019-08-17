@@ -18,6 +18,11 @@ class checkTokenViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    
 
     
     func tryToken() {
@@ -25,21 +30,18 @@ class checkTokenViewController: UIViewController {
             if response.hasPrefix("acc") {
                 UserDefaults.standard.set(response, forKey: "AccountID")
                 print("Account ID \(response) saved.")
-//                let loggedIn = true
                 self.performSegue(withIdentifier: "goodTokenSegue", sender: nil)
-//                completion(loggedIn)
             }
             else {
-//                let loggedIn = false
                 self.performSegue(withIdentifier: "badTokenSegue", sender: nil)
-//                completion(loggedIn)
             }
         }
+        
     }
     
     func startAnimation() {
         
-        let animationView = AnimationView(name: "rainbow-circle-loading")
+        let animationView = AnimationView(name: "rainbow-wave-loading")
         self.view.addSubview(animationView)
         animationView.contentMode = .scaleAspectFill
         animationView.animationSpeed = 1.5

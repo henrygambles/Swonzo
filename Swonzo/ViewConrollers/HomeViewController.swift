@@ -68,7 +68,8 @@ class HomeViewController: UIViewController {
                                     let errorMessage = MYJSON.object(forKey: "message")
                                 print("result is ", result)
                                 if balance != nil {
-                                    self.homeView.text =  "Your balance is " + self.swonzoLogic.jsonBalanceToMoney(balance: balance) + "\n\n\nYou've spent " + self.swonzoLogic.jsonSpendTodayToMoney(spendToday: spendToday) + " today."
+//                                    let name = UserDefaults.standard.string(forKey: "FirstName")
+                                    self.homeView.text =  "Hi \(UserDefaults.standard.string(forKey: "FirstName")!)!\n\n\nYour balance is \(self.swonzoLogic.jsonBalanceToMoney(balance: balance))\n\n\nYou've spent \(self.swonzoLogic.jsonSpendTodayToMoney(spendToday: spendToday)) today."
                                    
                                     self.homeView.alpha = 0
                                     UIView.animate(withDuration: 1) {

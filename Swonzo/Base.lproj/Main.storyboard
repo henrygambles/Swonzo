@@ -166,11 +166,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Checking Token..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zhU-oH-c3Z">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Checking Token 📡" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zhU-oH-c3Z">
                                 <rect key="frame" x="63" y="69" width="249" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="29"/>
+                                <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="26"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>

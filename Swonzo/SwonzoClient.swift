@@ -84,10 +84,11 @@ class SwonzoClient {
                           encoding:  URLEncoding.default,
                           headers: headers).responseJSON { response in
                             if let error = response.error {
-                                HomeViewController().homeView.text = error.localizedDescription
+//                                HomeViewController().homeView.text = error.localizedDescription
                                 
                                 print("ERROR")
                                 print(error.localizedDescription)
+                                completion(error.localizedDescription)
                             }; do {
                                 let json = try JSON(data: response.data!)
                                 if json.description.contains("message") {

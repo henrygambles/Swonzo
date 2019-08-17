@@ -25,6 +25,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
        
         let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fadeIn), userInfo: nil, repeats: false)
+        self.recentTokenButton.isHidden = true;
         self.setupToHideKeyboardOnTapOnView()
         checkIfLoggedIn()
         textFieldView.delegate = self

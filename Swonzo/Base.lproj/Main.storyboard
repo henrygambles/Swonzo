@@ -166,8 +166,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P98-cy-W5a">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="la_palm_trees_x" translatesAutoresizingMaskIntoConstraints="NO" id="P98-cy-W5a">
+                                <rect key="frame" x="-27" y="-64" width="424" height="755"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yh6-mF-bL5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -192,6 +192,7 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rDy-6E-Php">
                                 <rect key="frame" x="71" y="278" width="233" height="29"/>
+                                <color key="backgroundColor" red="0.90196078430000004" green="0.29411764709999999" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="1ba-Qq-bXO"/>
                                 </constraints>
@@ -206,7 +207,7 @@
                                 <rect key="frame" x="147" y="315" width="81" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Log In">
-                                    <color key="titleColor" red="0.97254901959999995" green="0.43921568630000002" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="logInButton:" destination="sg1-Fo-LOa" eventType="touchUpInside" id="KyI-Je-RLB"/>
@@ -222,7 +223,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egr-U4-2nk">
                                 <rect key="frame" x="102" y="356" width="172" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Use Recent Token"/>
+                                <state key="normal" title="Use Recent Token">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="recentToken:" destination="sg1-Fo-LOa" eventType="touchUpInside" id="M4u-8b-ETe"/>
                                 </connections>
@@ -232,19 +235,18 @@
                         <constraints>
                             <constraint firstItem="Egr-U4-2nk" firstAttribute="leading" secondItem="Qh9-Kf-CJw" secondAttribute="leading" constant="102" id="0Aw-zf-BKn"/>
                             <constraint firstItem="yWk-Jp-Znr" firstAttribute="leading" secondItem="Qh9-Kf-CJw" secondAttribute="leading" constant="31" id="0LR-51-2K2"/>
-                            <constraint firstItem="yh6-mF-bL5" firstAttribute="trailing" secondItem="P98-cy-W5a" secondAttribute="trailing" id="2bd-GF-JLF"/>
                             <constraint firstItem="yh6-mF-bL5" firstAttribute="leading" secondItem="cy1-C6-vXj" secondAttribute="leading" id="2qF-xj-imH"/>
-                            <constraint firstAttribute="trailing" secondItem="P98-cy-W5a" secondAttribute="trailing" id="3ix-gk-9Gd"/>
+                            <constraint firstItem="P98-cy-W5a" firstAttribute="bottom" secondItem="yh6-mF-bL5" secondAttribute="bottom" constant="24" id="4IK-gK-yKf"/>
+                            <constraint firstItem="P98-cy-W5a" firstAttribute="trailing" secondItem="yh6-mF-bL5" secondAttribute="trailing" constant="22" id="7WC-61-KE2"/>
                             <constraint firstItem="rDy-6E-Php" firstAttribute="centerX" secondItem="XIJ-qL-0Lf" secondAttribute="centerX" id="9gU-eg-7mz"/>
                             <constraint firstItem="XIJ-qL-0Lf" firstAttribute="centerX" secondItem="Egr-U4-2nk" secondAttribute="centerX" id="AIv-en-krJ"/>
                             <constraint firstItem="yh6-mF-bL5" firstAttribute="bottom" secondItem="Qh9-Kf-CJw" secondAttribute="bottom" id="Da0-7W-Fk8"/>
                             <constraint firstItem="XIJ-qL-0Lf" firstAttribute="top" secondItem="Nkh-95-dQv" secondAttribute="bottom" constant="28" id="NL5-92-7Pk"/>
-                            <constraint firstItem="P98-cy-W5a" firstAttribute="bottom" secondItem="Qh9-Kf-CJw" secondAttribute="bottom" id="PCq-hn-GcO"/>
                             <constraint firstItem="Nkh-95-dQv" firstAttribute="top" secondItem="8Jg-mw-ytx" secondAttribute="bottom" constant="29" id="PhZ-PN-1TZ"/>
-                            <constraint firstItem="yh6-mF-bL5" firstAttribute="top" secondItem="P98-cy-W5a" secondAttribute="top" id="Smg-7n-gek"/>
+                            <constraint firstItem="P98-cy-W5a" firstAttribute="leading" secondItem="yh6-mF-bL5" secondAttribute="leading" constant="-27" id="R7d-0c-E1a"/>
+                            <constraint firstItem="P98-cy-W5a" firstAttribute="top" secondItem="yh6-mF-bL5" secondAttribute="top" constant="-64" id="TDU-cn-kXJ"/>
                             <constraint firstItem="Qh9-Kf-CJw" firstAttribute="bottom" secondItem="Egr-U4-2nk" secondAttribute="bottom" constant="278" id="VQ7-Mc-7Ae"/>
                             <constraint firstItem="yWk-Jp-Znr" firstAttribute="top" secondItem="Qh9-Kf-CJw" secondAttribute="top" constant="10" id="b4E-ZQ-Usn"/>
-                            <constraint firstItem="P98-cy-W5a" firstAttribute="leading" secondItem="yh6-mF-bL5" secondAttribute="leading" id="bFE-9w-BxA"/>
                             <constraint firstItem="yh6-mF-bL5" firstAttribute="top" secondItem="cy1-C6-vXj" secondAttribute="top" id="dGV-ys-rZ5"/>
                             <constraint firstItem="Qh9-Kf-CJw" firstAttribute="trailing" secondItem="Nkh-95-dQv" secondAttribute="trailing" constant="57" id="gPX-Vv-9GX"/>
                             <constraint firstItem="Qh9-Kf-CJw" firstAttribute="trailing" secondItem="8Jg-mw-ytx" secondAttribute="trailing" constant="121" id="gR3-4e-o7L"/>
@@ -257,6 +259,7 @@
                             <constraint firstItem="yWk-Jp-Znr" firstAttribute="centerX" secondItem="rDy-6E-Php" secondAttribute="centerX" id="psh-Oy-lbW"/>
                             <constraint firstItem="rDy-6E-Php" firstAttribute="leading" secondItem="Qh9-Kf-CJw" secondAttribute="leading" constant="71" id="va5-bJ-ToN"/>
                             <constraint firstItem="Nkh-95-dQv" firstAttribute="leading" secondItem="Qh9-Kf-CJw" secondAttribute="leading" constant="53" id="w7B-RV-GvL"/>
+                            <constraint firstAttribute="trailing" secondItem="P98-cy-W5a" secondAttribute="trailing" constant="-22" id="w9O-ih-TLy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qh9-Kf-CJw"/>
                     </view>
@@ -300,6 +303,7 @@
     </scenes>
     <resources>
         <image name="home-tab-bar" width="25" height="25"/>
+        <image name="la_palm_trees_x" width="467" height="700"/>
         <image name="london_gherkin_x" width="1125" height="2436"/>
         <image name="maps-icon-tab-bar" width="25" height="25"/>
         <image name="monzo-card" width="1672" height="1083"/>

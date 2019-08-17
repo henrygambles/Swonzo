@@ -18,83 +18,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Dev-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" userLabel="Dev" customClass="ViewController" customModule="Swonzo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mJh-9W-hlM">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pC6-FT-1zC">
-                                <rect key="frame" x="156" y="597" width="65" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="17"/>
-                                <state key="normal" title="Accounts"/>
-                                <connections>
-                                    <action selector="executeRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="32I-4v-0sH"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ac6-jo-2hS">
-                                <rect key="frame" x="33" y="105" width="310" height="370"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="SlatePro-Medium" family="Slate Pro" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIt-NI-GLX">
-                                <rect key="frame" x="161" y="559" width="55" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="17"/>
-                                <state key="normal" title="Balance"/>
-                                <connections>
-                                    <action selector="executeBalance:" destination="BYZ-38-t0r" eventType="touchUpInside" id="riG-Du-zbo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmz-Ql-09J">
-                                <rect key="frame" x="143" y="521" width="91" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="17"/>
-                                <state key="normal" title="Transactions "/>
-                                <connections>
-                                    <action selector="executeTransactions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VEs-cj-yO5"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="monzo_white" translatesAutoresizingMaskIntoConstraints="NO" id="4p3-Ne-uJq">
-                                <rect key="frame" x="91" y="32" width="193" height="76"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kz8-0M-VkJ">
-                                <rect key="frame" x="170" y="483" width="37" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="17"/>
-                                <state key="normal" title="Clear"/>
-                                <connections>
-                                    <action selector="executeHey:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XlB-9p-fgp"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.078431372549019607" green="0.13725490196078433" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Dev" image="swonzo-icon-tab-bar" id="uws-8Y-9N6" userLabel="Dev"/>
-                    <connections>
-                        <outlet property="secondBlurryView" destination="mJh-9W-hlM" id="0MW-z6-X9W"/>
-                        <outlet property="textView" destination="ac6-jo-2hS" id="Ina-nB-Kkb"/>
-                        <outlet property="transactionsButton" destination="nmz-Ql-09J" id="PP9-u5-E6p"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-138.40000000000001" y="-823.53823088455783"/>
-        </scene>
         <!--Transactions-->
         <scene sceneID="QgX-Bm-lvv">
             <objects>
@@ -132,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRz-4t-W9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138.40000000000001" y="-126.38680659670166"/>
+            <point key="canvasLocation" x="-138" y="-580"/>
         </scene>
         <!--Maps-->
         <scene sceneID="G5o-6u-FvL">
@@ -143,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ej5-K7-kH3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138.40000000000001" y="565.36731634182911"/>
+            <point key="canvasLocation" x="-138" y="267"/>
         </scene>
         <!--Home-->
         <scene sceneID="s0o-Sn-Daq">
@@ -365,7 +288,6 @@
                         <color key="tintColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="agT-Pc-XYU"/>
                         <segue destination="iAP-9Z-y5L" kind="relationship" relationship="viewControllers" id="35e-vs-3Bl"/>
                         <segue destination="9YI-ha-Eem" kind="relationship" relationship="viewControllers" id="Iqv-MR-I6N"/>
                         <segue destination="dIj-7C-6L1" kind="relationship" relationship="viewControllers" id="q9v-GF-QNM"/>
@@ -381,9 +303,7 @@
         <image name="london_gherkin_x" width="1125" height="2436"/>
         <image name="maps-icon-tab-bar" width="25" height="25"/>
         <image name="monzo-card" width="1672" height="1083"/>
-        <image name="monzo_white" width="594" height="230"/>
         <image name="swan_vector_white" width="944" height="981"/>
-        <image name="swonzo-icon-tab-bar" width="25" height="25"/>
         <image name="transactions-tab-bar" width="25" height="25"/>
     </resources>
     <color key="tintColor" red="0.97254901960784312" green="0.4392156862745098" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

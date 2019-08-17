@@ -22,7 +22,6 @@
 		BA5F2C6C22E5D0E600230C17 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */; };
 		BA7ACE4622F06A67007AAF73 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */; };
 		BA7D5E3822D631BB00D7C0BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */; };
-		BA7D5E3A22D631BB00D7C0BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E3922D631BB00D7C0BE /* ViewController.swift */; };
 		BA7D5E3D22D631BB00D7C0BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5E3B22D631BB00D7C0BE /* Main.storyboard */; };
 		BA7D5E3F22D631BD00D7C0BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5E3E22D631BD00D7C0BE /* Assets.xcassets */; };
 		BA7D5E4222D631BD00D7C0BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5E4022D631BD00D7C0BE /* LaunchScreen.storyboard */; };
@@ -77,7 +76,6 @@
 		BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BA7D5E3422D631BB00D7C0BE /* Swonzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swonzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BA7D5E3922D631BB00D7C0BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BA7D5E3C22D631BB00D7C0BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA7D5E3E22D631BD00D7C0BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA7D5E4122D631BD00D7C0BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 				BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */,
 				BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */,
 				BAC90D9222F2E1F400827D9E /* TransactionsViewController.swift */,
-				BA7D5E3922D631BB00D7C0BE /* ViewController.swift */,
 			);
 			path = ViewConrollers;
 			sourceTree = "<group>";
@@ -551,7 +548,6 @@
 				BA39A3022304469E004A1531 /* SwonzoLogic.swift in Sources */,
 				BAC90D9322F2E1F400827D9E /* TransactionsViewController.swift in Sources */,
 				BAC90D8F22F26EB900827D9E /* SplashScreenViewController.swift in Sources */,
-				BA7D5E3A22D631BB00D7C0BE /* ViewController.swift in Sources */,
 				BA7D5E3822D631BB00D7C0BE /* AppDelegate.swift in Sources */,
 				BA7ACE4622F06A67007AAF73 /* LogInViewController.swift in Sources */,
 				BA5F2C6A22E5CC3900230C17 /* HomeViewController.swift in Sources */,

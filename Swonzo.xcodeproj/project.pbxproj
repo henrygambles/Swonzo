@@ -29,6 +29,9 @@
 		BA7D5E5822D631BD00D7C0BE /* SwonzoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E5722D631BD00D7C0BE /* SwonzoUITests.swift */; };
 		BA89679522FDB86B000EF218 /* harddisk.json in Resources */ = {isa = PBXBuildFile; fileRef = BA89679422FDB86B000EF218 /* harddisk.json */; };
 		BA89679722FDBADB000EF218 /* tick.json in Resources */ = {isa = PBXBuildFile; fileRef = BA89679622FDBADB000EF218 /* tick.json */; };
+		BABE7DFD23088E6900BED520 /* checkTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABE7DFC23088E6900BED520 /* checkTokenViewController.swift */; };
+		BABE7DFF2308B5D300BED520 /* rainbow-wave-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BABE7DFE2308B5D200BED520 /* rainbow-wave-loading.json */; };
+		BABE7E012308B6AA00BED520 /* rainbow-circle-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BABE7E002308B6AA00BED520 /* rainbow-circle-loading.json */; };
 		BAC4D28D22E21814009891C0 /* nightMap.json in Resources */ = {isa = PBXBuildFile; fileRef = BAC4D28C22E21814009891C0 /* nightMap.json */; };
 		BAC85F0322FB69050096B113 /* SlatePro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAC85F0122FB69050096B113 /* SlatePro-Medium.ttf */; };
 		BAC85F0622FB691F0096B113 /* SlatePro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAC85F0522FB691F0096B113 /* SlatePro.ttf */; };
@@ -88,6 +91,9 @@
 		BA7D5E5922D631BD00D7C0BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA89679422FDB86B000EF218 /* harddisk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = harddisk.json; sourceTree = "<group>"; };
 		BA89679622FDBADB000EF218 /* tick.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tick.json; sourceTree = "<group>"; };
+		BABE7DFC23088E6900BED520 /* checkTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkTokenViewController.swift; sourceTree = "<group>"; };
+		BABE7DFE2308B5D200BED520 /* rainbow-wave-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "rainbow-wave-loading.json"; sourceTree = "<group>"; };
+		BABE7E002308B6AA00BED520 /* rainbow-circle-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "rainbow-circle-loading.json"; sourceTree = "<group>"; };
 		BAC4D28C22E21814009891C0 /* nightMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nightMap.json; sourceTree = "<group>"; };
 		BAC85F0122FB69050096B113 /* SlatePro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SlatePro-Medium.ttf"; path = "Swonzo/Fonts/SlatePro-Medium.ttf"; sourceTree = SOURCE_ROOT; };
 		BAC85F0522FB691F0096B113 /* SlatePro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SlatePro.ttf; sourceTree = "<group>"; };
@@ -156,6 +162,7 @@
 				BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */,
 				BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */,
 				BAC90D9222F2E1F400827D9E /* TransactionsViewController.swift */,
+				BABE7DFC23088E6900BED520 /* checkTokenViewController.swift */,
 			);
 			path = ViewConrollers;
 			sourceTree = "<group>";
@@ -224,6 +231,8 @@
 		BA86F1EF22DAC0BB00CE865A /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				BABE7DFE2308B5D200BED520 /* rainbow-wave-loading.json */,
+				BABE7E002308B6AA00BED520 /* rainbow-circle-loading.json */,
 				BA89679622FDBADB000EF218 /* tick.json */,
 				BA89679422FDB86B000EF218 /* harddisk.json */,
 				BA47E00222E0B0F5000EF78F /* rocket_monzo.json */,
@@ -380,11 +389,13 @@
 				BA4A64CF22FE5499003208B6 /* swonzo_ring.png in Resources */,
 				BA89679522FDB86B000EF218 /* harddisk.json in Resources */,
 				BA2204E422E3ADCD00D0C83B /* customMapStyle.json in Resources */,
+				BABE7DFF2308B5D300BED520 /* rainbow-wave-loading.json in Resources */,
 				BA4A64D222FE56C0003208B6 /* README.md in Resources */,
 				BA89679722FDBADB000EF218 /* tick.json in Resources */,
 				BAC85F0322FB69050096B113 /* SlatePro-Medium.ttf in Resources */,
 				BA7D5E3D22D631BB00D7C0BE /* Main.storyboard in Resources */,
 				BA47E00422E0B0F5000EF78F /* rocket_monzo.json in Resources */,
+				BABE7E012308B6AA00BED520 /* rainbow-circle-loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,6 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */,
+				BABE7DFD23088E6900BED520 /* checkTokenViewController.swift in Sources */,
 				BA39A3022304469E004A1531 /* SwonzoLogic.swift in Sources */,
 				BAC90D9322F2E1F400827D9E /* TransactionsViewController.swift in Sources */,
 				BAC90D8F22F26EB900827D9E /* SplashScreenViewController.swift in Sources */,

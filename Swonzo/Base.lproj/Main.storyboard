@@ -151,12 +151,46 @@
                     </view>
                     <connections>
                         <outlet property="animationView" destination="qek-Cn-z01" id="ZTl-pk-QSr"/>
-                        <segue destination="sg1-Fo-LOa" kind="show" identifier="splashSegue" animates="NO" id="g1u-ti-FaB"/>
+                        <segue destination="Eek-WA-TZz" kind="show" identifier="splashSegue" id="bva-Ji-6Tz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mR2-4l-w7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2866.4000000000001" y="266.71664167916043"/>
+            <point key="canvasLocation" x="-3820" y="252"/>
+        </scene>
+        <!--Check Token View Controller-->
+        <scene sceneID="Nxz-vx-nQQ">
+            <objects>
+                <viewController id="Eek-WA-TZz" customClass="checkTokenViewController" customModule="Swonzo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Edx-p6-jE7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Checking Token..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zhU-oH-c3Z">
+                                <rect key="frame" x="63" y="69" width="249" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="29"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.078431372550000003" green="0.13725490200000001" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="onq-TC-cdW" firstAttribute="bottom" secondItem="zhU-oH-c3Z" secondAttribute="bottom" constant="538" id="0Y7-9F-rXc"/>
+                            <constraint firstItem="zhU-oH-c3Z" firstAttribute="top" secondItem="onq-TC-cdW" secondAttribute="top" constant="49" id="20d-IS-U86"/>
+                            <constraint firstItem="zhU-oH-c3Z" firstAttribute="centerX" secondItem="Edx-p6-jE7" secondAttribute="centerX" id="7po-l9-Fn8"/>
+                            <constraint firstItem="zhU-oH-c3Z" firstAttribute="leading" secondItem="onq-TC-cdW" secondAttribute="leading" constant="63" id="f9w-NV-mmX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="onq-TC-cdW"/>
+                    </view>
+                    <connections>
+                        <segue destination="pAn-QE-wOf" kind="show" identifier="goodTokenSegue" id="BLl-cc-F8T"/>
+                        <segue destination="sg1-Fo-LOa" kind="show" identifier="badTokenSegue" id="YAq-7E-JW4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TM6-gh-bpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2930.4000000000001" y="250.52473763118442"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="JNL-8M-7yg">
@@ -277,7 +311,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eb3-oL-o4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2124" y="273.91304347826087"/>
+            <point key="canvasLocation" x="-2047" y="-182"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="gPo-Dk-tI6">
@@ -298,7 +332,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b1b-ix-VYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1249" y="278"/>
+            <point key="canvasLocation" x="-2047" y="534"/>
         </scene>
     </scenes>
     <resources>
@@ -310,5 +344,8 @@
         <image name="swan_vector_white" width="944" height="981"/>
         <image name="transactions-tab-bar" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="BLl-cc-F8T"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.97254901960784312" green="0.4392156862745098" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

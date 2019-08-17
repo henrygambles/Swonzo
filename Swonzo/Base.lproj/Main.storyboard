@@ -344,6 +344,7 @@
                         <outlet property="logInButtonView" destination="XIJ-qL-0Lf" id="Bie-B7-HoF"/>
                         <outlet property="logInTextView" destination="Nkh-95-dQv" id="5qC-Aq-zf2"/>
                         <outlet property="logoView" destination="8Jg-mw-ytx" id="nI5-do-0Yz"/>
+                        <outlet property="recentTokenButton" destination="Egr-U4-2nk" id="tWZ-eb-9No"/>
                         <outlet property="textFieldView" destination="rDy-6E-Php" id="aUf-N3-53H"/>
                         <segue destination="pAn-QE-wOf" kind="presentation" identifier="loginSegue" modalTransitionStyle="crossDissolve" id="NcQ-k1-tJ0"/>
                     </connections>

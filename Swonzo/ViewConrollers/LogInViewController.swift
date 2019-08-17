@@ -26,14 +26,22 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
        
         let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fadeIn), userInfo: nil, repeats: false)
         self.setupToHideKeyboardOnTapOnView()
+        checkIfLoggedIn()
         textFieldView.delegate = self
         setBlurryView()
         hide()
     }
     
-  
+    func checkIfLoggedIn() {
+        if UserDefaults.standard.string(forKey: "FirstName") != nil {
+            recentTokenButton.isHidden = false;
+        } else {
+            recentTokenButton.isHidden = true;
+        }
+    }
     
     
+    @IBOutlet weak var recentTokenButton: UIButton!
     @IBOutlet weak var errorTextView: UITextView!
     @IBOutlet weak var logInTextView: UITextView!
     @IBOutlet weak var logoView: UIImageView!
@@ -51,15 +59,21 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func checkAccountId() {
+    func checkAccountId(completion: @escaping (Bool) -> Void) {
+      
         swonzoClient.getAccountInfo() { response in
+            
             let accountId = response
             if response.hasPrefix("acc") {
             UserDefaults.standard.set(accountId, forKey: "AccountID")
             print("Account ID \(accountId) saved.")
-            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+//            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                let loggedIn = true
+                completion(loggedIn)
             }
             else {
+                let loggedIn = false
+                completion(loggedIn)
                 self.errorTextView.text = response
                 self.shake()
             }
@@ -81,13 +95,17 @@ var token =  UserDefaults.standard.string(forKey: "Token")
 
     
     func login() {
-        if (self.textFieldView.text?.count)! > 5 {
             UserDefaults.standard.set(self.textFieldView.text as! String, forKey: "Token")
-            self.checkAccountId()
-        } else {
-            self.errorTextView.text = "Token's too short!"
-            shake()
-        }
+            self.checkAccountId(){ response in
+                if response == true {
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                }
+                else if response == false {
+                    self.errorTextView.text = "Not logged in"
+//                    print("Logged ot")
+                }
+            }
+
     }
     
     @IBAction func logInButton(_ sender: Any) {
@@ -97,7 +115,14 @@ var token =  UserDefaults.standard.string(forKey: "Token")
     
     @IBAction func recentToken(_ sender: Any) {
         print(UserDefaults.standard.string(forKey: "FirstName")!)
-        checkAccountId()
+        checkAccountId() { response in
+            if response == true {
+               self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            }
+            else {
+                self.errorTextView.text = "Error"
+            }
+        }
     }
     
     

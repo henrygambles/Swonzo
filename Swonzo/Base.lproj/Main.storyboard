@@ -55,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRz-4t-W9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138" y="-580"/>
+            <point key="canvasLocation" x="-983" y="-436"/>
         </scene>
         <!--Maps-->
         <scene sceneID="G5o-6u-FvL">
@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ej5-K7-kH3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138" y="267"/>
+            <point key="canvasLocation" x="-983" y="288"/>
         </scene>
         <!--Home-->
         <scene sceneID="s0o-Sn-Daq">
@@ -130,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdu-VO-rJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138.40000000000001" y="1284.1079460269866"/>
+            <point key="canvasLocation" x="-983" y="1072"/>
         </scene>
         <!--Splash Screen View Controller-->
         <scene sceneID="udi-My-uFI">
@@ -161,12 +161,12 @@
         <!--Check Token View Controller-->
         <scene sceneID="Nxz-vx-nQQ">
             <objects>
-                <viewController id="Eek-WA-TZz" customClass="checkTokenViewController" customModule="Swonzo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Eek-WA-TZz" customClass="CheckTokenViewController" customModule="Swonzo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Edx-p6-jE7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Checking Token 📡" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zhU-oH-c3Z">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Checking Token" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zhU-oH-c3Z">
                                 <rect key="frame" x="63" y="69" width="249" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -75,7 +75,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     
                                     var latest = json["transactions"].arrayValue.last?["description"].string
-                                    print("eeeeeEEEEEEeeee")
                                     print(json["transactions"].arrayValue.count)
                                     print(latest)
                                     let numberOfTransactions = json["transactions"].arrayValue.count
@@ -87,6 +86,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         var amount = json["transactions"][i]["amount"].int
                                         var descripton = json["transactions"][i]["description"].string
                                         var notes = json["transactions"][i]["notes"].string
+                                        var address = json["transactions"][i]["merchant"]["address"]["address"].string
+                                        var merchant = json["transactions"][i]["merchant"].string
+                                        var merchantName = json["transactions"][i]["merchant"][3].string
+                                        var latitude = json["transactions"][i]["merchant"]["address"]["latitude"].string
+                                        var longitude = json["transactions"][i]["merchant"][0]["address"][0]["longitude"].string
+                                        
                                         
                                         var category = json["transactions"][i]["category"].string
                                         if category == "transport" {
@@ -116,6 +121,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         print(dateCreated ?? "Loop isn't")
                                         print(descripton?.prefix(25) ?? "Loop isn't")
                                         print(category ?? "Loop isn't")
+                                        print("ADDRESS:", address ?? "Loop isn't")
+                                        print("MERCHANT:", merchant ?? "Loop isn't")
+                                        print("NAME:", merchantName ?? "Loop isn't")
+                                        print("LAT:", latitude ?? "Loop isn't")
+                                        print("LONG: ", longitude ?? "No long")
                                         if pounds < 0 {
                                             let money = "-£" + String(format:"%.2f",abs(pounds))
                                             print(money)

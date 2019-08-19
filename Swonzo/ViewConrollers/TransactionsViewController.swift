@@ -215,7 +215,11 @@ struct International: Codable {
     var feeCurrency: Currency
     var rate: Double
     var status, reference: String
+//    var deliveryEstimate: Double
+//    var deliveryEstimate: Double? = nil
+
     var deliveryEstimate: Date? = nil
+    
     var transferwiseTransferID, transferwisePayInReference: String
     
     enum CodingKeys: String, CodingKey {
@@ -405,10 +409,17 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                 do {
                                     print("TRANSACTION TESTING 1")
 //                                   print(type(of: Merchant))
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.calendar = Calendar(identifier: .iso8601)
+                                    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                                    
+                                    let decoder = JSONDecoder()
+                                    decoder.dateDecodingStrategy = .formatted(dateFormatter)
             
                                     
-                                                                        let root = try JSONDecoder().decode(Root.self, from: response.data!)
-                                                                        let trans = try JSONDecoder().decode([Transaction].self, from: response.data!)
+                                                                        let root = try decoder.decode(Root.self, from: response.data!)
+                                                                        let trans = try decoder.decode([Transaction].self, from: response.data!)
                                     
 //                                                                        print("wagwan", trans.last?.accountID)
                                                                         print("ay", trans.count)
@@ -420,9 +431,17 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                 do {
                                     print("TRANSACTION TESTING 2")
                                     
-                                    let root = try JSONDecoder().decode(Root.self, from: response.data!)
+                                    let dateFormatter = DateFormatter()
+                                    dateFormatter.calendar = Calendar(identifier: .iso8601)
+                                    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                                    
+                                    let decoder = JSONDecoder()
+                                    decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                                    
+                                    let root = try decoder.decode(Root.self, from: response.data!)
 //                                    let trans = try JSONDecoder().decode(Array<Transaction>.self, from: response.data!)
-                                    let trans = try JSONDecoder().decode([Transaction].self, from: response.data!)
+                                    let trans = try decoder.decode([Transaction].self, from: response.data!)
                                     
                                     
 //                                    let root = try? JSONDecoder().decode(Root.self, from: response.data!)
@@ -572,5 +591,21 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You tapped cell number \(indexPath.row).")
+    }
+}
+
+extension Date {
+    
+    /// Returns a `Date` in `GMT` format, that is: "yyyy-MM-dd HH:mm:ss VV" and `TimeZone(secondsFromGMT: 0)`.
+    ///
+    /// - Parameter givenDate: If informed and in the expected format ("yyyy-MM-dd HH:mm:ss VV"), tries to initialize
+    /// a `Date` object with it and then return as GMT.
+    /// - Returns: `Date` object in `GMT` format
+    func asGMT(fromDate givenDate: String = "") -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss VV"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let dateString = givenDate.isEmpty ? formatter.string(from: self) : givenDate
+        return formatter.date(from: dateString)
     }
 }

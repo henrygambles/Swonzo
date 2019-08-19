@@ -153,6 +153,8 @@ enum Name: String, Codable {
     case kRino = "K Rino"
     case khajenouriDc = "KHAJENOURI DC"
     case kimberleyRino = "Kimberley Rino"
+    case maMan = "Ma man"
+    case maMainMan = "Ma main man"
     case missTKWong = "Miss T K Wong"
     case mlleLapeyreCandice = "MLLE LAPEYRE CANDICE"
     case mrFJShaw = "Mr F J Shaw"
@@ -221,16 +223,16 @@ enum Label: String, Codable {
 }
 
 // MARK: - Merchant
-struct Merchant: Codable {
-    let id, groupID, created, name: String
-    let logo: String
-    let emoji: String
-    let category: Category
-    let online, atm: Bool
-    let address: Address
-    let updated: String
-    let metadata: Metadata
-    let disableFeedback: Bool
+enum Merchant: String, Codable {
+    case id, groupID, created, name
+    case logo
+    case emoji
+    case category
+    case online
+    case address
+    case updated
+    case metadata
+    case disableFeedback
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -382,18 +384,31 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                 
                                 
                                 do {
-                                    print("Transaction TESTING")
+                                    print("TRANSACTION TESTING 1")
                                    
-                                    
-//                                                                        let json = try JSON(data: response.data!)
-//                                                                        let data = try Data(response.data!)
+            
                                     
                                                                         let root = try JSONDecoder().decode(Root.self, from: response.data!)
                                                                         let trans = try JSONDecoder().decode([Transaction].self, from: response.data!)
                                     
-                                                                        //                                    self.allTransactions = trans.last?.merchant?.address?.address
-                                                                        //                                    print("Bitch", trans.last?.merchant?.address.address as Any)
-                                                                        print("wagwan", trans.last?.accountID)
+//                                                                        print("wagwan", trans.last?.accountID)
+                                                                        print("ay", trans.count)
+//                                                                        print(<#T##items: Any...##Any#>)
+                                } catch {
+                                    print("JSON Parsing error:", error)
+                                }
+                                
+                                do {
+                                    print("TRANSACTION TESTING 2")
+                                    
+                                    
+                                    
+                                    let root = try? JSONDecoder().decode(Root.self, from: response.data!)
+                                    let trans = try? JSONDecoder().decode([Transaction].self, from: response.data!)
+                                    
+//                                    print("wagwan", trans?.last?.accountID)
+                                    print("ay", root?.transactions.count ?? 69)
+                                    print("ay", root?.transactions ?? 69)
                                 } catch {
                                     print("JSON Parsing error:", error)
                                 }

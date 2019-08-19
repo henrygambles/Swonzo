@@ -14,36 +14,37 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
+// MARK: - Root
 struct Root: Codable {
-    let transactions: [Transaction]?
+    let transactions: [Transaction]
 }
 
 // MARK: - Transaction
 struct Transaction: Codable {
-    let id, created, transactionDescription: String?
-    let amount: Int?
-    let fees: Fees?
-    let currency: Currency?
+    let id, created, transactionDescription: String
+    let amount: Int
+    let fees: Fees
+    let currency: Currency
     let merchant: Merchant?
-    let notes: String?
-    let metadata: [String: String]?
+    let notes: String
+    let metadata: [String: String]
     let labels: [Label]?
-    let accountBalance: Int?
-    let attachments: [Attachment]?
+    let accountBalance: Int
+    let attachments: [Attachment]
     let international: International?
-    let category: Category?
-    let isLoad: Bool?
-    let settled: String?
-    let localAmount: Int?
-    let localCurrency: Currency?
-    let updated: String?
-    let accountID: TransactionAccountID?
-    let userID: UserID?
-    let counterparty: Counterparty?
-    let scheme: Scheme?
-    let dedupeID: String?
-    let originator, includeInSpending, canBeExcludedFromBreakdown, canBeMadeSubscription: Bool?
-    let canSplitTheBill, canAddToTab, amountIsPending: Bool?
+    let category: Category
+    let isLoad: Bool
+    let settled: String
+    let localAmount: Int
+    let localCurrency: Currency
+    let updated: String
+    let accountID: TransactionAccountID
+    let userID: UserID
+    let counterparty: Counterparty
+    let scheme: Scheme
+    let dedupeID: String
+    let originator, includeInSpending, canBeExcludedFromBreakdown, canBeMadeSubscription: Bool
+    let canSplitTheBill, canAddToTab, amountIsPending: Bool
     let declineReason: DeclineReason?
     
     enum CodingKeys: String, CodingKey {
@@ -78,11 +79,11 @@ enum TransactionAccountID: String, Codable {
 
 // MARK: - Attachment
 struct Attachment: Codable {
-    let created, externalID, fileType: String?
-    let fileURL: String?
-    let id, type: String?
-    let url: String?
-    let userID: UserID?
+    let created, externalID, fileType: String
+    let fileURL: String
+    let id, type: String
+    let url: String
+    let userID: UserID
     
     enum CodingKeys: String, CodingKey {
         case created
@@ -115,9 +116,11 @@ enum Category: String, Codable {
 
 // MARK: - Counterparty
 struct Counterparty: Codable {
-    let accountNumber, name, sortCode, userID: String?
+    let accountNumber: String?
+    let name: Name?
+    let sortCode, userID: String?
     let accountID: CounterpartyAccountID?
-    let preferredName: PreferredName?
+    let preferredName: Name?
     
     enum CodingKeys: String, CodingKey {
         case accountNumber = "account_number"
@@ -134,9 +137,27 @@ enum CounterpartyAccountID: String, Codable {
     case acc00009Vd8JLvyJ0JAHn5FWz = "acc_00009Vd8JLvyJ0JAHn5FWz"
 }
 
-enum PreferredName: String, Codable {
+enum Name: String, Codable {
+    case batesPM = "BATES P M"
+    case bozanovskiM = "BOZANOVSKI M"
+    case chloeZanotti = "CHLOE ZANOTTI"
+    case clydesdaleBankPLC = "CLYDESDALE BANK PLC"
+    case danielKhajenouri = "Daniel Khajenouri"
+    case don = "Don"
     case franklinShaw = "Franklin Shaw"
+    case hGambles = "H Gambles"
+    case henryGambles = "HENRY GAMBLES"
+    case jGambles = "J Gambles"
+    case johnGambles = "JOHN GAMBLES"
+    case kRino = "K Rino"
+    case khajenouriDc = "KHAJENOURI DC"
     case kimberleyRino = "Kimberley Rino"
+    case missTKWong = "Miss T K Wong"
+    case mlleLapeyreCandice = "MLLE LAPEYRE CANDICE"
+    case mrFJShaw = "Mr F J Shaw"
+    case nameDON = "DON"
+    case nameJGAMBLES = "J GAMBLES"
+    case shawFJ = "SHAW F J"
 }
 
 enum Currency: String, Codable {
@@ -166,17 +187,17 @@ struct Fees: Codable {
 
 // MARK: - International
 struct International: Codable {
-    let provider, transferID: String?
-    let sourceAmount: Int?
-    let sourceCurrency: Currency?
-    let targetAmount: Int?
-    let targetCurrency: Currency?
-    let feeAmount: Int?
-    let feeCurrency: Currency?
-    let rate: Double?
-    let status, reference: String?
-    let deliveryEstimate: Date?
-    let transferwiseTransferID, transferwisePayInReference: String?
+    let provider, transferID: String
+    let sourceAmount: Int
+    let sourceCurrency: Currency
+    let targetAmount: Int
+    let targetCurrency: Currency
+    let feeAmount: Int
+    let feeCurrency: Currency
+    let rate: Double
+    let status, reference: String
+    let deliveryEstimate: Date
+    let transferwiseTransferID, transferwisePayInReference: String
     
     enum CodingKeys: String, CodingKey {
         case provider
@@ -200,15 +221,15 @@ enum Label: String, Codable {
 
 // MARK: - Merchant
 struct Merchant: Codable {
-    let id, groupID, created, name: String?
-    let logo: String?
-    let emoji: String?
-    let category: Category?
-    let online, atm: Bool?
-    let address: Address?
-    let updated: String?
-    let metadata: Metadata?
-    let disableFeedback: Bool?
+    let id, groupID, created, name: String
+    let logo: String
+    let emoji: String
+    let category: Category
+    let online, atm: Bool
+    let address: Address
+    let updated: String
+    let metadata: Metadata
+    let disableFeedback: Bool
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -220,13 +241,13 @@ struct Merchant: Codable {
 
 // MARK: - Address
 struct Address: Codable {
-    let shortFormatted, formatted, address, city: String?
-    let region: String?
-    let country: Country?
-    let postcode: String?
-    let latitude, longitude: Double?
-    let zoomLevel: Int?
-    let approximate: Bool?
+    let shortFormatted, formatted, address, city: String
+    let region: String
+    let country: Country
+    let postcode: String
+    let latitude, longitude: Double
+    let zoomLevel: Int
+    let approximate: Bool
     
     enum CodingKeys: String, CodingKey {
         case shortFormatted = "short_formatted"
@@ -304,6 +325,8 @@ enum Scheme: String, Codable {
 }
 
 
+
+
 class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -356,10 +379,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                             } else if let jsonArray = response.result.value as? [[String: Any]] {
                             } else if let jsonDict = response.result.value as? [String: Any] {
                                 
-//                                let data = response.data(using: .utf8)
-                                
-                                
-                                
                                 
                                 do {
                                     
@@ -376,17 +395,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     let trans = try JSONDecoder().decode([Transaction].self, from: data)
                                     
 //                                    self.allTransactions = trans.last?.merchant?.address?.address
-//                                    print("Bitch", trans.last?.merchant?.address?.address)
-//                                    print("last", root.transactions?.last)
-//                                    print("addy", root.transactions?.last?.merchant?.address?.address)
-//                                    print("last", trans.)
-                                    
-//                                    var transactions = [Transaction]()
-                                 
-                                   
-                                    print("Whats this 2?", result?.accountID)
-                                    print("Address", result?.merchant?.address?.address)
-//                                    print("Result ", result?)
+//                                    print("Bitch", trans.last?.merchant?.address.address as Any)
+                                    print("wagwan", trans.last?.accountID)
                                     
                                     var latest = json["transactions"].arrayValue.last?["description"].string
                                     print(json["transactions"].arrayValue.count)

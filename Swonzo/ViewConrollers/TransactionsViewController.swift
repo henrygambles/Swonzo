@@ -20,13 +20,24 @@ struct Root: Codable {
     let transactions: [Transaction]
 }
 
+
+
 // MARK: - Transaction
 struct Transaction: Codable {
     let id, created, transactionDescription: String
     let amount: Int
     let fees: Fees
     let currency: Currency
-    let merchant: Merchant?
+    let merchant: Merchant? = nil
+    
+//    let merchant = try? JSONDecoder().decode([Merchant].self, forKey: merchant) {
+//        let merchant = Merchant
+//    }; else {
+//    let merchant = []
+//    }
+//    var merchant: Merchant.Type {
+//        return (Merchant.self ?? JSONNull?)
+//    }
     let notes: String
     let metadata: [String: String]
     let labels: [Label]?
@@ -72,6 +83,11 @@ struct Transaction: Codable {
         case amountIsPending = "amount_is_pending"
         case declineReason = "decline_reason"
     }
+    
+//    func encode(to decode: Decoder) throws {
+//        var container = try decode.container(keyedBy: CodingKeys.self)
+//        try container.decode(merchant, forKey: merchant)
+//    }
 }
 
 enum TransactionAccountID: String, Codable {
@@ -223,16 +239,19 @@ enum Label: String, Codable {
 }
 
 // MARK: - Merchant
-enum Merchant: String, Codable {
-    case id, groupID, created, name
-    case logo
-    case emoji
-    case category
-    case online
-    case address
-    case updated
-    case metadata
-    case disableFeedback
+struct Merchant: Codable {
+    let id: [String]
+    let groupID: String
+    let created: String
+    let name: String
+    let logo: String
+    let emoji: String
+    let category: Category
+    let online, atm: Bool
+    let address: Address
+    let updated: String
+    let metadata: Metadata
+    let disableFeedback: Bool
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -385,7 +404,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                 
                                 do {
                                     print("TRANSACTION TESTING 1")
-                                   
+//                                   print(type(of: Merchant))
             
                                     
                                                                         let root = try JSONDecoder().decode(Root.self, from: response.data!)
@@ -401,14 +420,18 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                 do {
                                     print("TRANSACTION TESTING 2")
                                     
+                                    let root = try JSONDecoder().decode(Root.self, from: response.data!)
+//                                    let trans = try JSONDecoder().decode(Array<Transaction>.self, from: response.data!)
+                                    let trans = try JSONDecoder().decode([Transaction].self, from: response.data!)
                                     
                                     
-                                    let root = try? JSONDecoder().decode(Root.self, from: response.data!)
-                                    let trans = try? JSONDecoder().decode([Transaction].self, from: response.data!)
+//                                    let root = try? JSONDecoder().decode(Root.self, from: response.data!)
+//                                    let trans = try? JSONDecoder().decode([Transaction].self, from: response.data!)
                                     
 //                                    print("wagwan", trans?.last?.accountID)
-                                    print("ay", root?.transactions.count ?? 69)
-                                    print("ay", root?.transactions ?? 69)
+//                                    print("ay", root?.transactions.count ?? 69)
+//                                    print("ay", root?.transactions ?? 69)
+                                    print("ay", trans.count)
                                 } catch {
                                     print("JSON Parsing error:", error)
                                 }

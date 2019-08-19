@@ -152,6 +152,8 @@ enum Name: String, Codable {
     case kRino = "K Rino"
     case khajenouriDc = "KHAJENOURI DC"
     case kimberleyRino = "Kimberley Rino"
+    case maMan = "Ma man"
+    case maMainMan = "Ma main man"
     case missTKWong = "Miss T K Wong"
     case mlleLapeyreCandice = "MLLE LAPEYRE CANDICE"
     case mrFJShaw = "Mr F J Shaw"
@@ -386,17 +388,19 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     print("Transaction TESTING")
                                     
                                     let json = try JSON(data: response.data!)
-                                    let data = try Data(response.data!)
-                                    
-//                                    let transactionData = try? JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableLeaves)
-//                                    JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
-                                    let result = try? JSONDecoder().decode(Transaction.self, from: response.data!)
-                                    let root = try JSONDecoder().decode(Root.self, from: response.data!)
-                                    let trans = try JSONDecoder().decode([Transaction].self, from: data)
+//                                    let data = try Data(response.data!)
+//
+////                                    let transactionData = try? JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableLeaves)
+////                                    JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
+//                                    let result = try? JSONDecoder().decode(Transaction.self, from: response.data!)
+//                                    let root = try JSONDecoder().decode(Root.self, from: response.data!)
+                                    let trans = try? JSONDecoder().decode([Transaction].self, from: response.data!)
                                     
 //                                    self.allTransactions = trans.last?.merchant?.address?.address
 //                                    print("Bitch", trans.last?.merchant?.address.address as Any)
-                                    print("wagwan", trans.last?.accountID)
+                                    print("wagwan", trans?.last?.accountID)
+                                    print("Bitch", trans?.last?.merchant?.address.address)
+                                    
                                     
                                     var latest = json["transactions"].arrayValue.last?["description"].string
                                     print(json["transactions"].arrayValue.count)

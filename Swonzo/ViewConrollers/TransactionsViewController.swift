@@ -215,10 +215,10 @@ struct International: Codable {
     var feeCurrency: Currency
     var rate: Double
     var status, reference: String
-//    var deliveryEstimate: Double
+    var deliveryEstimate: Date
 //    var deliveryEstimate: Double? = nil
 
-    var deliveryEstimate: Date? = nil
+//    var deliveryEstimate: Date? = nil
     
     var transferwiseTransferID, transferwisePayInReference: String
     
@@ -412,7 +412,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     let dateFormatter = DateFormatter()
                                     dateFormatter.calendar = Calendar(identifier: .iso8601)
                                     dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-                                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
                                     
                                     let decoder = JSONDecoder()
                                     decoder.dateDecodingStrategy = .formatted(dateFormatter)
@@ -434,7 +434,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     let dateFormatter = DateFormatter()
                                     dateFormatter.calendar = Calendar(identifier: .iso8601)
                                     dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-                                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
                                     
                                     let decoder = JSONDecoder()
                                     decoder.dateDecodingStrategy = .formatted(dateFormatter)
@@ -594,18 +594,4 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     }
 }
 
-extension Date {
-    
-    /// Returns a `Date` in `GMT` format, that is: "yyyy-MM-dd HH:mm:ss VV" and `TimeZone(secondsFromGMT: 0)`.
-    ///
-    /// - Parameter givenDate: If informed and in the expected format ("yyyy-MM-dd HH:mm:ss VV"), tries to initialize
-    /// a `Date` object with it and then return as GMT.
-    /// - Returns: `Date` object in `GMT` format
-    func asGMT(fromDate givenDate: String = "") -> Date? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss VV"
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        let dateString = givenDate.isEmpty ? formatter.string(from: self) : givenDate
-        return formatter.date(from: dateString)
-    }
-}
+

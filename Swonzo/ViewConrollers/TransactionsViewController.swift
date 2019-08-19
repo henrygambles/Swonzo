@@ -17,17 +17,17 @@ import Alamofire_SwiftyJSON
 
 // MARK: - Root
 struct Root: Codable {
-    let transactions: [Transaction]
+    var transactions: [Transaction]
 }
 
 
 
 // MARK: - Transaction
 struct Transaction: Codable {
-    let id, created, transactionDescription: String
-    let amount: Int
-    let fees: Fees
-    let currency: Currency
+    var id, created, transactionDescription: String
+    var amount: Int
+    var fees: Fees
+    var currency: Currency
     let merchant: Merchant? = nil
     
 //    let merchant = try? JSONDecoder().decode([Merchant].self, forKey: merchant) {
@@ -38,26 +38,26 @@ struct Transaction: Codable {
 //    var merchant: Merchant.Type {
 //        return (Merchant.self ?? JSONNull?)
 //    }
-    let notes: String
-    let metadata: [String: String]
-    let labels: [Label]?
-    let accountBalance: Int
-    let attachments: [Attachment]
-    let international: International?
-    let category: Category
-    let isLoad: Bool
-    let settled: String
-    let localAmount: Int
-    let localCurrency: Currency
-    let updated: String
-    let accountID: TransactionAccountID
-    let userID: UserID
-    let counterparty: Counterparty
-    let scheme: Scheme
-    let dedupeID: String
-    let originator, includeInSpending, canBeExcludedFromBreakdown, canBeMadeSubscription: Bool
-    let canSplitTheBill, canAddToTab, amountIsPending: Bool
-    let declineReason: DeclineReason?
+    var notes: String
+    var metadata: [String: String]
+    var labels: [Label]?
+    var accountBalance: Int
+    var attachments: [Attachment]
+    var international: International? = nil
+    var category: Category
+    var isLoad: Bool
+    var settled: String
+    var localAmount: Int
+    var localCurrency: Currency
+    var updated: String
+    var accountID: TransactionAccountID
+    var userID: UserID
+    var counterparty: Counterparty
+    var scheme: Scheme
+    var dedupeID: String
+    var originator, includeInSpending, canBeExcludedFromBreakdown, canBeMadeSubscription: Bool
+    var canSplitTheBill, canAddToTab, amountIsPending: Bool
+    var declineReason: DeclineReason?
     
     enum CodingKeys: String, CodingKey {
         case id, created
@@ -96,11 +96,11 @@ enum TransactionAccountID: String, Codable {
 
 // MARK: - Attachment
 struct Attachment: Codable {
-    let created, externalID, fileType: String
-    let fileURL: String
-    let id, type: String
-    let url: String
-    let userID: UserID
+    var created, externalID, fileType: String
+    var fileURL: String
+    var id, type: String
+    var url: String
+    var userID: UserID
     
     enum CodingKeys: String, CodingKey {
         case created
@@ -133,11 +133,11 @@ enum Category: String, Codable {
 
 // MARK: - Counterparty
 struct Counterparty: Codable {
-    let accountNumber: String?
-    let name: Name?
-    let sortCode, userID: String?
-    let accountID: CounterpartyAccountID?
-    let preferredName: Name?
+    var accountNumber: String?
+    var name: Name?
+    var sortCode, userID: String?
+    var accountID: CounterpartyAccountID?
+    var preferredName: Name?
     
     enum CodingKeys: String, CodingKey {
         case accountNumber = "account_number"
@@ -196,7 +196,7 @@ enum DeclineReason: String, Codable {
 
 // MARK: - Fees
 struct Fees: Codable {
-    let withdrawalATMInternational, depositCash: Int?
+    var withdrawalATMInternational, depositCash: Int?
     
     enum CodingKeys: String, CodingKey {
         case withdrawalATMInternational = "withdrawal.atm.international"
@@ -206,17 +206,17 @@ struct Fees: Codable {
 
 // MARK: - International
 struct International: Codable {
-    let provider, transferID: String
-    let sourceAmount: Int
-    let sourceCurrency: Currency
-    let targetAmount: Int
-    let targetCurrency: Currency
-    let feeAmount: Int
-    let feeCurrency: Currency
-    let rate: Double
-    let status, reference: String
-    let deliveryEstimate: Date
-    let transferwiseTransferID, transferwisePayInReference: String
+    var provider, transferID: String
+    var sourceAmount: Int
+    var sourceCurrency: Currency
+    var targetAmount: Int
+    var targetCurrency: Currency
+    var feeAmount: Int
+    var feeCurrency: Currency
+    var rate: Double
+    var status, reference: String
+    var deliveryEstimate: Date? = nil
+    var transferwiseTransferID, transferwisePayInReference: String
     
     enum CodingKeys: String, CodingKey {
         case provider
@@ -240,18 +240,18 @@ enum Label: String, Codable {
 
 // MARK: - Merchant
 struct Merchant: Codable {
-    let id: [String]
-    let groupID: String
-    let created: String
-    let name: String
-    let logo: String
-    let emoji: String
-    let category: Category
-    let online, atm: Bool
-    let address: Address
-    let updated: String
-    let metadata: Metadata
-    let disableFeedback: Bool
+    var id: [String]
+    var groupID: String
+    var created: String
+    var name: String
+    var logo: String
+    var emoji: String
+    var category: Category
+    var online, atm: Bool
+    var address: Address
+    var updated: String
+    var metadata: Metadata
+    var disableFeedback: Bool
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -263,13 +263,13 @@ struct Merchant: Codable {
 
 // MARK: - Address
 struct Address: Codable {
-    let shortFormatted, formatted, address, city: String
-    let region: String
-    let country: Country
-    let postcode: String
-    let latitude, longitude: Double
-    let zoomLevel: Int
-    let approximate: Bool
+    var shortFormatted, formatted, address, city: String
+    var region: String
+    var country: Country
+    var postcode: String
+    var latitude, longitude: Double
+    var zoomLevel: Int
+    var approximate: Bool
     
     enum CodingKeys: String, CodingKey {
         case shortFormatted = "short_formatted"
@@ -295,17 +295,17 @@ enum Country: String, Codable {
 
 // MARK: - Metadata
 struct Metadata: Codable {
-    let createdForTransaction, enrichedFromSettlement, createdForMerchant: String?
-    let provider: Provider?
-    let providerID, suggestedTags: String?
-    let twitterID: String?
-    let website: String?
-    let googlePlacesIcon: String?
-    let googlePlacesID, googlePlacesName, foursquareCategory: String?
-    let foursquareCategoryIcon: String?
-    let foursquareID: String?
-    let foursquareWebsite: String?
-    let suggestedName, paypointAgentName, paypointAgentSiteID: String?
+    var createdForTransaction, enrichedFromSettlement, createdForMerchant: String?
+    var provider: Provider?
+    var providerID, suggestedTags: String?
+    var twitterID: String?
+    var website: String?
+    var googlePlacesIcon: String?
+    var googlePlacesID, googlePlacesName, foursquareCategory: String?
+    var foursquareCategoryIcon: String?
+    var foursquareID: String?
+    var foursquareWebsite: String?
+    var suggestedName, paypointAgentName, paypointAgentSiteID: String?
     
     enum CodingKeys: String, CodingKey {
         case createdForTransaction = "created_for_transaction"

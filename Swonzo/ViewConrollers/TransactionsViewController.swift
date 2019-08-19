@@ -1,3 +1,5 @@
+
+
 //
 //  TransactionsViewController.swift
 //  Swonzo
@@ -5,7 +7,6 @@
 //  Created by Henry Gambles on 01/08/2019.
 //  Copyright © 2019 Henry Gambles. All rights reserved.
 //
-
 
 
 import UIKit
@@ -152,8 +153,6 @@ enum Name: String, Codable {
     case kRino = "K Rino"
     case khajenouriDc = "KHAJENOURI DC"
     case kimberleyRino = "Kimberley Rino"
-    case maMan = "Ma man"
-    case maMainMan = "Ma main man"
     case missTKWong = "Miss T K Wong"
     case mlleLapeyreCandice = "MLLE LAPEYRE CANDICE"
     case mrFJShaw = "Mr F J Shaw"
@@ -341,15 +340,15 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     var transactions: [String] = []
     var prices: [String] = []
     var categories: [String] = []
-
+    
     
     // cell reuse id (cells that scroll out of view can be reused)
     let cellReuseIdentifier = "cell"
     
     
-
+    
     var allTransactions = [Transaction]()
- 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -383,99 +382,114 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                 
                                 
                                 do {
-                                    
-                                    
                                     print("Transaction TESTING")
+                                   
                                     
-                                    let json = try JSON(data: response.data!)
-//                                    let data = try Data(response.data!)
-//
-////                                    let transactionData = try? JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableLeaves)
-////                                    JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
-//                                    let result = try? JSONDecoder().decode(Transaction.self, from: response.data!)
-//                                    let root = try JSONDecoder().decode(Root.self, from: response.data!)
-                                    let trans = try? JSONDecoder().decode([Transaction].self, from: response.data!)
+//                                                                        let json = try JSON(data: response.data!)
+//                                                                        let data = try Data(response.data!)
                                     
-//                                    self.allTransactions = trans.last?.merchant?.address?.address
-//                                    print("Bitch", trans.last?.merchant?.address.address as Any)
-                                    print("wagwan", trans?.last?.accountID)
-                                    print("Bitch", trans?.last?.merchant?.address.address)
+                                                                        let root = try JSONDecoder().decode(Root.self, from: response.data!)
+                                                                        let trans = try JSONDecoder().decode([Transaction].self, from: response.data!)
                                     
-                                    
-                                    var latest = json["transactions"].arrayValue.last?["description"].string
-                                    print(json["transactions"].arrayValue.count)
-                                    print(latest)
-                                    let numberOfTransactions = json["transactions"].arrayValue.count
-                                    var i = numberOfTransactions
-                                    while i >= numberOfTransactions - 20 {
-                                        i = i - 1
-                                        
-                                        var dateCreated = json["transactions"][i]["created"].string
-                                        var amount = json["transactions"][i]["amount"].int
-                                        var descripton = json["transactions"][i]["description"].string
-                                        var notes = json["transactions"][i]["notes"].string
-                                        var address = json["transactions"][i]["merchant"]["address"]["address"].string
-                                        var merchant = json["transactions"][i]["merchant"].string
-                                        var merchantName = json["transactions"][i]["merchant"][3].string
-                                        var latitude = json["transactions"][i]["merchant"]["address"]["latitude"].string
-                                        var longitude = json["transactions"][i]["merchant"][0]["address"][0]["longitude"].string
-                                        
-                                        
-                                        var category = json["transactions"][i]["category"].string
-                                        if category == "transport" {
-                                            category = "🚇"
-                                        } else if category == "groceries" {
-                                            category = "🛒"
-                                        } else if category == "eating_out" {
-                                            category = "🍔"
-                                        } else if category == "entertainment" {
-                                            category = "🎥"
-                                        } else if category == "general" {
-                                            category = "⚙️"
-                                        } else if category == "shopping" {
-                                            category = "🛍️"
-                                        } else if category == "cash" {
-                                            category = "🍁"
-                                        } else if category == "personal_care" {
-                                            category = "❤️"
-                                        }
-                                
-                                        descripton?.prefix(25)
-
-                                        let pounds = Double(amount ?? 0) / 100
-                                        print("\n")
-                                        print(i)
-                                        print("\n")
-                                        print(dateCreated ?? "Loop isn't")
-                                        print(descripton?.prefix(25) ?? "Loop isn't")
-                                        print(category ?? "Loop isn't")
-                                        print("ADDRESS:", address ?? "Loop isn't")
-                                        print("MERCHANT:", merchant ?? "Loop isn't")
-                                        print("NAME:", merchantName ?? "Loop isn't")
-                                        print("LAT:", latitude ?? "Loop isn't")
-                                        print("LONG: ", longitude ?? "No long")
-                                        if pounds < 0 {
-                                            let money = "-£" + String(format:"%.2f",abs(pounds))
-                                            print(money)
-                                            self.prices.append(money as! String)
-                                        }
-                                        else {
-                                            let money = "+£" + String(format:".%.2f",pounds)
-                                            print(money)
-                                            self.prices.append(money as! String)
-                                        }
-                                        print(notes != "" ? notes: "No Notes for this transaction.")
-                                        self.transactions.append(descripton as! String ?? "error")
-                                        self.categories.append(category as! String ?? "error")
-                                        print(self.tableView.dataSource)
-                                        self.tableView.reloadData()
-                                        
-                                        
-                                    }
-                                    
+                                                                        //                                    self.allTransactions = trans.last?.merchant?.address?.address
+                                                                        //                                    print("Bitch", trans.last?.merchant?.address.address as Any)
+                                                                        print("wagwan", trans.last?.accountID)
                                 } catch {
                                     print("JSON Parsing error:", error)
                                 }
+                                
+//                                do {
+//
+//
+//                                    print("Transaction TESTING")
+//
+//                                    let json = try JSON(data: response.data!)
+//                                    let data = try Data(response.data!)
+//
+//                                    //                                    let transactionData = try? JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableLeaves)
+//                                    //                                    JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
+//                                    let result = try? JSONDecoder().decode(Transaction.self, from: response.data!)
+//                                    let root = try JSONDecoder().decode(Root.self, from: response.data!)
+//                                    let trans = try JSONDecoder().decode([Transaction].self, from: data)
+//
+//                                    //                                    self.allTransactions = trans.last?.merchant?.address?.address
+//                                    //                                    print("Bitch", trans.last?.merchant?.address.address as Any)
+//                                    print("wagwan", trans.last?.accountID)
+//
+//                                    var latest = json["transactions"].arrayValue.last?["description"].string
+//                                    print(json["transactions"].arrayValue.count)
+//                                    print(latest)
+//                                    let numberOfTransactions = json["transactions"].arrayValue.count
+//                                    var i = numberOfTransactions
+//                                    while i >= numberOfTransactions - 20 {
+//                                        i = i - 1
+//
+//                                        var dateCreated = json["transactions"][i]["created"].string
+//                                        var amount = json["transactions"][i]["amount"].int
+//                                        var descripton = json["transactions"][i]["description"].string
+//                                        var notes = json["transactions"][i]["notes"].string
+//                                        var address = json["transactions"][i]["merchant"]["address"]["address"].string
+//                                        var merchant = json["transactions"][i]["merchant"].string
+//                                        var merchantName = json["transactions"][i]["merchant"][3].string
+//                                        var latitude = json["transactions"][i]["merchant"]["address"]["latitude"].string
+//                                        var longitude = json["transactions"][i]["merchant"][0]["address"][0]["longitude"].string
+//
+//
+//                                        var category = json["transactions"][i]["category"].string
+//                                        if category == "transport" {
+//                                            category = "🚇"
+//                                        } else if category == "groceries" {
+//                                            category = "🛒"
+//                                        } else if category == "eating_out" {
+//                                            category = "🍔"
+//                                        } else if category == "entertainment" {
+//                                            category = "🎥"
+//                                        } else if category == "general" {
+//                                            category = "⚙️"
+//                                        } else if category == "shopping" {
+//                                            category = "🛍️"
+//                                        } else if category == "cash" {
+//                                            category = "🍁"
+//                                        } else if category == "personal_care" {
+//                                            category = "❤️"
+//                                        }
+//
+//                                        descripton?.prefix(25)
+//
+//                                        let pounds = Double(amount ?? 0) / 100
+//                                        print("\n")
+//                                        print(i)
+//                                        print("\n")
+//                                        print(dateCreated ?? "Loop isn't")
+//                                        print(descripton?.prefix(25) ?? "Loop isn't")
+//                                        print(category ?? "Loop isn't")
+//                                        print("ADDRESS:", address ?? "Loop isn't")
+//                                        print("MERCHANT:", merchant ?? "Loop isn't")
+//                                        print("NAME:", merchantName ?? "Loop isn't")
+//                                        print("LAT:", latitude ?? "Loop isn't")
+//                                        print("LONG: ", longitude ?? "No long")
+//                                        if pounds < 0 {
+//                                            let money = "-£" + String(format:"%.2f",abs(pounds))
+//                                            print(money)
+//                                            self.prices.append(money as! String)
+//                                        }
+//                                        else {
+//                                            let money = "+£" + String(format:".%.2f",pounds)
+//                                            print(money)
+//                                            self.prices.append(money as! String)
+//                                        }
+//                                        print(notes != "" ? notes: "No Notes for this transaction.")
+//                                        self.transactions.append(descripton as! String ?? "error")
+//                                        self.categories.append(category as! String ?? "error")
+//                                        print(self.tableView.dataSource)
+//                                        self.tableView.reloadData()
+//
+//
+//                                    }
+//
+//                                } catch {
+//                                    print("JSON Parsing error:", error)
+//                                }
                                 
                                 
                                 
@@ -485,16 +499,16 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-   
+    
     
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let count = self.transactions.count
-//        return shouldShowLoadingCell ? count + 1 : count
+        //        let count = self.transactions.count
+        //        return shouldShowLoadingCell ? count + 1 : count
         return self.transactions.count
     }
     
- 
+    
     
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -504,7 +518,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         
         // set the text from the data model
         cell.textLabel?.text = self.transactions[indexPath.row]
-
+        
         
         let price = prices[indexPath.row]
         let category = categories[indexPath.row]
@@ -522,5 +536,3 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         print("You tapped cell number \(indexPath.row).")
     }
 }
-
-

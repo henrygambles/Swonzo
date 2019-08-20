@@ -29,15 +29,6 @@ struct Transaction: Codable {
     var fees: Fees?
     var currency: Currency?
     let merchant: Merchant? = nil
-    
-//    let merchant = try? JSONDecoder().decode([Merchant].self, forKey: merchant) {
-//        let merchant = Merchant
-//    }; else {
-//    let merchant = []
-//    }
-//    var merchant: Merchant.Type {
-//        return (Merchant.self ?? JSONNull?)
-//    }
     var notes: String?
     var metadata: [String: String]?
     var labels: [Label]?
@@ -83,11 +74,6 @@ struct Transaction: Codable {
         case amountIsPending = "amount_is_pending"
         case declineReason = "decline_reason"
     }
-    
-//    func encode(to decode: Decoder) throws {
-//        var container = try decode.container(keyedBy: CodingKeys.self)
-//        try container.decode(merchant, forKey: merchant)
-//    }
 }
 
 enum TransactionAccountID: String, Codable {
@@ -372,9 +358,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     // cell reuse id (cells that scroll out of view can be reused)
     let cellReuseIdentifier = "cell"
     
-    
-    
-//    var trans = [Transaction]()
+
     
     
     override func viewDidLoad() {
@@ -482,56 +466,13 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                 }
                                 
                                 do {
-                                    print("\n*************************")
-                                    print("\n  TRANSACTION TESTING 2\n")
-                                    print("*************************\n")
-                                    
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.calendar = Calendar(identifier: .iso8601)
-                                    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-                                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-                                    
-                                    let decoder = JSONDecoder()
-                                    decoder.dateDecodingStrategy = .formatted(dateFormatter)
-                                    
-                                    let root = try decoder.decode(Root.self, from: response.data!)
-//                                    let trans = try JSONDecoder().decode(Array<Transaction>.self, from: response.data!)
-                                    let trans = try decoder.decode([Transaction].self, from: response.data!)
-                                    
-                                    
-//                                    let root = try? JSONDecoder().decode(Root.self, from: response.data!)
-//                                    let trans = try? JSONDecoder().decode([Transaction].self, from: response.data!)
-                                    
-//                                    print("wagwan", trans?.last?.accountID)
-//                                    print("ay", root?.transactions.count ?? 69)
-//                                    print("ay", root?.transactions ?? 69)
-                                    print("wagwan", root.transactions.count)
-                                } catch {
-                                    print("\nGosh darnit!", error)
-                                    print("\nLOCALIZED ERROR:", error.localizedDescription)
-                                }
-        
-                                
-                       
-                                
-                                do {
 
                                     print("\n****************")
                                     print("\n  TABLE DATA\n")
                                     print("****************\n")
 
                                     let json = try JSON(data: response.data!)
-//                                    let data = try Data(response.data!)
-//
-//                                    //                                    let transactionData = try? JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableLeaves)
-//                                    //                                    JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
-//                                    let result = try? JSONDecoder().decode(Transaction.self, from: response.data!)
-//                                    let root = try JSONDecoder().decode(Root.self, from: response.data!)
-//                                    let trans = try JSONDecoder().decode([Transaction].self, from: data)
-//
-//                                    //                                    self.allTransactions = trans.last?.merchant?.address?.address
-//                                    //                                    print("Bitch", trans.last?.merchant?.address.address as Any)
-//                                    print("wagwan", trans.last?.accountID)
+
 
                                     var latest = json["transactions"].arrayValue.last?["description"].string
                                     print("There are", json["transactions"].arrayValue.count, "items in table.\nFetching data now...\n")
@@ -581,11 +522,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //                                        print(dateCreated ?? "Loop isn't")
 //                                        print(descripton?.prefix(25) ?? "Loop isn't")
 //                                        print(category ?? "Loop isn't")
-//                                        print("ADDRESS:", address ?? "Loop isn't")
-//                                        print("MERCHANT:", merchant ?? "Loop isn't")
-//                                        print("NAME:", merchantName ?? "Loop isn't")
-//                                        print("LAT:", latitude ?? "Loop isn't")
-//                                        print("LONG: ", longitude ?? "No long")
+//
                                         if pounds < 0 {
                                             let money = "-£" + String(format:"%.2f",abs(pounds))
 //                                            print(money)
@@ -601,8 +538,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         self.categories.append(category as! String ?? "error")
 //                                        print(self.tableView.dataSource)
                                         self.tableView.reloadData()
-                                        
-                                        
 
 
                                     }

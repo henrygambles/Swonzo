@@ -100,27 +100,70 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     print("You have made", root.transactions.count, "transactions... wow!\n")
 //                                    print("\nYour last transaction was", root.transactions.last?.merchant?.name as? String, "at", root.transactions.last?.merchant?.address.address as? String)
 //                                    print("Involving a certain ", root.transactions.last?.transactionDescription ?? "mystery...")
-                                    let num = 4000
+                                    let num = 4050
                                     var i = num
                                     
-                                    while i <= num + 50 {
+                                    while i <= num + 10 {
                                         
                                         i = i + 1
                                         
-                                        let transactionDescription = root.transactions[i].transactionDescription
-                                        let address = root.transactions[i].merchant?.address.address
+//                                        let transactionDescription = root.transactions[i].transactionDescription
+//                                        let address = root.transactions[i].merchant?.address.formatted
                                         let amount = root.transactions[i].amount!
-                                        let pounds = Double(amount ?? 0) / 100
-                                        let money = SwonzoLogic().jsonSpendTodayToMoney(spendToday: pounds)
-                                        var merchant = root.transactions[i].merchant
+                                        let description = root.transactions[i].transactionDescription as! String
+                                        var category = String(Substring(root.transactions[i].category!.rawValue))
                                         
                                         
-                                        if root.transactions[i].merchant?.name == nil {
-                                            print("Your \(i)th transaction was something to do with \(transactionDescription!).")
-                                        } else {
                                         
-                                        print("Your \(i)th transaction was at \(merchant?.name). Located at \(address). You spent \(money) there.")
+                                        
+                                        if category == "transport" {
+                                            category = "🚇"
+                                        } else if category == "groceries" {
+                                            category = "🛒"
+                                        } else if category == "eating_out" {
+                                            category = "🍔"
+                                        } else if category == "entertainment" {
+                                            category = "🎥"
+                                        } else if category == "general" {
+                                            category = "⚙️"
+                                        } else if category == "shopping" {
+                                            category = "🛍️"
+                                        } else if category == "cash" {
+                                            category = "🍁"
+                                        } else if category == "personal_care" {
+                                            category = "❤️"
                                         }
+                                        
+                                        description.prefix(25)
+                                        
+                                        let pounds = Double(amount ?? 0) / 100
+                                        //                                        print("\n")
+                                        print(String(num - i - 1) + "0%")
+                                        //                                        print(numberOfTransactions - 10)
+                                        //                                        print("\n")
+                                        //                                        print(dateCreated ?? "Loop isn't")
+                                        //                                        print(description?.prefix(25) ?? "Loop isn't")
+                                        //                                        print(category ?? "Loop isn't")
+                                        //
+                                        if pounds < 0 {
+                                            let money = "-£" + String(format:"%.2f",abs(pounds))
+                                            //                                            print(money)
+                                            self.prices.append(money as! String)
+                                        }
+                                        else {
+                                            let money = "+£" + String(format:".%.2f",pounds)
+                                            //                                            print(money)
+                                            self.prices.append(money as! String)
+                                        }
+                                        //                                        print(notes != "" ? notes: "No Notes for this transaction.")
+                                        self.transactions.append(description as! String ?? "error")
+                                        self.categories.append(category as! String ?? "error")
+                                        //                                        print(self.tableView.dataSource)
+                                        self.tableView.reloadData()
+            
+                                        
+//                                        print("Your \(i)th transaction was at \(merchant?.name ?? transactionDescription!). Located at \(address). You spent \(money) there.\n")
+//                                        }
                                     }
                                     
 //                                    let description = root.transactions[num].transactionDescription as? String
@@ -158,7 +201,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
                                         var dateCreated = json["transactions"][i]["created"].string
                                         var amount = json["transactions"][i]["amount"].int
-                                        var descripton = json["transactions"][i]["description"].string
+                                        var description = json["transactions"][i]["description"].string
                                         var notes = json["transactions"][i]["notes"].string
                                         var address = json["transactions"][i]["merchant"]["address"]["address"].string
                                         var merchant = json["transactions"][i]["merchant"].string
@@ -186,7 +229,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                             category = "❤️"
                                         }
 
-                                        descripton?.prefix(25)
+                                        description?.prefix(25)
 
                                         let pounds = Double(amount ?? 0) / 100
 //                                        print("\n")
@@ -194,7 +237,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //                                        print(numberOfTransactions - 10)
 //                                        print("\n")
 //                                        print(dateCreated ?? "Loop isn't")
-//                                        print(descripton?.prefix(25) ?? "Loop isn't")
+//                                        print(description?.prefix(25) ?? "Loop isn't")
 //                                        print(category ?? "Loop isn't")
 //
                                         if pounds < 0 {
@@ -208,10 +251,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                             self.prices.append(money as! String)
                                         }
 //                                        print(notes != "" ? notes: "No Notes for this transaction.")
-                                        self.transactions.append(descripton as! String ?? "error")
-                                        self.categories.append(category as! String ?? "error")
-//                                        print(self.tableView.dataSource)
-                                        self.tableView.reloadData()
+//                                        self.transactions.append(description as! String ?? "error")
+//                                        self.categories.append(category as! String ?? "error")
+////                                        print(self.tableView.dataSource)
+//                                        self.tableView.reloadData()
 
 
                                     }

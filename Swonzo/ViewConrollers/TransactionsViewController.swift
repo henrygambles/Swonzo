@@ -436,11 +436,42 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     decoder.dateDecodingStrategy = .formatted(dateFormatter)
             
                                     
-                                                                        let root = try decoder.decode(Root.self, from: response.data!)
-                                                                        let trans = try decoder.decode(Transaction.self, from: response.data!)
+                                    let root = try decoder.decode(Root.self, from: response.data!)
+                                    let trans = try decoder.decode(Transaction.self, from: response.data!)
                                     
-                                    print("wagwan", trans.accountBalance)
-                                    print("e", root.transactions.last?.category)
+                                    print("You have made", root.transactions.count, "transactions... wow!\n")
+//                                    print("\nYour last transaction was", root.transactions.last?.merchant?.name as? String, "at", root.transactions.last?.merchant?.address.address as? String)
+//                                    print("Involving a certain ", root.transactions.last?.transactionDescription ?? "mystery...")
+                                    let num = 4000
+                                    var i = num
+                                    
+                                    while i <= num + 50 {
+                                        
+                                        i = i + 1
+                                        
+                                        let transactionDescription = root.transactions[i].transactionDescription
+                                        let address = root.transactions[i].merchant?.address.address
+                                        let amount = root.transactions[i].amount!
+                                        let pounds = Double(amount ?? 0) / 100
+                                        let money = SwonzoLogic().jsonSpendTodayToMoney(spendToday: pounds)
+                                        var merchant = root.transactions[i].merchant
+                                        
+                                        
+                                        if root.transactions[i].merchant?.name == nil {
+                                            print("Your \(i)th transaction was somethinhg to do with \(transactionDescription).")
+                                        } else {
+                                        
+                                        print("Your \(i)th transaction was at \(merchant?.name). Located at \(address). You spent \(money) there.")
+                                        }
+                                    }
+                                    
+//                                    let description = root.transactions[num].transactionDescription as? String
+//                                    let address = root.transactions[num].merchant?.address.address as? String
+//                                    let amount = root.transactions[num].amount!
+//                                    let pounds = Double(amount ?? 0) / 100
+//                                    let money = SwonzoLogic().jsonSpendTodayToMoney(spendToday: pounds)
+//
+//                                    print("Your \(num)th transaction was somethinhg to do with \(description). Located at \(address). You spent \(money) there.")
                                     
                                     
 //                                                                        print("ay", trans.count)

@@ -439,7 +439,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                                                         let root = try decoder.decode(Root.self, from: response.data!)
                                                                         let trans = try decoder.decode(Transaction.self, from: response.data!)
                                     
-                                    print("wagwan", trans.id?.count)
+                                    print("wagwan", trans.accountBalance)
+                                    print("e", root.transactions.last?.category)
                                     
                                     
 //                                                                        print("ay", trans.count)
@@ -473,7 +474,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //                                    print("wagwan", trans?.last?.accountID)
 //                                    print("ay", root?.transactions.count ?? 69)
 //                                    print("ay", root?.transactions ?? 69)
-                                    print("wagwan", trans.count)
+                                    print("wagwan", root.transactions.count)
                                 } catch {
                                     print("\nGosh darnit!", error)
                                     print("\nLOCALIZED ERROR:", error.localizedDescription)
@@ -574,7 +575,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
 
                                     }
-                                print("\nTable populated 💰")
+                                print("\nSuccess! Table populated 💰")
                                 } catch {
                                     print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
                                 }

@@ -506,7 +506,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //                                    print(latest)
                                     let numberOfTransactions = json["transactions"].arrayValue.count
                                     var i = numberOfTransactions
-                                    while i >= numberOfTransactions - 20 {
+                                    while i >= numberOfTransactions - 10 {
                                         i = i - 1
 
                                         var dateCreated = json["transactions"][i]["created"].string
@@ -543,7 +543,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
                                         let pounds = Double(amount ?? 0) / 100
 //                                        print("\n")
-                                        print(i+1)
+                                        print(String(numberOfTransactions - i - 1) + "0%")
+//                                        print(numberOfTransactions - 10)
 //                                        print("\n")
 //                                        print(dateCreated ?? "Loop isn't")
 //                                        print(descripton?.prefix(25) ?? "Loop isn't")

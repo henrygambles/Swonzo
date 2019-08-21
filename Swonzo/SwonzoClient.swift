@@ -113,7 +113,11 @@ class SwonzoClient {
 // MARK: - Root
 struct Root: Codable {
     var transactions: [Transaction]
+    
+    
 }
+
+
 
 // MARK: - Transaction
 struct Transaction: Codable {
@@ -142,6 +146,27 @@ struct Transaction: Codable {
     var originator, includeInSpending, canBeExcludedFromBreakdown, canBeMadeSubscription: Bool?
     var canSplitTheBill, canAddToTab, amountIsPending: Bool?
     var declineReason: DeclineReason?
+    
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: merchant.self)
+//        var drinksArrayForType = try container.nestedUnkeyedContainer(forKey: Merchant.merchants)
+//        var merchants = [Merchant]()
+//
+//        var drinksArray = drinksArrayForType
+//        while(!drinksArrayForType.isAtEnd) {
+//            let drink = try drinksArrayForType.nestedContainer(keyedBy: DrinkTypeKey.self)
+//            let type = try drink.decode(DrinkTypes.self, forKey: DrinkTypeKey.type)
+//            switch type {
+//            case .water, .orangeJuice:
+//                print("found drink")
+//                drinks.append(try drinksArray.decode(Drink.self))
+//            case .beer:
+//                print("found beer")
+//                drinks.append(try drinksArray.decode(Beer.self))
+//            }
+//        }
+//        self.merchant = merchants
+//    }
     
     enum CodingKeys: String, CodingKey {
         case id, created
@@ -509,3 +534,5 @@ enum Scheme: String, Codable {
 //    }
 //}
 //
+
+

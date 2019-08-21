@@ -95,7 +95,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
             
                                     
                                     let root = try decoder.decode(Root.self, from: response.data!)
-                                    let trans = try decoder.decode(Transaction.self, from: response.data!)
+                                    let merchant = try decoder.decode([Merchant].self, from: response.data!)
+//                                    let trans = try decoder.decode(Transaction.self, from: response.data!)
                                     
                                     print("You have made", root.transactions.count, "transactions... wow!\n")
 //                                    print("\nYour last transaction was", root.transactions.last?.merchant?.name as? String, "at", root.transactions.last?.merchant?.address.address as? String)
@@ -107,7 +108,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     var i = numberOfTransactions
                                     
                                     print("GREEN SHOP", root.transactions[15].merchant)
-//                                    print("Merchant", root.transactions[15].merchant)
+                                    print("YEET", merchant.count)
+//                                    print("Address", root.transactions[15].merchant?)
 //                                    print("Group ID", root.transactions[15].merchant?.groupID)
 //                                    print("Description", root.transactions[15].transactionDescription!)
                                     print("Metadata", root.transactions[15].metadata!)
@@ -139,7 +141,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     print("GREEN SHOP", root.transactions[15].merchant)
 //                                    print("Merchant", root.transactions[15].merchant)
 //                                    print("Group ID", root.transactions[15].merchant?.groupID)
-//                                    print("Description", root.transactions[15].transactionDescription!)
+                                    print("Description", root.transactions[15].transactionDescription!)
                                     print("Metadata", root.transactions[15].metadata!)
                                     
                                 } catch {

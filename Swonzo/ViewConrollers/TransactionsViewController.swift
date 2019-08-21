@@ -106,10 +106,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     var i = numberOfTransactions
                                     
-                                    print("GREEN SHOP", root.transactions[15].merchant?.id)
-                                    print("GREEN SHOP", root.transactions[15].merchant?.groupID)
-                                    print("GREEN SHOP", root.transactions[15].transactionDescription!)
-                                    print("GREEN SHOP", root.transactions[15].metadata!)
+                                    print("GREEN SHOP", root.transactions[15].merchant)
+//                                    print("Merchant", root.transactions[15].merchant)
+//                                    print("Group ID", root.transactions[15].merchant?.groupID)
+//                                    print("Description", root.transactions[15].transactionDescription!)
+                                    print("Metadata", root.transactions[15].metadata!)
                                     
                                 } catch {
                                     print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
@@ -135,10 +136,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     print("You have made", root.transactions.count, "transactions... wow!\n")
                                     let numberOfTransactions = root.transactions.count
                                     
-                                    print("GREEN SHOP", root.transactions[15].merchant?.id)
-                                    print("GREEN SHOP", root.transactions[15].merchant?.groupID)
-                                    print("GREEN SHOP", root.transactions[15].transactionDescription!)
-                                    print("GREEN SHOP", root.transactions[15].metadata!)
+                                    print("GREEN SHOP", root.transactions[15].merchant)
+//                                    print("Merchant", root.transactions[15].merchant)
+//                                    print("Group ID", root.transactions[15].merchant?.groupID)
+//                                    print("Description", root.transactions[15].transactionDescription!)
+                                    print("Metadata", root.transactions[15].metadata!)
                                     
                                 } catch {
                                     print("\nOh no! Error populating table. Apparently...", error.localizedDescription)

@@ -121,7 +121,7 @@ struct Transaction: Codable {
     var amount: Int?
     var fees: Fees?
     var currency: Currency?
-    let merchant: Merchant? = nil
+    var merchant: String?
     var notes: String?
     var metadata: [String: String]?
     var labels: [Label]?

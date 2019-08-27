@@ -136,12 +136,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     print("You have made", root.transactions.count, "transactions... wow!\n")
                                     let numberOfTransactions = root.transactions.count
                                     
-                                    print("GREEN SHOP", root.transactions[15].merchant)
+                                    print("GREEN SHOP", root.transactions[15].merchant?.address.address)
                                     
 //                                    print("Merchant", root.transactions[15].merchant)
 //                                    print("Group ID", root.transactions[15].merchant?.groupID)
-                                    print("Description", root.transactions[15].transactionDescription!)
-                                    print("Metadata", root.transactions[15].metadata!)
+                                    print("Description", root.transactions[15].transactionDescription)
+                                    print("Metadata", root.transactions[15].metadata)
                                     
                                     let countNumber = 100
                                     var i = numberOfTransactions
@@ -156,7 +156,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
                                         let amount = root.transactions[i].amount
                                         let description = root.transactions[i].transactionDescription
-                                        var category = String(Substring(root.transactions[i].category!.rawValue))
+                                        var category = String(Substring(root.transactions[i].category!.rawValue)) ?? "no cat"
 
 //                                        print(String(format:"%.2f", numberOfTransactions - i - 1) + "%")
                                         let progress = numberOfTransactions - i
@@ -190,7 +190,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         } else if category == "family" {
                                             category = "❤️"
                                         }
-                                        
+//
                                         print(category)
 
                                         description?.prefix(25)

@@ -56,10 +56,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func tokenInput(_ sender: Any) {
-//        let token = textFieldView.text as! String
-//        let headers: HTTPHeaders = [
-//            "Authorization": "Bearer " + token
-//        ]
+        let token = textFieldView.text as! String
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer " + token
+        ]
         
     }
     
@@ -95,7 +95,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
     
     func login() {
-            UserDefaults.standard.set(self.textFieldView.text as! String, forKey: "Token")
+            let tokenInput = textFieldView.text as! String
+            UserDefaults.standard.set(tokenInput, forKey: "Token")
+                let headers: HTTPHeaders = [
+                    "Authorization": "Bearer " + token
+                ]
             self.checkAccountId(){ response in
                 if response == true {
                     self.performSegue(withIdentifier: "loginSegue", sender: nil)

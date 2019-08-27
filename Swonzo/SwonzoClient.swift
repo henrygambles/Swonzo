@@ -11,12 +11,17 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
+
+
+var token : String = UserDefaults.standard.string(forKey: "Token") ?? "default token"
+var accountId : String = UserDefaults.standard.string(forKey: "AccountID") ?? "default ID"
+
 var headers: HTTPHeaders = [
-    "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!
+    "Authorization": "Bearer " + token
 ]
 
 var parameters: Parameters = [
-    "account_id": UserDefaults.standard.string(forKey: "AccountID")!
+    "account_id": accountId
 ]
 
 class SwonzoClient {
@@ -125,7 +130,7 @@ struct Transaction: Codable {
     var amount: Int?
     var fees: Fees?
     var currency: Currency?
-    var merchant: String?
+    var merchant: Merchant?
     var notes: String?
     var metadata: [String: String]?
     var labels: [Label]?
@@ -146,27 +151,7 @@ struct Transaction: Codable {
     var originator, includeInSpending, canBeExcludedFromBreakdown, canBeMadeSubscription: Bool?
     var canSplitTheBill, canAddToTab, amountIsPending: Bool?
     var declineReason: DeclineReason?
-    
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: merchant.self)
-//        var drinksArrayForType = try container.nestedUnkeyedContainer(forKey: Merchant.merchants)
-//        var merchants = [Merchant]()
-//
-//        var drinksArray = drinksArrayForType
-//        while(!drinksArrayForType.isAtEnd) {
-//            let drink = try drinksArrayForType.nestedContainer(keyedBy: DrinkTypeKey.self)
-//            let type = try drink.decode(DrinkTypes.self, forKey: DrinkTypeKey.type)
-//            switch type {
-//            case .water, .orangeJuice:
-//                print("found drink")
-//                drinks.append(try drinksArray.decode(Drink.self))
-//            case .beer:
-//                print("found beer")
-//                drinks.append(try drinksArray.decode(Beer.self))
-//            }
-//        }
-//        self.merchant = merchants
-//    }
+
     
     enum CodingKeys: String, CodingKey {
         case id, created
@@ -191,6 +176,26 @@ struct Transaction: Codable {
         case canAddToTab = "can_add_to_tab"
         case amountIsPending = "amount_is_pending"
         case declineReason = "decline_reason"
+    }
+    
+    init(from decoder:Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+
+        self.id = try container.decodeIfPresent(String.self, forKey: .id)
+        self.created = try container.decodeIfPresent(String.self, forKey: .created)
+        self.transactionDescription = try container.decodeIfPresent(String.self, forKey: .transactionDescription)
+        self.amount = try container.decodeIfPresent(Int.self, forKey: .amount)
+        self.metadata = try container.decodeIfPresent([String: String].self, forKey: .metadata)
+        self.category = try container.decodeIfPresent(Category.self, forKey: .category)
+
+
+
+        if (try? container.decodeIfPresent(String.self, forKey: .merchant)) == nil {
+            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
+        } else {
+            self.merchant = nil
+        }
     }
 }
 
@@ -363,6 +368,7 @@ struct Merchant: Codable {
         case created, name, logo, emoji, category, online, atm, address, updated, metadata
         case disableFeedback = "disable_feedback"
     }
+    
 }
 
 // MARK: - Address

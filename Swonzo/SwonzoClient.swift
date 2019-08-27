@@ -130,7 +130,7 @@ struct Transaction: Codable {
     var amount: Int?
     var fees: Fees?
     var currency: Currency?
-    var merchant: Merchant?
+    var merchant: String?
     var notes: String?
     var metadata: [String: String]?
     var labels: [Label]?
@@ -191,11 +191,11 @@ struct Transaction: Codable {
 
 
 
-        if (try? container.decodeIfPresent(String.self, forKey: .merchant)) == nil {
-            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
-        } else {
-            self.merchant = nil
-        }
+//        if (try? container.decodeIfPresent(String.self, forKey: .merchant)) == nil {
+            self.merchant = try container.decodeIfPresent(String.self, forKey: .merchant)
+//        } else {
+//            self.merchant = nil
+//        }
     }
 }
 
@@ -369,6 +369,33 @@ struct Merchant: Codable {
         case disableFeedback = "disable_feedback"
     }
     
+//    init(from decoder:Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        
+//        
+//        self.id = try container.decodeIfPresent([String].self, forKey: .id)!
+//        self.groupID = try container.decodeIfPresent(String.self, forKey: .groupID)!
+//        self.created = try container.decodeIfPresent(String.self, forKey: .created)!
+//        self.name = try container.decodeIfPresent(String.self, forKey: .name)!
+//        self.logo = try container.decodeIfPresent(String.self, forKey: .logo)!
+//        self.emoji = try container.decodeIfPresent(String.self, forKey: .emoji)!
+//        self.category = try container.decodeIfPresent(Category.self, forKey: .category)!
+////        self.online = try container.decode(Bool.self, forKey: online)!
+//        self.online = try container.decode(Bool.BooleanLiteralType, forKey: Merchant.CodingKeys)
+////        self.atm = try container.(Bool.self, forKey: atm)!
+//        self.address = try container.decodeIfPresent(Address.self, forKey: .address)!
+//        self.updated = try container.decodeIfPresent(String.self, forKey: .updated)!
+//        self.address = try container.decodeIfPresent(Address.self, forKey: .address)!
+//        self.metadata = try container.decodeIfPresent(Metadata.self, forKey: .metadata)!
+//        self.disableFeedback = try container.decode(Bool.self, forKey: disableFeedback)!
+//        
+////        if (try? container.decodeIfPresent(String.self, forKey: .merchant)) == nil {
+////            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
+////        } else {
+////            self.merchant = nil
+////        }
+//    }
+//    
 }
 
 // MARK: - Address

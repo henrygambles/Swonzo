@@ -90,27 +90,17 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     let decoder = JSONDecoder()
                                     decoder.dateDecodingStrategy = .formatted(dateFormatter)
-            
+                                    
                                     
                                     let root = try decoder.decode(Root.self, from: response.data!)
-                                    let merchant = try decoder.decode([Merchant].self, from: response.data!)
-//                                    let trans = try decoder.decode(Transaction.self, from: response.data!)
                                     
                                     print("You have made", root.transactions.count, "transactions... wow!\n")
-//                                    print("\nYour last transaction was", root.transactions.last?.merchant?.name as? String, "at", root.transactions.last?.merchant?.address.address as? String)
-//                                    print("Involving a certain ", root.transactions.last?.transactionDescription ?? "mystery...")
                                     let numberOfTransactions = root.transactions.count
-                                    let countNumber = 10
-//                                    let total = numberOfTransactions - countNumber
                                     
-                                    var i = numberOfTransactions
-                                    
-                                    print("GREEN SHOP", root.transactions[15].merchant)
-                                    print("YEET", merchant.count)
-//                                    print("Address", root.transactions[15].merchant?)
-//                                    print("Group ID", root.transactions[15].merchant?.groupID)
-//                                    print("Description", root.transactions[15].transactionDescription!)
-                                    print("Metadata", root.transactions[15].metadata!)
+//                                    print("The Hereford: ", root.transactions[23].merchant?.address.address)
+                                    print("Merchant: ", root.transactions[23].merchant)
+                                    print("Description: ", root.transactions[23].transactionDescription)
+                                    print("Metadata: ", root.transactions[23].metadata)
                                     
                                 } catch {
                                     print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
@@ -136,14 +126,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     print("You have made", root.transactions.count, "transactions... wow!\n")
                                     let numberOfTransactions = root.transactions.count
                                     
-                                    print("GREEN SHOP", root.transactions[15].merchant?.address.address)
+//                                    print("GREEN SHOP: ", root.transactions[15].merchant?.address.address)
+                                    print("Merchant: ", root.transactions[15].merchant)
+                                    print("Description: ", root.transactions[15].transactionDescription)
+                                    print("Metadata: ", root.transactions[15].metadata)
                                     
-//                                    print("Merchant", root.transactions[15].merchant)
-//                                    print("Group ID", root.transactions[15].merchant?.groupID)
-                                    print("Description", root.transactions[15].transactionDescription)
-                                    print("Metadata", root.transactions[15].metadata)
-                                    
-                                    let countNumber = 100
+                                    let countNumber = 20
                                     var i = numberOfTransactions
                                 
                                 
@@ -192,6 +180,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         }
 //
                                         print(category)
+//                                        print(root.transactions[i].merchant?.address.address)
 
                                         description?.prefix(25)
 //
@@ -199,10 +188,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         if pounds < 0 {
                                             let money = "£" + String(format:"%.2f",abs(pounds))
                                             self.prices.append(money as! String)
+                                            print(money)
                                         }
                                         else {
                                             let money = "+£" + String(format:"%.2f",pounds)
                                             self.prices.append(money as! String)
+                                            print(money)
                                         }
                                        
                                         self.transactions.append(description as! String ?? "error")

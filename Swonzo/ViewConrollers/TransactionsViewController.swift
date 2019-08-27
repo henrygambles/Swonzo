@@ -28,8 +28,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     var prices: [String] = []
     var categories: [String] = []
     
-    
-    // cell reuse id (cells that scroll out of view can be reused)
     let cellReuseIdentifier = "cell"
     
 
@@ -139,96 +137,85 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     let numberOfTransactions = root.transactions.count
                                     
                                     print("GREEN SHOP", root.transactions[15].merchant)
+                                    
 //                                    print("Merchant", root.transactions[15].merchant)
 //                                    print("Group ID", root.transactions[15].merchant?.groupID)
                                     print("Description", root.transactions[15].transactionDescription!)
                                     print("Metadata", root.transactions[15].metadata!)
                                     
+                                    let countNumber = 100
+                                    var i = numberOfTransactions
+                                
+                                
+                                    while i > numberOfTransactions - countNumber {
+
+                                        i = i - 1
+
+//                                        var merchantName = root.transactions[i].merchant?.name
+//                                        let address = root.transactions[i].merchant?.address.formatted
+
+                                        let amount = root.transactions[i].amount
+                                        let description = root.transactions[i].transactionDescription
+                                        var category = String(Substring(root.transactions[i].category!.rawValue))
+
+//                                        print(String(format:"%.2f", numberOfTransactions - i - 1) + "%")
+                                        let progress = numberOfTransactions - i
+                                        let percentageDouble = (Double(progress) / Double(countNumber) * 100)
+//
+                                        print("\n*********")
+                                        print("   " + String(format: "%.0f", percentageDouble) + "%")
+                                        print("*********\n")
+                                        
+                                        print(root.transactions[i].transactionDescription!)
+//                                        root.transactio
+                                        
+
+
+                                        if category == "transport" {
+                                            category = "🚇"
+                                        } else if category == "groceries" {
+                                            category = "🛒"
+                                        } else if category == "eating_out" {
+                                            category = "🍔"
+                                        } else if category == "entertainment" {
+                                            category = "🎥"
+                                        } else if category == "general" {
+                                            category = "⚙️"
+                                        } else if category == "shopping" {
+                                            category = "🛍️"
+                                        } else if category == "cash" {
+                                            category = "🍁"
+                                        } else if category == "personal_care" {
+                                            category = "❤️"
+                                        } else if category == "family" {
+                                            category = "❤️"
+                                        }
+                                        
+                                        print(category)
+
+                                        description?.prefix(25)
+//
+                                        let pounds = Double(amount ?? 0) / 100
+                                        if pounds < 0 {
+                                            let money = "£" + String(format:"%.2f",abs(pounds))
+                                            self.prices.append(money as! String)
+                                        }
+                                        else {
+                                            let money = "+£" + String(format:"%.2f",pounds)
+                                            self.prices.append(money as! String)
+                                        }
+                                       
+                                        self.transactions.append(description as! String ?? "error")
+                                        self.categories.append(category as! String ?? "error")
+                                        //                                        print(self.tableView.dataSource)
+                                        self.tableView.reloadData()
+
+                                    }
+                                    print("\nSuccess! Populated table.")
                                 } catch {
                                     print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
                                     print("Also,", error)
                                 }
-                                    
-//                                    while i > numberOfTransactions - countNumber {
-//
-//                                        i = i - 1
-//
-////                                        var merchantName = root.transactions[i].merchant?.name
-////                                        let address = root.transactions[i].merchant?.address.formatted
-//
-////                                        let amount = root.transactions[i].amount
-////                                        let description = root.transactions[i].transactionDescription
-////                                        var category = String(Substring(root.transactions[i].category.rawValue))
-//
-////                                        print(String(format:"%.2f", numberOfTransactions - i - 1) + "%")
-//                                        let progress = numberOfTransactions - i
-//                                        let percentageDouble = (Double(progress) / Double(countNumber) * 100)
-////                                        if percentageDouble.truncatingRemainder(dividingBy: 1) == 0{
-////                                            print(String(format: "%.0f", percentageDouble) + "%")
-////                                        }
-////                                        if merchantName != nil {
-////                                        print(String(format: "%.0f", percentageDouble) + "%")
-//                                        print("\n", root.transactions[i].transactionDescription!)
-//
-                                    
-////                                        } else {
-////                                            print(description)
-////                                        }
-////
-//
-////                                        if category == "transport" {
-////                                            category = "🚇"
-////                                        } else if category == "groceries" {
-////                                            category = "🛒"
-////                                        } else if category == "eating_out" {
-////                                            category = "🍔"
-////                                        } else if category == "entertainment" {
-////                                            category = "🎥"
-////                                        } else if category == "general" {
-////                                            category = "⚙️"
-////                                        } else if category == "shopping" {
-////                                            category = "🛍️"
-////                                        } else if category == "cash" {
-////                                            category = "🍁"
-////                                        } else if category == "personal_care" {
-////                                            category = "❤️"
-////                                        }
-////                                        } else if family == "family" {
-////                                            category = "❤️"
-////                                        }
-//
-////                                        description.prefix(25)
-////
-////                                        let pounds = Double(amount ?? 0) / 100
-//
-//
-//
-////                                        if pounds < 0 {
-////                                            let money = "-£" + String(format:"%.2f",abs(pounds))
-////                                            //                                            print(money)
-////                                            self.prices.append(money as! String)
-////                                        }
-////                                        else {
-////                                            let money = "+£" + String(format:".%.2f",pounds)
-////                                            //                                            print(money)
-////                                            self.prices.append(money as! String)
-////                                        }
-//                                        //                                        print(notes != "" ? notes: "No Notes for this transaction.")
-////                                        self.transactions.append(description as! String ?? "error")
-////                                        self.categories.append(category as! String ?? "error")
-//                                        //                                        print(self.tableView.dataSource)
-//                                        self.tableView.reloadData()
-//
-//                                    }
-//                                    print("\nSuccess! Populated table.")
-//                                } catch {
-//                                    print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
-//                                    print("Also,", error)
-//                                }
-                                
-                                
-                                
-                                
                                 
                             }
         }
@@ -238,8 +225,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        let count = self.transactions.count
-        //        return shouldShowLoadingCell ? count + 1 : count
+//                let count = self.transactions.count
+//                return shouldShowLoadingCell ? count + 1 : count
         return self.transactions.count
     }
     

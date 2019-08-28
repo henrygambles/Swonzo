@@ -169,83 +169,83 @@ struct Transaction: Codable {
         case declineReason = "decline_reason"
     }
     
-    init(from decoder:Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-
-        self.id = try container.decodeIfPresent(String.self, forKey: .id)! as! String
-        self.created = try container.decodeIfPresent(String.self, forKey: .created)!
-        self.transactionDescription = try container.decodeIfPresent(String.self, forKey: .transactionDescription)!
-        self.amount = try container.decodeIfPresent(Int.self, forKey: .amount)!
-        self.fees = try container.decodeIfPresent(Fees.self, forKey: .fees)!
-        self.currency = try container.decodeIfPresent(Currency.self, forKey: .currency)!
-
-//        self.merchant = try! container!.decodeIfPresent(Merchant.self, forKey: .merchant)!
-
-        self.notes = try container.decodeIfPresent(String.self, forKey: .notes)!
-        self.metadata = try container.decodeIfPresent([String: String].self, forKey: .metadata)
-        self.labels = try container.decodeIfPresent([Label].self, forKey: .labels)
-        self.accountBalance = try container.decodeIfPresent(Int.self, forKey: .accountBalance)!
-        self.attachments = try container.decodeIfPresent([Attachment].self, forKey: .attachments)!
-        self.international = try! container.decodeIfPresent(International.self, forKey: .international)
-        self.category = try container.decodeIfPresent(Category.self, forKey: .category)!
-        self.isLoad = try container.decodeIfPresent(Bool.self, forKey: .isLoad)!
-        self.settled = try container.decodeIfPresent(String.self, forKey: .settled)!
-        self.localAmount = try container.decodeIfPresent(Int.self, forKey: .localAmount)!
-        self.localCurrency = try container.decodeIfPresent(Currency.self, forKey: .currency)!
-        self.updated = try container.decodeIfPresent(String.self, forKey: .updated)!
-        self.accountID = try container.decodeIfPresent(TransactionAccountID.self, forKey: .accountID)!
-        self.userID = try container.decodeIfPresent(UserID.self, forKey: .userID)!
-        self.counterparty = try container.decodeIfPresent(Counterparty.self, forKey: .counterparty)!
-        self.scheme = try container.decodeIfPresent(Scheme.self, forKey: .scheme)!
-        self.dedupeID = try container.decodeIfPresent(String.self, forKey: .dedupeID)!
-        self.originator = try container.decodeIfPresent(Bool.self, forKey: .originator)!
-        self.includeInSpending = try container.decodeIfPresent(Bool.self, forKey: .includeInSpending)!
-        self.canBeExcludedFromBreakdown = try container.decodeIfPresent(Bool.self, forKey: .canBeExcludedFromBreakdown)!
-        self.canBeMadeSubscription = try container.decodeIfPresent(Bool.self, forKey: .canBeMadeSubscription)!
-        self.canSplitTheBill = try container.decodeIfPresent(Bool.self, forKey: .canSplitTheBill)!
-        self.canAddToTab = try container.decodeIfPresent(Bool.self, forKey: .canAddToTab)!
-        self.amountIsPending = try container.decodeIfPresent(Bool.self, forKey: .amountIsPending)!
-        self.declineReason = try container.decodeIfPresent(DeclineReason.self, forKey: .declineReason)
-
-
-//        self.merchant = try! container.nestedUnkeyedContainer(forKey: .merchant) as? Merchant
-
-        //        if (try? container.decodeIfPresent(String.self, forKey: .merchant)) == nil {
-        //            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
-        //        } else {
-        //            self.merchant == nil
-        //        }
-        print(self.transactionDescription)
-
-
-
-        if (try? container.decodeIfPresent(Merchant.self, forKey: .merchant)) == nil {
-                                self.merchant = try? container.decode(Merchant.self, forKey: .merchant)
-//            let test = try? container.nestedContainer(keyedBy: CodingKeys.self, forKey: Transaction.CodingKeys.merchant)
-            //            print(container.decode(Codable.Protocol, forKey: <#T##Transaction.CodingKeys#>.merchant))
-
-            //            print(container.de)
-            //            print(test)
-            //                        print(try container.decodeIfPresent(Merchant.self, forKey: .merchant))
-            //            print
-//            print(try? container?.decode(Merchant.self, forKey: .merchant))
+//    init(from decoder:Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
 //
-//            self.merchant = try! container?.decodeIfPresent(Merchant.self, forKey: .merchant)
-//            self.merchant = try! container.nestedUnkeyedContainer(forKey: .merchant) as? Merchant
-
-//            self.merchant = try container.decodeIfPresent(String.self, forKey: .merchant)
-
-            print("🛍️\n\n")
-
-        } else {
-            print("💸\n\n")
-            //            print(try container.decodeIfPresent(Merchant.self, forKey: .merchant))
-                        self.merchant = nil
-        }
-
-
-    }
+//
+//        self.id = try container.decodeIfPresent(String.self, forKey: .id)! as! String
+//        self.created = try container.decodeIfPresent(String.self, forKey: .created)!
+//        self.transactionDescription = try container.decodeIfPresent(String.self, forKey: .transactionDescription)!
+//        self.amount = try container.decodeIfPresent(Int.self, forKey: .amount)!
+//        self.fees = try container.decodeIfPresent(Fees.self, forKey: .fees)!
+//        self.currency = try container.decodeIfPresent(Currency.self, forKey: .currency)!
+//
+////        self.merchant = try! container!.decodeIfPresent(Merchant.self, forKey: .merchant)!
+//
+//        self.notes = try container.decodeIfPresent(String.self, forKey: .notes)!
+//        self.metadata = try container.decodeIfPresent([String: String].self, forKey: .metadata)
+//        self.labels = try container.decodeIfPresent([Label].self, forKey: .labels)
+//        self.accountBalance = try container.decodeIfPresent(Int.self, forKey: .accountBalance)!
+//        self.attachments = try container.decodeIfPresent([Attachment].self, forKey: .attachments)!
+//        self.international = try! container.decodeIfPresent(International.self, forKey: .international)
+//        self.category = try container.decodeIfPresent(Category.self, forKey: .category)!
+//        self.isLoad = try container.decodeIfPresent(Bool.self, forKey: .isLoad)!
+//        self.settled = try container.decodeIfPresent(String.self, forKey: .settled)!
+//        self.localAmount = try container.decodeIfPresent(Int.self, forKey: .localAmount)!
+//        self.localCurrency = try container.decodeIfPresent(Currency.self, forKey: .currency)!
+//        self.updated = try container.decodeIfPresent(String.self, forKey: .updated)!
+//        self.accountID = try container.decodeIfPresent(TransactionAccountID.self, forKey: .accountID)!
+//        self.userID = try container.decodeIfPresent(UserID.self, forKey: .userID)!
+//        self.counterparty = try container.decodeIfPresent(Counterparty.self, forKey: .counterparty)!
+//        self.scheme = try container.decodeIfPresent(Scheme.self, forKey: .scheme)!
+//        self.dedupeID = try container.decodeIfPresent(String.self, forKey: .dedupeID)!
+//        self.originator = try container.decodeIfPresent(Bool.self, forKey: .originator)!
+//        self.includeInSpending = try container.decodeIfPresent(Bool.self, forKey: .includeInSpending)!
+//        self.canBeExcludedFromBreakdown = try container.decodeIfPresent(Bool.self, forKey: .canBeExcludedFromBreakdown)!
+//        self.canBeMadeSubscription = try container.decodeIfPresent(Bool.self, forKey: .canBeMadeSubscription)!
+//        self.canSplitTheBill = try container.decodeIfPresent(Bool.self, forKey: .canSplitTheBill)!
+//        self.canAddToTab = try container.decodeIfPresent(Bool.self, forKey: .canAddToTab)!
+//        self.amountIsPending = try container.decodeIfPresent(Bool.self, forKey: .amountIsPending)!
+//        self.declineReason = try container.decodeIfPresent(DeclineReason.self, forKey: .declineReason)
+//
+//
+////        self.merchant = try! container.nestedUnkeyedContainer(forKey: .merchant) as? Merchant
+//
+//        //        if (try? container.decodeIfPresent(String.self, forKey: .merchant)) == nil {
+//        //            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
+//        //        } else {
+//        //            self.merchant == nil
+//        //        }
+//        print(self.transactionDescription)
+//
+//
+//
+//        if (try? container.decodeIfPresent(Merchant.self, forKey: .merchant)) == nil {
+//                                self.merchant = try? container.decode(Merchant.self, forKey: .merchant)
+////            let test = try? container.nestedContainer(keyedBy: CodingKeys.self, forKey: Transaction.CodingKeys.merchant)
+//            //            print(container.decode(Codable.Protocol, forKey: <#T##Transaction.CodingKeys#>.merchant))
+//
+//            //            print(container.de)
+//            //            print(test)
+//            //                        print(try container.decodeIfPresent(Merchant.self, forKey: .merchant))
+//            //            print
+////            print(try? container?.decode(Merchant.self, forKey: .merchant))
+////
+////            self.merchant = try! container?.decodeIfPresent(Merchant.self, forKey: .merchant)
+////            self.merchant = try! container.nestedUnkeyedContainer(forKey: .merchant) as? Merchant
+//
+////            self.merchant = try container.decodeIfPresent(String.self, forKey: .merchant)
+//
+//            print("🛍️\n\n")
+//
+//        } else {
+//            print("💸\n\n")
+//            //            print(try container.decodeIfPresent(Merchant.self, forKey: .merchant))
+//                        self.merchant = nil
+//        }
+//
+//
+//    }
     
 }
 
@@ -376,34 +376,28 @@ enum Label: String, Codable {
 }
 
 // MARK: - Merchant
+// MARK: - Merchant
 struct Merchant: Codable {
-    let id: [String]
-    let groupID, created, name: String
-    let logo: String
-    let emoji: String
-    let category: Category
+    let id, groupID, created, name: String?
+    let logo, emoji, category: String?
     let online, atm: Bool
-    let address: Address
-    let updated: String
-    let metadata: Metadata
-    let disableFeedback: Bool
+    let address: Address?
+    let updated: String?
+    let metadata: Metadata?
     
     enum CodingKeys: String, CodingKey {
         case id
         case groupID = "group_id"
         case created, name, logo, emoji, category, online, atm, address, updated, metadata
-        case disableFeedback = "disable_feedback"
     }
 }
 
 // MARK: - Address
 struct Address: Codable {
-    let shortFormatted, formatted, address, city: String
-    let region: String
-    let country: Country
-    let postcode: String
-    let latitude, longitude: Double
-    let zoomLevel: Int
+    let shortFormatted, formatted, address, city: String?
+    let region, country, postcode: String?
+    let latitude, longitude: Double?
+    let zoomLevel: Int?
     let approximate: Bool
     
     enum CodingKeys: String, CodingKey {
@@ -411,6 +405,29 @@ struct Address: Codable {
         case formatted, address, city, region, country, postcode, latitude, longitude
         case zoomLevel = "zoom_level"
         case approximate
+    }
+}
+
+// MARK: - Metadata
+struct Metadata: Codable {
+    let createdForMerchant, createdForTransaction, foursquareCategory, foursquareID: String?
+    let foursquareWebsite: String?
+    let googlePlacesIcon: String?
+    let googlePlacesID, googlePlacesName, suggestedName, suggestedTags: String?
+    let twitterID: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case createdForMerchant = "created_for_merchant"
+        case createdForTransaction = "created_for_transaction"
+        case foursquareCategory = "foursquare_category"
+        case foursquareID = "foursquare_id"
+        case foursquareWebsite = "foursquare_website"
+        case googlePlacesIcon = "google_places_icon"
+        case googlePlacesID = "google_places_id"
+        case googlePlacesName = "google_places_name"
+        case suggestedName = "suggested_name"
+        case suggestedTags = "suggested_tags"
+        case twitterID = "twitter_id"
     }
 }
 
@@ -428,41 +445,6 @@ enum Country: String, Codable {
     case usa = "USA"
 }
 
-// MARK: - Metadata
-struct Metadata: Codable {
-    let createdForTransaction, enrichedFromSettlement, createdForMerchant: String?
-    let provider: Provider?
-    let providerID, suggestedTags: String?
-    let twitterID: String?
-    let website: String?
-    let googlePlacesIcon: String?
-    let googlePlacesID, googlePlacesName, foursquareCategory: String?
-    let foursquareCategoryIcon: String?
-    let foursquareID: String?
-    let foursquareWebsite: String?
-    let suggestedName, paypointAgentName, paypointAgentSiteID: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case createdForTransaction = "created_for_transaction"
-        case enrichedFromSettlement = "enriched_from_settlement"
-        case createdForMerchant = "created_for_merchant"
-        case provider
-        case providerID = "provider_id"
-        case suggestedTags = "suggested_tags"
-        case twitterID = "twitter_id"
-        case website
-        case googlePlacesIcon = "google_places_icon"
-        case googlePlacesID = "google_places_id"
-        case googlePlacesName = "google_places_name"
-        case foursquareCategory = "foursquare_category"
-        case foursquareCategoryIcon = "foursquare_category_icon"
-        case foursquareID = "foursquare_id"
-        case foursquareWebsite = "foursquare_website"
-        case suggestedName = "suggested_name"
-        case paypointAgentName = "paypoint_agent_name"
-        case paypointAgentSiteID = "paypoint_agent_site_id"
-    }
-}
 
 enum Provider: String, Codable {
     case google = "google"

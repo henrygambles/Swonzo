@@ -68,7 +68,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     func transactionsRequest() {
         
-        Alamofire.request("https://api.monzo.com/transactions",
+        Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
                           encoding:  URLEncoding.default,
                           headers: headers).responseJSON { response in
@@ -77,6 +77,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                             } else if let jsonArray = response.result.value as? [[String: Any]] {
                             } else if let jsonDict = response.result.value as? [String: Any] {
                                 
+                               
                                 
                                 do {
                                     print("*************************")
@@ -126,6 +127,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     
                                     let root = try decoder.decode(Root.self, from: response.data!)
+//                                    let merchant = try decoder.decode(Root.self, from: response.data!, keyPath: "merchant")
+//                                    let address = try decoder.decode(Root.self, from: response.data!, keyPath: "merchant.address.address")
                                    
                                    
                                     
@@ -140,7 +143,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //                                    print("Merchant: , root.transactions[15].merchant)
                                     print("Merchant:", root.transactions[15].merchant)
 //                                    print("Merchant ID:", root.transactions[15].merchant?.id)
-                                    print("Address:", root.transactions[15].merchant?.address.address)
+//                                    print("Address:", root.transactions[15].merchant?.address.address)
 //                                    print("Description:", root.transactions[15].transactionDescription)
                                     print("Metadata:", root.transactions[15].metadata)
                                     
@@ -152,8 +155,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     print(root.transactions[15].transactionDescription)
                                     print(root.transactions[15].accountBalance)
                                     print(root.transactions[15].merchant)
-                                    print(root.transactions[15].merchant?.id)
-                                    print(root.transactions[15].merchant?.address.address)
+                                    print(root.transactions[15].merchant?.address?.address)
+//                                    print(root.transactions[15].merchant?["id"])
+//                                    print(root.transactions[15].merchant?["address"])
 //                                    print(root.transactions[15].merchant!.address.address)
 
                                   
@@ -163,8 +167,16 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     print(root.transactions[23].transactionDescription)
                                     print(root.transactions[23].accountBalance)
                                     print(root.transactions[23].merchant)
+//                                    print(root.transactions[23].merchant?["id"] as Any)
+                                    print(root.transactions[23].merchant?.address?.address)
                                     print(root.transactions[23].merchant?.id)
-                                    print(root.transactions[23].merchant?.address.address)
+                                    
+//                                    print(merchant.transactions[23].merchant)
+//                                    print(merchant.transactions[23].merchant?.address.address)
+//                                    print(merchant)
+//                                    print(address)
+//                                    print(address.transactions[23])
+//                                    print(root.transactions[23].merchant?.description)
                                     
                                  
 //                                    pr

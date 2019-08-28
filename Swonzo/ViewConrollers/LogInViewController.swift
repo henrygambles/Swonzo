@@ -98,7 +98,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             let tokenInput = textFieldView.text as! String
             UserDefaults.standard.set(tokenInput, forKey: "Token")
                 let headers: HTTPHeaders = [
-                    "Authorization": "Bearer " + token
+                    "Authorization": "Bearer " + tokenInput
                 ]
             self.checkAccountId(){ response in
                 if response == true {

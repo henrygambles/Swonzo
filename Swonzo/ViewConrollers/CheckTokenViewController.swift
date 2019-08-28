@@ -33,6 +33,7 @@ class CheckTokenViewController: UIViewController {
                 self.performSegue(withIdentifier: "goodTokenSegue", sender: nil)
             }
             else {
+                UserDefaults.standard.set(nil, forKey: "Token")
                 self.performSegue(withIdentifier: "badTokenSegue", sender: nil)
             }
         }

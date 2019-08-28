@@ -118,8 +118,6 @@ class SwonzoClient {
 // MARK: - Root
 struct Root: Codable {
     var transactions: [Transaction]
-    
-    
 }
 
 
@@ -201,6 +199,7 @@ struct Transaction: Codable {
 //            self.merchant = try? container.decodeIfPresent(String.self, forKey: .merchant)
 //            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
             print("🛍️\n\n")
+            
         } else {
             print("💸\n\n")
 //            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)

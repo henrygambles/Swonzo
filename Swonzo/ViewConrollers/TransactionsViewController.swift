@@ -126,10 +126,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     
                                     let root = try decoder.decode(Root.self, from: response.data!)
-                                    let trans = root.transactions
-                                    let merch = trans[15].merchant
-                                    let address = merch?.address
-                                    let addressAddress = address?.address
+                                   
                                    
                                     
 //                                  
@@ -150,7 +147,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     let countNumber = 20
                                     var i = numberOfTransactions
                                     
-                                    print("\nTESTING123\n")
+                                    print("\nTESTING 123\n")
                                   
                                     print(root.transactions[15].transactionDescription)
                                     print(root.transactions[15].accountBalance)
@@ -164,11 +161,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     print("\n")
                                    
                                     print(root.transactions[23].transactionDescription)
+                                    print(root.transactions[23].accountBalance)
                                     print(root.transactions[23].merchant)
                                     print(root.transactions[23].merchant?.id)
                                     print(root.transactions[23].merchant?.address.address)
                                     
-//                                    print(tranny.t)
+                                 
 //                                    pr
                                 
                                 

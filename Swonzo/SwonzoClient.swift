@@ -253,10 +253,6 @@ enum TransactionAccountID: String, Codable {
     case acc00009WBQ0ZTI9BSOC4I9PZ = "acc_00009WBQ0ZTI9bSOC4i9pZ"
 }
 
-struct Merch: Codable {
-    var MerchList: [Merchant]
-}
-
 // MARK: - Attachment
 struct Attachment: Codable {
     let created, externalID, fileType: String
@@ -381,7 +377,8 @@ enum Label: String, Codable {
 
 // MARK: - Merchant
 struct Merchant: Codable {
-    let id, groupID, created, name: String
+    let id: [String]
+    let groupID, created, name: String
     let logo: String
     let emoji: String
     let category: Category

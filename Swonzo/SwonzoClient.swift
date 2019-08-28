@@ -130,7 +130,7 @@ struct Transaction: Codable {
     var amount: Int?
     var fees: Fees?
     var currency: Currency?
-    var merchant: String?
+    var merchant: Merchant?
     var notes: String?
     var metadata: [String: String]?
     var labels: [Label]?
@@ -177,7 +177,7 @@ struct Transaction: Codable {
         case amountIsPending = "amount_is_pending"
         case declineReason = "decline_reason"
     }
-    
+
     init(from decoder:Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -190,12 +190,23 @@ struct Transaction: Codable {
         self.category = try container.decodeIfPresent(Category.self, forKey: .category)
 
 
-
 //        if (try? container.decodeIfPresent(String.self, forKey: .merchant)) == nil {
-            self.merchant = try container.decodeIfPresent(String.self, forKey: .merchant)
+//            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
 //        } else {
-//            self.merchant = nil
+//            self.merchant == nil
 //        }
+        print(self.transactionDescription)
+
+        if (try? container.decodeIfPresent(Merchant.self, forKey: .merchant)) == nil {
+//            self.merchant = try? container.decodeIfPresent(String.self, forKey: .merchant)
+//            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
+            print("🛍️\n\n")
+        } else {
+            print("💸\n\n")
+//            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
+        }
+
+
     }
 }
 
@@ -347,28 +358,103 @@ enum Label: String, Codable {
     case withdrawalATMInternational = "withdrawal.atm.international"
 }
 
-// MARK: - Merchant
 struct Merchant: Codable {
-    var id: [String]
-    var groupID: String
-    var created: String
-    var name: String
-    var logo: String
-    var emoji: String
-    var category: Category
-    var online, atm: Bool
-    var address: Address
-    var updated: String
-    var metadata: Metadata
-    var disableFeedback: Bool
+    let id, groupID, created, name: String
+    let logo, emoji, category: String
+    let online, atm: Bool
+    let address: Address
+    let updated: String
+    let metadata: MerchantMetadata
+    let disableFeedback: Bool
     
     enum CodingKeys: String, CodingKey {
         case id
-        case groupID = "group_id"
+        case groupID
         case created, name, logo, emoji, category, online, atm, address, updated, metadata
-        case disableFeedback = "disable_feedback"
+        case disableFeedback
     }
+}
+
+// MARK: - Address
+struct Address: Codable {
+    let shortFormatted, formatted, address, city: String
+    let region, country, postcode: String
+    let latitude, longitude: Double
+    let zoomLevel: Int
+    let approximate: Bool
     
+    enum CodingKeys: String, CodingKey {
+        case shortFormatted
+        case formatted, address, city, region, country, postcode, latitude, longitude
+        case zoomLevel
+        case approximate
+    }
+}
+
+// MARK: - MerchantMetadata
+struct MerchantMetadata: Codable {
+    let createdForMerchant: String?
+    let createdForTransaction: String
+    let foursquareCategory, foursquareID, foursquareWebsite: String?
+    let googlePlacesIcon: String
+    let googlePlacesID, googlePlacesName, suggestedName: String
+    let suggestedTags, twitterID, enrichedFromSettlement: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case createdForMerchant
+        case createdForTransaction
+        case foursquareCategory
+        case foursquareID
+        case foursquareWebsite
+        case googlePlacesIcon
+        case googlePlacesID
+        case googlePlacesName
+        case suggestedName
+        case suggestedTags
+        case twitterID
+        case enrichedFromSettlement
+    }
+}
+
+// MARK: - TransactionMetadata
+struct TransactionMetadata: Codable {
+    let ledgerInsertionID, mastercardAuthMessageID, mastercardLifecycleID: String
+    
+    enum CodingKeys: String, CodingKey {
+        case ledgerInsertionID
+        case mastercardAuthMessageID
+        case mastercardLifecycleID
+    }
+}
+
+
+
+
+
+
+
+// MARK: - Merchant
+//struct Merchant: Codable {
+//    var id: [String]
+//    var groupID: String
+//    var created: String
+//    var name: String
+//    var logo: String
+//    var emoji: String
+//    var category: Category
+//    var online, atm: Bool
+//    var address: Address
+//    var updated: String
+//    var metadata: Metadata
+//    var disableFeedback: Bool
+//
+//    enum CodingKeys: String, CodingKey {
+//        case id
+//        case groupID = "group_id"
+//        case created, name, logo, emoji, category, online, atm, address, updated, metadata
+//        case disableFeedback = "disable_feedback"
+//    }
+
 //    init(from decoder:Decoder) throws {
 //        let container = try decoder.container(keyedBy: CodingKeys.self)
 //        
@@ -396,39 +482,39 @@ struct Merchant: Codable {
 ////        }
 //    }
 //    
-}
-
-// MARK: - Address
-struct Address: Codable {
-    var shortFormatted, formatted, address, city: String
-    var region: String
-    var country: Country
-    var postcode: String
-    var latitude, longitude: Double
-    var zoomLevel: Int
-    var approximate: Bool
-    
-    enum CodingKeys: String, CodingKey {
-        case shortFormatted = "short_formatted"
-        case formatted, address, city, region, country, postcode, latitude, longitude
-        case zoomLevel = "zoom_level"
-        case approximate
-    }
-}
-
-enum Country: String, Codable {
-    case che = "CHE"
-    case deu = "DEU"
-    case empty = ""
-    case est = "EST"
-    case fra = "FRA"
-    case gb = "GB"
-    case gbr = "GBR"
-    case irl = "IRL"
-    case lux = "LUX"
-    case nld = "NLD"
-    case usa = "USA"
-}
+//}
+//
+//// MARK: - Address
+//struct Address: Codable {
+//    var shortFormatted, formatted, address, city: String
+//    var region: String
+//    var country: Country
+//    var postcode: String
+//    var latitude, longitude: Double
+//    var zoomLevel: Int
+//    var approximate: Bool
+//
+//    enum CodingKeys: String, CodingKey {
+//        case shortFormatted = "short_formatted"
+//        case formatted, address, city, region, country, postcode, latitude, longitude
+//        case zoomLevel = "zoom_level"
+//        case approximate
+//    }
+//}
+//
+//enum Country: String, Codable {
+//    case che = "CHE"
+//    case deu = "DEU"
+//    case empty = ""
+//    case est = "EST"
+//    case fra = "FRA"
+//    case gb = "GB"
+//    case gbr = "GBR"
+//    case irl = "IRL"
+//    case lux = "LUX"
+//    case nld = "NLD"
+//    case usa = "USA"
+//}
 
 // MARK: - Metadata
 struct Metadata: Codable {
@@ -443,7 +529,7 @@ struct Metadata: Codable {
     var foursquareID: String?
     var foursquareWebsite: String?
     var suggestedName, paypointAgentName, paypointAgentSiteID: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case createdForTransaction = "created_for_transaction"
         case enrichedFromSettlement = "enriched_from_settlement"
@@ -482,7 +568,7 @@ enum Scheme: String, Codable {
     case ukCashDepositsPaypoint = "uk_cash_deposits_paypoint"
     case ukRetailPot = "uk_retail_pot"
 }
-//
+
 //// MARK: - Account
 //struct Account: Codable {
 //    let id: String

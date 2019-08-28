@@ -25,25 +25,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
        
         let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fadeIn), userInfo: nil, repeats: false)
-        self.recentTokenButton.isHidden = true;
+//        self.recentTokenButton.isHidden = true;
         self.setupToHideKeyboardOnTapOnView()
-        checkIfLoggedIn()
         textFieldView.delegate = self
         setBlurryView()
         hide()
     }
     
-    func checkIfLoggedIn() {
-        checkAccountId() { response in
-            if response == true {
-                self.recentTokenButton.isHidden = false;
-            }
-            else {
-                self.recentTokenButton.isHidden = true;
-            }
-        }
-    }
-    
+
     
     @IBOutlet weak var recentTokenButton: UIButton!
     @IBOutlet weak var errorTextView: UITextView!
@@ -57,6 +46,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func tokenInput(_ sender: Any) {
         let token = textFieldView.text as! String
+        UserDefaults.standard.set(token, forKey: "Token")
         let headers: HTTPHeaders = [
             "Authorization": "Bearer " + token
         ]
@@ -97,8 +87,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     func login() {
             let tokenInput = textFieldView.text as! String
             UserDefaults.standard.set(tokenInput, forKey: "Token")
+            var token =  UserDefaults.standard.string(forKey: "Token")
                 let headers: HTTPHeaders = [
-                    "Authorization": "Bearer " + tokenInput
+                    "Authorization": "Bearer " + token!
                 ]
             self.checkAccountId(){ response in
                 if response == true {

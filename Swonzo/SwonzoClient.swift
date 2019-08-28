@@ -43,7 +43,7 @@ class SwonzoClient {
                             } else if let jsonDict = response.result.value as? [String: Any] {
                                 completion([jsonDict], nil)
                                 
-                                
+                               
                                 
                                 do {
                                     
@@ -82,6 +82,10 @@ class SwonzoClient {
     }
     
     func getAccountInfo(completion: @escaping (String) -> Void) {
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer " + UserDefaults.standard.string(forKey: "Token")!
+        ]
         
         Alamofire.request("https://api.monzo.com/accounts",
                           encoding:  URLEncoding.default,

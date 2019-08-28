@@ -13,7 +13,15 @@ class CheckTokenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tryToken()
+        let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(noTokenSegue), userInfo: nil, repeats: false)
+//        fistOff()
+        if UserDefaults.standard.string(forKey: "Token") != nil {
+            tryToken()
+        } else {
+            print("should segue")
+//            self.performSegue(withIdentifier: "badTokenSegue", sender: nil)
+            noTokenSegue()
+        }
         startAnimation()
         // Do any additional setup after loading the view.
     }
@@ -22,8 +30,11 @@ class CheckTokenViewController: UIViewController {
         return .lightContent
     }
 
-    
 
+    
+    @objc func noTokenSegue() {
+        self.performSegue(withIdentifier: "noTokenSegue", sender: self)
+    }
     
     func tryToken() {
         SwonzoClient().getAccountInfo() { response in
@@ -35,11 +46,19 @@ class CheckTokenViewController: UIViewController {
             else {
                 UserDefaults.standard.set(nil, forKey: "Token")
                 self.performSegue(withIdentifier: "badTokenSegue", sender: nil)
+                
+//                self.loginSegue()
             }
         }
+    
+        
         
     }
     
+    func loginSegue() {
+        self.performSegue(withIdentifier: "badTokenSegue", sender: nil)
+    }
+//
     func startAnimation() {
         
         let animationView = AnimationView(name: "rainbow-wave-loading")

@@ -186,6 +186,7 @@
                     <connections>
                         <segue destination="pAn-QE-wOf" kind="show" identifier="goodTokenSegue" id="BLl-cc-F8T"/>
                         <segue destination="sg1-Fo-LOa" kind="show" identifier="badTokenSegue" id="YAq-7E-JW4"/>
+                        <segue destination="sg1-Fo-LOa" kind="show" identifier="noTokenSegue" id="Ed5-JZ-osv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TM6-gh-bpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -346,6 +347,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BLl-cc-F8T"/>
+        <segue reference="Ed5-JZ-osv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.97254901960784312" green="0.4392156862745098" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

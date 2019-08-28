@@ -221,7 +221,7 @@ struct Transaction: Codable {
 
 
         if (try? container.decodeIfPresent(Merchant.self, forKey: .merchant)) == nil {
-            //                        self.merchant = try? container.decode(Merchant.self, forKey: .merchant)
+                                self.merchant = try? container.decode(Merchant.self, forKey: .merchant)
 //            let test = try? container.nestedContainer(keyedBy: CodingKeys.self, forKey: Transaction.CodingKeys.merchant)
             //            print(container.decode(Codable.Protocol, forKey: <#T##Transaction.CodingKeys#>.merchant))
 
@@ -232,7 +232,9 @@ struct Transaction: Codable {
 //            print(try? container?.decode(Merchant.self, forKey: .merchant))
 //
 //            self.merchant = try! container?.decodeIfPresent(Merchant.self, forKey: .merchant)
-            self.merchant = try! container.nestedUnkeyedContainer(forKey: .merchant) as? Merchant
+//            self.merchant = try! container.nestedUnkeyedContainer(forKey: .merchant) as? Merchant
+
+//            self.merchant = try container.decodeIfPresent(String.self, forKey: .merchant)
 
             print("🛍️\n\n")
 
@@ -249,6 +251,10 @@ struct Transaction: Codable {
 
 enum TransactionAccountID: String, Codable {
     case acc00009WBQ0ZTI9BSOC4I9PZ = "acc_00009WBQ0ZTI9bSOC4i9pZ"
+}
+
+struct Merch: Codable {
+    var MerchList: [Merchant]
 }
 
 // MARK: - Attachment

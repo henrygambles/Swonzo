@@ -126,7 +126,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     
                                     let root = try decoder.decode(Root.self, from: response.data!)
-                                    let tranny = try decoder.decode(Root.self, from: response.data!).transactions
+                                    let trans = root.transactions
+                                    let merch = trans[15].merchant
+                                    let address = merch?.address
+                                    let addressAddress = address?.address
                                    
                                     
 //                                  
@@ -140,7 +143,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //                                    print("Merchant: , root.transactions[15].merchant)
                                     print("Merchant:", root.transactions[15].merchant)
 //                                    print("Merchant ID:", root.transactions[15].merchant?.id)
-//                                    print("Address:", root.transactions[15].merchant?.address.address)
+                                    print("Address:", root.transactions[15].merchant?.address.address)
 //                                    print("Description:", root.transactions[15].transactionDescription)
                                     print("Metadata:", root.transactions[15].metadata)
                                     
@@ -148,24 +151,23 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     var i = numberOfTransactions
                                     
                                     print("\nTESTING123\n")
-                                    print(tranny[15])
+                                  
+                                    print(root.transactions[15].transactionDescription)
                                     print(root.transactions[15].accountBalance)
                                     print(root.transactions[15].merchant)
-                                    print(root.transactions[15].merchant!.address.address)
+                                    print(root.transactions[15].merchant?.id)
+                                    print(root.transactions[15].merchant?.address.address)
+//                                    print(root.transactions[15].merchant!.address.address)
 
-                                    print(tranny[15].accountBalance)
-                                    print(tranny[15].transactionDescription)
-                                    print(tranny[15].merchant)
+                                  
 //                                    print(tranny[15].merchant?.address.address)
                                     print("\n")
-                                    print(tranny[23])
-                                    print(root.transactions[23].accountBalance)
-                                    print(tranny[23].accountBalance)
-                                    print(tranny[23].transactionDescription)
+                                   
+                                    print(root.transactions[23].transactionDescription)
                                     print(root.transactions[23].merchant)
-                                    print(root.transactions[23].merchant!.address.address)
-                                    print(tranny[23].merchant)
-//                                    print(tranny[15].merchant?.address.address)
+                                    print(root.transactions[23].merchant?.id)
+                                    print(root.transactions[23].merchant?.address.address)
+                                    
 //                                    print(tranny.t)
 //                                    pr
                                 

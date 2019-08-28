@@ -124,7 +124,7 @@ struct Transaction: Codable {
     let currency: Currency
     let merchant: Merchant?
     let notes: String
-    let metadata: [String: String]
+    let metadata: [String: String]?
     let labels: [Label]?
     let accountBalance: Int
     let attachments: [Attachment]
@@ -173,21 +173,21 @@ struct Transaction: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
 
-        self.id = try container.decodeIfPresent(String.self, forKey: .id)!
+        self.id = try container.decodeIfPresent(String.self, forKey: .id)! as! String
         self.created = try container.decodeIfPresent(String.self, forKey: .created)!
         self.transactionDescription = try container.decodeIfPresent(String.self, forKey: .transactionDescription)!
         self.amount = try container.decodeIfPresent(Int.self, forKey: .amount)!
         self.fees = try container.decodeIfPresent(Fees.self, forKey: .fees)!
         self.currency = try container.decodeIfPresent(Currency.self, forKey: .currency)!
-        
-        self.merchant = try? container.decodeIfPresent(Merchant.self, forKey: .merchant)!
-        
+
+//        self.merchant = try! container!.decodeIfPresent(Merchant.self, forKey: .merchant)!
+
         self.notes = try container.decodeIfPresent(String.self, forKey: .notes)!
-        self.metadata = try container.decodeIfPresent([String: String].self, forKey: .metadata)!
-        self.labels = try container.decodeIfPresent([Label].self, forKey: .labels)!
+        self.metadata = try container.decodeIfPresent([String: String].self, forKey: .metadata)
+        self.labels = try container.decodeIfPresent([Label].self, forKey: .labels)
         self.accountBalance = try container.decodeIfPresent(Int.self, forKey: .accountBalance)!
         self.attachments = try container.decodeIfPresent([Attachment].self, forKey: .attachments)!
-        self.international = try container.decodeIfPresent(International.self, forKey: .international)!
+        self.international = try! container.decodeIfPresent(International.self, forKey: .international)
         self.category = try container.decodeIfPresent(Category.self, forKey: .category)!
         self.isLoad = try container.decodeIfPresent(Bool.self, forKey: .isLoad)!
         self.settled = try container.decodeIfPresent(String.self, forKey: .settled)!
@@ -206,10 +206,10 @@ struct Transaction: Codable {
         self.canSplitTheBill = try container.decodeIfPresent(Bool.self, forKey: .canSplitTheBill)!
         self.canAddToTab = try container.decodeIfPresent(Bool.self, forKey: .canAddToTab)!
         self.amountIsPending = try container.decodeIfPresent(Bool.self, forKey: .amountIsPending)!
-        self.declineReason = try container.decodeIfPresent(DeclineReason.self, forKey: .declineReason)!
-        
-        
+        self.declineReason = try container.decodeIfPresent(DeclineReason.self, forKey: .declineReason)
 
+
+//        self.merchant = try! container.nestedUnkeyedContainer(forKey: .merchant) as? Merchant
 
         //        if (try? container.decodeIfPresent(String.self, forKey: .merchant)) == nil {
         //            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
@@ -218,22 +218,28 @@ struct Transaction: Codable {
         //        }
         print(self.transactionDescription)
 
+
+
         if (try? container.decodeIfPresent(Merchant.self, forKey: .merchant)) == nil {
             //                        self.merchant = try? container.decode(Merchant.self, forKey: .merchant)
-            let test = try? container.nestedContainer(keyedBy: CodingKeys.self, forKey: Transaction.CodingKeys.merchant)
+//            let test = try? container.nestedContainer(keyedBy: CodingKeys.self, forKey: Transaction.CodingKeys.merchant)
             //            print(container.decode(Codable.Protocol, forKey: <#T##Transaction.CodingKeys#>.merchant))
-            
+
             //            print(container.de)
             //            print(test)
             //                        print(try container.decodeIfPresent(Merchant.self, forKey: .merchant))
             //            print
+//            print(try? container?.decode(Merchant.self, forKey: .merchant))
+//
+//            self.merchant = try! container?.decodeIfPresent(Merchant.self, forKey: .merchant)
+            self.merchant = try! container.nestedUnkeyedContainer(forKey: .merchant) as? Merchant
 
             print("🛍️\n\n")
 
         } else {
             print("💸\n\n")
             //            print(try container.decodeIfPresent(Merchant.self, forKey: .merchant))
-            //            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
+                        self.merchant = nil
         }
 
 

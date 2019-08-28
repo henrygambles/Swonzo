@@ -28,6 +28,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     var prices: [String] = []
     var categories: [String] = []
     
+    
     let cellReuseIdentifier = "cell"
     
 
@@ -182,73 +183,83 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //                                    pr
                                 
                                 
-//                                    while i > numberOfTransactions - countNumber {
+                                    while i > numberOfTransactions - countNumber {
+
+                                        i = i - 1
+
+//                                        var merchantName = root.transactions[i].merchant?.name
+//                                        let address = root.transactions[i].merchant?.address.formatted
+                                        
+                                        let name = root.transactions[i].merchant?.name
+                                        let amount = root.transactions[i].amount
+                                        let transDescription = root.transactions[i].transactionDescription
+                                        var category = String(Substring(root.transactions[i].category.rawValue)) ?? "no cat"
+
+//                                        print(String(format:"%.2f", numberOfTransactions - i - 1) + "%")
+                                        let progress = numberOfTransactions - i
+                                        let percentageDouble = (Double(progress) / Double(countNumber) * 100)
 //
-//                                        i = i - 1
-//
-////                                        var merchantName = root.transactions[i].merchant?.name
-////                                        let address = root.transactions[i].merchant?.address.formatted
-//
-//                                        let amount = root.transactions[i].amount
-//                                        let description = root.transactions[i].transactionDescription
-//                                        var category = String(Substring(root.transactions[i].category!.rawValue)) ?? "no cat"
-//
-////                                        print(String(format:"%.2f", numberOfTransactions - i - 1) + "%")
-//                                        let progress = numberOfTransactions - i
-//                                        let percentageDouble = (Double(progress) / Double(countNumber) * 100)
-////
-//                                        print("\n*********")
-//                                        print("   " + String(format: "%.0f", percentageDouble) + "%")
-//                                        print("*********\n")
-//
+                                        print("\n*********")
+                                        print("   " + String(format: "%.0f", percentageDouble) + "%")
+                                        print("*********\n")
+
 //                                        print(root.transactions[i].transactionDescription!)
-////                                        root.transactio
+//                                        root.transactio
+
+
+
+                                        if category == "transport" {
+                                            category = "🚇"
+                                        } else if category == "groceries" {
+                                            category = "🛒"
+                                        } else if category == "eating_out" {
+                                            category = "🍔"
+                                        } else if category == "entertainment" {
+                                            category = "🎥"
+                                        } else if category == "general" {
+                                            category = "⚙️"
+                                        } else if category == "shopping" {
+                                            category = "🛍️"
+                                        } else if category == "cash" {
+                                            category = "💵"
+                                        } else if category == "personal_care" {
+                                            category = "❤️"
+                                        } else if category == "family" {
+                                            category = "❤️"
+                                        }
 //
-//
-//
-//                                        if category == "transport" {
-//                                            category = "🚇"
-//                                        } else if category == "groceries" {
-//                                            category = "🛒"
-//                                        } else if category == "eating_out" {
-//                                            category = "🍔"
-//                                        } else if category == "entertainment" {
-//                                            category = "🎥"
-//                                        } else if category == "general" {
-//                                            category = "⚙️"
-//                                        } else if category == "shopping" {
-//                                            category = "🛍️"
-//                                        } else if category == "cash" {
-//                                            category = "🍁"
-//                                        } else if category == "personal_care" {
-//                                            category = "❤️"
-//                                        } else if category == "family" {
-//                                            category = "❤️"
-//                                        }
-////
-//                                        print(category)
-////                                        print(root.transactions[i].merchant?.address.address)
-//
+                                        print(category)
+//                                        print(root.transactions[i].merchant?.address.address)
+
 //                                        description?.prefix(25)
-////
-//                                        let pounds = Double(amount ?? 0) / 100
-//                                        if pounds < 0 {
-//                                            let money = "£" + String(format:"%.2f",abs(pounds))
-//                                            self.prices.append(money as! String)
-//                                            print(money)
-//                                        }
-//                                        else {
-//                                            let money = "+£" + String(format:"%.2f",pounds)
-//                                            self.prices.append(money as! String)
-//                                            print(money)
-//                                        }
+                                        
+                                        
+                                        if name == nil {
+                                            let description = transDescription
+                                            self.transactions.append(description as! String ?? "error")
+                                        } else {
+                                            let description = name
+                                            self.transactions.append(description as! String ?? "error")
+                                        }
 //
-//                                        self.transactions.append(description as! String ?? "error")
-//                                        self.categories.append(category as! String ?? "error")
-//                                        //                                        print(self.tableView.dataSource)
-//                                        self.tableView.reloadData()
-//
-//                                    }
+                                        let pounds = Double(amount ?? 0) / 100
+                                        if pounds < 0 {
+                                            let money = "£" + String(format:"%.2f",abs(pounds))
+                                            self.prices.append(money as! String)
+                                            print(money)
+                                        }
+                                        else {
+                                            let money = "+£" + String(format:"%.2f",pounds)
+                                            self.prices.append(money as! String)
+                                            print(money)
+                                        }
+
+                                        
+                                        self.categories.append(category as! String ?? "error")
+                                        //                                        print(self.tableView.dataSource)
+                                        self.tableView.reloadData()
+
+                                    }
                                     print("\nSuccess! Populated table.")
                                 } catch {
                                     print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
@@ -283,7 +294,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         let price = prices[indexPath.row]
         let category = categories[indexPath.row]
         cell.detailTextLabel?.text = price
-        let label = UILabel.init(frame: CGRect(x:0,y:0,width:100,height:20))
+        let label = UILabel.init(frame: CGRect(x:0,y:0,width:120,height:20))
         label.text = category + " " + price
         cell.accessoryView = label
         

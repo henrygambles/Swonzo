@@ -51,6 +51,6 @@ class CheckTokenViewController: UIViewController {
         animationView.play()
     }
     
-
+    
 
 }

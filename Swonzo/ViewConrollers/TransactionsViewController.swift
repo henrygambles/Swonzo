@@ -294,7 +294,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         let price = prices[indexPath.row]
         let category = categories[indexPath.row]
         cell.detailTextLabel?.text = price
-        let label = UILabel.init(frame: CGRect(x:0,y:0,width:120,height:20))
+        let label = UILabel.init(frame: CGRect(x:0,y:0,width:110,height:20))
         label.text = category + " " + price
         cell.accessoryView = label
         

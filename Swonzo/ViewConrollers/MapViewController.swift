@@ -11,6 +11,8 @@ import Alamofire_SwiftyJSON
 import UIKit
 import GoogleMaps
 
+
+
 class MapViewController: UIViewController {
     
     var transactions: [String] = []
@@ -19,6 +21,7 @@ class MapViewController: UIViewController {
     var names: [String] = []
     var latitudes: [Double] = []
     var longitudes: [Double] = []
+    
 
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -28,7 +31,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mapsRequest()
+//        mapsRequest()
        
         
                         let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 13.0)
@@ -58,9 +61,9 @@ class MapViewController: UIViewController {
         let henry_position = CLLocationCoordinate2D(latitude: 51.4850, longitude: -0.1919)
         
         
-//        let test_position = CLLocationCoordinate2D(latitude: latitude[0], longitude: longitude[0])
+//        let test_position = CLLocationCoordinate2D(latitude: latitudes[0], longitude: longitudes[0])
 //        let test = GMSMarker(position: test_position)
-//        test.title = name[0]
+//        test.title = names[0]
 //        test.map = mapView
         
         let henry = GMSMarker(position: henry_position)
@@ -226,5 +229,6 @@ class MapViewController: UIViewController {
         }
     }
     
+  
 
 }

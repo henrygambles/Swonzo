@@ -11,15 +11,12 @@ import SwiftyJSON
 import Alamofire_SwiftyJSON
 import UIKit
 
+
 class HomeViewController: UIViewController {
     
-    func doATing() -> String {
-        return "Yay"
-    }
-    
     private let swonzoClient = SwonzoClient()
-    
- 
+    private let swonzoLogic = SwonzoLogic()
+
     @IBOutlet weak var thirdBlurView: UIView!
     @IBOutlet weak var homeView: UITextView!
     @IBOutlet weak var balanceView: UITextView!
@@ -30,15 +27,12 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialRequest()
         balanceRequest()
-        setThirdBlurView()
+        setHomeBlurView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
         UIView.animate(withDuration: 3.5, animations: {
             self.homeView.alpha = 1.0
 
@@ -47,93 +41,43 @@ class HomeViewController: UIViewController {
     
     typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
     
-    func setThirdBlurView() {
+    func setHomeBlurView() {
         let blurView = UIVisualEffectView()
         blurView.frame = view.frame
         blurView.effect = UIBlurEffect(style: .regular)
         thirdBlurView.addSubview(blurView)
     }
     
-    func initialRequest() {
- 
-        Alamofire.request("https://api.monzo.com/accounts",
-                          encoding:  URLEncoding.default,
-                          headers: headers).responseJSON { response in
-                            if let error = response.error {
-                                self.homeView.text = error.localizedDescription
-                            } else if let jsonArray = response.result.value as? [[String: Any]] {
-                            } else if let jsonDict = response.result.value as? [String: Any] {
-                                
-                                do {
-                                    
-                                    let json = try JSON(data: response.data!)
-                                    let account_number = json["accounts"][0]["account_number"].string
-                                    let acc_id = json["accounts"][0]["id"].string
-                                    let sort_code = json["accounts"][0]["sort_code"].string
-                                    let first_name = json["accounts"][0]["owners"][0]["preferred_first_name"].string
-                                    let full_name = json["accounts"][0]["owners"][0]["preferred_name"].string
-                                    let user_id = json["accounts"][0]["owners"][0]["user_id"].string
-                                    let account_description = json["accounts"][0]["description"].string
-                                    //                                        self.homeView.text = "Hi " + first_name! + "! Welcome to Swonzo.\n\nYour account number is:\n\n" + account_number! + "\n\nYour sort code is:\n\n" + sort_code! + "\n\nAnd your account id is:\n\n" + acc_id! + "\n\nEnjoy!"
-                                    //                                        self.homeView.text = balanceRequest()
-                                    
-                                    print("TESTING")
-                                    print(full_name ?? "JSON parsing error")
-                                    print(acc_id ?? "JSON parsing error")
-                                    print(user_id ?? "JSON parsing error")
-                                    print(account_number ?? "JSON parsing error")
-                                    print(sort_code ?? "JSON parsing error")
-                                    print(first_name ?? "JSON parsing error")
-                                    print(account_description ?? "Json not parsed")
-                                    
-                                } catch {
-                                    print("JSON Parsing error:", error)
-                                }
-                                
-                            }
-        }
-    }
+
+
+    
     
     func balanceRequest() {
-        
         Alamofire.request("https://api.monzo.com/balance",
                           parameters: parameters,
                           encoding:  URLEncoding.default,
                           headers: headers).responseJSON { response in
                             if let error = response.error {
-                                //                            self.homeView.text = "hey there"
-                            } else if let jsonArray = response.result.value as? [[String: Any]] {
-                                //                            self.homeView.text = "whattup"
-                            } else if let jsonDict = response.result.value as? [String: Any] {
-                                
-                                print("Balance Test")
-                                
-                                if let result = response.result.value {
+                                self.homeView.text = error.localizedDescription
+                                print(error.localizedDescription)
+                            } else {
+                                    let result = response.result.value
                                     let MYJSON = result as! NSDictionary
                                     let balance = MYJSON.object(forKey: "balance")
                                     let spendToday = MYJSON.object(forKey: "spend_today")
-                                    let pounds = balance as! Double / 100
-                                    let poundsSpent = spendToday as! Double / 100
-                                    var youSpent = "\n\n\nYou've spent £" + String(format:"%.2f",abs(poundsSpent)) + " today!"
-                                    
-                                    if pounds < 0 {
-                    
-                                        
-                                            var balanceIs = "Your balance is -£" + String(format:"%.2f", abs(pounds))
-                                        self.homeView.text = balanceIs + youSpent
-                                        
-                                        }
-                                    else {
-                                            var balanceIs = "Your balance is £" + String(format:"%.2f", pounds)
-                                        self.homeView.text = balanceIs + youSpent
-                                        
-                                    }
-                                    
+                                    let errorMessage = MYJSON.object(forKey: "message")
+                                print("result is ", result)
+                                if balance != nil {
+//                                    let name = UserDefaults.standard.string(forKey: "FirstName")
+                                    self.homeView.text =  "Hi \(UserDefaults.standard.string(forKey: "FirstName")!)!\n\n\nYour balance is \(self.swonzoLogic.jsonBalanceToMoney(balance: balance))\n\n\nYou've spent \(self.swonzoLogic.jsonSpendTodayToMoney(spendToday: spendToday)) today."
+                                   
                                     self.homeView.alpha = 0
                                     UIView.animate(withDuration: 1) {
                                         self.homeView.alpha = 1
                                     }
-                                    
+                                }
+                                else {
+                                    self.homeView.text = errorMessage as! String
                                 }
                             }
         }

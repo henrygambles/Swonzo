@@ -102,8 +102,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     print("THE HEREFORD")
 //                                    print("Address: ", root.transactions[23].merchant?.address.address)
                                     print("Merchant:", root.transactions[23].merchant)
-                                    print("Merchant ID:", root.transactions[23].merchant?.id)
-                                    print("Description:", root.transactions[23].transactionDescription)
+//                                    print("Merchant ID:", root.transactions[23].merchant?.id)
+//                                    print("Description:", root.transactions[23].transactionDescription)
                                     print("Metadata:", root.transactions[23].metadata)
                                     
                                 } catch {
@@ -126,33 +126,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     
                                     let root = try decoder.decode(Root.self, from: response.data!)
+                                    let tranny = try decoder.decode(Root.self, from: response.data!).transactions
+                                   
                                     
-//                                    let tranny = try decoder.decode([Root].self, from: response.data!)
-
-                                    
-//                                    let merch = try decoder.decode()
-                                    print("SMOKEWEEDEVERYDAY")
-                                    do {
-                                        let merch = try decoder.decode(Merchant.self, from: response.data!)
-//                                        let name = try root.transactions[23](keyedBy: Root.self, forKey: .m)
-                                        print(merch.id)
-                                        print(merch.address.address)
-                                    } catch {
-                                        print("Failed to decode JSON", error.localizedDescription)
-                                        print(error)
-                                    }
-                                    
-                                    if (try? decoder.decode(Merchant.self, from: response.data!)) == nil {
-                                        //            self.merchant = try? container.decodeIfPresent(String.self, forKey: .merchant)
-//                                        let merchant = try root.transactions[15].decodeIfPresent(Merchant.self, forKey: .merchant)
-//                                        print(m)
-                                        print("🛍️🛍️🛍️🛍️🛍️🛍️\n\n")
-                                        
-                                        
-                                    } else {
-                                        print("💸💸💸💸💸💸 \n\n")
-                                        //            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
-                                    }
+//                                  
                                     
                                     print("You have made", root.transactions.count, "transactions... wow!\n")
                                     let numberOfTransactions = root.transactions.count
@@ -162,15 +139,28 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //                                    print( root.transactions[15].merchant?.address.address)
 //                                    print("Merchant: , root.transactions[15].merchant)
                                     print("Merchant:", root.transactions[15].merchant)
-                                    print("Merchant ID:", root.transactions[15].merchant?.id)
-                                    print("Address:", root.transactions[15].merchant?.address.address)
-                                    print("Description:", root.transactions[15].transactionDescription)
+//                                    print("Merchant ID:", root.transactions[15].merchant?.id)
+//                                    print("Address:", root.transactions[15].merchant?.address.address)
+//                                    print("Description:", root.transactions[15].transactionDescription)
                                     print("Metadata:", root.transactions[15].metadata)
                                     
                                     let countNumber = 20
                                     var i = numberOfTransactions
                                     
-                                    print("TESTING123")
+                                    print("\nTESTING123\n")
+                                    print(tranny[15])
+                                    print(root.transactions[15].accountBalance)
+                                    print(tranny[15].accountBalance)
+                                    print(tranny[15].transactionDescription)
+                                    print(tranny[15].merchant)
+                                    print(tranny[15].merchant?.address.address)
+                                    print("\n")
+                                    print(tranny[23])
+                                    print(root.transactions[23].accountBalance)
+                                    print(tranny[23].accountBalance)
+                                    print(tranny[23].transactionDescription)
+                                    print(tranny[23].merchant)
+                                    print(tranny[15].merchant?.address.address)
 //                                    print(tranny.t)
 //                                    pr
                                 

@@ -112,39 +112,37 @@ class SwonzoClient {
     }
 
 }
-// MARK: - Root
 struct Root: Codable {
     let transactions: [Transaction]
 }
 
 // MARK: - Transaction
 struct Transaction: Codable {
-    var id, created, transactionDescription: String?
-    var amount: Int?
-    var fees: Fees?
-    var currency: Currency?
-    var merchant: Merchant?
-    var notes: String?
-    var metadata: [String: String]?
-    var labels: [Label]?
-    var accountBalance: Int?
-    var attachments: [Attachment]?
-    var international: International? = nil
-    var category: Category?
-    var isLoad: Bool?
-    var settled: String?
-    var localAmount: Int?
-    var localCurrency: Currency?
-    var updated: String?
-    var accountID: TransactionAccountID?
-    var userID: UserID?
-    var counterparty: Counterparty?
-    var scheme: Scheme?
-    var dedupeID: String?
-    var originator, includeInSpending, canBeExcludedFromBreakdown, canBeMadeSubscription: Bool?
-    var canSplitTheBill, canAddToTab, amountIsPending: Bool?
-    var declineReason: DeclineReason?
-    
+    let id, created, transactionDescription: String
+    let amount: Int
+    let fees: Fees
+    let currency: Currency
+    let merchant: Merchant?
+    let notes: String
+    let metadata: [String: String]
+    let labels: [Label]?
+    let accountBalance: Int
+    let attachments: [Attachment]
+    let international: International?
+    let category: Category
+    let isLoad: Bool
+    let settled: String
+    let localAmount: Int
+    let localCurrency: Currency
+    let updated: String
+    let accountID: TransactionAccountID
+    let userID: UserID
+    let counterparty: Counterparty
+    let scheme: Scheme
+    let dedupeID: String
+    let originator, includeInSpending, canBeExcludedFromBreakdown, canBeMadeSubscription: Bool
+    let canSplitTheBill, canAddToTab, amountIsPending: Bool
+    let declineReason: DeclineReason?
     
     enum CodingKeys: String, CodingKey {
         case id, created
@@ -173,39 +171,74 @@ struct Transaction: Codable {
     
     init(from decoder:Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        
+
+
         self.id = try container.decodeIfPresent(String.self, forKey: .id)!
         self.created = try container.decodeIfPresent(String.self, forKey: .created)!
         self.transactionDescription = try container.decodeIfPresent(String.self, forKey: .transactionDescription)!
         self.amount = try container.decodeIfPresent(Int.self, forKey: .amount)!
+        self.fees = try container.decodeIfPresent(Fees.self, forKey: .fees)!
+        self.currency = try container.decodeIfPresent(Currency.self, forKey: .currency)!
+        
+        self.merchant = try? container.decodeIfPresent(Merchant.self, forKey: .merchant)!
+        
+        self.notes = try container.decodeIfPresent(String.self, forKey: .notes)!
         self.metadata = try container.decodeIfPresent([String: String].self, forKey: .metadata)!
+        self.labels = try container.decodeIfPresent([Label].self, forKey: .labels)!
+        self.accountBalance = try container.decodeIfPresent(Int.self, forKey: .accountBalance)!
+        self.attachments = try container.decodeIfPresent([Attachment].self, forKey: .attachments)!
+        self.international = try container.decodeIfPresent(International.self, forKey: .international)!
         self.category = try container.decodeIfPresent(Category.self, forKey: .category)!
+        self.isLoad = try container.decodeIfPresent(Bool.self, forKey: .isLoad)!
+        self.settled = try container.decodeIfPresent(String.self, forKey: .settled)!
+        self.localAmount = try container.decodeIfPresent(Int.self, forKey: .localAmount)!
+        self.localCurrency = try container.decodeIfPresent(Currency.self, forKey: .currency)!
+        self.updated = try container.decodeIfPresent(String.self, forKey: .updated)!
+        self.accountID = try container.decodeIfPresent(TransactionAccountID.self, forKey: .accountID)!
+        self.userID = try container.decodeIfPresent(UserID.self, forKey: .userID)!
+        self.counterparty = try container.decodeIfPresent(Counterparty.self, forKey: .counterparty)!
+        self.scheme = try container.decodeIfPresent(Scheme.self, forKey: .scheme)!
+        self.dedupeID = try container.decodeIfPresent(String.self, forKey: .dedupeID)!
+        self.originator = try container.decodeIfPresent(Bool.self, forKey: .originator)!
+        self.includeInSpending = try container.decodeIfPresent(Bool.self, forKey: .includeInSpending)!
+        self.canBeExcludedFromBreakdown = try container.decodeIfPresent(Bool.self, forKey: .canBeExcludedFromBreakdown)!
+        self.canBeMadeSubscription = try container.decodeIfPresent(Bool.self, forKey: .canBeMadeSubscription)!
+        self.canSplitTheBill = try container.decodeIfPresent(Bool.self, forKey: .canSplitTheBill)!
+        self.canAddToTab = try container.decodeIfPresent(Bool.self, forKey: .canAddToTab)!
+        self.amountIsPending = try container.decodeIfPresent(Bool.self, forKey: .amountIsPending)!
+        self.declineReason = try container.decodeIfPresent(DeclineReason.self, forKey: .declineReason)!
         
         
+
+
         //        if (try? container.decodeIfPresent(String.self, forKey: .merchant)) == nil {
         //            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
         //        } else {
         //            self.merchant == nil
         //        }
         print(self.transactionDescription)
-        
+
         if (try? container.decodeIfPresent(Merchant.self, forKey: .merchant)) == nil {
-                        self.merchant = try? container.decode(Merchant.self, forKey: .merchant)
-//                        print(try container.decodeIfPresent(Merchant.self, forKey: .merchant))
-//            print
+            //                        self.merchant = try? container.decode(Merchant.self, forKey: .merchant)
+            let test = try? container.nestedContainer(keyedBy: CodingKeys.self, forKey: Transaction.CodingKeys.merchant)
+            //            print(container.decode(Codable.Protocol, forKey: <#T##Transaction.CodingKeys#>.merchant))
             
+            //            print(container.de)
+            //            print(test)
+            //                        print(try container.decodeIfPresent(Merchant.self, forKey: .merchant))
+            //            print
+
             print("🛍️\n\n")
-            
+
         } else {
             print("💸\n\n")
-//            print(try container.decodeIfPresent(Merchant.self, forKey: .merchant))
+            //            print(try container.decodeIfPresent(Merchant.self, forKey: .merchant))
             //            self.merchant = try container.decodeIfPresent(Merchant.self, forKey: .merchant)
         }
-        
-        
-    }
 
+
+    }
+    
 }
 
 enum TransactionAccountID: String, Codable {
@@ -347,42 +380,12 @@ struct Merchant: Codable {
     let disableFeedback: Bool
     
     enum CodingKeys: String, CodingKey {
-        case id = "id"
+        case id
         case groupID = "group_id"
         case created, name, logo, emoji, category, online, atm, address, updated, metadata
         case disableFeedback = "disable_feedback"
     }
 }
-
-//struct CustomerParser {
-//    var merchant: Merchant?
-//}
-//
-//extension CustomerParser: Decodable {
-//
-//    //keys that matches exactly with JSON
-//    enum CustomerKeys: String, CodingKey {
-//        case id = "id"
-//        case groupID = "group_id"
-//        case created, name, logo, emoji, category, online, atm, address, updated, metadata
-//        case disableFeedback = "disable_feedback"
-//    }
-//
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CustomerKeys.self) // defining our (keyed) container
-//
-//
-//        let id: String = try container.decode(String.self, forKey: .id) // extracting the data
-//        let group: String = try container.decode(String.self, forKey: .email)
-//        let email: String = try container.decode(String.self, forKey: .email) // extracting the data
-//
-//        //Here I have used metadata model instead of dictionary [String: Any]
-//        let metadata: Metadata = try container.decode(Metadata.self, forKey: .metadata) // extracting the data
-//
-//        self.init(merchant: Merchant?(id: id, groupID: group_id, metadata: metadata))
-//
-//    }
-//}
 
 // MARK: - Address
 struct Address: Codable {

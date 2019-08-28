@@ -13,14 +13,15 @@ class CheckTokenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(noTokenSegue), userInfo: nil, repeats: false)
+        
 //        fistOff()
         if UserDefaults.standard.string(forKey: "Token") != nil {
             tryToken()
         } else {
             print("should segue")
 //            self.performSegue(withIdentifier: "badTokenSegue", sender: nil)
-            noTokenSegue()
+            let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(noTokenSegue), userInfo: nil, repeats: false)
+//            noTokenSegue()
         }
         startAnimation()
         // Do any additional setup after loading the view.
@@ -44,7 +45,6 @@ class CheckTokenViewController: UIViewController {
                 self.performSegue(withIdentifier: "goodTokenSegue", sender: nil)
             }
             else {
-                UserDefaults.standard.set(nil, forKey: "Token")
                 self.performSegue(withIdentifier: "badTokenSegue", sender: nil)
                 
 //                self.loginSegue()

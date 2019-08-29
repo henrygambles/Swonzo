@@ -16,6 +16,8 @@ import Lottie
 
 class MapViewController: UIViewController {
     
+    @IBOutlet weak var fetchingDataTextView: UITextView!
+    
     var transactions: [String] = []
     var prices: [String] = []
     var categories: [String] = []
@@ -33,11 +35,13 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.fetchingDataTextView.text = "Hang on..."
         startAnimation()
         mapsRequest()
       
     }
     
+
     func startAnimation() {
         
         let animationView = AnimationView(name: "plotting-map")
@@ -55,16 +59,23 @@ class MapViewController: UIViewController {
 
     func mapsRequest() {
         
+        self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\nHang tight."
+        
         SwonzoClient().tryToken()
         
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
                           encoding:  URLEncoding.default,
-                          headers: headers).responseJSON { response in
+                          headers: headers).downloadProgress { progress in
+                            print("Progress: \(Float(progress.fractionCompleted))")
+                            self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\n\((progress.fractionCompleted * 100).rounded())%"
+                          }.responseJSON { response in
                             if let error = response.error {
                                 //                                self.homeView.text = error.localizedDescription
                             } else if let jsonArray = response.result.value as? [[String: Any]] {
                             } else if let jsonDict = response.result.value as? [String: Any] {
+                                
+                                
                                 
                                 do {
                                     print("*************************")

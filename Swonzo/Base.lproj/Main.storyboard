@@ -87,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Plotting Merchant Data..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dkG-Vh-SCD">
-                                <rect key="frame" x="55" y="381" width="264" height="48"/>
+                                <rect key="frame" x="55" y="381" width="264" height="171"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -100,6 +100,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Maps" image="maps-icon-tab-bar" id="tDJ-Mp-kBY"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="fetchingDataTextView" destination="dkG-Vh-SCD" id="5fV-C4-OY0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ej5-K7-kH3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

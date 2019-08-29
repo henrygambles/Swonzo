@@ -35,56 +35,12 @@ class MapViewController: UIViewController {
         
         startAnimation()
         mapsRequest()
-        
-        
-                        let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 9.0)
-                        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.layer.zPosition = 0
-        
-//        mapView.isHidden = true
-//                        self.view.insertSubview(mapView, at: 0)
-        
-                        do {
-                            // Set the map style by passing the URL of the local file.
-                            if let styleURL = Bundle.main.url(forResource: "nightMap", withExtension: "json") {
-                                mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
-                            } else {
-                                NSLog("Unable to find style.json")
-                            }
-                        } catch {
-                            NSLog("One or more of the map styles failed to load. \(error)")
-                        }
-        
-                        self.view.addSubview(mapView)
-        
-                    let frank_position = CLLocationCoordinate2D(latitude: 51.4945, longitude: -0.1028)
-                    
-                    let frank = GMSMarker(position: frank_position)
-                    frank.title = "Frank's House"
-//        frank.snippet = "Situated in Elephant & Castle - a delightful place for business or pleasure."
-//                    london.icon = UIImage(named: "heart_home_icon")
-                    frank.map = mapView
-        
-        let henry_position = CLLocationCoordinate2D(latitude: 51.4850, longitude: -0.1919)
-        
-        
-//        let test_position = CLLocationCoordinate2D(latitude: latitudes[0], longitude: longitudes[0])
-//        let test = GMSMarker(position: test_position)
-//        test.title = names[0]
-//        test.map = mapView
-        
-        let henry = GMSMarker(position: henry_position)
-        henry.title = "Henry's House"
-//        henry.snippet = "Located next to a cemetry - this house is said to be haunted -though still pretty lit"
-        //                    london.icon = UIImage(named: "heart_home_icon")
-        henry.map = mapView
-
       
     }
     
     func startAnimation() {
         
-        let animationView = AnimationView(name: "hoop-loading")
+        let animationView = AnimationView(name: "plotting-map")
         self.view.addSubview(animationView)
         self.view.insertSubview(animationView, at: 500)
         self.view.bringSubviewToFront(animationView)
@@ -234,6 +190,8 @@ class MapViewController: UIViewController {
                                         
                                     }
                                     print("\nSuccess! Populated table.")
+                                    
+                                    
                                     print(self.MerchantNames)
                                     print(self.latitudes)
                                     print(self.longitudes)
@@ -260,7 +218,7 @@ class MapViewController: UIViewController {
 //
 //                                    }
                                     
-                                    let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 9.0)
+                                    let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 10.5)
                                     let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
                                     
                                     do {

@@ -12,6 +12,7 @@
 import UIKit
 import Foundation
 import Alamofire
+import Lottie
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
@@ -35,12 +36,14 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     let cellReuseIdentifier = "cell"
     
     
-    
+//    var indicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+//        indicator.startAnimating()
+//        indicator.backgroundColor = UIColor.white
+        largeActivityIndicator.startAnimating()
         transactionsRequest()
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
@@ -55,8 +58,40 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         // Do any additional setup after loading the view.
     }
     
+//    func startAnimation() {
+//
+//        let animationView = AnimationView(name: "rainbow-wave-loading")
+//        self.view.addSubview(animationView)
+//        animationView.contentMode = .scaleAspectFill
+//        animationView.animationSpeed = 1.5
+//        animationView.loopMode = .loop
+//        animationView.frame = CGRect(x: 64, y: 180, width: 250, height: 250)
+//
+//        animationView.play()
+//    }
+//
+//
+
+    @IBOutlet weak var overView: UIView!
+    @IBOutlet weak var largeActivityIndicator: UIActivityIndicatorView!
+    
+    
+    
+    
+//    func activityIndicator() {
+//        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+//        indicator.style = UIActivityIndicatorView.Style.gray
+//        indicator.center = self.overView.center
+////        self.view.superview!.addSubview(indicator)
+//        self.tableView.bringSubviewToFront(indicator)
+//    }
+    
     func transactionsRequest() {
         
+//        indicator.startAnimating()
+//        indicator.hidesWhenStopped = true
+        
+       
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
                           encoding:  URLEncoding.default,
@@ -157,7 +192,15 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         self.tableView.reloadData()
                                         
                                     }
+//                                    self.largeActivityIndicator.hidesWhenStopped = true
+//
+//                                    self.overView.isHidden = true
+//                                    self.largeActivityIndicator.stopAnimating()
                                     print("\nSuccess! Populated table.")
+//                                    self.tableActivityIndicator.stopAnimating()
+//
+//                                    self.indicator.stopAnimating()
+//                                    self.indicator.hidesWhenStopped = true
                                     UserDefaults.standard.set(self.names, forKey: "names")
                                     UserDefaults.standard.set(self.latitudes, forKey: "latitudes")
                                     UserDefaults.standard.set(self.longitudes, forKey: "longitudes")
@@ -205,5 +248,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You tapped cell number \(indexPath.row).")
-    }
+        
+
 }
+
+
+}
+

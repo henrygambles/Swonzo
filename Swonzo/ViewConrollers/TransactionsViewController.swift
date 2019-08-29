@@ -95,7 +95,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
                           encoding:  URLEncoding.default,
-                          headers: headers).responseJSON { response in
+                          headers: headers).downloadProgress { progress in
+                            print("Progress: \(Float(progress.fractionCompleted))")
+                            let progressPercent = String((progress.fractionCompleted * 100).rounded())
+                            print("OI\(progressPercent)%")
+                        }.responseJSON { response in
                             if let error = response.error {
                                 //                                self.homeView.text = error.localizedDescription
                             } else if let jsonArray = response.result.value as? [[String: Any]] {

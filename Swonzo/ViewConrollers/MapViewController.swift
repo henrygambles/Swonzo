@@ -10,6 +10,7 @@ import Alamofire
 import Alamofire_SwiftyJSON
 import UIKit
 import GoogleMaps
+import Lottie
 
 
 
@@ -18,7 +19,8 @@ class MapViewController: UIViewController {
     var transactions: [String] = []
     var prices: [String] = []
     var categories: [String] = []
-    var names: [String] = []
+    
+    var MerchantNames: [String] = []
     var latitudes: [Double] = []
     var longitudes: [Double] = []
     
@@ -31,11 +33,16 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        mapsRequest()
-       
+        startAnimation()
+        mapsRequest()
         
-                        let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 13.0)
+        
+                        let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 9.0)
                         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.layer.zPosition = 0
+        
+//        mapView.isHidden = true
+//                        self.view.insertSubview(mapView, at: 0)
         
                         do {
                             // Set the map style by passing the URL of the local file.
@@ -48,7 +55,7 @@ class MapViewController: UIViewController {
                             NSLog("One or more of the map styles failed to load. \(error)")
                         }
         
-                        self.view = mapView
+                        self.view.addSubview(mapView)
         
                     let frank_position = CLLocationCoordinate2D(latitude: 51.4945, longitude: -0.1028)
                     
@@ -75,8 +82,24 @@ class MapViewController: UIViewController {
       
     }
     
+    func startAnimation() {
+        
+        let animationView = AnimationView(name: "hoop-loading")
+        self.view.addSubview(animationView)
+        self.view.insertSubview(animationView, at: 500)
+        self.view.bringSubviewToFront(animationView)
+        animationView.contentMode = .scaleAspectFill
+        animationView.animationSpeed = 1.5
+        animationView.loopMode = .loop
+        animationView.frame = CGRect(x: 64, y: 180, width: 250, height: 250)
+        
+        animationView.play()
+    }
+    
 
     func mapsRequest() {
+        
+        SwonzoClient().tryToken()
         
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
@@ -185,7 +208,7 @@ class MapViewController: UIViewController {
                                             self.transactions.append(description as! String ?? "error")
                                         } else {
                                             let description = name
-                                            self.names.append(name as! String ?? "error")
+                                            self.MerchantNames.append(name as! String ?? "error")
                                             self.longitudes.append(longitude as! Double)
                                             self.latitudes.append(latitude as! Double)
                                         }
@@ -206,20 +229,113 @@ class MapViewController: UIViewController {
                                         self.categories.append(category as! String ?? "error")
                                         //                                        print(self.tableView.dataSource)
                                         
-                                        let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 13.0)
-                                        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-                                        
-                                        let test_position = CLLocationCoordinate2D(latitude: self.latitudes[0], longitude: self.longitudes[0])
-                                        let test = GMSMarker(position: test_position)
-                                        test.title = self.names[0]
-                                        test.map = mapView
+                                       
 
                                         
                                     }
                                     print("\nSuccess! Populated table.")
-                                    print(self.names)
+                                    print(self.MerchantNames)
                                     print(self.latitudes)
                                     print(self.longitudes)
+                                    
+//                                    var places:String = []
+//                                    var x = numberOfTransactions
+//
+//                                    while x > numberOfTransactions - countNumber {
+//
+//                                        x = x - 1
+//
+//                                        let progress = x - countNumber
+//                                        print(progress)
+//
+////                                        let name = root.transactions[i].merchant?.name
+////                                        let latitude = root.transactions[i].merchant?.address?.latitude
+////                                        let longitude = root.transactions[i].merchant?.address?.longitude
+//
+//                                        let position = CLLocationCoordinate2D(latitude: self.latitudes[progress], longitude: self.longitudes[progress])
+//
+////                                        places.append("Person \(i)")
+//                                        let marker = GMSMarker(position: position)
+//                                        marker.title = self.MerchantNames[progress]
+//
+//                                    }
+                                    
+                                    let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 9.0)
+                                    let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+                                    
+                                    do {
+                                        // Set the map style by passing the URL of the local file.
+                                        if let styleURL = Bundle.main.url(forResource: "nightMap", withExtension: "json") {
+                                            mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+                                        } else {
+                                            NSLog("Unable to find style.json")
+                                        }
+                                    } catch {
+                                        NSLog("One or more of the map styles failed to load. \(error)")
+                                    }
+                                    
+                                    
+                                    
+                                    self.view = mapView
+                                    
+                                    
+                                    
+                                    let marker_0_position = CLLocationCoordinate2D(latitude: self.latitudes[0], longitude: self.longitudes[0])
+                                    
+                                    let marker0 = GMSMarker(position: marker_0_position)
+                                    marker0.title = self.MerchantNames[0]
+                                    
+                                    marker0.map = mapView
+                                    
+                                    let marker_1_position = CLLocationCoordinate2D(latitude: self.latitudes[1], longitude: self.longitudes[1])
+                                    
+                                    let marker1 = GMSMarker(position: marker_1_position)
+                                    marker1.title = self.MerchantNames[1]
+                                    
+                                    marker1.map = mapView
+                                    
+                                    let marker_2_position = CLLocationCoordinate2D(latitude: self.latitudes[2], longitude: self.longitudes[2])
+                                    
+                                    let marker2 = GMSMarker(position: marker_2_position)
+                                    marker2.title = self.MerchantNames[2]
+                                    
+                                    marker2.map = mapView
+                                    
+                                    let marker_3_position = CLLocationCoordinate2D(latitude: self.latitudes[3], longitude: self.longitudes[3])
+                                    
+                                    let marker3 = GMSMarker(position: marker_3_position)
+                                    marker3.title = self.MerchantNames[3]
+                                    
+                                    marker3.map = mapView
+                                    
+                                    let marker_4_position = CLLocationCoordinate2D(latitude: self.latitudes[4], longitude: self.longitudes[4])
+                                    
+                                    let marker4 = GMSMarker(position: marker_4_position)
+                                    marker4.title = self.MerchantNames[4]
+                                    
+                                    marker4.map = mapView
+                                    
+                                    let marker_5_position = CLLocationCoordinate2D(latitude: self.latitudes[5], longitude: self.longitudes[5])
+                                    
+                                    let marker5 = GMSMarker(position: marker_5_position)
+                                    marker5.title = self.MerchantNames[5]
+                                    
+                                    marker5.map = mapView
+                                    
+                                    let marker_6_position = CLLocationCoordinate2D(latitude: self.latitudes[6], longitude: self.longitudes[6])
+                                    
+                                    let marker6 = GMSMarker(position: marker_6_position)
+                                    marker6.title = self.MerchantNames[6]
+                                    
+                                    marker6.map = mapView
+                                    
+                                    let marker_7_position = CLLocationCoordinate2D(latitude: self.latitudes[7], longitude: self.longitudes[7])
+                                    
+                                    let marker7 = GMSMarker(position: marker_7_position)
+                                    marker7.title = self.MerchantNames[7]
+                                    
+                                    marker7.map = mapView
+
                                 } catch {
                                     print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
                                     print("Also,", error)

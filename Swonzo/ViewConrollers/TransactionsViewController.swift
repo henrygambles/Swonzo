@@ -27,11 +27,14 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     var transactions: [String] = []
     var prices: [String] = []
     var categories: [String] = []
+    var names: [String] = []
+    var latitudes: [Double] = []
+    var longitudes: [Double] = []
     
     
     let cellReuseIdentifier = "cell"
     
-
+    
     
     
     override func viewDidLoad() {
@@ -39,7 +42,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         
         
         transactionsRequest()
-        tryToken()
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
@@ -47,24 +49,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         // self.tableView.tableFooterView = UIView()
         
         // This view controller itself will provide the delegate methods and row data for the table view.
-        tableView.delegate = self as? UITableViewDelegate
-        tableView.dataSource = self as? UITableViewDataSource
+        tableView.delegate = self as UITableViewDelegate
+        tableView.dataSource = self as UITableViewDataSource
         
         // Do any additional setup after loading the view.
-    }
-    
-    func tryToken() {
-        SwonzoClient().getAccountInfo() { response in
-            if response.hasPrefix("acc") {
-                print("\nTOKEN ✅\n")
-                print("TESTING MAY BEGIN\n")
-            }
-            else {
-                print("\nTOKEN ❌\n")
-                print("\nPLEASE GET NEW TOKEN/n")
-            }
-        }
-        
     }
     
     func transactionsRequest() {
@@ -78,13 +66,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                             } else if let jsonArray = response.result.value as? [[String: Any]] {
                             } else if let jsonDict = response.result.value as? [String: Any] {
                                 
-                               
                                 
                                 do {
-                                    print("*************************")
-                                    print("\n  TRANSACTION TESTING 1\n")
-                                    print("*************************\n")
-//                                   print(type(of: Merchant))
+                                    print("***********************")
+                                    print("\n  TRANSACTION TESTING\n")
+                                    print("***********************\n")
+                                    
                                     let dateFormatter = DateFormatter()
                                     dateFormatter.calendar = Calendar(identifier: .iso8601)
                                     dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
@@ -95,119 +82,29 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     
                                     let root = try decoder.decode(Root.self, from: response.data!)
-                                    
-                                    
-                                    
-                                    
-                                    print("You have made", root.transactions.count, "transactions... wow!\n")
+                                    //
                                     let numberOfTransactions = root.transactions.count
-                                    print("THE HEREFORD")
-//                                    print("Address: ", root.transactions[23].merchant?.address.address)
-                                    print("Merchant:", root.transactions[23].merchant)
-//                                    print("Merchant ID:", root.transactions[23].merchant?.id)
-//                                    print("Description:", root.transactions[23].transactionDescription)
-                                    print("Metadata:", root.transactions[23].metadata)
-                                    
-                                } catch {
-                                    print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
-                                    print("Also,", error)
-                                }
-                                
-                                do {
-                                    print("*************************")
-                                    print("\n  TRANSACTION TESTING 2\n")
-                                    print("*************************\n")
-                                    //                                   print(type(of: Merchant))
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.calendar = Calendar(identifier: .iso8601)
-                                    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-                                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-                                    
-                                    let decoder = JSONDecoder()
-                                    decoder.dateDecodingStrategy = .formatted(dateFormatter)
-                                    
-                                    
-                                    let root = try decoder.decode(Root.self, from: response.data!)
-//                                    let merchant = try decoder.decode(Root.self, from: response.data!, keyPath: "merchant")
-//                                    let address = try decoder.decode(Root.self, from: response.data!, keyPath: "merchant.address.address")
-                                   
-                                   
-                                    
-//                                  
-                                    
-                                    print("You have made", root.transactions.count, "transactions... wow!\n")
-                                    let numberOfTransactions = root.transactions.count
-                                   
-                                    print("GREEN SHOP")
-                                    
-//                                    print( root.transactions[15].merchant?.address.address)
-//                                    print("Merchant: , root.transactions[15].merchant)
-                                    print("Merchant:", root.transactions[15].merchant)
-//                                    print("Merchant ID:", root.transactions[15].merchant?.id)
-//                                    print("Address:", root.transactions[15].merchant?.address.address)
-//                                    print("Description:", root.transactions[15].transactionDescription)
-                                    print("Metadata:", root.transactions[15].metadata)
+                                    print("You have made \(numberOfTransactions) transactions... wow!\n")
                                     
                                     let countNumber = 20
                                     var i = numberOfTransactions
-                                    
-                                    print("\nTESTING 123\n")
-                                  
-                                    print(root.transactions[15].transactionDescription)
-                                    print(root.transactions[15].accountBalance)
-                                    print(root.transactions[15].merchant)
-                                    print(root.transactions[15].merchant?.address?.address)
-//                                    print(root.transactions[15].merchant?["id"])
-//                                    print(root.transactions[15].merchant?["address"])
-//                                    print(root.transactions[15].merchant!.address.address)
-
-                                  
-//                                    print(tranny[15].merchant?.address.address)
-                                    print("\n")
-                                   
-                                    print(root.transactions[23].transactionDescription)
-                                    print(root.transactions[23].accountBalance)
-                                    print(root.transactions[23].merchant)
-//                                    print(root.transactions[23].merchant?["id"] as Any)
-                                    print(root.transactions[23].merchant?.address?.address)
-                                    print(root.transactions[23].merchant?.id)
-                                    
-//                                    print(merchant.transactions[23].merchant)
-//                                    print(merchant.transactions[23].merchant?.address.address)
-//                                    print(merchant)
-//                                    print(address)
-//                                    print(address.transactions[23])
-//                                    print(root.transactions[23].merchant?.description)
-                                    
-                                 
-//                                    pr
-                                
-                                
                                     while i > numberOfTransactions - countNumber {
-
+                                        
                                         i = i - 1
-
-//                                        var merchantName = root.transactions[i].merchant?.name
-//                                        let address = root.transactions[i].merchant?.address.formatted
                                         
                                         let name = root.transactions[i].merchant?.name
                                         let amount = root.transactions[i].amount
                                         let transDescription = root.transactions[i].transactionDescription
-                                        var category = String(Substring(root.transactions[i].category.rawValue)) ?? "no cat"
-
-//                                        print(String(format:"%.2f", numberOfTransactions - i - 1) + "%")
+                                        var category = String(Substring(root.transactions[i].category.rawValue))
                                         let progress = numberOfTransactions - i
                                         let percentageDouble = (Double(progress) / Double(countNumber) * 100)
-//
-                                        print("\n*********")
-                                        print("   " + String(format: "%.0f", percentageDouble) + "%")
-                                        print("*********\n")
-
-//                                        print(root.transactions[i].transactionDescription!)
-//                                        root.transactio
-
-
-
+                                        
+                                        let latitude = root.transactions[i].merchant?.address?.latitude
+                                        let longitude = root.transactions[i].merchant?.address?.longitude
+                                        
+                                        print("   " + String(format: "%.0f", percentageDouble) + "%", "\n")
+                                        
+                                        
                                         if category == "transport" {
                                             category = "🚇"
                                         } else if category == "groceries" {
@@ -227,40 +124,43 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         } else if category == "family" {
                                             category = "❤️"
                                         }
-//
-                                        print(category)
-//                                        print(root.transactions[i].merchant?.address.address)
-
-//                                        description?.prefix(25)
                                         
                                         
                                         if name == nil {
                                             let description = transDescription
-                                            self.transactions.append(description as! String ?? "error")
+                                            self.transactions.append(description)
                                         } else {
                                             let description = name
-                                            self.transactions.append(description as! String ?? "error")
+                                            self.transactions.append(description!)
+                                            self.names.append(name as! String ?? "error")
+                                            self.longitudes.append(longitude as! Double)
+                                            self.latitudes.append(latitude as! Double)
                                         }
-//
-                                        let pounds = Double(amount ?? 0) / 100
+                                        
+                                        
+                                        //
+                                        let pounds = Double(amount) / 100
                                         if pounds < 0 {
                                             let money = "£" + String(format:"%.2f",abs(pounds))
-                                            self.prices.append(money as! String)
+                                            self.prices.append(money)
                                             print(money)
                                         }
                                         else {
                                             let money = "+£" + String(format:"%.2f",pounds)
-                                            self.prices.append(money as! String)
+                                            self.prices.append(money)
                                             print(money)
                                         }
-
                                         
-                                        self.categories.append(category as! String ?? "error")
+                                        
+                                        self.categories.append(category)
                                         //                                        print(self.tableView.dataSource)
                                         self.tableView.reloadData()
-
+                                        
                                     }
                                     print("\nSuccess! Populated table.")
+                                    UserDefaults.standard.set(self.names, forKey: "names")
+                                    UserDefaults.standard.set(self.latitudes, forKey: "latitudes")
+                                    UserDefaults.standard.set(self.longitudes, forKey: "longitudes")
                                 } catch {
                                     print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
                                     print("Also,", error)
@@ -274,8 +174,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//                let count = self.transactions.count
-//                return shouldShowLoadingCell ? count + 1 : count
+        //                let count = self.transactions.count
+        //                return shouldShowLoadingCell ? count + 1 : count
         return self.transactions.count
     }
     
@@ -285,7 +185,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // create a new cell if needed or reuse an old one
-        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
+        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! UITableViewCell
         
         // set the text from the data model
         cell.textLabel?.text = self.transactions[indexPath.row]
@@ -307,5 +207,3 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         print("You tapped cell number \(indexPath.row).")
     }
 }
-
-

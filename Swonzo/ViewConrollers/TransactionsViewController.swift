@@ -125,7 +125,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     let numberOfTransactions = root.transactions.count
                                     print("You have made \(numberOfTransactions) transactions... wow!\n")
                                     
-                                    let countNumber = 20
+                                    let countNumber = numberOfTransactions
                                     var i = numberOfTransactions
                                     while i > numberOfTransactions - countNumber {
                                         

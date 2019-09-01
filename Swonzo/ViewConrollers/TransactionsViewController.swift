@@ -43,8 +43,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         
 //        indicator.startAnimating()
 //        indicator.backgroundColor = UIColor.white
-        largeActivityIndicator.startAnimating()
+//        largeActivityIndicator.startAnimating()
+        startAnimation()
         transactionsRequest()
+        largeActivityIndicator.isHidden = true
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
@@ -85,6 +87,20 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 ////        self.view.superview!.addSubview(indicator)
 //        self.tableView.bringSubviewToFront(indicator)
 //    }
+    
+let animationView = AnimationView(name: "coins-grow")
+    
+    func startAnimation() {
+        
+
+        self.view.addSubview(animationView)
+        animationView.contentMode = .scaleAspectFill
+        animationView.animationSpeed = 1.5
+        animationView.loopMode = .loop
+        animationView.frame = CGRect(x: 64, y: 180, width: 250, height: 250)
+        
+        animationView.play()
+    }
     
     func transactionsRequest() {
         
@@ -199,9 +215,13 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //                                    self.largeActivityIndicator.hidesWhenStopped = true
 //
 //                                    self.overView.isHidden = true
+                                    
                                     self.largeActivityIndicator.stopAnimating()
                                     print("\nSuccess! Populated table.")
                                     self.overView.isHidden = true
+                                    self.animationView.removeFromSuperview()
+//                                    self.animationView.isHidden
+//                                    AnimationView().isHidden
                                     
 //                                    self.tableActivityIndicator.stopAnimating()
 //

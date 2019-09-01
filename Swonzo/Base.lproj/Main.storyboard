@@ -46,12 +46,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVu-kr-874">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Loading Transaction Data..." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yx-V2-trJ">
-                                        <rect key="frame" x="67" y="436" width="240" height="41"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Loading Transaction Data" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yx-V2-trJ">
+                                        <rect key="frame" x="30" y="436" width="323" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="25"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>

@@ -25,19 +25,21 @@ var parameters: Parameters = [
 class SwonzoClient {
 
     typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
+ 
     
     func tryToken() {
         getAccountInfo() { response in
+            
             if response.hasPrefix("acc") {
                 print("\nTOKEN ✅\n")
                 print("TESTING MAY BEGIN\n")
+                 UserDefaults.standard.set("GOOD", forKey: "TokenStatus")
             }
             else {
                 print("\nTOKEN ❌\n")
                 print("\nPLEASE GET NEW TOKEN/n")
-            }
+                UserDefaults.standard.set("BAD", forKey: "TokenStatus")            }
         }
-        
     }
     
     func execute(_ url: URL, completion: @escaping WebServiceResponse) {

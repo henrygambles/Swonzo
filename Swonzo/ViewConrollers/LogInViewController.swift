@@ -25,13 +25,20 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
        
         let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fadeIn), userInfo: nil, repeats: false)
-//        self.recentTokenButton.isHidden = true;
+        lookForRecentToken()
         self.setupToHideKeyboardOnTapOnView()
         textFieldView.delegate = self
         setBlurryView()
         hide()
     }
     
+    func lookForRecentToken() {
+        if UserDefaults.standard.string(forKey: "TokenStatus") == "GOOD" {
+            recentTokenButton.isHidden = false;
+        } else {
+            recentTokenButton.isHidden = true;
+        }
+    }
 
     
     @IBOutlet weak var recentTokenButton: UIButton!

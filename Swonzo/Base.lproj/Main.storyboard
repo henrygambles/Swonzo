@@ -150,6 +150,14 @@
                                 <fontDescription key="fontDescription" name="SlatePro-Medium" family="Slate Pro" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pF5-B2-4l6">
+                                <rect key="frame" x="276" y="20" width="63" height="35"/>
+                                <fontDescription key="fontDescription" name="SlatePro-Medium" family="Slate Pro" pointSize="19"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="logoutButton:" destination="9YI-ha-Eem" eventType="touchUpInside" id="3bA-m7-gU2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90196078431372551" green="0.29411764705882354" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -160,10 +168,12 @@
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="leading" secondItem="9Oh-Su-PVp" secondAttribute="leading" id="LX8-Km-kIs"/>
                             <constraint firstItem="h4w-AP-N0H" firstAttribute="centerX" secondItem="IZ2-8I-Iaj" secondAttribute="centerX" id="ZNu-4r-WvT"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="bottom" secondItem="h4w-AP-N0H" secondAttribute="bottom" id="aVP-Kw-xnF"/>
+                            <constraint firstItem="pF5-B2-4l6" firstAttribute="leading" secondItem="JUs-NW-vH9" secondAttribute="leading" constant="276" id="f7K-4X-YKC"/>
                             <constraint firstItem="h4w-AP-N0H" firstAttribute="leading" secondItem="9Oh-Su-PVp" secondAttribute="leadingMargin" id="fgm-yI-POX"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="top" secondItem="9Oh-Su-PVp" secondAttribute="top" id="gxC-vx-RUP"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="bottom" secondItem="JUs-NW-vH9" secondAttribute="bottom" id="moC-pw-WCv"/>
                             <constraint firstItem="9fo-Hf-Scx" firstAttribute="centerX" secondItem="IZ2-8I-Iaj" secondAttribute="centerX" id="pHo-oc-SeN"/>
+                            <constraint firstItem="pF5-B2-4l6" firstAttribute="top" secondItem="JUs-NW-vH9" secondAttribute="top" id="phe-Gj-Idg"/>
                             <constraint firstItem="h4w-AP-N0H" firstAttribute="top" secondItem="JUs-NW-vH9" secondAttribute="top" constant="35" id="qeD-6P-YXo"/>
                             <constraint firstItem="9fo-Hf-Scx" firstAttribute="top" secondItem="qRr-Ei-keJ" secondAttribute="top" id="v66-TQ-sG9"/>
                             <constraint firstItem="9fo-Hf-Scx" firstAttribute="bottom" secondItem="h4w-AP-N0H" secondAttribute="bottom" id="yxZ-uj-3gF"/>
@@ -180,6 +190,7 @@
                         <outlet property="balanceView" destination="IZ2-8I-Iaj" id="3HC-hk-y11"/>
                         <outlet property="homeView" destination="h4w-AP-N0H" id="YlV-Qt-g3n"/>
                         <outlet property="thirdBlurView" destination="9fo-Hf-Scx" id="j5O-S4-FF8"/>
+                        <segue destination="sg1-Fo-LOa" kind="show" identifier="logoutSegue" id="p3Y-X9-tHq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdu-VO-rJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -406,7 +417,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BLl-cc-F8T"/>
-        <segue reference="Ed5-JZ-osv"/>
+        <segue reference="p3Y-X9-tHq"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.97254901960784312" green="0.4392156862745098" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

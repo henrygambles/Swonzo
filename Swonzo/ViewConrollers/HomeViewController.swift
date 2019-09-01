@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var thirdBlurView: UIView!
     @IBOutlet weak var homeView: UITextView!
     @IBOutlet weak var balanceView: UITextView!
+    @IBOutlet weak var logoutButton: UIButton!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -50,7 +51,11 @@ class HomeViewController: UIViewController {
     }
     
 
-
+    @IBAction func logoutButton(_ sender: Any) {
+        performSegue(withIdentifier: "logoutSegue", sender: nil)
+        
+    }
+    
     
     
     func balanceRequest() {

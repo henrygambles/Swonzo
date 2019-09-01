@@ -43,26 +43,38 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="monzo-card" translatesAutoresizingMaskIntoConstraints="NO" id="3sc-a9-XZo">
                                 <rect key="frame" x="67" y="51" width="240" height="128"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oVu-kr-874">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVu-kr-874">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.71764705882352942" green="0.42745098039215684" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0yi-A6-3J9">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Loading Transaction Data..." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yx-V2-trJ">
+                                <rect key="frame" x="67" y="378" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0yi-A6-3J9">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.078431372549019607" green="0.13725490196078433" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MW9-xO-1f0" firstAttribute="top" secondItem="3sc-a9-XZo" secondAttribute="bottom" constant="55" id="33d-qe-q8d"/>
                             <constraint firstItem="MW9-xO-1f0" firstAttribute="leading" secondItem="bWA-9F-NmD" secondAttribute="leading" id="5Ta-4m-Cri"/>
+                            <constraint firstItem="oVu-kr-874" firstAttribute="trailing" secondItem="MW9-xO-1f0" secondAttribute="trailing" id="FAG-rf-ILz"/>
                             <constraint firstItem="MW9-xO-1f0" firstAttribute="top" secondItem="Lnu-oI-u7x" secondAttribute="top" constant="214" id="HAm-YZ-1SH"/>
                             <constraint firstItem="3sc-a9-XZo" firstAttribute="top" secondItem="Lnu-oI-u7x" secondAttribute="top" constant="31" id="Vk9-aF-GdL"/>
+                            <constraint firstAttribute="bottom" secondItem="oVu-kr-874" secondAttribute="bottom" id="XCK-rr-qkZ"/>
                             <constraint firstItem="3sc-a9-XZo" firstAttribute="leading" secondItem="Lnu-oI-u7x" secondAttribute="leading" constant="67" id="d76-ku-DeR"/>
+                            <constraint firstItem="oVu-kr-874" firstAttribute="leading" secondItem="MW9-xO-1f0" secondAttribute="leading" id="gSa-nu-dUO"/>
                             <constraint firstItem="3sc-a9-XZo" firstAttribute="centerX" secondItem="MW9-xO-1f0" secondAttribute="centerX" id="gqz-9w-79L"/>
+                            <constraint firstItem="oVu-kr-874" firstAttribute="top" secondItem="bWA-9F-NmD" secondAttribute="top" id="kGG-Zh-f3m"/>
                             <constraint firstItem="MW9-xO-1f0" firstAttribute="bottom" secondItem="Lnu-oI-u7x" secondAttribute="bottom" id="oUg-B3-mQk"/>
+                            <constraint firstItem="oVu-kr-874" firstAttribute="centerX" secondItem="0yi-A6-3J9" secondAttribute="centerX" id="t7c-xg-JW3"/>
                             <constraint firstAttribute="trailing" secondItem="MW9-xO-1f0" secondAttribute="trailing" id="xij-2L-OcD"/>
+                            <constraint firstItem="oVu-kr-874" firstAttribute="centerY" secondItem="0yi-A6-3J9" secondAttribute="centerY" id="zkg-2d-eDf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lnu-oI-u7x"/>
                     </view>

@@ -199,8 +199,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //                                    self.largeActivityIndicator.hidesWhenStopped = true
 //
 //                                    self.overView.isHidden = true
-//                                    self.largeActivityIndicator.stopAnimating()
+                                    self.largeActivityIndicator.stopAnimating()
                                     print("\nSuccess! Populated table.")
+                                    self.overView.isHidden = true
+                                    
 //                                    self.tableActivityIndicator.stopAnimating()
 //
 //                                    self.indicator.stopAnimating()

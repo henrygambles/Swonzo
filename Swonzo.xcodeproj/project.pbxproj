@@ -11,6 +11,7 @@
 		39193982A429C746131AF21D /* libPods-Swonzo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0219AA58A5BE95F57D9C559 /* libPods-Swonzo.a */; };
 		BA0B131E22FB8F7300CE6D6F /* DevUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0B131D22FB8F7300CE6D6F /* DevUITests.swift */; };
 		BA0B2171231C15DD00D1F6DC /* coins-grow.json in Resources */ = {isa = PBXBuildFile; fileRef = BA0B2170231C15DD00D1F6DC /* coins-grow.json */; };
+		BA0B2173231C1C4500D1F6DC /* scan-receipt.json in Resources */ = {isa = PBXBuildFile; fileRef = BA0B2172231C1C4500D1F6DC /* scan-receipt.json */; };
 		BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */; };
 		BA104F2823184D0400174DA0 /* hoop-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BA104F2723184D0400174DA0 /* hoop-loading.json */; };
 		BA104F2A23184FAE00174DA0 /* plotting-map.json in Resources */ = {isa = PBXBuildFile; fileRef = BA104F2923184FAE00174DA0 /* plotting-map.json */; };
@@ -72,6 +73,7 @@
 		B208AD81D6F2C20169D6D5D8 /* libPods-SwonzoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwonzoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0B131D22FB8F7300CE6D6F /* DevUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevUITests.swift; sourceTree = "<group>"; };
 		BA0B2170231C15DD00D1F6DC /* coins-grow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "coins-grow.json"; sourceTree = "<group>"; };
+		BA0B2172231C1C4500D1F6DC /* scan-receipt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "scan-receipt.json"; sourceTree = "<group>"; };
 		BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoClient.swift; sourceTree = "<group>"; };
 		BA104F2723184D0400174DA0 /* hoop-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "hoop-loading.json"; sourceTree = "<group>"; };
 		BA104F2923184FAE00174DA0 /* plotting-map.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "plotting-map.json"; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 		BA86F1EF22DAC0BB00CE865A /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				BA0B2172231C1C4500D1F6DC /* scan-receipt.json */,
 				BA0B2170231C15DD00D1F6DC /* coins-grow.json */,
 				BA104F2723184D0400174DA0 /* hoop-loading.json */,
 				BA104F2923184FAE00174DA0 /* plotting-map.json */,
@@ -414,6 +417,7 @@
 				BAC85F0322FB69050096B113 /* SlatePro-Medium.ttf in Resources */,
 				BA7D5E3D22D631BB00D7C0BE /* Main.storyboard in Resources */,
 				BABE7E032308BA4500BED520 /* skeleton-frame-loading.json in Resources */,
+				BA0B2173231C1C4500D1F6DC /* scan-receipt.json in Resources */,
 				BA47E00422E0B0F5000EF78F /* rocket_monzo.json in Resources */,
 				BABE7E012308B6AA00BED520 /* rainbow-circle-loading.json in Resources */,
 			);

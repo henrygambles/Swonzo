@@ -88,7 +88,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //        self.tableView.bringSubviewToFront(indicator)
 //    }
     
-let animationView = AnimationView(name: "coins-grow")
+let animationView = AnimationView(name: "scan-receipt")
     
     func startAnimation() {
         

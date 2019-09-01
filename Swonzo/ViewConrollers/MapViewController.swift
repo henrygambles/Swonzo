@@ -68,7 +68,7 @@ class MapViewController: UIViewController {
                           encoding:  URLEncoding.default,
                           headers: headers).downloadProgress { progress in
                             print("Progress: \(Float(progress.fractionCompleted))")
-                            self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\n\((progress.fractionCompleted * 100).rounded())%"
+                            self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\n\((progress.fractionCompleted * 100))%"
                           }.responseJSON { response in
                             if let error = response.error {
                                 //                                self.homeView.text = error.localizedDescription
@@ -165,16 +165,22 @@ class MapViewController: UIViewController {
                                         
                                         //                                        description?.prefix(25)
                                         
+                                        let online = root.transactions[i].merchant?.online
                                         
                                         if name == nil {
                                             let description = transDescription
                                             self.transactions.append(description as! String ?? "error")
-                                        } else {
-                                            let description = name
-                                            self.MerchantNames.append(name as! String ?? "error")
+                                        } else if online == false {
                                             self.longitudes.append(longitude as! Double)
                                             self.latitudes.append(latitude as! Double)
                                         }
+                                        
+                                        if online == false {
+                                            let merchantName = name
+                                            self.MerchantNames.append(merchantName as! String ?? "error")
+                                        }
+                                        
+                                        
                                         //
                                         let pounds = Double(amount ?? 0) / 100
                                         if pounds < 0 {

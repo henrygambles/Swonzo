@@ -244,7 +244,7 @@ class MapViewController: UIViewController {
                                     self.view = mapView
                                     
 //                                    var x = 0
-                                    for x in 0 ..< 99 {
+                                    for x in 0 ..< self.MerchantNames.count {
 //                                        x += 1
                                         //                                        var locator = self.MerchantNames[i]
                                         var position: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.latitudes[x], self.longitudes[x])

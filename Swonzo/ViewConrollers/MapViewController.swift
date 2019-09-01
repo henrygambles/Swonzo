@@ -35,7 +35,8 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.fetchingDataTextView.text = "Hang on..."
+        self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\nHang tight."
+
         startAnimation()
         mapsRequest()
       
@@ -59,8 +60,6 @@ class MapViewController: UIViewController {
 
     func mapsRequest() {
         
-        self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\nHang tight."
-        
         SwonzoClient().tryToken()
         
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
@@ -68,7 +67,7 @@ class MapViewController: UIViewController {
                           encoding:  URLEncoding.default,
                           headers: headers).downloadProgress { progress in
                             print("Progress: \(Float(progress.fractionCompleted))")
-                            self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\n\((progress.fractionCompleted * 100))%"
+//                            self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\n\((progress.fractionCompleted * 100))%"
                           }.responseJSON { response in
                             if let error = response.error {
                                 //                                self.homeView.text = error.localizedDescription
@@ -246,8 +245,8 @@ class MapViewController: UIViewController {
                                     }
                                     
                                     
-                                    
                                     self.view = mapView
+//                                    MapViewController().view = mapView
                                     
 //                                    var x = 0
                                     for x in 0 ..< self.MerchantNames.count {
@@ -259,62 +258,6 @@ class MapViewController: UIViewController {
                                         marker.map = mapView
                                     }
                                     
-//
-//                                    let marker_0_position = CLLocationCoordinate2D(latitude: self.latitudes[0], longitude: self.longitudes[0])
-//
-//                                    let marker0 = GMSMarker(position: marker_0_position)
-//                                    marker0.title = self.MerchantNames[0]
-//
-//                                    marker0.map = mapView
-//
-//                                    let marker_1_position = CLLocationCoordinate2D(latitude: self.latitudes[1], longitude: self.longitudes[1])
-//
-//                                    let marker1 = GMSMarker(position: marker_1_position)
-//                                    marker1.title = self.MerchantNames[1]
-//
-//                                    marker1.map = mapView
-//
-//                                    let marker_2_position = CLLocationCoordinate2D(latitude: self.latitudes[2], longitude: self.longitudes[2])
-//
-//                                    let marker2 = GMSMarker(position: marker_2_position)
-//                                    marker2.title = self.MerchantNames[2]
-//
-//                                    marker2.map = mapView
-//
-//                                    let marker_3_position = CLLocationCoordinate2D(latitude: self.latitudes[3], longitude: self.longitudes[3])
-//
-//                                    let marker3 = GMSMarker(position: marker_3_position)
-//                                    marker3.title = self.MerchantNames[3]
-//
-//                                    marker3.map = mapView
-//
-//                                    let marker_4_position = CLLocationCoordinate2D(latitude: self.latitudes[4], longitude: self.longitudes[4])
-//
-//                                    let marker4 = GMSMarker(position: marker_4_position)
-//                                    marker4.title = self.MerchantNames[4]
-//
-//                                    marker4.map = mapView
-//
-//                                    let marker_5_position = CLLocationCoordinate2D(latitude: self.latitudes[5], longitude: self.longitudes[5])
-//
-//                                    let marker5 = GMSMarker(position: marker_5_position)
-//                                    marker5.title = self.MerchantNames[5]
-//
-//                                    marker5.map = mapView
-//
-//                                    let marker_6_position = CLLocationCoordinate2D(latitude: self.latitudes[6], longitude: self.longitudes[6])
-//
-//                                    let marker6 = GMSMarker(position: marker_6_position)
-//                                    marker6.title = self.MerchantNames[6]
-//
-//                                    marker6.map = mapView
-//
-//                                    let marker_7_position = CLLocationCoordinate2D(latitude: self.latitudes[7], longitude: self.longitudes[7])
-//
-//                                    let marker7 = GMSMarker(position: marker_7_position)
-//                                    marker7.title = self.MerchantNames[7]
-//
-//                                    marker7.map = mapView
 
                                 } catch {
                                     print("\nOh no! Error populating table. Apparently...", error.localizedDescription)

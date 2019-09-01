@@ -354,10 +354,10 @@
             </objects>
             <point key="canvasLocation" x="-2047" y="-182"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Base Tab Bar Controller-->
         <scene sceneID="gPo-Dk-tI6">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="pAn-QE-wOf" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="pAn-QE-wOf" customClass="BaseTabBarController" customModule="Swonzo" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="x0x-OU-qxF">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -365,6 +365,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="defaultIndex">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="iAP-9Z-y5L" kind="relationship" relationship="viewControllers" id="35e-vs-3Bl"/>
                         <segue destination="9YI-ha-Eem" kind="relationship" relationship="viewControllers" id="Iqv-MR-I6N"/>

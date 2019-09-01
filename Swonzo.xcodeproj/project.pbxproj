@@ -167,8 +167,8 @@
 			children = (
 				BAC90D8E22F26EB900827D9E /* SplashScreenViewController.swift */,
 				BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */,
-				BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */,
 				BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */,
+				BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */,
 				BAC90D9222F2E1F400827D9E /* TransactionsViewController.swift */,
 				BABE7DFC23088E6900BED520 /* CheckTokenViewController.swift */,
 			);

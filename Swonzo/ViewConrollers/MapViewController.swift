@@ -188,6 +188,7 @@ class MapViewController: UIViewController {
                                         marker.title = self.MerchantNames[x]
                                         marker.snippet = self.categories[x]
                                         marker.map = mapView
+                                        marker.appearAnimation = .pop
                                     }
                                     
 

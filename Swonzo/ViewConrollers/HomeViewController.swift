@@ -37,6 +37,8 @@ class HomeViewController: UIViewController {
         balanceRequest()
         transactionsRequest()
         homePieChart.isHidden = true
+        logoutButtonView.alpha = 0
+        animationView.alpha = 0
         setHomeBlurView()
         pieChartAnimation()
 //        customizeChart(dataPoints: categories, values: transactionsForCategory.map{ Double($0) })
@@ -48,7 +50,7 @@ class HomeViewController: UIViewController {
     var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays"]
     var transactionsForCategory : [Int] = []
     
-   let animationView = AnimationView(name: "coral-pie")
+   let animationView = AnimationView(name: "loading-circle")
     
 func pieChartAnimation() {
     self.view.addSubview(animationView)
@@ -257,7 +259,7 @@ func pieChartAnimation() {
         UIView.animate(withDuration: 3.5, animations: {
             self.homeView.alpha = 1.0
             self.logoutButtonView.alpha = 1.0
-
+            self.animationView.alpha = 1.0
         })
     }
     
@@ -294,9 +296,9 @@ func pieChartAnimation() {
                                     let errorMessage = MYJSON.object(forKey: "message")
                                 print("result is ", result)
                                 if balance != nil {
-//                                    let name = UserDefaults.standard.string(forKey: "FirstName")
+                                    let name = UserDefaults.standard.string(forKey: "FirstName")
 //                                    self.homeView.text =  "Hi \(UserDefaults.standard.string(forKey: "FirstName")!)!\n\n\nYour balance is \(self.swonzoLogic.jsonBalanceToMoney(balance: balance))\n\n\nYou've spent \(self.swonzoLogic.jsonSpendTodayToMoney(spendToday: spendToday)) today."
-                                   self.homeView.text =  "Hi \(UserDefaults.standard.string(forKey: "FirstName")!)!\n\n\nWelcome to Swonzo!\n\nCheck out the tabs below to see what & where you've spent on your Monzo account!"
+                                   self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!\n\nCheck out the tabs below to see what & where you've spent on your Monzo account!"
                                     
                                     self.homeView.alpha = 0
                                     UIView.animate(withDuration: 1) {

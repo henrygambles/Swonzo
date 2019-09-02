@@ -60,6 +60,8 @@ class MapViewController: UIViewController {
         
         SwonzoClient().tryToken()
         
+        print("GETTING MAP DATA...")
+        
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
                           encoding:  URLEncoding.default,

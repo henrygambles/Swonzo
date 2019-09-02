@@ -34,11 +34,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        balanceRequest()
+//        balanceRequest()
         transactionsRequest()
         homePieChart.isHidden = true
         logoutButtonView.alpha = 0
-        animationView.alpha = 0
         setHomeBlurView()
         pieChartAnimation()
 //        customizeChart(dataPoints: categories, values: transactionsForCategory.map{ Double($0) })
@@ -54,17 +53,31 @@ class HomeViewController: UIViewController {
     
 func pieChartAnimation() {
     self.view.addSubview(animationView)
+    UIView.animate(withDuration: 1.5) {
+        self.homeView.alpha = 1
+    }
     animationView.contentMode = .scaleAspectFill
     animationView.animationSpeed = 0.75
     animationView.loopMode = .loop
     animationView.frame = CGRect(x: 64, y: 380, width: 250, height: 250)
-    
+    self.animationView.alpha = 0
+   
     animationView.play()
 }
     
     func transactionsRequest() {
         
         swonzoClient.tryToken()
+        
+        print("GETTING CHART DATA...")
+        
+        let name = UserDefaults.standard.string(forKey: "FirstName")
+        self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!\n\nCheck out the tabs below to see what & where you've spent on your Monzo account!"
+        
+        self.homeView.alpha = 0
+        UIView.animate(withDuration: 1) {
+            self.homeView.alpha = 1
+        }
         
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
@@ -259,6 +272,8 @@ func pieChartAnimation() {
         UIView.animate(withDuration: 3.5, animations: {
             self.homeView.alpha = 1.0
             self.logoutButtonView.alpha = 1.0
+        })
+        UIView.animate(withDuration: 4.0, animations: {
             self.animationView.alpha = 1.0
         })
     }
@@ -294,7 +309,6 @@ func pieChartAnimation() {
                                     let balance = MYJSON.object(forKey: "balance")
                                     let spendToday = MYJSON.object(forKey: "spend_today")
                                     let errorMessage = MYJSON.object(forKey: "message")
-                                print("result is ", result)
                                 if balance != nil {
                                     let name = UserDefaults.standard.string(forKey: "FirstName")
 //                                    self.homeView.text =  "Hi \(UserDefaults.standard.string(forKey: "FirstName")!)!\n\n\nYour balance is \(self.swonzoLogic.jsonBalanceToMoney(balance: balance))\n\n\nYou've spent \(self.swonzoLogic.jsonSpendTodayToMoney(spendToday: spendToday)) today."

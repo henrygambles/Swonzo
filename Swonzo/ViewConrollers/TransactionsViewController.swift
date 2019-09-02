@@ -104,6 +104,8 @@ let animationView = AnimationView(name: "scan-receipt")
     
     func transactionsRequest() {
         
+        print("GETTING TABLE DATA...")
+        
 //        indicator.startAnimating()
 //        indicator.hidesWhenStopped = true
         

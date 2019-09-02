@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var thirdBlurView: UIView!
     @IBOutlet weak var homeView: UITextView!
     @IBOutlet weak var balanceView: UITextView!
-    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var logoutButtonView: UIButton!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -37,6 +37,7 @@ class HomeViewController: UIViewController {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 3.5, animations: {
             self.homeView.alpha = 1.0
+            self.logoutButtonView.alpha = 1.0
 
         })
     }
@@ -75,8 +76,9 @@ class HomeViewController: UIViewController {
                                 print("result is ", result)
                                 if balance != nil {
 //                                    let name = UserDefaults.standard.string(forKey: "FirstName")
-                                    self.homeView.text =  "Hi \(UserDefaults.standard.string(forKey: "FirstName")!)!\n\n\nYour balance is \(self.swonzoLogic.jsonBalanceToMoney(balance: balance))\n\n\nYou've spent \(self.swonzoLogic.jsonSpendTodayToMoney(spendToday: spendToday)) today."
-                                   
+//                                    self.homeView.text =  "Hi \(UserDefaults.standard.string(forKey: "FirstName")!)!\n\n\nYour balance is \(self.swonzoLogic.jsonBalanceToMoney(balance: balance))\n\n\nYou've spent \(self.swonzoLogic.jsonSpendTodayToMoney(spendToday: spendToday)) today."
+                                   self.homeView.text =  "Hi \(UserDefaults.standard.string(forKey: "FirstName")!)!\n\n\nWelcome to Swonzo!\n\n\nCheck out the tabs below to see what & where you've spent on your Monzo account!"
+                                    
                                     self.homeView.alpha = 0
                                     UIView.animate(withDuration: 1) {
                                         self.homeView.alpha = 1

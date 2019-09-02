@@ -130,7 +130,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starry-sky" translatesAutoresizingMaskIntoConstraints="NO" id="qRr-Ei-keJ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colourful_x_wallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="qRr-Ei-keJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-Hf-Scx">
@@ -191,6 +191,7 @@
                     <connections>
                         <outlet property="balanceView" destination="IZ2-8I-Iaj" id="3HC-hk-y11"/>
                         <outlet property="homeView" destination="h4w-AP-N0H" id="YlV-Qt-g3n"/>
+                        <outlet property="logoutButtonView" destination="pF5-B2-4l6" id="jW6-C0-K4s"/>
                         <outlet property="thirdBlurView" destination="9fo-Hf-Scx" id="j5O-S4-FF8"/>
                         <segue destination="sg1-Fo-LOa" kind="show" identifier="logoutSegue" id="p3Y-X9-tHq"/>
                     </connections>
@@ -409,11 +410,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="colourful_x_wallpaper" width="904" height="1976"/>
         <image name="home-tab-bar" width="25" height="25"/>
         <image name="la_palm_trees_x" width="467" height="700"/>
         <image name="maps-icon-tab-bar" width="25" height="25"/>
         <image name="monzo-card" width="1672" height="1083"/>
-        <image name="starry-sky" width="1125" height="2436"/>
         <image name="swan_vector_white" width="944" height="981"/>
         <image name="transactions-tab-bar" width="25" height="25"/>
     </resources>

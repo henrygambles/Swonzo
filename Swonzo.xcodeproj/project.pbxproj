@@ -15,6 +15,9 @@
 		BA104F2A23184FAE00174DA0 /* plotting-map.json in Resources */ = {isa = PBXBuildFile; fileRef = BA104F2923184FAE00174DA0 /* plotting-map.json */; };
 		BA2204E422E3ADCD00D0C83B /* customMapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2204E322E3ADCD00D0C83B /* customMapStyle.json */; };
 		BA39A3022304469E004A1531 /* SwonzoLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39A3012304469E004A1531 /* SwonzoLogic.swift */; };
+		BA3C8E02231D74CD00D1241B /* pie-chart.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3C8E01231D74CD00D1241B /* pie-chart.json */; };
+		BA3C8E05231D773E00D1241B /* coral-pie.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3C8E03231D773E00D1241B /* coral-pie.json */; };
+		BA3C8E06231D773E00D1241B /* pink-pie.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3C8E04231D773E00D1241B /* pink-pie.json */; };
 		BA47E00422E0B0F5000EF78F /* rocket_monzo.json in Resources */ = {isa = PBXBuildFile; fileRef = BA47E00222E0B0F5000EF78F /* rocket_monzo.json */; };
 		BA4A64CF22FE5499003208B6 /* swonzo_ring.png in Resources */ = {isa = PBXBuildFile; fileRef = BA4A64CD22FE5499003208B6 /* swonzo_ring.png */; };
 		BA4A64D022FE5499003208B6 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = BA4A64CE22FE5499003208B6 /* Contents.json */; };
@@ -70,6 +73,9 @@
 		BA104F2923184FAE00174DA0 /* plotting-map.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "plotting-map.json"; sourceTree = "<group>"; };
 		BA2204E322E3ADCD00D0C83B /* customMapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = customMapStyle.json; sourceTree = "<group>"; };
 		BA39A3012304469E004A1531 /* SwonzoLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoLogic.swift; sourceTree = "<group>"; };
+		BA3C8E01231D74CD00D1241B /* pie-chart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pie-chart.json"; sourceTree = "<group>"; };
+		BA3C8E03231D773E00D1241B /* coral-pie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "coral-pie.json"; sourceTree = "<group>"; };
+		BA3C8E04231D773E00D1241B /* pink-pie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pink-pie.json"; sourceTree = "<group>"; };
 		BA47E00222E0B0F5000EF78F /* rocket_monzo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = rocket_monzo.json; path = ../rocket_monzo.json; sourceTree = "<group>"; };
 		BA4A64CD22FE5499003208B6 /* swonzo_ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swonzo_ring.png; sourceTree = "<group>"; };
 		BA4A64CE22FE5499003208B6 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
@@ -229,6 +235,9 @@
 		BA86F1EF22DAC0BB00CE865A /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				BA3C8E03231D773E00D1241B /* coral-pie.json */,
+				BA3C8E04231D773E00D1241B /* pink-pie.json */,
+				BA3C8E01231D74CD00D1241B /* pie-chart.json */,
 				BA0B2172231C1C4500D1F6DC /* scan-receipt.json */,
 				BA104F2923184FAE00174DA0 /* plotting-map.json */,
 				BABE7DFE2308B5D200BED520 /* rainbow-wave-loading.json */,
@@ -380,18 +389,21 @@
 				BA7D5E4222D631BD00D7C0BE /* LaunchScreen.storyboard in Resources */,
 				BAC85F0622FB691F0096B113 /* SlatePro.ttf in Resources */,
 				BA4A64D022FE5499003208B6 /* Contents.json in Resources */,
+				BA3C8E02231D74CD00D1241B /* pie-chart.json in Resources */,
 				BA7D5E3F22D631BD00D7C0BE /* Assets.xcassets in Resources */,
 				BAC4D28D22E21814009891C0 /* nightMap.json in Resources */,
 				BA4A64CF22FE5499003208B6 /* swonzo_ring.png in Resources */,
 				BA104F2A23184FAE00174DA0 /* plotting-map.json in Resources */,
 				BA2204E422E3ADCD00D0C83B /* customMapStyle.json in Resources */,
 				BABE7DFF2308B5D300BED520 /* rainbow-wave-loading.json in Resources */,
+				BA3C8E06231D773E00D1241B /* pink-pie.json in Resources */,
 				BA4A64D222FE56C0003208B6 /* README.md in Resources */,
 				BA89679722FDBADB000EF218 /* tick.json in Resources */,
 				BAC85F0322FB69050096B113 /* SlatePro-Medium.ttf in Resources */,
 				BA7D5E3D22D631BB00D7C0BE /* Main.storyboard in Resources */,
 				BA0B2173231C1C4500D1F6DC /* scan-receipt.json in Resources */,
 				BA47E00422E0B0F5000EF78F /* rocket_monzo.json in Resources */,
+				BA3C8E05231D773E00D1241B /* coral-pie.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

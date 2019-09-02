@@ -178,82 +178,45 @@ class MapViewController: UIViewController {
                                         
                                         if online == false {
                                             let merchantName = name
-                                            self.MerchantNames.append(merchantName as! String ?? "error")
+                                            self.MerchantNames.append(merchantName!)
                                         }
                                         
-                                        
-                                        //
-                                        let pounds = Double(amount ?? 0) / 100
+                                       
+                                        let pounds = Double(amount) / 100
                                         if pounds < 0 {
                                             let money = "£" + String(format:"%.2f",abs(pounds))
-                                            self.prices.append(money as! String)
+                                            self.prices.append(money)
                                             print(money)
                                         }
                                         else {
                                             let money = "+£" + String(format:"%.2f",pounds)
-                                            self.prices.append(money as! String)
+                                            self.prices.append(money)
                                             print(money)
                                         }
                                         
                                         
-                                        self.categories.append(category as! String ?? "error")
-                                        //                                        print(self.tableView.dataSource)
-                                        
-                                       
-
-                                        
+                                        self.categories.append(category)  
                                     }
-                                    print("\nSuccess! Populated table.")
-                                    
-                                    
-                                    print(self.MerchantNames)
-                                    print(self.latitudes)
-                                    print(self.longitudes)
-                                    
-//                                    var places:String = []
-//                                    var x = numberOfTransactions
-//
-//                                    while x > numberOfTransactions - countNumber {
-//
-//                                        x = x - 1
-//
-//                                        let progress = x - countNumber
-//                                        print(progress)
-//
-////                                        let name = root.transactions[i].merchant?.name
-////                                        let latitude = root.transactions[i].merchant?.address?.latitude
-////                                        let longitude = root.transactions[i].merchant?.address?.longitude
-//
-//                                        let position = CLLocationCoordinate2D(latitude: self.latitudes[progress], longitude: self.longitudes[progress])
-//
-////                                        places.append("Person \(i)")
-//                                        let marker = GMSMarker(position: position)
-//                                        marker.title = self.MerchantNames[progress]
-//
-//                                    }
-                                    
+                                    print("\nSuccess! Finished Getting data.")
+
+
                                     let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 10.5)
                                     let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
                                     
                                     do {
-                                        // Set the map style by passing the URL of the local file.
                                         if let styleURL = Bundle.main.url(forResource: "nightMap", withExtension: "json") {
                                             mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
                                         } else {
                                             NSLog("Unable to find style.json")
                                         }
                                     } catch {
-                                        NSLog("One or more of the map styles failed to load. \(error)")
+                                        NSLog("Map style failed to load. \(error)")
                                     }
                                     
                                     
                                     self.view = mapView
-//                                    MapViewController().view = mapView
-                                    
-//                                    var x = 0
+
                                     for x in 0 ..< self.MerchantNames.count {
-//                                        x += 1
-                                        //                                        var locator = self.MerchantNames[i]
                                         var position: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.latitudes[x], self.longitudes[x])
                                         var marker = GMSMarker(position: position)
                                         marker.title = self.MerchantNames[x]

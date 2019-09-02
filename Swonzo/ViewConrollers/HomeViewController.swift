@@ -10,6 +10,7 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 import UIKit
+import Lottie
 import Charts
 
 
@@ -37,6 +38,7 @@ class HomeViewController: UIViewController {
         transactionsRequest()
         homePieChart.isHidden = true
         setHomeBlurView()
+        pieChartAnimation()
 //        customizeChart(dataPoints: categories, values: transactionsForCategory.map{ Double($0) })
     }
     
@@ -45,6 +47,18 @@ class HomeViewController: UIViewController {
     var instacesOfCategories : [String] = []
     var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays"]
     var transactionsForCategory : [Int] = []
+    
+   let animationView = AnimationView(name: "coral-pie")
+    
+func pieChartAnimation() {
+    self.view.addSubview(animationView)
+    animationView.contentMode = .scaleAspectFill
+    animationView.animationSpeed = 0.75
+    animationView.loopMode = .loop
+    animationView.frame = CGRect(x: 64, y: 380, width: 250, height: 250)
+    
+    animationView.play()
+}
     
     func transactionsRequest() {
         
@@ -192,6 +206,7 @@ class HomeViewController: UIViewController {
                         print(self.transactionsForCategory)
                         
                         self.customizeChart(dataPoints: self.categories, values: self.transactionsForCategory.map{ Double($0) })
+                        self.animationView.removeFromSuperview()
                         self.homePieChart.isHidden = false
                         
                         

@@ -130,8 +130,9 @@ class SwonzoClient {
                             }
                 }
     }
-
+    
 }
+
 struct Root: Codable {
     let transactions: [Transaction]
 }

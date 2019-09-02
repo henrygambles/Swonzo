@@ -157,6 +157,8 @@ class MapViewController: UIViewController {
                                             category = "❤️"
                                         } else if category == "family" {
                                             category = "❤️"
+                                        } else if category == "holidays" {
+                                            category = "❤️"
                                         }
                                         //
                                         print(category)

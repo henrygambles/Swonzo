@@ -34,12 +34,175 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         balanceRequest()
+        transactionsRequest()
 //        setHomeBlurView()
-        customizeChart(dataPoints: players, values: goals.map{ Double($0) })
+//        customizeChart(dataPoints: categories, values: transactionsForCategory.map{ Double($0) })
     }
+
     
-    let players = ["Ozil", "Ramsey", "Laca", "Auba", "Xhaka", "Torreira"]
-    let goals = [6, 8, 26, 30, 8, 10]
+    var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays"]
+    var transactionsForCategory : [Int] = []
+    
+    func transactionsRequest() {
+        
+        swonzoClient.tryToken()
+        
+        Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
+                          parameters: parameters,
+                          encoding:  URLEncoding.default,
+                          headers: headers).downloadProgress { progress in
+                            print("Progress: \(Float(progress.fractionCompleted))")
+                            //                            self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\n\((progress.fractionCompleted * 100))%"
+            }.responseJSON { response in
+                if let error = response.error {
+                    //                                self.homeView.text = error.localizedDescription
+                } else if let jsonArray = response.result.value as? [[String: Any]] {
+                } else if let jsonDict = response.result.value as? [String: Any] {
+                    
+                    
+                    
+                    do {
+                        print("*************************")
+                        print("\n  Home Testing \n")
+                        print("*************************\n")
+                        //                                   print(type(of: Merchant))
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.calendar = Calendar(identifier: .iso8601)
+                        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                        
+                        let decoder = JSONDecoder()
+                        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                        
+                        
+                        let root = try decoder.decode(Root.self, from: response.data!)
+                        
+                        print("You have made", root.transactions.count, "transactions... wow!\n")
+                        let numberOfTransactions = root.transactions.count
+                        
+                        print("GREEN SHOP")
+                        
+                        print( root.transactions[15].merchant?.address?.address)
+                        //                                    print("Merchant: , root.transactions[15].merchant)
+                        print("Merchant:", root.transactions[15].merchant?.address?.latitude)
+                        print("Merchant:", root.transactions[15].merchant?.address?.longitude)
+                        
+                        
+                        
+                        let countNumber = numberOfTransactions
+                        var i = numberOfTransactions
+                        
+                        while i > numberOfTransactions - countNumber {
+                            
+                            i = i - 1
+                            
+                            //                                        var merchantName = root.transactions[i].merchant?.name
+                            //                                        let address = root.transactions[i].merchant?.address.formatted
+                            
+                            let name = root.transactions[i].merchant?.name
+                            let latitude = root.transactions[i].merchant?.address?.latitude
+                            let longitude = root.transactions[i].merchant?.address?.longitude
+                            
+                            let amount = root.transactions[i].amount
+                            let transDescription = root.transactions[i].transactionDescription
+                            var category = String(Substring(root.transactions[i].category.rawValue)) ?? "no cat"
+                            //                            let cat = root.transactions[i].category
+                            
+                            //                                        print(String(format:"%.2f", numberOfTransactions - i - 1) + "%")
+                            let progress = numberOfTransactions - i
+                            let percentageDouble = (Double(progress) / Double(countNumber) * 100)
+                            
+                            //
+                            print("\n*********")
+                            print("   " + String(format: "%.0f", percentageDouble) + "%")
+                            print("*********\n")
+                            
+                            //                                        print(root.transactions[i].transactionDescription!)
+                            //                                        root.transactio
+                            
+                            
+                            
+//                                                        if category == "transport" {
+//                                                            category = "Transport 🚇"
+//                                                        } else if category == "groceries" {
+//                                                            category = "Groceries 🛒"
+//                                                        } else if category == "eating_out" {
+//                                                            category = "Eating Out 🍔"
+//                                                        } else if category == "entertainment" {
+//                                                            category = "Entertainment 🎥"
+//                                                        } else if category == "general" {
+//                                                            category = "General ⚙️"
+//                                                        } else if category == "shopping" {
+//                                                            category = "Shopping 🛍️"
+//                                                        } else if category == "cash" {
+//                                                            category = "Cash 💵"
+//                                                        } else if category == "personal_care" {
+//                                                            category = "Personal Care❤️"
+//                                                        } else if category == "family" {
+//                                                            category = "Family 👪"
+//                                                        } else if category == "holidays" {
+//                                                            category = "Holidays 🧳"
+//                                                        }
+                            
+                            if category == "transport" {
+                                category = "Transport"
+                            } else if category == "groceries" {
+                                category = "Groceries"
+                            } else if category == "eating_out" {
+                                category = "Eating Out"
+                            } else if category == "entertainment" {
+                                category = "Entertainment"
+                            } else if category == "general" {
+                                category = "General"
+                            } else if category == "shopping" {
+                                category = "Shopping"
+                            } else if category == "cash" {
+                                category = "Cash"
+                            } else if category == "personal_care" {
+                                category = "Personal Care"
+                            } else if category == "family" {
+                                category = "Family"
+                            } else if category == "holidays" {
+                                category = "Holidays"
+                            }
+                            //
+                            print(category)
+
+                            
+                            var categories : [String] = []
+                            
+                            
+                            categories.append(category as! String ?? "error")
+                            
+                            self.transactionsForCategory.append(categories.filter{$0 == "Transport"}.count)
+                            self.transactionsForCategory.append(categories.filter{$0 == "Groceries"}.count)
+                            self.transactionsForCategory.append(categories.filter{$0 == "Eating Out"}.count)
+                            self.transactionsForCategory.append(categories.filter{$0 == "Entertainment"}.count)
+                            self.transactionsForCategory.append( categories.filter{$0 == "General"}.count)
+                            self.transactionsForCategory.append(categories.filter{$0 == "Shopping"}.count)
+                            self.transactionsForCategory.append(categories.filter{$0 == "Cash"}.count)
+                            self.transactionsForCategory.append(categories.filter{$0 == "Personal Care"}.count)
+                            self.transactionsForCategory.append(categories.filter{$0 == "Family"}.count)
+                            self.transactionsForCategory.append(categories.filter{$0 == "Holidays"}.count)
+                            //                                        print(self.tableView.dataSource)
+                            
+                            
+                            
+                            
+                        }
+                        print("\nSuccess! Populated table.")
+                        
+                        self.customizeChart(dataPoints: self.categories, values: self.transactionsForCategory.map{ Double($0) })
+                        
+                        
+                    } catch {
+                        print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
+                        print("Also,", error)
+                    }
+                    
+                }
+        }
+    }
     
     func customizeChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [ChartDataEntry] = []

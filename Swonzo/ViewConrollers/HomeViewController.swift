@@ -35,11 +35,12 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         balanceRequest()
         transactionsRequest()
+        homePieChart.isHidden = true
 //        setHomeBlurView()
 //        customizeChart(dataPoints: categories, values: transactionsForCategory.map{ Double($0) })
     }
 
-    
+    var instacesOfCategories : [String] = []
     var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays"]
     var transactionsForCategory : [Int] = []
     
@@ -168,31 +169,39 @@ class HomeViewController: UIViewController {
                             //
                             print(category)
 
-                            
-                            var categories : [String] = []
-                            
-                            
-                            categories.append(category as! String ?? "error")
-                            
-                            self.transactionsForCategory.append(categories.filter{$0 == "Transport"}.count)
-                            self.transactionsForCategory.append(categories.filter{$0 == "Groceries"}.count)
-                            self.transactionsForCategory.append(categories.filter{$0 == "Eating Out"}.count)
-                            self.transactionsForCategory.append(categories.filter{$0 == "Entertainment"}.count)
-                            self.transactionsForCategory.append( categories.filter{$0 == "General"}.count)
-                            self.transactionsForCategory.append(categories.filter{$0 == "Shopping"}.count)
-                            self.transactionsForCategory.append(categories.filter{$0 == "Cash"}.count)
-                            self.transactionsForCategory.append(categories.filter{$0 == "Personal Care"}.count)
-                            self.transactionsForCategory.append(categories.filter{$0 == "Family"}.count)
-                            self.transactionsForCategory.append(categories.filter{$0 == "Holidays"}.count)
-                            //                                        print(self.tableView.dataSource)
+                            self.instacesOfCategories.append(category as! String ?? "error")
                             
                             
                             
+                         
                             
                         }
+                        
+                        
+                        
+                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Transport"}.count)
+                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Groceries"}.count)
+                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Eating Out"}.count)
+                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Entertainment"}.count)
+                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "General"}.count)
+                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Shopping"}.count)
+                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Cash"}.count)
+                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Personal Care"}.count)
+                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Family"}.count)
+                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Holidays"}.count)
+                        //                                        print(self.tableView.dataSource)
+                        
+                        
+                        print("THE SHIT IS", self.instacesOfCategories.filter{$0 == "Transport"}.count)
+                        print("IT BE LIKE", self.instacesOfCategories.filter{$0 == "Groceries"}.count)
+                        
                         print("\nSuccess! Populated table.")
                         
+                        print(self.categories)
+                        print(self.transactionsForCategory)
+                        
                         self.customizeChart(dataPoints: self.categories, values: self.transactionsForCategory.map{ Double($0) })
+                        self.homePieChart.isHidden = false
                         
                         
                     } catch {

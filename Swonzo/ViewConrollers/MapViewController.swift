@@ -12,8 +12,6 @@ import UIKit
 import GoogleMaps
 import Lottie
 
-
-
 class MapViewController: UIViewController {
     
     @IBOutlet weak var fetchingDataTextView: UITextView!
@@ -80,42 +78,25 @@ class MapViewController: UIViewController {
                                     print("*************************")
                                     print("\n  MAP TESTING \n")
                                     print("*************************\n")
-                                    //                                   print(type(of: Merchant))
+                                    
                                     let dateFormatter = DateFormatter()
                                     dateFormatter.calendar = Calendar(identifier: .iso8601)
                                     dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
                                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-                                    
                                     let decoder = JSONDecoder()
                                     decoder.dateDecodingStrategy = .formatted(dateFormatter)
                                     
                                     
                                     let root = try decoder.decode(Root.self, from: response.data!)
-                                    
-                                    print("You have made", root.transactions.count, "transactions... wow!\n")
+
                                     let numberOfTransactions = root.transactions.count
-                                    
-                                    print("GREEN SHOP")
-                                    
-                                    //                                    print( root.transactions[15].merchant?.address.address)
-                                    //                                    print("Merchant: , root.transactions[15].merchant)
-                                    print("Merchant:", root.transactions[15].merchant?.address?.latitude)
-                                    print("Merchant:", root.transactions[15].merchant?.address?.longitude)
-                                    //                                    print("Merchant ID:", root.transactions[15].merchant?.id)
-                                    //                                    print("Address:", root.transactions[15].merchant?.address.address)
-                                    //                                    print("Description:", root.transactions[15].transactionDescription)
-                                    
-                                    
-                                    
-                                    let countNumber = numberOfTransactions
+                   
                                     var i = numberOfTransactions
                                     
-                                    while i > numberOfTransactions - countNumber {
+                                    while i > numberOfTransactions - numberOfTransactions {
                                         
                                         i = i - 1
-                                        
-                                        //                                        var merchantName = root.transactions[i].merchant?.name
-                                        //                                        let address = root.transactions[i].merchant?.address.formatted
+                
                                         
                                         let name = root.transactions[i].merchant?.name
                                         let latitude = root.transactions[i].merchant?.address?.latitude
@@ -125,13 +106,11 @@ class MapViewController: UIViewController {
                                         let transDescription = root.transactions[i].transactionDescription
                                         var category = String(Substring(root.transactions[i].category.rawValue)) ?? "no cat"
                                         
-                                        //                                        print(String(format:"%.2f", numberOfTransactions - i - 1) + "%")
                                         let progress = numberOfTransactions - i
-                                        let percentageDouble = (Double(progress) / Double(countNumber) * 100)
+                                        let progressAsPercentage = (Double(progress) / Double(numberOfTransactions) * 100)
                                         
-                                        //
                                         print("\n*********")
-                                        print("   " + String(format: "%.0f", percentageDouble) + "%")
+                                        print("   " + String(format: "%.0f", progressAsPercentage) + "%")
                                         print("*********\n")
                                         
                                         //                                        print(root.transactions[i].transactionDescription!)
@@ -156,15 +135,13 @@ class MapViewController: UIViewController {
                                         } else if category == "personal_care" {
                                             category = "❤️"
                                         } else if category == "family" {
-                                            category = "❤️"
+                                            category = "👪"
                                         } else if category == "holidays" {
-                                            category = "❤️"
+                                            category = "🧳"
                                         }
-                                        //
+                            
                                         print(category)
-                                        //                                        print(root.transactions[i].merchant?.address.address)
-                                        
-                                        //                                        description?.prefix(25)
+                             
                                         
                                         let online = root.transactions[i].merchant?.online
                                         
@@ -174,6 +151,7 @@ class MapViewController: UIViewController {
                                         } else if online == false {
                                             self.longitudes.append(longitude as! Double)
                                             self.latitudes.append(latitude as! Double)
+                                            self.categories.append(category)
                                         }
                                         
                                         if online == false {
@@ -181,21 +159,9 @@ class MapViewController: UIViewController {
                                             self.MerchantNames.append(merchantName!)
                                         }
                                         
-                                       
-                                        let pounds = Double(amount) / 100
-                                        if pounds < 0 {
-                                            let money = "£" + String(format:"%.2f",abs(pounds))
-                                            self.prices.append(money)
-                                            print(money)
-                                        }
-                                        else {
-                                            let money = "+£" + String(format:"%.2f",pounds)
-                                            self.prices.append(money)
-                                            print(money)
-                                        }
                                         
                                         
-                                        self.categories.append(category)  
+                                        
                                     }
                                     print("\nSuccess! Finished Getting data.")
 
@@ -220,6 +186,7 @@ class MapViewController: UIViewController {
                                         var position: CLLocationCoordinate2D = CLLocationCoordinate2DMake(self.latitudes[x], self.longitudes[x])
                                         var marker = GMSMarker(position: position)
                                         marker.title = self.MerchantNames[x]
+                                        marker.snippet = self.categories[x]
                                         marker.map = mapView
                                     }
                                     

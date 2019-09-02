@@ -36,10 +36,12 @@ class HomeViewController: UIViewController {
         balanceRequest()
         transactionsRequest()
         homePieChart.isHidden = true
-//        setHomeBlurView()
+        setHomeBlurView()
 //        customizeChart(dataPoints: categories, values: transactionsForCategory.map{ Double($0) })
     }
+    
 
+//var categories = ["🚇", "🛒", "🍔", "🎥", "⚙️", "🛍️", "💵", "❤️", "👪", "🧳"]
     var instacesOfCategories : [String] = []
     var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays"]
     var transactionsForCategory : [Int] = []
@@ -169,15 +171,9 @@ class HomeViewController: UIViewController {
                             //
                             print(category)
 
-                            self.instacesOfCategories.append(category as! String ?? "error")
-                            
-                            
-                            
-                         
+                            self.instacesOfCategories.append(category)
                             
                         }
-                        
-                        
                         
                         self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Transport"}.count)
                         self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Groceries"}.count)
@@ -189,12 +185,7 @@ class HomeViewController: UIViewController {
                         self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Personal Care"}.count)
                         self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Family"}.count)
                         self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Holidays"}.count)
-                        //                                        print(self.tableView.dataSource)
-                        
-                        
-                        print("THE SHIT IS", self.instacesOfCategories.filter{$0 == "Transport"}.count)
-                        print("IT BE LIKE", self.instacesOfCategories.filter{$0 == "Groceries"}.count)
-                        
+                 
                         print("\nSuccess! Populated table.")
                         
                         print(self.categories)
@@ -222,6 +213,9 @@ class HomeViewController: UIViewController {
         // 2. Set ChartDataSet
         let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
         pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+        pieChartDataSet.yValuePosition = .outsideSlice
+        pieChartDataSet.xValuePosition = .outsideSlice
+        self.homePieChart.holeColor = UIColor.clear
         // 3. Set ChartData
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         let format = NumberFormatter()
@@ -287,7 +281,7 @@ class HomeViewController: UIViewController {
                                 if balance != nil {
 //                                    let name = UserDefaults.standard.string(forKey: "FirstName")
 //                                    self.homeView.text =  "Hi \(UserDefaults.standard.string(forKey: "FirstName")!)!\n\n\nYour balance is \(self.swonzoLogic.jsonBalanceToMoney(balance: balance))\n\n\nYou've spent \(self.swonzoLogic.jsonSpendTodayToMoney(spendToday: spendToday)) today."
-                                   self.homeView.text =  "Hi \(UserDefaults.standard.string(forKey: "FirstName")!)!\n\n\nWelcome to Swonzo!\n\n\nCheck out the tabs below to see what & where you've spent on your Monzo account!"
+                                   self.homeView.text =  "Hi \(UserDefaults.standard.string(forKey: "FirstName")!)!\n\n\nWelcome to Swonzo!\n\nCheck out the tabs below to see what & where you've spent on your Monzo account!"
                                     
                                     self.homeView.alpha = 0
                                     UIView.animate(withDuration: 1) {

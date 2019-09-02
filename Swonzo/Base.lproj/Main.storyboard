@@ -160,8 +160,8 @@
                                     <action selector="logoutButton:" destination="9YI-ha-Eem" eventType="touchUpInside" id="3bA-m7-gU2"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NkB-Yc-PkS" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="67" y="335" width="240" height="216"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkB-Yc-PkS" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="24" y="335" width="326" height="275"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -172,13 +172,13 @@
                             <constraint firstItem="9fo-Hf-Scx" firstAttribute="leading" secondItem="qRr-Ei-keJ" secondAttribute="leading" id="A0y-cv-66M"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="centerX" secondItem="IZ2-8I-Iaj" secondAttribute="centerX" id="Fus-du-eG2"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="leading" secondItem="9Oh-Su-PVp" secondAttribute="leading" id="LX8-Km-kIs"/>
-                            <constraint firstItem="JUs-NW-vH9" firstAttribute="bottom" secondItem="NkB-Yc-PkS" secondAttribute="bottom" constant="67" id="Ndj-ki-J0c"/>
-                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="leading" secondItem="JUs-NW-vH9" secondAttribute="leading" constant="67" id="Vm6-1c-ct0"/>
+                            <constraint firstItem="JUs-NW-vH9" firstAttribute="bottom" secondItem="NkB-Yc-PkS" secondAttribute="bottom" constant="8" id="Ndj-ki-J0c"/>
+                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="leading" secondItem="JUs-NW-vH9" secondAttribute="leading" constant="24" id="Vm6-1c-ct0"/>
                             <constraint firstItem="h4w-AP-N0H" firstAttribute="centerX" secondItem="IZ2-8I-Iaj" secondAttribute="centerX" id="ZNu-4r-WvT"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="bottom" secondItem="h4w-AP-N0H" secondAttribute="bottom" id="aVP-Kw-xnF"/>
                             <constraint firstItem="pF5-B2-4l6" firstAttribute="leading" secondItem="JUs-NW-vH9" secondAttribute="leading" constant="276" id="f7K-4X-YKC"/>
                             <constraint firstItem="h4w-AP-N0H" firstAttribute="leading" secondItem="9Oh-Su-PVp" secondAttribute="leadingMargin" id="fgm-yI-POX"/>
-                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="trailing" secondItem="IZ2-8I-Iaj" secondAttribute="trailing" id="gjN-My-cPv"/>
+                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="trailing" secondItem="IZ2-8I-Iaj" secondAttribute="trailing" constant="42" id="gjN-My-cPv"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="top" secondItem="9Oh-Su-PVp" secondAttribute="top" id="gxC-vx-RUP"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="bottom" secondItem="JUs-NW-vH9" secondAttribute="bottom" id="moC-pw-WCv"/>
                             <constraint firstItem="NkB-Yc-PkS" firstAttribute="top" secondItem="9Oh-Su-PVp" secondAttribute="top" constant="335" id="nGR-9l-GoU"/>
@@ -186,7 +186,7 @@
                             <constraint firstItem="pF5-B2-4l6" firstAttribute="top" secondItem="JUs-NW-vH9" secondAttribute="top" id="phe-Gj-Idg"/>
                             <constraint firstItem="h4w-AP-N0H" firstAttribute="top" secondItem="JUs-NW-vH9" secondAttribute="top" constant="35" id="qeD-6P-YXo"/>
                             <constraint firstItem="9fo-Hf-Scx" firstAttribute="top" secondItem="qRr-Ei-keJ" secondAttribute="top" id="v66-TQ-sG9"/>
-                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="leading" secondItem="IZ2-8I-Iaj" secondAttribute="leading" id="xyI-o1-IPr"/>
+                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="leading" secondItem="IZ2-8I-Iaj" secondAttribute="leading" constant="-43" id="xyI-o1-IPr"/>
                             <constraint firstItem="9fo-Hf-Scx" firstAttribute="bottom" secondItem="h4w-AP-N0H" secondAttribute="bottom" id="yxZ-uj-3gF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JUs-NW-vH9"/>

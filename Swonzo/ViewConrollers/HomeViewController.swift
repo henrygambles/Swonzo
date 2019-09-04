@@ -114,10 +114,10 @@ func pieChartAnimation() {
                         
                         print("GREEN SHOP")
                         
-                        print( root.transactions[15].merchant?.address?.address)
+                        print( root.transactions[15].merchant?.address.address)
                         //                                    print("Merchant: , root.transactions[15].merchant)
-                        print("Merchant:", root.transactions[15].merchant?.address?.latitude)
-                        print("Merchant:", root.transactions[15].merchant?.address?.longitude)
+                        print("Merchant:", root.transactions[15].merchant?.address.latitude)
+                        print("Merchant:", root.transactions[15].merchant?.address.longitude)
                         
                         
                         
@@ -132,8 +132,8 @@ func pieChartAnimation() {
                             //                                        let address = root.transactions[i].merchant?.address.formatted
                             
                             let name = root.transactions[i].merchant?.name
-                            let latitude = root.transactions[i].merchant?.address?.latitude
-                            let longitude = root.transactions[i].merchant?.address?.longitude
+                            let latitude = root.transactions[i].merchant?.address.latitude
+                            let longitude = root.transactions[i].merchant?.address.longitude
                             
                             let amount = root.transactions[i].amount
                             let transDescription = root.transactions[i].transactionDescription
@@ -196,6 +196,8 @@ func pieChartAnimation() {
                                 category = "Family"
                             } else if category == "holidays" {
                                 category = "Holidays"
+                            } else if category == "mondo" {
+                                category = "Monzo"
                             }
                             //
                             print(category)

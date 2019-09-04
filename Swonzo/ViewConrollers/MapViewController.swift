@@ -101,8 +101,8 @@ class MapViewController: UIViewController {
                 
                                         
                                         let name = root.transactions[i].merchant?.name
-                                        let latitude = root.transactions[i].merchant?.address?.latitude
-                                        let longitude = root.transactions[i].merchant?.address?.longitude
+                                        let latitude = root.transactions[i].merchant?.address.latitude
+                                        let longitude = root.transactions[i].merchant?.address.longitude
 
                                         let amount = root.transactions[i].amount
                                         let transDescription = root.transactions[i].transactionDescription

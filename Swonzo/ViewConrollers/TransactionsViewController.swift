@@ -156,8 +156,8 @@ let animationView = AnimationView(name: "scan-receipt")
                                         let progress = numberOfTransactions - i
                                         let percentageDouble = (Double(progress) / Double(countNumber) * 100)
                                         
-                                        let latitude = root.transactions[i].merchant?.address?.latitude
-                                        let longitude = root.transactions[i].merchant?.address?.longitude
+                                        let latitude = root.transactions[i].merchant?.address.latitude
+                                        let longitude = root.transactions[i].merchant?.address.longitude
                                         
                                         print("   " + String(format: "%.0f", percentageDouble) + "%", "\n")
                                         

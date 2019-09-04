@@ -33,12 +33,16 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     func lookForRecentToken() {
-        if UserDefaults.standard.string(forKey: "TokenStatus") == "GOOD" {
-            recentTokenButton.isHidden = false;
-        } else {
-            recentTokenButton.isHidden = true;
+        swonzoClient.getAccountInfo() { response in
+            if response.hasPrefix("acc") {
+                self.recentTokenButton.isHidden = false;
+            }
+            else {
+                self.recentTokenButton.isHidden = true;
+            }
         }
     }
+    
 
     
     @IBOutlet weak var recentTokenButton: UIButton!

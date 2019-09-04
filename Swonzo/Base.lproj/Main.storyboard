@@ -130,7 +130,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colourful_x_wallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="qRr-Ei-keJ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qRr-Ei-keJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-Hf-Scx">
@@ -420,7 +420,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="colourful_x_wallpaper" width="904" height="1976"/>
         <image name="home-tab-bar" width="25" height="25"/>
         <image name="la_palm_trees_x" width="467" height="700"/>
         <image name="maps-icon-tab-bar" width="25" height="25"/>

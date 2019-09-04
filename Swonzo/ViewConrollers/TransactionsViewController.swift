@@ -203,8 +203,11 @@ let animationView = AnimationView(name: "scan-receipt")
                                             print(money)
                                         }
                                         else {
-                                            let money = "+£" + String(format:"%.2f",pounds)
+                                            let money = "+ £" + String(format:"%.2f",pounds)
                                             self.prices.append(money)
+//                                            let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: self.cellReuseIdentifier) as! UITableViewCell
+//                                            cell.detailTextLabel!.textColor = UIColor.green
+                                            
                                             print(money)
                                         }
                                         
@@ -263,12 +266,18 @@ let animationView = AnimationView(name: "scan-receipt")
         
         
         let price = prices[indexPath.row]
+        
+       
+        
         let category = categories[indexPath.row]
         cell.detailTextLabel?.text = price
         let label = UILabel.init(frame: CGRect(x:0,y:0,width:110,height:20))
         label.text = category + " " + price
         cell.accessoryView = label
         
+//        if label.text("+") {
+//            cell.label?.textColor = UIColor.green
+//        }
         
         return cell
     }

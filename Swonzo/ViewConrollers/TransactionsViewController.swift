@@ -73,21 +73,17 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 let animationView = AnimationView(name: "scan-receipt")
     
     func startLoadingCircleAnimation() {
-        
-
         self.view.addSubview(animationView)
         animationView.contentMode = .scaleAspectFill
         animationView.animationSpeed = 1.5
         animationView.loopMode = .loop
         animationView.frame = CGRect(x: 64, y: 180, width: 250, height: 250)
-        
         animationView.play()
     }
     
     func transactionsRequest() {
         
         print("GETTING TABLE DATA...")
-        
        
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
@@ -96,10 +92,10 @@ let animationView = AnimationView(name: "scan-receipt")
                             print("Progress: \(Float(progress.fractionCompleted))")
                             let progressPercent = String((progress.fractionCompleted * 100).rounded())
                             print("OI\(progressPercent)%")
-                        }.responseJSON { response in
-                            if let error = response.error {
-                                self.transactionsTextView.text = error.localizedDescription
-                            } else {
+                            }.responseJSON { response in
+                                if let error = response.error {
+                                    self.transactionsTextView.text = error.localizedDescription
+                                } else {
                                 
                                 
                                 do {
@@ -117,12 +113,11 @@ let animationView = AnimationView(name: "scan-receipt")
                                     
                                     
                                     let root = try decoder.decode(Root.self, from: response.data!)
-                                    //
-                                    let numberOfTransactions = root.transactions.count
                                     
-                                    let countNumber = numberOfTransactions
+                                    let numberOfTransactions = root.transactions.count
                                     var i = numberOfTransactions
-                                    while i > numberOfTransactions - countNumber {
+                                  
+                                    while i > 0 {
                                         
                                         i = i - 1
                                         
@@ -130,13 +125,14 @@ let animationView = AnimationView(name: "scan-receipt")
                                         let amount = root.transactions[i].amount
                                         let transDescription = root.transactions[i].transactionDescription
                                         var category = String(Substring(root.transactions[i].category.rawValue))
-                                        let progress = numberOfTransactions - i
-                                        let percentageDouble = (Double(progress) / Double(countNumber) * 100)
+                                        
+                                        let transactionNumber = numberOfTransactions - i
+                                        let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
                                         
                                         let latitude = root.transactions[i].merchant?.address.latitude
                                         let longitude = root.transactions[i].merchant?.address.longitude
                                         
-                                        print(String(format: "%.0f", percentageDouble) + "%", "\n")
+                                        print(String(format: "%.0f", progressAsPercentage) + "%", "\n")
                                         
                                         
                                         if category == "transport" {

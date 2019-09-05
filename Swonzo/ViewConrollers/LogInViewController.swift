@@ -16,6 +16,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     private let homeViewController = HomeViewController()
     private let swonzoClient = SwonzoClient()
     
+    @IBOutlet weak var recentTokenButton: UIButton!
+    @IBOutlet weak var errorTextView: UITextView!
+    @IBOutlet weak var logInTextView: UITextView!
+    @IBOutlet weak var logoView: UIImageView!
+    @IBOutlet weak var blurryView: UIView!
+    @IBOutlet weak var textFieldView: UITextField!
+    @IBOutlet weak var logInButtonView: UIButton!
+    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -42,18 +50,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
-
-    
-    @IBOutlet weak var recentTokenButton: UIButton!
-    @IBOutlet weak var errorTextView: UITextView!
-    @IBOutlet weak var logInTextView: UITextView!
-    @IBOutlet weak var logoView: UIImageView!
-    @IBOutlet weak var blurryView: UIView!
-    @IBOutlet weak var textFieldView: UITextField!
-    @IBOutlet weak var logInButtonView: UIButton!
-    
-    
     
     @IBAction func tokenInput(_ sender: Any) {
         let token = textFieldView.text as! String

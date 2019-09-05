@@ -35,13 +35,13 @@ class MapViewController: UIViewController {
         
         self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\nHang tight."
 
-        startAnimation()
+        startMapLoadingAnimation()
         mapsRequest()
       
     }
     
 
-    func startAnimation() {
+    func startMapLoadingAnimation() {
         
         let animationView = AnimationView(name: "plotting-map")
         self.view.addSubview(animationView)
@@ -72,9 +72,6 @@ class MapViewController: UIViewController {
                             if let error = response.error {
                                 self.fetchingDataTextView.text = error.localizedDescription
                             } else {
-                                
-                                
-                                
                                 do {
                                     print("*************************")
                                     print("\n  MAP TESTING \n")
@@ -103,21 +100,16 @@ class MapViewController: UIViewController {
                                         let latitude = root.transactions[i].merchant?.address.latitude
                                         let longitude = root.transactions[i].merchant?.address.longitude
 
-                                        let amount = root.transactions[i].amount
+                                        let online = root.transactions[i].merchant?.online
                                         let transDescription = root.transactions[i].transactionDescription
-                                        var category = String(Substring(root.transactions[i].category.rawValue)) ?? "no cat"
+                                        var category = String(root.transactions[i].category.rawValue)
                                         
-                                        let progress = numberOfTransactions - i
-                                        let progressAsPercentage = (Double(progress) / Double(numberOfTransactions) * 100)
+                                        let transactionNumber = numberOfTransactions - i
+                                        let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
                                         
                                         print("\n*********")
                                         print("   " + String(format: "%.0f", progressAsPercentage) + "%")
                                         print("*********\n")
-                                        
-                                        //                                        print(root.transactions[i].transactionDescription!)
-                                        //                                        root.transactio
-                                        
-                                        
                                         
                                         if category == "transport" {
                                             category = "🚇"
@@ -140,11 +132,6 @@ class MapViewController: UIViewController {
                                         } else if category == "holidays" {
                                             category = "🧳"
                                         }
-                            
-                                        print(category)
-                             
-                                        
-                                        let online = root.transactions[i].merchant?.online
                                         
                                         if name == nil {
                                             let description = transDescription

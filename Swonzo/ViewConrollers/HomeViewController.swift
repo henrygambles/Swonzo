@@ -106,15 +106,19 @@ func pieChartAnimation() {
                             
                             var category = String(root.transactions[i].category.rawValue)
                             
-                            let progress = numberOfTransactions - i
-                            let percentageDouble = (Double(progress) / Double(numberOfTransactions) * 100)
+                            let transactionNumber = numberOfTransactions - i
+                            let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
                             
                             print("\n*********")
-                            print("   " + String(format: "%.0f", percentageDouble) + "%")
+                            print("   " + String(format: "%.0f", progressAsPercentage) + "%")
                             print("*********\n")
                             
                             if category == "mondo" {
                                 category = "monzo"
+                            } else if category == "eating_out" {
+                                category = "eating out"
+                            } else if category == "personal_care" {
+                                category = "personal care"
                             }
 
                             self.instacesOfCategories.append(category.capitalized)

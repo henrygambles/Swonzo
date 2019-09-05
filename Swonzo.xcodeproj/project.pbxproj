@@ -164,11 +164,11 @@
 			isa = PBXGroup;
 			children = (
 				BAC90D8E22F26EB900827D9E /* SplashScreenViewController.swift */,
+				BABE7DFC23088E6900BED520 /* CheckTokenViewController.swift */,
 				BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */,
 				BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */,
 				BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */,
 				BAC90D9222F2E1F400827D9E /* TransactionsViewController.swift */,
-				BABE7DFC23088E6900BED520 /* CheckTokenViewController.swift */,
 			);
 			path = ViewConrollers;
 			sourceTree = "<group>";
@@ -199,10 +199,10 @@
 		BA7D5E3622D631BB00D7C0BE /* Swonzo */ = {
 			isa = PBXGroup;
 			children = (
+				BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */,
 				BA39A3012304469E004A1531 /* SwonzoLogic.swift */,
 				BAC85F0022FB68F20096B113 /* Fonts */,
 				BAC90D8D22F246D900827D9E /* Styling */,
-				BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */,
 				BA5F2C6D22E5DC8E00230C17 /* ViewConrollers */,
 				BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */,
 				BA86F1EF22DAC0BB00CE865A /* Animations */,

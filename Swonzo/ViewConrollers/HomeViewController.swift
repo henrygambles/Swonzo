@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
 
 //var categories = ["🚇", "🛒", "🍔", "🎥", "⚙️", "🛍️", "💵", "❤️", "👪", "🧳"]
     var instacesOfCategories : [String] = []
-    var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays"]
+    var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo"]
     var transactionsForCategory : [Int] = []
     
    let animationView = AnimationView(name: "loading-circle")
@@ -95,7 +95,6 @@ func pieChartAnimation() {
                         print("*************************")
                         print("\n  Home Testing \n")
                         print("*************************\n")
-                        //                                   print(type(of: Merchant))
                         let dateFormatter = DateFormatter()
                         dateFormatter.calendar = Calendar(identifier: .iso8601)
                         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
@@ -103,8 +102,6 @@ func pieChartAnimation() {
                         
                         let decoder = JSONDecoder()
                         decoder.dateDecodingStrategy = .formatted(dateFormatter)
-                        
-                        
                         let root = try decoder.decode(Root.self, from: response.data!)
                         
                         let numberOfTransactions = root.transactions.count
@@ -115,6 +112,10 @@ func pieChartAnimation() {
                             
                             i = i - 1
                             
+                            let name = root.transactions[i].merchant?.name
+                            
+                            let amount = root.transactions[i].amount
+                            let transDescription = root.transactions[i].transactionDescription
                             var category = String(Substring(root.transactions[i].category.rawValue))
                             
                             let progress = numberOfTransactions - i
@@ -122,9 +123,9 @@ func pieChartAnimation() {
                             
                             //
                             print("\n*********")
-                            print("Loaded transaction \(progress) of \(numberOfTransactions)")
                             print("   " + String(format: "%.0f", percentageDouble) + "%")
-                            print("*********\n")                                               }
+                            print("*********\n")
+                            
                             
                             if category == "transport" {
                                 category = "Transport"
@@ -149,8 +150,6 @@ func pieChartAnimation() {
                             } else if category == "mondo" {
                                 category = "Monzo"
                             }
-                        
-                        
 
                             self.instacesOfCategories.append(category)
                             
@@ -166,6 +165,7 @@ func pieChartAnimation() {
                         self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Personal Care"}.count)
                         self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Family"}.count)
                         self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Holidays"}.count)
+                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Monzo"}.count)
                  
                         print("\nSuccess! Populated table.")
                         
@@ -223,11 +223,11 @@ func pieChartAnimation() {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 3.5, animations: {
+        UIView.animate(withDuration: 1.0, animations: {
             self.homeView.alpha = 1.0
             self.logoutButtonView.alpha = 1.0
         })
-        UIView.animate(withDuration: 4.0, animations: {
+        UIView.animate(withDuration: 1.0, animations: {
             self.animationView.alpha = 1.0
         })
     }
@@ -249,36 +249,36 @@ func pieChartAnimation() {
     
     
     
-    func balanceRequest() {
-        Alamofire.request("https://api.monzo.com/balance",
-                          parameters: parameters,
-                          encoding:  URLEncoding.default,
-                          headers: headers).responseJSON { response in
-                            if let error = response.error {
-                                self.homeView.text = error.localizedDescription
-                                print(error.localizedDescription)
-                            } else {
-                                    let result = response.result.value
-                                    let MYJSON = result as! NSDictionary
-                                    let balance = MYJSON.object(forKey: "balance")
-                                    let spendToday = MYJSON.object(forKey: "spend_today")
-                                    let errorMessage = MYJSON.object(forKey: "message")
-                                if balance != nil {
-                                    let name = UserDefaults.standard.string(forKey: "FirstName")
-//                                    self.homeView.text =  "Hi \(UserDefaults.standard.string(forKey: "FirstName")!)!\n\n\nYour balance is \(self.swonzoLogic.jsonBalanceToMoney(balance: balance))\n\n\nYou've spent \(self.swonzoLogic.jsonSpendTodayToMoney(spendToday: spendToday)) today."
-                                   self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!\n\nCheck out the tabs below to see what & where you've spent on your Monzo account!"
-                                    
-                                    self.homeView.alpha = 0
-                                    UIView.animate(withDuration: 1) {
-                                        self.homeView.alpha = 1
-                                    }
-                                }
-                                else {
-                                    self.homeView.text = errorMessage as! String
-                                }
-                            }
-        }
-    }
+//    func balanceRequest() {
+//        Alamofire.request("https://api.monzo.com/balance",
+//                          parameters: parameters,
+//                          encoding:  URLEncoding.default,
+//                          headers: headers).responseJSON { response in
+//                            if let error = response.error {
+//                                self.homeView.text = error.localizedDescription
+//                                print(error.localizedDescription)
+//                            } else {
+//                                    let result = response.result.value
+//                                    let MYJSON = result as! NSDictionary
+//                                    let balance = MYJSON.object(forKey: "balance")
+//                                    let spendToday = MYJSON.object(forKey: "spend_today")
+//                                    let errorMessage = MYJSON.object(forKey: "message")
+//                                if balance != nil {
+//                                    let name = UserDefaults.standard.string(forKey: "FirstName")
+////                                    self.homeView.text =  "Hi \(UserDefaults.standard.string(forKey: "FirstName")!)!\n\n\nYour balance is \(self.swonzoLogic.jsonBalanceToMoney(balance: balance))\n\n\nYou've spent \(self.swonzoLogic.jsonSpendTodayToMoney(spendToday: spendToday)) today."
+//                                   self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!\n\nCheck out the tabs below to see what & where you've spent on your Monzo account!"
+//
+//                                    self.homeView.alpha = 0
+//                                    UIView.animate(withDuration: 1) {
+//                                        self.homeView.alpha = 1
+//                                    }
+//                                }
+//                                else {
+//                                    self.homeView.text = errorMessage as! String
+//                                }
+//                            }
+//        }
+//    }
     
     
 

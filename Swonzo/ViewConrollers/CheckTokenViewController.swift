@@ -19,7 +19,6 @@ class CheckTokenViewController: UIViewController {
             _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(noTokenSegue), userInfo: nil, repeats: false)
         }
         startCheckTokenAnimation()
-        // Do any additional setup after loading the view.
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -42,10 +41,6 @@ class CheckTokenViewController: UIViewController {
             }
         }
     }
-    
-    func loginSegue() {
-        self.performSegue(withIdentifier: "badTokenSegue", sender: nil)
-    }
 
     func startCheckTokenAnimation() {
         
@@ -58,9 +53,6 @@ class CheckTokenViewController: UIViewController {
         
         animationView.play()
     }
-    
-    
-
 }
 
 class BaseTabBarController: UITabBarController {

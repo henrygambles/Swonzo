@@ -137,10 +137,10 @@ func pieChartAnimation() {
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Holidays"}.count)
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Monzo"}.count)
                  
-                        print("\nSuccess! Populated table.")
+                        print("\nSuccess! Populated pie chart.\n")
                         
-                        print(self.categories)
-                        print(self.categoryCount)
+                        print("Categories:", self.categories)
+                        print("Category count:", self.categoryCount)
                         
                         self.customizeChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
                         self.animationView.removeFromSuperview()

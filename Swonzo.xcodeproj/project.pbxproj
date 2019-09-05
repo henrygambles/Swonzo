@@ -13,7 +13,6 @@
 		BA0B2173231C1C4500D1F6DC /* scan-receipt.json in Resources */ = {isa = PBXBuildFile; fileRef = BA0B2172231C1C4500D1F6DC /* scan-receipt.json */; };
 		BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */; };
 		BA104F2A23184FAE00174DA0 /* plotting-map.json in Resources */ = {isa = PBXBuildFile; fileRef = BA104F2923184FAE00174DA0 /* plotting-map.json */; };
-		BA2204E422E3ADCD00D0C83B /* customMapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2204E322E3ADCD00D0C83B /* customMapStyle.json */; };
 		BA39A3022304469E004A1531 /* SwonzoLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39A3012304469E004A1531 /* SwonzoLogic.swift */; };
 		BA3C8E02231D74CD00D1241B /* pie-chart.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3C8E01231D74CD00D1241B /* pie-chart.json */; };
 		BA3C8E05231D773E00D1241B /* coral-pie.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3C8E03231D773E00D1241B /* coral-pie.json */; };
@@ -72,7 +71,6 @@
 		BA0B2172231C1C4500D1F6DC /* scan-receipt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "scan-receipt.json"; sourceTree = "<group>"; };
 		BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoClient.swift; sourceTree = "<group>"; };
 		BA104F2923184FAE00174DA0 /* plotting-map.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "plotting-map.json"; sourceTree = "<group>"; };
-		BA2204E322E3ADCD00D0C83B /* customMapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = customMapStyle.json; sourceTree = "<group>"; };
 		BA39A3012304469E004A1531 /* SwonzoLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoLogic.swift; sourceTree = "<group>"; };
 		BA3C8E01231D74CD00D1241B /* pie-chart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pie-chart.json"; sourceTree = "<group>"; };
 		BA3C8E03231D773E00D1241B /* coral-pie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "coral-pie.json"; sourceTree = "<group>"; };
@@ -263,7 +261,6 @@
 		BAC90D8D22F246D900827D9E /* Styling */ = {
 			isa = PBXGroup;
 			children = (
-				BA2204E322E3ADCD00D0C83B /* customMapStyle.json */,
 				BAC4D28C22E21814009891C0 /* nightMap.json */,
 			);
 			path = Styling;
@@ -398,7 +395,6 @@
 				BAC4D28D22E21814009891C0 /* nightMap.json in Resources */,
 				BA4A64CF22FE5499003208B6 /* swonzo_ring.png in Resources */,
 				BA104F2A23184FAE00174DA0 /* plotting-map.json in Resources */,
-				BA2204E422E3ADCD00D0C83B /* customMapStyle.json in Resources */,
 				BABE7DFF2308B5D300BED520 /* rainbow-wave-loading.json in Resources */,
 				BA3C8E06231D773E00D1241B /* pink-pie.json in Resources */,
 				BA4A64D222FE56C0003208B6 /* README.md in Resources */,

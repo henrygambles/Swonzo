@@ -13,25 +13,17 @@ class CheckTokenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        fistOff()
         if UserDefaults.standard.string(forKey: "Token") != nil {
             tryToken()
         } else {
-            print("should segue")
-//            self.performSegue(withIdentifier: "badTokenSegue", sender: nil)
-            let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(noTokenSegue), userInfo: nil, repeats: false)
-//            noTokenSegue()
+            _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(noTokenSegue), userInfo: nil, repeats: false)
         }
-        startAnimation()
-        // Do any additional setup after loading the view.
+        startCheckTokenAnimation()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
-
     
     @objc func noTokenSegue() {
         self.performSegue(withIdentifier: "noTokenSegue", sender: self)
@@ -46,20 +38,11 @@ class CheckTokenViewController: UIViewController {
             }
             else {
                 self.performSegue(withIdentifier: "badTokenSegue", sender: nil)
-                
-//                self.loginSegue()
             }
         }
-    
-        
-        
     }
-    
-    func loginSegue() {
-        self.performSegue(withIdentifier: "badTokenSegue", sender: nil)
-    }
-//
-    func startAnimation() {
+
+    func startCheckTokenAnimation() {
         
         let animationView = AnimationView(name: "rainbow-wave-loading")
         self.view.addSubview(animationView)
@@ -70,7 +53,14 @@ class CheckTokenViewController: UIViewController {
         
         animationView.play()
     }
-    
-    
+}
 
+class BaseTabBarController: UITabBarController {
+    
+    @IBInspectable var defaultIndex: Int = 1
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        selectedIndex = defaultIndex
+    }
 }

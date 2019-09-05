@@ -11,8 +11,9 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
-var token : String = UserDefaults.standard.string(forKey: "Token") ?? "default token"
-var accountId : String = UserDefaults.standard.string(forKey: "AccountID") ?? "default ID"
+var token : String = UserDefaults.standard.string(forKey: "Token") ?? "No Token"
+var accountId : String = UserDefaults.standard.string(forKey: "AccountID") ?? "No ID"
+
 
 var headers: HTTPHeaders = [
     "Authorization": "Bearer " + token
@@ -25,75 +26,22 @@ var parameters: Parameters = [
 class SwonzoClient {
 
     typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
+ 
     
     func tryToken() {
         getAccountInfo() { response in
             if response.hasPrefix("acc") {
                 print("\nTOKEN ✅\n")
                 print("TESTING MAY BEGIN\n")
+                 UserDefaults.standard.set("GOOD", forKey: "TokenStatus")
             }
             else {
                 print("\nTOKEN ❌\n")
                 print("\nPLEASE GET NEW TOKEN/n")
-            }
+                UserDefaults.standard.set("BAD", forKey: "TokenStatus")            }
         }
-        
     }
     
-    func execute(_ url: URL, completion: @escaping WebServiceResponse) {
-        
-        let parameters: Parameters = [
-            "account_id": UserDefaults.standard.string(forKey: "AccountID")!
-        ]
-
-        Alamofire.request(url,
-                          parameters: parameters,
-                          encoding:  URLEncoding.default,
-                          headers: headers).responseJSON { response in
-                            if let error = response.error {
-                                completion(nil, error)
-                            } else if let jsonArray = response.result.value as? [[String: Any]] {
-                                completion(jsonArray, nil)
-                            } else if let jsonDict = response.result.value as? [String: Any] {
-                                completion([jsonDict], nil)
-                                
-                               
-                                
-                                do {
-                                    
-                                    let json = try JSON(data: response.data!)
-                                    let account_number = json["accounts"][0]["account_number"].string
-                                    let account_description = json["accounts"][0]["description"].string
-                                    let acc_id = json["accounts"][0]["id"].string
-                                    let sort_code = json["accounts"][0]["sort_code"].string
-                                    let first_name = json["accounts"][0]["owners"][0]["preferred_first_name"].string
-                                    let full_name = json["accounts"][0]["owners"][0]["preferred_name"].string
-                                    let user_id = json["accounts"][0]["owners"][0]["user_id"].string
-                                    
-                                    
-                                    
-                                    print("Parsed JSON test")
-                                    print(full_name ?? "Json not parsed")
-                                    print(acc_id ?? "Json not parsed")
-                                    print(user_id ?? "Json not parsed")
-                                    print(account_number ?? "Json not parsed")
-                                    print(sort_code ?? "Json not parsed")
-                                    print(first_name ?? "Json not parsed")
-                                    print(account_description ?? "Json not parsed")
-                                    
-                                    
-                                } catch {
-                                    print("JSON Parsing error:", error)
-                                }
-                                
-                                
-                                
-                                
-                                
-                            }
-        }
-
-    }
     
     func getAccountInfo(completion: @escaping (String) -> Void) {
         
@@ -105,9 +53,6 @@ class SwonzoClient {
                           encoding:  URLEncoding.default,
                           headers: headers).responseJSON { response in
                             if let error = response.error {
-//                                HomeViewController().homeView.text = error.localizedDescription
-                                
-                                print("ERROR")
                                 print(error.localizedDescription)
                                 completion(error.localizedDescription)
                             }; do {
@@ -128,8 +73,10 @@ class SwonzoClient {
                             }
                 }
     }
-
+    
 }
+
+// MARK: - Root
 struct Root: Codable {
     let transactions: [Transaction]
 }
@@ -142,7 +89,7 @@ struct Transaction: Codable {
     let currency: Currency
     let merchant: Merchant?
     let notes: String
-    let metadata: [String: String]?
+    let metadata: [String: String]
     let labels: [Label]?
     let accountBalance: Int
     let attachments: [Attachment]
@@ -186,7 +133,6 @@ struct Transaction: Codable {
         case amountIsPending = "amount_is_pending"
         case declineReason = "decline_reason"
     }
-    
 }
 
 enum TransactionAccountID: String, Codable {
@@ -225,6 +171,7 @@ enum Category: String, Codable {
     case general = "general"
     case groceries = "groceries"
     case holidays = "holidays"
+    case mondo = "mondo"
     case personalCare = "personal_care"
     case shopping = "shopping"
     case transport = "transport"
@@ -316,28 +263,33 @@ enum Label: String, Codable {
 }
 
 // MARK: - Merchant
-// MARK: - Merchant
 struct Merchant: Codable {
-    let id, groupID, created, name: String?
-    let logo, emoji, category: String?
+    let id, groupID, created, name: String
+    let logo: String
+    let emoji: String
+    let category: Category
     let online, atm: Bool
-    let address: Address?
-    let updated: String?
-    let metadata: Metadata?
+    let address: Address
+    let updated: String
+    let metadata: Metadata
+    let disableFeedback: Bool
     
     enum CodingKeys: String, CodingKey {
         case id
         case groupID = "group_id"
         case created, name, logo, emoji, category, online, atm, address, updated, metadata
+        case disableFeedback = "disable_feedback"
     }
 }
 
 // MARK: - Address
 struct Address: Codable {
-    let shortFormatted, formatted, address, city: String?
-    let region, country, postcode: String?
-    let latitude, longitude: Double?
-    let zoomLevel: Int?
+    let shortFormatted, formatted, address, city: String
+    let region: String
+    let country: Country
+    let postcode: String
+    let latitude, longitude: Double
+    let zoomLevel: Int
     let approximate: Bool
     
     enum CodingKeys: String, CodingKey {
@@ -345,29 +297,6 @@ struct Address: Codable {
         case formatted, address, city, region, country, postcode, latitude, longitude
         case zoomLevel = "zoom_level"
         case approximate
-    }
-}
-
-// MARK: - Metadata
-struct Metadata: Codable {
-    let createdForMerchant, createdForTransaction, foursquareCategory, foursquareID: String?
-    let foursquareWebsite: String?
-    let googlePlacesIcon: String?
-    let googlePlacesID, googlePlacesName, suggestedName, suggestedTags: String?
-    let twitterID: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case createdForMerchant = "created_for_merchant"
-        case createdForTransaction = "created_for_transaction"
-        case foursquareCategory = "foursquare_category"
-        case foursquareID = "foursquare_id"
-        case foursquareWebsite = "foursquare_website"
-        case googlePlacesIcon = "google_places_icon"
-        case googlePlacesID = "google_places_id"
-        case googlePlacesName = "google_places_name"
-        case suggestedName = "suggested_name"
-        case suggestedTags = "suggested_tags"
-        case twitterID = "twitter_id"
     }
 }
 
@@ -385,6 +314,41 @@ enum Country: String, Codable {
     case usa = "USA"
 }
 
+// MARK: - Metadata
+struct Metadata: Codable {
+    let createdForTransaction, enrichedFromSettlement, createdForMerchant: String?
+    let provider: Provider?
+    let providerID, suggestedTags: String?
+    let twitterID: String?
+    let website: String?
+    let googlePlacesIcon: String?
+    let googlePlacesID, googlePlacesName, foursquareCategory: String?
+    let foursquareCategoryIcon: String?
+    let foursquareID: String?
+    let foursquareWebsite: String?
+    let suggestedName, paypointAgentName, paypointAgentSiteID: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case createdForTransaction = "created_for_transaction"
+        case enrichedFromSettlement = "enriched_from_settlement"
+        case createdForMerchant = "created_for_merchant"
+        case provider
+        case providerID = "provider_id"
+        case suggestedTags = "suggested_tags"
+        case twitterID = "twitter_id"
+        case website
+        case googlePlacesIcon = "google_places_icon"
+        case googlePlacesID = "google_places_id"
+        case googlePlacesName = "google_places_name"
+        case foursquareCategory = "foursquare_category"
+        case foursquareCategoryIcon = "foursquare_category_icon"
+        case foursquareID = "foursquare_id"
+        case foursquareWebsite = "foursquare_website"
+        case suggestedName = "suggested_name"
+        case paypointAgentName = "paypoint_agent_name"
+        case paypointAgentSiteID = "paypoint_agent_site_id"
+    }
+}
 
 enum Provider: String, Codable {
     case google = "google"
@@ -399,6 +363,7 @@ enum Scheme: String, Codable {
     case p2PPayment = "p2p_payment"
     case payportFasterPayments = "payport_faster_payments"
     case premiumSubscription = "premium_subscription"
+    case topup = "topup"
     case ukCashDepositsPaypoint = "uk_cash_deposits_paypoint"
     case ukRetailPot = "uk_retail_pot"
 }

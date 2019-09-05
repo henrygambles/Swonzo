@@ -16,24 +16,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     private let homeViewController = HomeViewController()
     private let swonzoClient = SwonzoClient()
     
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-       
-        let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fadeIn), userInfo: nil, repeats: false)
-//        self.recentTokenButton.isHidden = true;
-        self.setupToHideKeyboardOnTapOnView()
-        textFieldView.delegate = self
-        setBlurryView()
-        hide()
-    }
-    
-
-    
     @IBOutlet weak var recentTokenButton: UIButton!
     @IBOutlet weak var errorTextView: UITextView!
     @IBOutlet weak var logInTextView: UITextView!
@@ -43,6 +25,31 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logInButtonView: UIButton!
     
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+        let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fadeIn), userInfo: nil, repeats: false)
+        lookForRecentToken()
+        self.setupToHideKeyboardOnTapOnView()
+        textFieldView.delegate = self
+        setBlurryView()
+        hide()
+    }
+    
+    func lookForRecentToken() {
+        swonzoClient.getAccountInfo() { response in
+            if response.hasPrefix("acc") {
+                self.recentTokenButton.isHidden = false;
+            }
+            else {
+                self.recentTokenButton.isHidden = true;
+            }
+        }
+    }
     
     @IBAction func tokenInput(_ sender: Any) {
         let token = textFieldView.text as! String

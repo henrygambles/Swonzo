@@ -20,6 +20,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var transactionsTextView: UITextView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -35,15 +36,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     let cellReuseIdentifier = "cell"
     
-    
-//    var indicator = UIActivityIndicatorView()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        indicator.startAnimating()
-//        indicator.backgroundColor = UIColor.white
-        largeActivityIndicator.startAnimating()
+
+        startLoadingCircleAnimation()
         transactionsRequest()
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
@@ -54,23 +52,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         // This view controller itself will provide the delegate methods and row data for the table view.
         tableView.delegate = self as UITableViewDelegate
         tableView.dataSource = self as UITableViewDataSource
-        
-        // Do any additional setup after loading the view.
+
     }
     
-//    func startAnimation() {
-//
-//        let animationView = AnimationView(name: "rainbow-wave-loading")
-//        self.view.addSubview(animationView)
-//        animationView.contentMode = .scaleAspectFill
-//        animationView.animationSpeed = 1.5
-//        animationView.loopMode = .loop
-//        animationView.frame = CGRect(x: 64, y: 180, width: 250, height: 250)
-//
-//        animationView.play()
-//    }
-//
-//
 
     @IBOutlet weak var overView: UIView!
     @IBOutlet weak var largeActivityIndicator: UIActivityIndicatorView!
@@ -86,11 +70,20 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //        self.tableView.bringSubviewToFront(indicator)
 //    }
     
+let animationView = AnimationView(name: "scan-receipt")
+    
+    func startLoadingCircleAnimation() {
+        self.view.addSubview(animationView)
+        animationView.contentMode = .scaleAspectFill
+        animationView.animationSpeed = 1.5
+        animationView.loopMode = .loop
+        animationView.frame = CGRect(x: 64, y: 180, width: 250, height: 250)
+        animationView.play()
+    }
+    
     func transactionsRequest() {
         
-//        indicator.startAnimating()
-//        indicator.hidesWhenStopped = true
-        
+        print("GETTING TABLE DATA...")
        
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
@@ -99,11 +92,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                             print("Progress: \(Float(progress.fractionCompleted))")
                             let progressPercent = String((progress.fractionCompleted * 100).rounded())
                             print("OI\(progressPercent)%")
-                        }.responseJSON { response in
-                            if let error = response.error {
-                                //                                self.homeView.text = error.localizedDescription
-                            } else if let jsonArray = response.result.value as? [[String: Any]] {
-                            } else if let jsonDict = response.result.value as? [String: Any] {
+                            }.responseJSON { response in
+                                if let error = response.error {
+                                    self.transactionsTextView.text = error.localizedDescription
+                                } else {
                                 
                                 
                                 do {
@@ -121,13 +113,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                     
                                     
                                     let root = try decoder.decode(Root.self, from: response.data!)
-                                    //
-                                    let numberOfTransactions = root.transactions.count
-                                    print("You have made \(numberOfTransactions) transactions... wow!\n")
                                     
-                                    let countNumber = 20
+                                    let numberOfTransactions = root.transactions.count
                                     var i = numberOfTransactions
-                                    while i > numberOfTransactions - countNumber {
+                                  
+                                    while i > 0 {
                                         
                                         i = i - 1
                                         
@@ -135,13 +125,14 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         let amount = root.transactions[i].amount
                                         let transDescription = root.transactions[i].transactionDescription
                                         var category = String(Substring(root.transactions[i].category.rawValue))
-                                        let progress = numberOfTransactions - i
-                                        let percentageDouble = (Double(progress) / Double(countNumber) * 100)
                                         
-                                        let latitude = root.transactions[i].merchant?.address?.latitude
-                                        let longitude = root.transactions[i].merchant?.address?.longitude
+                                        let transactionNumber = numberOfTransactions - i
+                                        let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
                                         
-                                        print("   " + String(format: "%.0f", percentageDouble) + "%", "\n")
+                                        let latitude = root.transactions[i].merchant?.address.latitude
+                                        let longitude = root.transactions[i].merchant?.address.longitude
+                                        
+                                        print(String(format: "%.0f", progressAsPercentage) + "%", "\n")
                                         
                                         
                                         if category == "transport" {
@@ -162,6 +153,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                             category = "❤️"
                                         } else if category == "family" {
                                             category = "❤️"
+                                        } else if category == "mondo" {
+                                            category = "🏦"
                                         }
                                         
                                         
@@ -171,7 +164,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         } else {
                                             let description = name
                                             self.transactions.append(description!)
-                                            self.names.append(name as! String ?? "error")
+                                            self.names.append(name as! String)
                                             self.longitudes.append(longitude as! Double)
                                             self.latitudes.append(latitude as! Double)
                                         }
@@ -182,12 +175,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         if pounds < 0 {
                                             let money = "£" + String(format:"%.2f",abs(pounds))
                                             self.prices.append(money)
-                                            print(money)
                                         }
                                         else {
-                                            let money = "+£" + String(format:"%.2f",pounds)
+                                            let money = "+ £" + String(format:"%.2f",pounds)
                                             self.prices.append(money)
-                                            print(money)
                                         }
                                         
                                         
@@ -196,18 +187,11 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
                                         self.tableView.reloadData()
                                         
                                     }
-//                                    self.largeActivityIndicator.hidesWhenStopped = true
-//
-//                                    self.overView.isHidden = true
-//                                    self.largeActivityIndicator.stopAnimating()
+                                    
+                                    self.largeActivityIndicator.stopAnimating()
                                     print("\nSuccess! Populated table.")
-//                                    self.tableActivityIndicator.stopAnimating()
-//
-//                                    self.indicator.stopAnimating()
-//                                    self.indicator.hidesWhenStopped = true
-                                    UserDefaults.standard.set(self.names, forKey: "names")
-                                    UserDefaults.standard.set(self.latitudes, forKey: "latitudes")
-                                    UserDefaults.standard.set(self.longitudes, forKey: "longitudes")
+                                    self.overView.isHidden = true
+                                    self.animationView.removeFromSuperview()
                                 } catch {
                                     print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
                                     print("Also,", error)
@@ -239,12 +223,18 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         
         
         let price = prices[indexPath.row]
+        
+       
+        
         let category = categories[indexPath.row]
         cell.detailTextLabel?.text = price
         let label = UILabel.init(frame: CGRect(x:0,y:0,width:110,height:20))
         label.text = category + " " + price
         cell.accessoryView = label
         
+//        if label.text("+") {
+//            cell.label?.textColor = UIColor.green
+//        }
         
         return cell
     }

@@ -10,14 +10,15 @@
 		088003A47D5F34624B5D6CA3 /* libPods-SwonzoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B920D02D25F8E355389A9EF /* libPods-SwonzoUITests.a */; };
 		39193982A429C746131AF21D /* libPods-Swonzo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0219AA58A5BE95F57D9C559 /* libPods-Swonzo.a */; };
 		BA0B131E22FB8F7300CE6D6F /* DevUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0B131D22FB8F7300CE6D6F /* DevUITests.swift */; };
+		BA0B2173231C1C4500D1F6DC /* scan-receipt.json in Resources */ = {isa = PBXBuildFile; fileRef = BA0B2172231C1C4500D1F6DC /* scan-receipt.json */; };
 		BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */; };
-		BA104F2823184D0400174DA0 /* hoop-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BA104F2723184D0400174DA0 /* hoop-loading.json */; };
 		BA104F2A23184FAE00174DA0 /* plotting-map.json in Resources */ = {isa = PBXBuildFile; fileRef = BA104F2923184FAE00174DA0 /* plotting-map.json */; };
-		BA11151E2308EBFA00C219AF /* popsicle.json in Resources */ = {isa = PBXBuildFile; fileRef = BA11151D2308EBF900C219AF /* popsicle.json */; };
-		BA2204E422E3ADCD00D0C83B /* customMapStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = BA2204E322E3ADCD00D0C83B /* customMapStyle.json */; };
 		BA39A3022304469E004A1531 /* SwonzoLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39A3012304469E004A1531 /* SwonzoLogic.swift */; };
+		BA3C8E02231D74CD00D1241B /* pie-chart.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3C8E01231D74CD00D1241B /* pie-chart.json */; };
+		BA3C8E05231D773E00D1241B /* coral-pie.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3C8E03231D773E00D1241B /* coral-pie.json */; };
+		BA3C8E06231D773E00D1241B /* pink-pie.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3C8E04231D773E00D1241B /* pink-pie.json */; };
+		BA3C8E08231D855E00D1241B /* loading-circle.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3C8E07231D855E00D1241B /* loading-circle.json */; };
 		BA47E00422E0B0F5000EF78F /* rocket_monzo.json in Resources */ = {isa = PBXBuildFile; fileRef = BA47E00222E0B0F5000EF78F /* rocket_monzo.json */; };
-		BA47E00522E0B0F5000EF78F /* waving-american-flag.json in Resources */ = {isa = PBXBuildFile; fileRef = BA47E00322E0B0F5000EF78F /* waving-american-flag.json */; };
 		BA4A64CF22FE5499003208B6 /* swonzo_ring.png in Resources */ = {isa = PBXBuildFile; fileRef = BA4A64CD22FE5499003208B6 /* swonzo_ring.png */; };
 		BA4A64D022FE5499003208B6 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = BA4A64CE22FE5499003208B6 /* Contents.json */; };
 		BA4A64D222FE56C0003208B6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BA4A64D122FE56C0003208B6 /* README.md */; };
@@ -30,12 +31,9 @@
 		BA7D5E4222D631BD00D7C0BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5E4022D631BD00D7C0BE /* LaunchScreen.storyboard */; };
 		BA7D5E4D22D631BD00D7C0BE /* SwonzoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E4C22D631BD00D7C0BE /* SwonzoTests.swift */; };
 		BA7D5E5822D631BD00D7C0BE /* SwonzoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E5722D631BD00D7C0BE /* SwonzoUITests.swift */; };
-		BA89679522FDB86B000EF218 /* harddisk.json in Resources */ = {isa = PBXBuildFile; fileRef = BA89679422FDB86B000EF218 /* harddisk.json */; };
 		BA89679722FDBADB000EF218 /* tick.json in Resources */ = {isa = PBXBuildFile; fileRef = BA89679622FDBADB000EF218 /* tick.json */; };
 		BABE7DFD23088E6900BED520 /* CheckTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABE7DFC23088E6900BED520 /* CheckTokenViewController.swift */; };
 		BABE7DFF2308B5D300BED520 /* rainbow-wave-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BABE7DFE2308B5D200BED520 /* rainbow-wave-loading.json */; };
-		BABE7E012308B6AA00BED520 /* rainbow-circle-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BABE7E002308B6AA00BED520 /* rainbow-circle-loading.json */; };
-		BABE7E032308BA4500BED520 /* skeleton-frame-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = BABE7E022308BA4500BED520 /* skeleton-frame-loading.json */; };
 		BAC4D28D22E21814009891C0 /* nightMap.json in Resources */ = {isa = PBXBuildFile; fileRef = BAC4D28C22E21814009891C0 /* nightMap.json */; };
 		BAC85F0322FB69050096B113 /* SlatePro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAC85F0122FB69050096B113 /* SlatePro-Medium.ttf */; };
 		BAC85F0622FB691F0096B113 /* SlatePro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAC85F0522FB691F0096B113 /* SlatePro.ttf */; };
@@ -70,14 +68,15 @@
 		9189BC07595F615A1D698994 /* Pods-SwonzoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwonzoUITests.release.xcconfig"; path = "Target Support Files/Pods-SwonzoUITests/Pods-SwonzoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B208AD81D6F2C20169D6D5D8 /* libPods-SwonzoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwonzoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA0B131D22FB8F7300CE6D6F /* DevUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevUITests.swift; sourceTree = "<group>"; };
+		BA0B2172231C1C4500D1F6DC /* scan-receipt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "scan-receipt.json"; sourceTree = "<group>"; };
 		BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoClient.swift; sourceTree = "<group>"; };
-		BA104F2723184D0400174DA0 /* hoop-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "hoop-loading.json"; sourceTree = "<group>"; };
 		BA104F2923184FAE00174DA0 /* plotting-map.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "plotting-map.json"; sourceTree = "<group>"; };
-		BA11151D2308EBF900C219AF /* popsicle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = popsicle.json; sourceTree = "<group>"; };
-		BA2204E322E3ADCD00D0C83B /* customMapStyle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = customMapStyle.json; sourceTree = "<group>"; };
 		BA39A3012304469E004A1531 /* SwonzoLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoLogic.swift; sourceTree = "<group>"; };
+		BA3C8E01231D74CD00D1241B /* pie-chart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pie-chart.json"; sourceTree = "<group>"; };
+		BA3C8E03231D773E00D1241B /* coral-pie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "coral-pie.json"; sourceTree = "<group>"; };
+		BA3C8E04231D773E00D1241B /* pink-pie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pink-pie.json"; sourceTree = "<group>"; };
+		BA3C8E07231D855E00D1241B /* loading-circle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-circle.json"; sourceTree = "<group>"; };
 		BA47E00222E0B0F5000EF78F /* rocket_monzo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = rocket_monzo.json; path = ../rocket_monzo.json; sourceTree = "<group>"; };
-		BA47E00322E0B0F5000EF78F /* waving-american-flag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "waving-american-flag.json"; sourceTree = "<group>"; };
 		BA4A64CD22FE5499003208B6 /* swonzo_ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swonzo_ring.png; sourceTree = "<group>"; };
 		BA4A64CE22FE5499003208B6 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		BA4A64D122FE56C0003208B6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -96,12 +95,9 @@
 		BA7D5E5322D631BD00D7C0BE /* SwonzoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwonzoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D5E5722D631BD00D7C0BE /* SwonzoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoUITests.swift; sourceTree = "<group>"; };
 		BA7D5E5922D631BD00D7C0BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA89679422FDB86B000EF218 /* harddisk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = harddisk.json; sourceTree = "<group>"; };
 		BA89679622FDBADB000EF218 /* tick.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tick.json; sourceTree = "<group>"; };
 		BABE7DFC23088E6900BED520 /* CheckTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTokenViewController.swift; sourceTree = "<group>"; };
 		BABE7DFE2308B5D200BED520 /* rainbow-wave-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "rainbow-wave-loading.json"; sourceTree = "<group>"; };
-		BABE7E002308B6AA00BED520 /* rainbow-circle-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "rainbow-circle-loading.json"; sourceTree = "<group>"; };
-		BABE7E022308BA4500BED520 /* skeleton-frame-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "skeleton-frame-loading.json"; sourceTree = "<group>"; };
 		BAC4D28C22E21814009891C0 /* nightMap.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nightMap.json; sourceTree = "<group>"; };
 		BAC85F0122FB69050096B113 /* SlatePro-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SlatePro-Medium.ttf"; path = "Swonzo/Fonts/SlatePro-Medium.ttf"; sourceTree = SOURCE_ROOT; };
 		BAC85F0522FB691F0096B113 /* SlatePro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SlatePro.ttf; sourceTree = "<group>"; };
@@ -166,11 +162,11 @@
 			isa = PBXGroup;
 			children = (
 				BAC90D8E22F26EB900827D9E /* SplashScreenViewController.swift */,
-				BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */,
-				BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */,
-				BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */,
-				BAC90D9222F2E1F400827D9E /* TransactionsViewController.swift */,
 				BABE7DFC23088E6900BED520 /* CheckTokenViewController.swift */,
+				BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */,
+				BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */,
+				BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */,
+				BAC90D9222F2E1F400827D9E /* TransactionsViewController.swift */,
 			);
 			path = ViewConrollers;
 			sourceTree = "<group>";
@@ -201,10 +197,10 @@
 		BA7D5E3622D631BB00D7C0BE /* Swonzo */ = {
 			isa = PBXGroup;
 			children = (
+				BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */,
 				BA39A3012304469E004A1531 /* SwonzoLogic.swift */,
 				BAC85F0022FB68F20096B113 /* Fonts */,
 				BAC90D8D22F246D900827D9E /* Styling */,
-				BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */,
 				BA5F2C6D22E5DC8E00230C17 /* ViewConrollers */,
 				BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */,
 				BA86F1EF22DAC0BB00CE865A /* Animations */,
@@ -239,16 +235,15 @@
 		BA86F1EF22DAC0BB00CE865A /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				BA104F2723184D0400174DA0 /* hoop-loading.json */,
+				BA3C8E07231D855E00D1241B /* loading-circle.json */,
+				BA3C8E03231D773E00D1241B /* coral-pie.json */,
+				BA3C8E04231D773E00D1241B /* pink-pie.json */,
+				BA3C8E01231D74CD00D1241B /* pie-chart.json */,
+				BA0B2172231C1C4500D1F6DC /* scan-receipt.json */,
 				BA104F2923184FAE00174DA0 /* plotting-map.json */,
-				BA11151D2308EBF900C219AF /* popsicle.json */,
-				BABE7E022308BA4500BED520 /* skeleton-frame-loading.json */,
 				BABE7DFE2308B5D200BED520 /* rainbow-wave-loading.json */,
-				BABE7E002308B6AA00BED520 /* rainbow-circle-loading.json */,
 				BA89679622FDBADB000EF218 /* tick.json */,
-				BA89679422FDB86B000EF218 /* harddisk.json */,
 				BA47E00222E0B0F5000EF78F /* rocket_monzo.json */,
-				BA47E00322E0B0F5000EF78F /* waving-american-flag.json */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -266,7 +261,6 @@
 		BAC90D8D22F246D900827D9E /* Styling */ = {
 			isa = PBXGroup;
 			children = (
-				BA2204E322E3ADCD00D0C83B /* customMapStyle.json */,
 				BAC4D28C22E21814009891C0 /* nightMap.json */,
 			);
 			path = Styling;
@@ -393,25 +387,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA7D5E4222D631BD00D7C0BE /* LaunchScreen.storyboard in Resources */,
+				BA3C8E08231D855E00D1241B /* loading-circle.json in Resources */,
 				BAC85F0622FB691F0096B113 /* SlatePro.ttf in Resources */,
 				BA4A64D022FE5499003208B6 /* Contents.json in Resources */,
-				BA104F2823184D0400174DA0 /* hoop-loading.json in Resources */,
-				BA47E00522E0B0F5000EF78F /* waving-american-flag.json in Resources */,
-				BA11151E2308EBFA00C219AF /* popsicle.json in Resources */,
+				BA3C8E02231D74CD00D1241B /* pie-chart.json in Resources */,
 				BA7D5E3F22D631BD00D7C0BE /* Assets.xcassets in Resources */,
 				BAC4D28D22E21814009891C0 /* nightMap.json in Resources */,
 				BA4A64CF22FE5499003208B6 /* swonzo_ring.png in Resources */,
 				BA104F2A23184FAE00174DA0 /* plotting-map.json in Resources */,
-				BA89679522FDB86B000EF218 /* harddisk.json in Resources */,
-				BA2204E422E3ADCD00D0C83B /* customMapStyle.json in Resources */,
 				BABE7DFF2308B5D300BED520 /* rainbow-wave-loading.json in Resources */,
+				BA3C8E06231D773E00D1241B /* pink-pie.json in Resources */,
 				BA4A64D222FE56C0003208B6 /* README.md in Resources */,
 				BA89679722FDBADB000EF218 /* tick.json in Resources */,
 				BAC85F0322FB69050096B113 /* SlatePro-Medium.ttf in Resources */,
 				BA7D5E3D22D631BB00D7C0BE /* Main.storyboard in Resources */,
-				BABE7E032308BA4500BED520 /* skeleton-frame-loading.json in Resources */,
+				BA0B2173231C1C4500D1F6DC /* scan-receipt.json in Resources */,
 				BA47E00422E0B0F5000EF78F /* rocket_monzo.json in Resources */,
-				BABE7E012308B6AA00BED520 /* rainbow-circle-loading.json in Resources */,
+				BA3C8E05231D773E00D1241B /* coral-pie.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

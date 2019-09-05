@@ -2,6 +2,7 @@ platform :ios, '12.0'
 
 def shared_pods
   pod 'Alamofire'
+  pod 'Charts'
   pod 'lottie-ios'
   pod 'SwiftyJSON'
   pod 'Alamofire-SwiftyJSON'

@@ -13,8 +13,6 @@ import UIKit
 import Lottie
 import Charts
 
-
-
 class HomeViewController: UIViewController {
     
     private let swonzoClient = SwonzoClient()
@@ -25,8 +23,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var balanceView: UITextView!
     @IBOutlet weak var logoutButtonView: UIButton!
     @IBOutlet weak var homePieChart: PieChartView!
-    
-
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -86,10 +82,7 @@ func pieChartAnimation() {
             }.responseJSON { response in
                 if let error = response.error {
                     //                                self.homeView.text = error.localizedDescription
-                } else if let jsonArray = response.result.value as? [[String: Any]] {
-                } else if let jsonDict = response.result.value as? [String: Any] {
-                    
-                    
+                } else {
                     
                     do {
                         print("*************************")

@@ -113,10 +113,8 @@ func pieChartAnimation() {
                             i = i - 1
                             
                             let name = root.transactions[i].merchant?.name
-                            
-                            let amount = root.transactions[i].amount
-                            let transDescription = root.transactions[i].transactionDescription
-                            var category = String(Substring(root.transactions[i].category.rawValue))
+                        
+                            var category = String(root.transactions[i].category.rawValue)
                             
                             let progress = numberOfTransactions - i
                             let percentageDouble = (Double(progress) / Double(numberOfTransactions) * 100)

@@ -46,16 +46,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oVu-kr-874">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Loading Transaction Data" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yx-V2-trJ">
-                                        <rect key="frame" x="30" y="436" width="323" height="46"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Loading Transaction Data" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yx-V2-trJ">
+                                        <rect key="frame" x="30" y="436" width="323" height="153"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="153" id="WWi-Qc-fDv"/>
+                                        </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="25"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.90196078431372551" green="0.29411764705882354" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="0Yx-V2-trJ" secondAttribute="trailing" constant="22" id="b9w-e4-vw2"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Yx-V2-trJ" secondAttribute="bottom" constant="78" id="dm7-40-X0e"/>
+                                    <constraint firstItem="0Yx-V2-trJ" firstAttribute="leading" secondItem="oVu-kr-874" secondAttribute="leading" constant="30" id="fpA-W5-Emb"/>
+                                </constraints>
                             </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0yi-A6-3J9">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
@@ -86,6 +93,7 @@
                         <outlet property="largeActivityIndicator" destination="0yi-A6-3J9" id="ZP8-u6-7ru"/>
                         <outlet property="overView" destination="oVu-kr-874" id="j06-Qq-O1v"/>
                         <outlet property="tableView" destination="MW9-xO-1f0" id="Ang-vb-bUD"/>
+                        <outlet property="transactionsTextView" destination="0Yx-V2-trJ" id="Edb-Z2-lws"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRz-4t-W9x" userLabel="First Responder" sceneMemberID="firstResponder"/>

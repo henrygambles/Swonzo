@@ -70,7 +70,7 @@ class MapViewController: UIViewController {
                             self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\n\((progress.fractionCompleted * 100))%"
                           }.responseJSON { response in
                             if let error = response.error {
-                                //                                self.homeView.text = error.localizedDescription
+                                self.fetchingDataTextView.text = error.localizedDescription
                             } else {
                                 
                                 

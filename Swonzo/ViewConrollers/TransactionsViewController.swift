@@ -20,6 +20,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var transactionsTextView: UITextView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -35,18 +36,13 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     let cellReuseIdentifier = "cell"
     
-    
-//    var indicator = UIActivityIndicatorView()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        indicator.startAnimating()
-//        indicator.backgroundColor = UIColor.white
-//        largeActivityIndicator.startAnimating()
-        startAnimation()
+
+        startLoadingCircleAnimation()
         transactionsRequest()
-        largeActivityIndicator.isHidden = true
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
@@ -56,23 +52,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         // This view controller itself will provide the delegate methods and row data for the table view.
         tableView.delegate = self as UITableViewDelegate
         tableView.dataSource = self as UITableViewDataSource
-        
-        // Do any additional setup after loading the view.
+
     }
     
-//    func startAnimation() {
-//
-//        let animationView = AnimationView(name: "rainbow-wave-loading")
-//        self.view.addSubview(animationView)
-//        animationView.contentMode = .scaleAspectFill
-//        animationView.animationSpeed = 1.5
-//        animationView.loopMode = .loop
-//        animationView.frame = CGRect(x: 64, y: 180, width: 250, height: 250)
-//
-//        animationView.play()
-//    }
-//
-//
 
     @IBOutlet weak var overView: UIView!
     @IBOutlet weak var largeActivityIndicator: UIActivityIndicatorView!
@@ -90,7 +72,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
 let animationView = AnimationView(name: "scan-receipt")
     
-    func startAnimation() {
+    func startLoadingCircleAnimation() {
         
 
         self.view.addSubview(animationView)
@@ -116,7 +98,7 @@ let animationView = AnimationView(name: "scan-receipt")
                             print("OI\(progressPercent)%")
                         }.responseJSON { response in
                             if let error = response.error {
-                                //                                self.homeView.text = error.localizedDescription
+                                self.transactionsTextView.text = error.localizedDescription
                             } else {
                                 
                                 
@@ -186,7 +168,7 @@ let animationView = AnimationView(name: "scan-receipt")
                                         } else {
                                             let description = name
                                             self.transactions.append(description!)
-                                            self.names.append(name as! String ?? "error")
+                                            self.names.append(name as! String)
                                             self.longitudes.append(longitude as! Double)
                                             self.latitudes.append(latitude as! Double)
                                         }

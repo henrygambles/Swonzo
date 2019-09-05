@@ -38,10 +38,9 @@ class HomeViewController: UIViewController {
     }
     
 
-//var categories = ["🚇", "🛒", "🍔", "🎥", "⚙️", "🛍️", "💵", "❤️", "👪", "🧳"]
     var instacesOfCategories : [String] = []
     var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo"]
-    var transactionsForCategory : [Int] = []
+    var categoryCount : [Int] = []
     
    let animationView = AnimationView(name: "loading-circle")
     
@@ -77,12 +76,12 @@ func pieChartAnimation() {
                           parameters: parameters,
                           encoding:  URLEncoding.default,
                           headers: headers).downloadProgress { progress in
-                            print("Progress: \(Float(progress.fractionCompleted))")
+                            print("Progress: \(progress.fractionCompleted)")
                             //                            self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\n\((progress.fractionCompleted * 100))%"
-            }.responseJSON { response in
-                if let error = response.error {
-                    //                                self.homeView.text = error.localizedDescription
-                } else {
+                            }.responseJSON { response in
+                            if let error = response.error {
+                                self.homeView.text = error.localizedDescription
+                            } else {
                     
                     do {
                         print("*************************")
@@ -105,65 +104,41 @@ func pieChartAnimation() {
                             
                             i = i - 1
                             
-                            let name = root.transactions[i].merchant?.name
-                        
                             var category = String(root.transactions[i].category.rawValue)
                             
                             let progress = numberOfTransactions - i
                             let percentageDouble = (Double(progress) / Double(numberOfTransactions) * 100)
                             
-                            //
                             print("\n*********")
                             print("   " + String(format: "%.0f", percentageDouble) + "%")
                             print("*********\n")
                             
-                            
-                            if category == "transport" {
-                                category = "Transport"
-                            } else if category == "groceries" {
-                                category = "Groceries"
-                            } else if category == "eating_out" {
-                                category = "Eating Out"
-                            } else if category == "entertainment" {
-                                category = "Entertainment"
-                            } else if category == "general" {
-                                category = "General"
-                            } else if category == "shopping" {
-                                category = "Shopping"
-                            } else if category == "cash" {
-                                category = "Cash"
-                            } else if category == "personal_care" {
-                                category = "Personal Care"
-                            } else if category == "family" {
-                                category = "Family"
-                            } else if category == "holidays" {
-                                category = "Holidays"
-                            } else if category == "mondo" {
-                                category = "Monzo"
+                            if category == "mondo" {
+                                category = "monzo"
                             }
 
-                            self.instacesOfCategories.append(category)
+                            self.instacesOfCategories.append(category.capitalized)
                             
                         }
                         
-                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Transport"}.count)
-                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Groceries"}.count)
-                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Eating Out"}.count)
-                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Entertainment"}.count)
-                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "General"}.count)
-                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Shopping"}.count)
-                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Cash"}.count)
-                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Personal Care"}.count)
-                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Family"}.count)
-                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Holidays"}.count)
-                        self.transactionsForCategory.append(self.instacesOfCategories.filter{$0 == "Monzo"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Transport"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Groceries"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Eating Out"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Entertainment"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "General"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Shopping"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Cash"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Personal Care"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Family"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Holidays"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Monzo"}.count)
                  
                         print("\nSuccess! Populated table.")
                         
                         print(self.categories)
-                        print(self.transactionsForCategory)
+                        print(self.categoryCount)
                         
-                        self.customizeChart(dataPoints: self.categories, values: self.transactionsForCategory.map{ Double($0) })
+                        self.customizeChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
                         self.animationView.removeFromSuperview()
                         self.homePieChart.isHidden = false
                         
@@ -200,6 +175,7 @@ func pieChartAnimation() {
         // 4. Assign it to the chart’s data
         homePieChart.data = pieChartData
     }
+    
     private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
         var colors: [UIColor] = []
         for _ in 0..<numbersOfColor {

@@ -55,7 +55,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.9882352941176471" green="0.72941176470588232" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.90196078431372551" green="0.29411764705882354" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0yi-A6-3J9">
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
@@ -109,7 +109,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" red="0.9882352941176471" green="0.72941176470588232" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.90196078431372551" green="0.29411764705882354" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="NCW-Z8-IZm"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Maps" image="maps-icon-tab-bar" id="tDJ-Mp-kBY"/>
@@ -161,7 +161,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkB-Yc-PkS" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="24" y="335" width="326" height="275"/>
+                                <rect key="frame" x="0.0" y="343" width="375" height="234"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -172,21 +172,21 @@
                             <constraint firstItem="9fo-Hf-Scx" firstAttribute="leading" secondItem="qRr-Ei-keJ" secondAttribute="leading" id="A0y-cv-66M"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="centerX" secondItem="IZ2-8I-Iaj" secondAttribute="centerX" id="Fus-du-eG2"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="leading" secondItem="9Oh-Su-PVp" secondAttribute="leading" id="LX8-Km-kIs"/>
-                            <constraint firstItem="JUs-NW-vH9" firstAttribute="bottom" secondItem="NkB-Yc-PkS" secondAttribute="bottom" constant="8" id="Ndj-ki-J0c"/>
-                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="leading" secondItem="JUs-NW-vH9" secondAttribute="leading" constant="24" id="Vm6-1c-ct0"/>
+                            <constraint firstItem="JUs-NW-vH9" firstAttribute="bottom" secondItem="NkB-Yc-PkS" secondAttribute="bottom" constant="41" id="Ndj-ki-J0c"/>
+                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="leading" secondItem="JUs-NW-vH9" secondAttribute="leading" id="Vm6-1c-ct0"/>
                             <constraint firstItem="h4w-AP-N0H" firstAttribute="centerX" secondItem="IZ2-8I-Iaj" secondAttribute="centerX" id="ZNu-4r-WvT"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="bottom" secondItem="h4w-AP-N0H" secondAttribute="bottom" id="aVP-Kw-xnF"/>
                             <constraint firstItem="pF5-B2-4l6" firstAttribute="leading" secondItem="JUs-NW-vH9" secondAttribute="leading" constant="276" id="f7K-4X-YKC"/>
                             <constraint firstItem="h4w-AP-N0H" firstAttribute="leading" secondItem="9Oh-Su-PVp" secondAttribute="leadingMargin" id="fgm-yI-POX"/>
-                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="trailing" secondItem="IZ2-8I-Iaj" secondAttribute="trailing" constant="42" id="gjN-My-cPv"/>
+                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="trailing" secondItem="IZ2-8I-Iaj" secondAttribute="trailing" constant="67" id="gjN-My-cPv"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="top" secondItem="9Oh-Su-PVp" secondAttribute="top" id="gxC-vx-RUP"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="bottom" secondItem="JUs-NW-vH9" secondAttribute="bottom" id="moC-pw-WCv"/>
-                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="top" secondItem="9Oh-Su-PVp" secondAttribute="top" constant="335" id="nGR-9l-GoU"/>
+                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="top" secondItem="9Oh-Su-PVp" secondAttribute="top" constant="343" id="nGR-9l-GoU"/>
                             <constraint firstItem="9fo-Hf-Scx" firstAttribute="centerX" secondItem="IZ2-8I-Iaj" secondAttribute="centerX" id="pHo-oc-SeN"/>
                             <constraint firstItem="pF5-B2-4l6" firstAttribute="top" secondItem="JUs-NW-vH9" secondAttribute="top" id="phe-Gj-Idg"/>
                             <constraint firstItem="h4w-AP-N0H" firstAttribute="top" secondItem="JUs-NW-vH9" secondAttribute="top" constant="35" id="qeD-6P-YXo"/>
                             <constraint firstItem="9fo-Hf-Scx" firstAttribute="top" secondItem="qRr-Ei-keJ" secondAttribute="top" id="v66-TQ-sG9"/>
-                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="leading" secondItem="IZ2-8I-Iaj" secondAttribute="leading" constant="-43" id="xyI-o1-IPr"/>
+                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="leading" secondItem="IZ2-8I-Iaj" secondAttribute="leading" constant="-67" id="xyI-o1-IPr"/>
                             <constraint firstItem="9fo-Hf-Scx" firstAttribute="bottom" secondItem="h4w-AP-N0H" secondAttribute="bottom" id="yxZ-uj-3gF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JUs-NW-vH9"/>

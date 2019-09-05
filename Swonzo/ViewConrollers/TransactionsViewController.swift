@@ -106,9 +106,6 @@ let animationView = AnimationView(name: "scan-receipt")
         
         print("GETTING TABLE DATA...")
         
-//        indicator.startAnimating()
-//        indicator.hidesWhenStopped = true
-        
        
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
@@ -141,7 +138,6 @@ let animationView = AnimationView(name: "scan-receipt")
                                     let root = try decoder.decode(Root.self, from: response.data!)
                                     //
                                     let numberOfTransactions = root.transactions.count
-                                    print("You have made \(numberOfTransactions) transactions... wow!\n")
                                     
                                     let countNumber = numberOfTransactions
                                     var i = numberOfTransactions
@@ -159,7 +155,7 @@ let animationView = AnimationView(name: "scan-receipt")
                                         let latitude = root.transactions[i].merchant?.address.latitude
                                         let longitude = root.transactions[i].merchant?.address.longitude
                                         
-                                        print("   " + String(format: "%.0f", percentageDouble) + "%", "\n")
+                                        print(String(format: "%.0f", percentageDouble) + "%", "\n")
                                         
                                         
                                         if category == "transport" {
@@ -180,6 +176,8 @@ let animationView = AnimationView(name: "scan-receipt")
                                             category = "❤️"
                                         } else if category == "family" {
                                             category = "❤️"
+                                        } else if category == "mondo" {
+                                            category = "🏦"
                                         }
                                         
                                         
@@ -200,15 +198,10 @@ let animationView = AnimationView(name: "scan-receipt")
                                         if pounds < 0 {
                                             let money = "£" + String(format:"%.2f",abs(pounds))
                                             self.prices.append(money)
-                                            print(money)
                                         }
                                         else {
                                             let money = "+ £" + String(format:"%.2f",pounds)
                                             self.prices.append(money)
-//                                            let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: self.cellReuseIdentifier) as! UITableViewCell
-//                                            cell.detailTextLabel!.textColor = UIColor.green
-                                            
-                                            print(money)
                                         }
                                         
                                         
@@ -217,24 +210,11 @@ let animationView = AnimationView(name: "scan-receipt")
                                         self.tableView.reloadData()
                                         
                                     }
-//                                    self.largeActivityIndicator.hidesWhenStopped = true
-//
-//                                    self.overView.isHidden = true
                                     
                                     self.largeActivityIndicator.stopAnimating()
                                     print("\nSuccess! Populated table.")
                                     self.overView.isHidden = true
                                     self.animationView.removeFromSuperview()
-//                                    self.animationView.isHidden
-//                                    AnimationView().isHidden
-                                    
-//                                    self.tableActivityIndicator.stopAnimating()
-//
-//                                    self.indicator.stopAnimating()
-//                                    self.indicator.hidesWhenStopped = true
-                                    UserDefaults.standard.set(self.names, forKey: "names")
-                                    UserDefaults.standard.set(self.latitudes, forKey: "latitudes")
-                                    UserDefaults.standard.set(self.longitudes, forKey: "longitudes")
                                 } catch {
                                     print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
                                     print("Also,", error)

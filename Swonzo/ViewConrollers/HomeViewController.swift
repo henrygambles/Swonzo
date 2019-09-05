@@ -37,10 +37,8 @@ class HomeViewController: UIViewController {
 //        balanceRequest()
         transactionsRequest()
         homePieChart.isHidden = true
-        logoutButtonView.alpha = 0
         setHomeBlurView()
         pieChartAnimation()
-//        customizeChart(dataPoints: categories, values: transactionsForCategory.map{ Double($0) })
     }
     
 
@@ -109,72 +107,24 @@ func pieChartAnimation() {
                         
                         let root = try decoder.decode(Root.self, from: response.data!)
                         
-                        print("You have made", root.transactions.count, "transactions... wow!\n")
                         let numberOfTransactions = root.transactions.count
                         
-                        print("GREEN SHOP")
-                        
-                        print( root.transactions[15].merchant?.address.address)
-                        //                                    print("Merchant: , root.transactions[15].merchant)
-                        print("Merchant:", root.transactions[15].merchant?.address.latitude)
-                        print("Merchant:", root.transactions[15].merchant?.address.longitude)
-                        
-                        
-                        
-                        let countNumber = numberOfTransactions
                         var i = numberOfTransactions
                         
-                        while i > numberOfTransactions - countNumber {
+                        while i > 0 {
                             
                             i = i - 1
                             
-                            //                                        var merchantName = root.transactions[i].merchant?.name
-                            //                                        let address = root.transactions[i].merchant?.address.formatted
+                            var category = String(Substring(root.transactions[i].category.rawValue))
                             
-                            let name = root.transactions[i].merchant?.name
-                            let latitude = root.transactions[i].merchant?.address.latitude
-                            let longitude = root.transactions[i].merchant?.address.longitude
-                            
-                            let amount = root.transactions[i].amount
-                            let transDescription = root.transactions[i].transactionDescription
-                            var category = String(Substring(root.transactions[i].category.rawValue)) ?? "no cat"
-                            //                            let cat = root.transactions[i].category
-                            
-                            //                                        print(String(format:"%.2f", numberOfTransactions - i - 1) + "%")
                             let progress = numberOfTransactions - i
-                            let percentageDouble = (Double(progress) / Double(countNumber) * 100)
+                            let percentageDouble = (Double(progress) / Double(numberOfTransactions) * 100)
                             
                             //
                             print("\n*********")
+                            print("Loaded transaction \(progress) of \(numberOfTransactions)")
                             print("   " + String(format: "%.0f", percentageDouble) + "%")
-                            print("*********\n")
-                            
-                            //                                        print(root.transactions[i].transactionDescription!)
-                            //                                        root.transactio
-                            
-                            
-                            
-//                                                        if category == "transport" {
-//                                                            category = "Transport 🚇"
-//                                                        } else if category == "groceries" {
-//                                                            category = "Groceries 🛒"
-//                                                        } else if category == "eating_out" {
-//                                                            category = "Eating Out 🍔"
-//                                                        } else if category == "entertainment" {
-//                                                            category = "Entertainment 🎥"
-//                                                        } else if category == "general" {
-//                                                            category = "General ⚙️"
-//                                                        } else if category == "shopping" {
-//                                                            category = "Shopping 🛍️"
-//                                                        } else if category == "cash" {
-//                                                            category = "Cash 💵"
-//                                                        } else if category == "personal_care" {
-//                                                            category = "Personal Care❤️"
-//                                                        } else if category == "family" {
-//                                                            category = "Family 👪"
-//                                                        } else if category == "holidays" {
-//                                                            category = "Holidays 🧳"
-//                                                        }
+                            print("*********\n")                                               }
                             
                             if category == "transport" {
                                 category = "Transport"
@@ -199,8 +149,8 @@ func pieChartAnimation() {
                             } else if category == "mondo" {
                                 category = "Monzo"
                             }
-                            //
-                            print(category)
+                        
+                        
 
                             self.instacesOfCategories.append(category)
                             
@@ -252,6 +202,8 @@ func pieChartAnimation() {
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         let format = NumberFormatter()
         format.numberStyle = .none
+//        format.maximumFractionDigits = 1
+//        format.multiplier = 1.0
         let formatter = DefaultValueFormatter(formatter: format)
         pieChartData.setValueFormatter(formatter)
         // 4. Assign it to the chart’s data

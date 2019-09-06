@@ -234,7 +234,9 @@ let animationView = AnimationView(name: "scan-receipt")
             tableView.addSubview(refreshControl)
         }
         
-        refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshTransactionData(_:)), for: .valueChanged)
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Transaction Data ...")
         
         
         let price = prices[indexPath.row]
@@ -261,8 +263,8 @@ let animationView = AnimationView(name: "scan-receipt")
 
 }
     
-    @objc private func refreshWeatherData(_ sender: Any) {
-        // Fetch Weather Data
+    @objc private func refreshTransactionData(_ sender: Any) {
+        // Fetch Transaction Data
         transactionsRequest()
     }
 

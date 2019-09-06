@@ -26,6 +26,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="night-sky" translatesAutoresizingMaskIntoConstraints="NO" id="wyw-tO-m8l">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="251"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfD-8e-nqb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MW9-xO-1f0">
                                 <rect key="frame" x="0.0" y="234" width="375" height="384"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -70,18 +77,26 @@
                         </subviews>
                         <color key="backgroundColor" red="0.078431372549019607" green="0.13725490196078433" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="GfD-8e-nqb" firstAttribute="bottom" secondItem="oVu-kr-874" secondAttribute="bottom" id="2WG-n3-cqr"/>
                             <constraint firstItem="MW9-xO-1f0" firstAttribute="top" secondItem="3sc-a9-XZo" secondAttribute="bottom" constant="55" id="33d-qe-q8d"/>
                             <constraint firstItem="MW9-xO-1f0" firstAttribute="leading" secondItem="bWA-9F-NmD" secondAttribute="leading" id="5Ta-4m-Cri"/>
+                            <constraint firstItem="GfD-8e-nqb" firstAttribute="top" secondItem="wyw-tO-m8l" secondAttribute="top" id="6ZW-EF-xXZ"/>
+                            <constraint firstItem="GfD-8e-nqb" firstAttribute="trailing" secondItem="wyw-tO-m8l" secondAttribute="trailing" id="BIS-hP-rCO"/>
                             <constraint firstItem="oVu-kr-874" firstAttribute="trailing" secondItem="MW9-xO-1f0" secondAttribute="trailing" id="FAG-rf-ILz"/>
                             <constraint firstItem="MW9-xO-1f0" firstAttribute="top" secondItem="Lnu-oI-u7x" secondAttribute="top" constant="214" id="HAm-YZ-1SH"/>
+                            <constraint firstItem="wyw-tO-m8l" firstAttribute="top" secondItem="oVu-kr-874" secondAttribute="top" id="KBo-9m-ZgY"/>
                             <constraint firstItem="3sc-a9-XZo" firstAttribute="top" secondItem="Lnu-oI-u7x" secondAttribute="top" constant="31" id="Vk9-aF-GdL"/>
                             <constraint firstAttribute="bottom" secondItem="oVu-kr-874" secondAttribute="bottom" id="XCK-rr-qkZ"/>
+                            <constraint firstItem="GfD-8e-nqb" firstAttribute="leading" secondItem="MW9-xO-1f0" secondAttribute="leading" id="Z3e-Wd-8m5"/>
                             <constraint firstItem="3sc-a9-XZo" firstAttribute="leading" secondItem="Lnu-oI-u7x" secondAttribute="leading" constant="67" id="d76-ku-DeR"/>
                             <constraint firstItem="oVu-kr-874" firstAttribute="leading" secondItem="MW9-xO-1f0" secondAttribute="leading" id="gSa-nu-dUO"/>
+                            <constraint firstItem="wyw-tO-m8l" firstAttribute="trailing" secondItem="MW9-xO-1f0" secondAttribute="trailing" id="gXQ-f2-SnQ"/>
                             <constraint firstItem="3sc-a9-XZo" firstAttribute="centerX" secondItem="MW9-xO-1f0" secondAttribute="centerX" id="gqz-9w-79L"/>
                             <constraint firstItem="oVu-kr-874" firstAttribute="top" secondItem="bWA-9F-NmD" secondAttribute="top" id="kGG-Zh-f3m"/>
                             <constraint firstItem="MW9-xO-1f0" firstAttribute="bottom" secondItem="Lnu-oI-u7x" secondAttribute="bottom" id="oUg-B3-mQk"/>
                             <constraint firstItem="oVu-kr-874" firstAttribute="centerX" secondItem="0yi-A6-3J9" secondAttribute="centerX" id="t7c-xg-JW3"/>
+                            <constraint firstItem="0yi-A6-3J9" firstAttribute="top" secondItem="wyw-tO-m8l" secondAttribute="bottom" constant="64" id="ulb-sc-b8e"/>
+                            <constraint firstItem="wyw-tO-m8l" firstAttribute="leading" secondItem="MW9-xO-1f0" secondAttribute="leading" id="wEE-Xg-99N"/>
                             <constraint firstAttribute="trailing" secondItem="MW9-xO-1f0" secondAttribute="trailing" id="xij-2L-OcD"/>
                             <constraint firstItem="oVu-kr-874" firstAttribute="centerY" secondItem="0yi-A6-3J9" secondAttribute="centerY" id="zkg-2d-eDf"/>
                         </constraints>
@@ -90,10 +105,12 @@
                     <tabBarItem key="tabBarItem" title="Transactions" image="transactions-tab-bar" id="WkC-sL-bw0"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backdrop" destination="3sc-a9-XZo" id="4b4-cs-hcz"/>
                         <outlet property="largeActivityIndicator" destination="0yi-A6-3J9" id="ZP8-u6-7ru"/>
                         <outlet property="overView" destination="oVu-kr-874" id="j06-Qq-O1v"/>
                         <outlet property="tableView" destination="MW9-xO-1f0" id="Ang-vb-bUD"/>
                         <outlet property="transactionsTextView" destination="0Yx-V2-trJ" id="Edb-Z2-lws"/>
+                        <outlet property="underView" destination="GfD-8e-nqb" id="uVr-pS-22u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRz-4t-W9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -441,6 +458,7 @@
         <image name="la_palm_trees_x" width="467" height="700"/>
         <image name="maps-icon-tab-bar" width="25" height="25"/>
         <image name="monzo-card" width="1672" height="1083"/>
+        <image name="night-sky" width="1280" height="720"/>
         <image name="swan_vector_white" width="944" height="981"/>
         <image name="transactions-tab-bar" width="25" height="25"/>
     </resources>

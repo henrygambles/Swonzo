@@ -22,6 +22,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
    
     
+    @IBOutlet weak var underView: UIView!
+    @IBOutlet weak var backdrop: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var transactionsTextView: UITextView!
     
@@ -46,6 +48,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
         startLoadingCircleAnimation()
         transactionsRequest()
+        setHomeBlurView()
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
@@ -82,6 +85,13 @@ let animationView = AnimationView(name: "scan-receipt")
         animationView.loopMode = .loop
         animationView.frame = CGRect(x: 64, y: 180, width: 250, height: 250)
         animationView.play()
+    }
+    
+    func setHomeBlurView() {
+        let blurView = UIVisualEffectView()
+        blurView.frame = self.view.frame
+        blurView.effect = UIBlurEffect(style: .regular)
+        self.underView.addSubview(blurView)
     }
     
     func transactionsRequest() {

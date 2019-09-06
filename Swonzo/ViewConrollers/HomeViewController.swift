@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
 //        transactionsRequest()
         welcome()
         checkForSavedData()
-        setHomeBlurView()
+//        setHomeBlurView()
 //        pieChartAnimation()
     }
     

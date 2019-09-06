@@ -31,12 +31,34 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        balanceRequest()
-        transactionsRequest()
-        homePieChart.isHidden = true
+//        transactionsRequest()
+        welcome()
+        checkForSavedData()
         setHomeBlurView()
-        pieChartAnimation()
+//        pieChartAnimation()
     }
     
+    func checkForSavedData() {
+        if UserDefaults.standard.array(forKey: "CategoryCount") == nil {
+            homePieChart.isHidden = true
+            transactionsRequest()
+             pieChartAnimation()
+        } else {
+            let count = UserDefaults.standard.array(forKey: "CategoryCount")! as! [Int]
+            self.customizeChart(dataPoints: self.categories, values: count.map{ Double($0) })
+            self.animationView.removeFromSuperview()
+            self.homePieChart.isHidden = false
+        }
+    }
+    
+    func welcome() {
+        let name = UserDefaults.standard.string(forKey: "FirstName")
+        self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!\n\nCheck out the tabs below to see what & where you've spent on your Monzo account!"
+        self.homeView.alpha = 0
+        UIView.animate(withDuration: 1) {
+            self.homeView.alpha = 1
+        }
+    }
 
     var instacesOfCategories : [String] = []
     var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo"]
@@ -44,19 +66,19 @@ class HomeViewController: UIViewController {
     
    let animationView = AnimationView(name: "loading-circle")
     
-func pieChartAnimation() {
-    self.view.addSubview(animationView)
-    UIView.animate(withDuration: 1.5) {
-        self.homeView.alpha = 1
+    func pieChartAnimation() {
+        self.view.addSubview(animationView)
+        UIView.animate(withDuration: 1.5) {
+            self.homeView.alpha = 1
+        }
+        animationView.contentMode = .scaleAspectFill
+        animationView.animationSpeed = 0.75
+        animationView.loopMode = .loop
+        animationView.frame = CGRect(x: 64, y: 380, width: 250, height: 250)
+        self.animationView.alpha = 0
+       
+        animationView.play()
     }
-    animationView.contentMode = .scaleAspectFill
-    animationView.animationSpeed = 0.75
-    animationView.loopMode = .loop
-    animationView.frame = CGRect(x: 64, y: 380, width: 250, height: 250)
-    self.animationView.alpha = 0
-   
-    animationView.play()
-}
     
     func transactionsRequest() {
         
@@ -64,13 +86,7 @@ func pieChartAnimation() {
         
         print("GETTING CHART DATA...")
         
-        let name = UserDefaults.standard.string(forKey: "FirstName")
-        self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!\n\nCheck out the tabs below to see what & where you've spent on your Monzo account!"
-        
-        self.homeView.alpha = 0
-        UIView.animate(withDuration: 1) {
-            self.homeView.alpha = 1
-        }
+        welcome()
         
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
@@ -141,6 +157,8 @@ func pieChartAnimation() {
                         
                         print("Categories:", self.categories)
                         print("Category count:", self.categoryCount)
+                        
+                        UserDefaults.standard.set(self.categoryCount, forKey: "CategoryCount")
                         
                         self.customizeChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
                         self.animationView.removeFromSuperview()
@@ -214,8 +232,8 @@ func pieChartAnimation() {
     
 
     @IBAction func logoutButton(_ sender: Any) {
+        UserDefaults.standard.set(nil, forKey: "CategoryCount")
         performSegue(withIdentifier: "logoutSegue", sender: nil)
-        
     }
     
     

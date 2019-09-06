@@ -18,6 +18,9 @@ import Alamofire_SwiftyJSON
 
 class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    private let refreshControl = UIRefreshControl()
+    
+   
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var transactionsTextView: UITextView!
@@ -60,7 +63,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var largeActivityIndicator: UIActivityIndicatorView!
     
     
-    
+
     
 //    func activityIndicator() {
 //        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
@@ -192,6 +195,10 @@ let animationView = AnimationView(name: "scan-receipt")
                                     print("\nSuccess! Populated table.")
                                     self.overView.isHidden = true
                                     self.animationView.removeFromSuperview()
+                                    
+//                                    self.updateView()
+                                    self.refreshControl.endRefreshing()
+//                                    self.activityIndicatorView.stopAnimating()
                                 } catch {
                                     print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
                                     print("Also,", error)
@@ -221,6 +228,14 @@ let animationView = AnimationView(name: "scan-receipt")
         // set the text from the data model
         cell.textLabel?.text = self.transactions[indexPath.row]
         
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
+        
         
         let price = prices[indexPath.row]
         
@@ -245,6 +260,11 @@ let animationView = AnimationView(name: "scan-receipt")
         
 
 }
+    
+    @objc private func refreshWeatherData(_ sender: Any) {
+        // Fetch Weather Data
+        transactionsRequest()
+    }
 
 
 }

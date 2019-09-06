@@ -189,9 +189,12 @@ class HomeViewController: UIViewController {
         }
         let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Units Sold")
+//        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Units Sold")
 //        let chartData = BarChartData(xVals: months, dataSet: chartDataSet)
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Label")
         let chartData = BarChartData(dataSet: chartDataSet)
+        
+//        let data: BarChartData = BarChartData(: categories)
         self.homeBarChart.data = chartData
         self.homeBarChart.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         self.homeBarChart.gridBackgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -204,6 +207,12 @@ class HomeViewController: UIViewController {
         self.homeBarChart.rightAxis.drawGridLinesEnabled = false
         self.homeBarChart.rightAxis.drawAxisLineEnabled = false
         self.homeBarChart.rightAxis.drawLabelsEnabled = false
+        
+        //background color
+        self.homeBarChart.backgroundColor = UIColor.clear
+        
+        //chart animation
+        self.homeBarChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
         
         
         self.homeBarChart.xAxis.drawGridLinesEnabled = false
@@ -242,6 +251,7 @@ class HomeViewController: UIViewController {
         pieChartDataSet.yValuePosition = .outsideSlice
         pieChartDataSet.xValuePosition = .outsideSlice
         self.homePieChart.holeColor = UIColor.clear
+        self.homePieChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .easeOutCirc)
         // 3. Set ChartData
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         let format = NumberFormatter()

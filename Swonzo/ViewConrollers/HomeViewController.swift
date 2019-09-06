@@ -56,7 +56,7 @@ class HomeViewController: UIViewController {
     
     func welcome() {
         let name = UserDefaults.standard.string(forKey: "FirstName")
-        self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!\n\nCheck out the tabs below to see what & where you've spent on your Monzo account!"
+        self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!"
         self.homeView.alpha = 0
         UIView.animate(withDuration: 1) {
             self.homeView.alpha = 1

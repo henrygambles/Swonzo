@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var balanceView: UITextView!
     @IBOutlet weak var logoutButtonView: UIButton!
     @IBOutlet weak var homePieChart: PieChartView!
+    @IBOutlet weak var homeBarChart: BarChartView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -30,6 +31,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 //        balanceRequest()
 //        transactionsRequest()
         welcome()
@@ -42,10 +44,11 @@ class HomeViewController: UIViewController {
         if UserDefaults.standard.array(forKey: "CategoryCount") == nil {
             homePieChart.isHidden = true
             transactionsRequest()
-             pieChartAnimation()
+             loadingAnimation()
         } else {
             let count = UserDefaults.standard.array(forKey: "CategoryCount")! as! [Int]
-            self.customizeChart(dataPoints: self.categories, values: count.map{ Double($0) })
+            self.customizePieChart(dataPoints: self.categories, values: count.map{ Double($0) })
+            self.setBarChart(dataPoints: self.categories, values: count.map{ Double($0) })
             self.animationView.removeFromSuperview()
             self.homePieChart.isHidden = false
         }
@@ -66,7 +69,7 @@ class HomeViewController: UIViewController {
     
    let animationView = AnimationView(name: "loading-circle")
     
-    func pieChartAnimation() {
+    func loadingAnimation() {
         self.view.addSubview(animationView)
         UIView.animate(withDuration: 1.5) {
             self.homeView.alpha = 1
@@ -160,7 +163,7 @@ class HomeViewController: UIViewController {
                         
                         UserDefaults.standard.set(self.categoryCount, forKey: "CategoryCount")
                         
-                        self.customizeChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
+                        self.customizePieChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
                         self.animationView.removeFromSuperview()
                         self.homePieChart.isHidden = false
                         
@@ -173,8 +176,61 @@ class HomeViewController: UIViewController {
                 }
         }
     }
+
     
-    func customizeChart(dataPoints: [String], values: [Double]) {
+    func setBarChart(dataPoints: [String], values: [Double]) {
+        homeBarChart.noDataText = "You need to provide data for the chart."
+        
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(x: Double(i), yValues: values)
+            dataEntries.append(dataEntry)
+        }
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Units Sold")
+//        let chartData = BarChartData(xVals: months, dataSet: chartDataSet)
+        let chartData = BarChartData(dataSet: chartDataSet)
+        self.homeBarChart.data = chartData
+        self.homeBarChart.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        self.homeBarChart.gridBackgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        
+        self.homeBarChart.legend.enabled = false
+        
+        self.homeBarChart.leftAxis.drawGridLinesEnabled = false
+        self.homeBarChart.leftAxis.drawAxisLineEnabled = true
+        
+        self.homeBarChart.rightAxis.drawGridLinesEnabled = false
+        self.homeBarChart.rightAxis.drawAxisLineEnabled = false
+        self.homeBarChart.rightAxis.drawLabelsEnabled = false
+        
+        
+        self.homeBarChart.xAxis.drawGridLinesEnabled = false
+        self.homeBarChart.xAxis.drawLabelsEnabled = true
+        
+    }
+//    func setBarChart(dataPoints: [String], values: [Double]) {
+////        let barChart: BarChartView
+//        var dataEntries: [BarChartDataEntry] = []
+//        for i in 0..<dataPoints.count {
+////            let dataEntry = BarChartDataEntry(value: values[i], label: dataPoints[i], data: dataPoints[i] as AnyObject)
+//            let dataEntry = BarChartDataSet(entries: dataEntries, label: "Label")
+//            dataEntries.append(dataEntry)
+//        }
+//        //...
+//        let barChartDataSet = BarChartDataSet(entries: dataEntries, label: nil)
+//        let barChartData = BarChartData(dataSet: barChartDataSet)
+//        let set1 = BarChartDataSet(entries: values, label: dataPoints as ChartD)
+////
+//        let format = NumberFormatter()
+//        format.numberStyle = .none
+//        let formatter = DefaultValueFormatter(formatter: format)
+//        barChartData.setValueFormatter(formatter)
+//        homeBarChart.data = set1
+//    }
+    
+    func customizePieChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<dataPoints.count {
             let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i], data: dataPoints[i] as AnyObject)
@@ -197,6 +253,8 @@ class HomeViewController: UIViewController {
         // 4. Assign it to the chart’s data
         homePieChart.data = pieChartData
     }
+    
+
     
     private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
         var colors: [UIColor] = []

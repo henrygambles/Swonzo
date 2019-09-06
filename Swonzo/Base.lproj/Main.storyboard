@@ -169,7 +169,11 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkB-Yc-PkS" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="343" width="375" height="234"/>
+                                <rect key="frame" x="0.0" y="332" width="375" height="147"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6CI-OR-5Cu" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="487" width="375" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -177,10 +181,13 @@
                         <constraints>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="centerX" secondItem="h4w-AP-N0H" secondAttribute="centerX" id="32d-iQ-y9a"/>
                             <constraint firstAttribute="trailing" secondItem="qRr-Ei-keJ" secondAttribute="trailing" id="4yl-rs-4P7"/>
+                            <constraint firstItem="JUs-NW-vH9" firstAttribute="bottom" secondItem="6CI-OR-5Cu" secondAttribute="bottom" constant="3" id="67K-eZ-Jqb"/>
                             <constraint firstItem="9fo-Hf-Scx" firstAttribute="leading" secondItem="qRr-Ei-keJ" secondAttribute="leading" id="A0y-cv-66M"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="centerX" secondItem="IZ2-8I-Iaj" secondAttribute="centerX" id="Fus-du-eG2"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="leading" secondItem="9Oh-Su-PVp" secondAttribute="leading" id="LX8-Km-kIs"/>
-                            <constraint firstItem="JUs-NW-vH9" firstAttribute="bottom" secondItem="NkB-Yc-PkS" secondAttribute="bottom" constant="41" id="Ndj-ki-J0c"/>
+                            <constraint firstItem="JUs-NW-vH9" firstAttribute="bottom" secondItem="NkB-Yc-PkS" secondAttribute="bottom" constant="139" id="Ndj-ki-J0c"/>
+                            <constraint firstItem="6CI-OR-5Cu" firstAttribute="top" secondItem="NkB-Yc-PkS" secondAttribute="bottom" constant="8" symbolic="YES" id="Q1G-uf-hQx"/>
+                            <constraint firstItem="6CI-OR-5Cu" firstAttribute="trailing" secondItem="NkB-Yc-PkS" secondAttribute="trailing" id="SpF-cu-OJT"/>
                             <constraint firstItem="NkB-Yc-PkS" firstAttribute="leading" secondItem="JUs-NW-vH9" secondAttribute="leading" id="Vm6-1c-ct0"/>
                             <constraint firstItem="h4w-AP-N0H" firstAttribute="centerX" secondItem="IZ2-8I-Iaj" secondAttribute="centerX" id="ZNu-4r-WvT"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="bottom" secondItem="h4w-AP-N0H" secondAttribute="bottom" id="aVP-Kw-xnF"/>
@@ -188,8 +195,9 @@
                             <constraint firstItem="h4w-AP-N0H" firstAttribute="leading" secondItem="9Oh-Su-PVp" secondAttribute="leadingMargin" id="fgm-yI-POX"/>
                             <constraint firstItem="NkB-Yc-PkS" firstAttribute="trailing" secondItem="IZ2-8I-Iaj" secondAttribute="trailing" constant="67" id="gjN-My-cPv"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="top" secondItem="9Oh-Su-PVp" secondAttribute="top" id="gxC-vx-RUP"/>
+                            <constraint firstItem="6CI-OR-5Cu" firstAttribute="leading" secondItem="NkB-Yc-PkS" secondAttribute="leading" id="knb-wh-AiZ"/>
                             <constraint firstItem="qRr-Ei-keJ" firstAttribute="bottom" secondItem="JUs-NW-vH9" secondAttribute="bottom" id="moC-pw-WCv"/>
-                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="top" secondItem="9Oh-Su-PVp" secondAttribute="top" constant="343" id="nGR-9l-GoU"/>
+                            <constraint firstItem="NkB-Yc-PkS" firstAttribute="top" secondItem="9Oh-Su-PVp" secondAttribute="top" constant="332" id="nGR-9l-GoU"/>
                             <constraint firstItem="9fo-Hf-Scx" firstAttribute="centerX" secondItem="IZ2-8I-Iaj" secondAttribute="centerX" id="pHo-oc-SeN"/>
                             <constraint firstItem="pF5-B2-4l6" firstAttribute="top" secondItem="JUs-NW-vH9" secondAttribute="top" id="phe-Gj-Idg"/>
                             <constraint firstItem="h4w-AP-N0H" firstAttribute="top" secondItem="JUs-NW-vH9" secondAttribute="top" constant="35" id="qeD-6P-YXo"/>
@@ -207,6 +215,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="balanceView" destination="IZ2-8I-Iaj" id="3HC-hk-y11"/>
+                        <outlet property="homeBarChart" destination="6CI-OR-5Cu" id="6ni-mr-P0V"/>
                         <outlet property="homePieChart" destination="NkB-Yc-PkS" id="YqN-vS-Thr"/>
                         <outlet property="homeView" destination="h4w-AP-N0H" id="YlV-Qt-g3n"/>
                         <outlet property="logoutButtonView" destination="pF5-B2-4l6" id="jW6-C0-K4s"/>

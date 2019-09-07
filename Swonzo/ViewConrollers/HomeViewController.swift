@@ -179,44 +179,56 @@ class HomeViewController: UIViewController {
 
     
     func setBarChart(dataPoints: [String], values: [Double]) {
-        homeBarChart.noDataText = "You need to provide data for the chart."
-        
         var dataEntries: [BarChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x: Double(i), yValues: values)
+            let dataEntry = BarChartDataEntry(x: Double(i+2), y:values[i], data: categories)
             dataEntries.append(dataEntry)
         }
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         
-//        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Units Sold")
-//        let chartData = BarChartData(xVals: months, dataSet: chartDataSet)
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Label")
-        let chartData = BarChartData(dataSet: chartDataSet)
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Units Sold")
         
-//        let data: BarChartData = BarChartData(: categories)
-        self.homeBarChart.data = chartData
-        self.homeBarChart.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-        self.homeBarChart.gridBackgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-        
-        self.homeBarChart.legend.enabled = false
-        
-        self.homeBarChart.leftAxis.drawGridLinesEnabled = false
-        self.homeBarChart.leftAxis.drawAxisLineEnabled = true
-        
-        self.homeBarChart.rightAxis.drawGridLinesEnabled = false
-        self.homeBarChart.rightAxis.drawAxisLineEnabled = false
-        self.homeBarChart.rightAxis.drawLabelsEnabled = false
-        
-        //background color
-        self.homeBarChart.backgroundColor = UIColor.clear
-        
-        //chart animation
-        self.homeBarChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
-        
-        
-        self.homeBarChart.xAxis.drawGridLinesEnabled = false
-        self.homeBarChart.xAxis.drawLabelsEnabled = true
+        let chartData = BarChartData()
+        chartData.addDataSet(chartDataSet)
+        homeBarChart.data = chartData
+//        homeBarChart.noDataText = "You need to provide data for the chart."
+//
+//        var dataEntries: [BarChartDataEntry] = []
+//
+//        for i in 0..<dataPoints.count {
+//            let dataEntry = BarChartDataEntry(x: Double(i), yValues: values)
+//            dataEntries.append(dataEntry)
+//        }
+//        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+//
+////        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Units Sold")
+////        let chartData = BarChartData(xVals: months, dataSet: chartDataSet)
+//        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Label")
+//        let chartData = BarChartData(dataSet: chartDataSet)
+//
+////        let data: BarChartData = BarChartData(: categories)
+//        self.homeBarChart.data = chartData
+//        self.homeBarChart.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+//        self.homeBarChart.gridBackgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+//
+//        self.homeBarChart.legend.enabled = false
+//
+//        self.homeBarChart.leftAxis.drawGridLinesEnabled = false
+//        self.homeBarChart.leftAxis.drawAxisLineEnabled = true
+//
+//        self.homeBarChart.rightAxis.drawGridLinesEnabled = false
+//        self.homeBarChart.rightAxis.drawAxisLineEnabled = false
+//        self.homeBarChart.rightAxis.drawLabelsEnabled = false
+//
+//        //background color
+//        self.homeBarChart.backgroundColor = UIColor.clear
+//
+//        //chart animation
+//        self.homeBarChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
+//
+//
+//        self.homeBarChart.xAxis.drawGridLinesEnabled = false
+//        self.homeBarChart.xAxis.drawLabelsEnabled = true
         
     }
 //    func setBarChart(dataPoints: [String], values: [Double]) {

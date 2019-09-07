@@ -39,10 +39,12 @@ class HomeViewController: UIViewController {
 //        setHomeBlurView()
 //        pieChartAnimation()
     }
+    let name = UserDefaults.standard.string(forKey: "FirstName")
     
     func checkForSavedData() {
         if UserDefaults.standard.array(forKey: "CategoryCount") == nil {
             homePieChart.isHidden = true
+            self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!\nProcessing your transaction history now...\nHang tight."
             transactionsRequest()
              loadingAnimation()
         } else {
@@ -55,8 +57,8 @@ class HomeViewController: UIViewController {
     }
     
     func welcome() {
-        let name = UserDefaults.standard.string(forKey: "FirstName")
-        self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!"
+    
+        self.homeView.text =  "Swonzo Analytics\n\n\(name!)'s Data"
         self.homeView.alpha = 0
         UIView.animate(withDuration: 1) {
             self.homeView.alpha = 1
@@ -181,75 +183,32 @@ class HomeViewController: UIViewController {
     func setBarChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [BarChartDataEntry] = []
         
+        var xStrings: [String] = categories
+        
         for i in 0..<dataPoints.count {
             let dataEntry = BarChartDataEntry(x: Double(i+2), y:values[i], data: categories)
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Units Sold")
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Categories")
+//        chartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
         
         let chartData = BarChartData()
         chartData.addDataSet(chartDataSet)
         homeBarChart.data = chartData
-//        homeBarChart.noDataText = "You need to provide data for the chart."
+        homeBarChart.noDataText = ""
+        self.homeBarChart.gridBackgroundColor = UIColor.clear
+        
+        self.homeBarChart.drawGridBackgroundEnabled = false
 //
-//        var dataEntries: [BarChartDataEntry] = []
-//
-//        for i in 0..<dataPoints.count {
-//            let dataEntry = BarChartDataEntry(x: Double(i), yValues: values)
-//            dataEntries.append(dataEntry)
-//        }
-//        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-//
-////        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Units Sold")
-////        let chartData = BarChartData(xVals: months, dataSet: chartDataSet)
-//        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Label")
-//        let chartData = BarChartData(dataSet: chartDataSet)
-//
-////        let data: BarChartData = BarChartData(: categories)
-//        self.homeBarChart.data = chartData
-//        self.homeBarChart.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-//        self.homeBarChart.gridBackgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
-//
-//        self.homeBarChart.legend.enabled = false
-//
-//        self.homeBarChart.leftAxis.drawGridLinesEnabled = false
-//        self.homeBarChart.leftAxis.drawAxisLineEnabled = true
-//
-//        self.homeBarChart.rightAxis.drawGridLinesEnabled = false
-//        self.homeBarChart.rightAxis.drawAxisLineEnabled = false
-//        self.homeBarChart.rightAxis.drawLabelsEnabled = false
-//
+        self.homeBarChart.legend.enabled = false
 //        //background color
-//        self.homeBarChart.backgroundColor = UIColor.clear
+        self.homeBarChart.backgroundColor = UIColor.clear
 //
 //        //chart animation
-//        self.homeBarChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
-//
-//
-//        self.homeBarChart.xAxis.drawGridLinesEnabled = false
-//        self.homeBarChart.xAxis.drawLabelsEnabled = true
-        
+        self.homeBarChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
     }
-//    func setBarChart(dataPoints: [String], values: [Double]) {
-////        let barChart: BarChartView
-//        var dataEntries: [BarChartDataEntry] = []
-//        for i in 0..<dataPoints.count {
-////            let dataEntry = BarChartDataEntry(value: values[i], label: dataPoints[i], data: dataPoints[i] as AnyObject)
-//            let dataEntry = BarChartDataSet(entries: dataEntries, label: "Label")
-//            dataEntries.append(dataEntry)
-//        }
-//        //...
-//        let barChartDataSet = BarChartDataSet(entries: dataEntries, label: nil)
-//        let barChartData = BarChartData(dataSet: barChartDataSet)
-//        let set1 = BarChartDataSet(entries: values, label: dataPoints as ChartD)
-////
-//        let format = NumberFormatter()
-//        format.numberStyle = .none
-//        let formatter = DefaultValueFormatter(formatter: format)
-//        barChartData.setValueFormatter(formatter)
-//        homeBarChart.data = set1
-//    }
     
     func customizePieChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [ChartDataEntry] = []
@@ -259,7 +218,8 @@ class HomeViewController: UIViewController {
         }
         // 2. Set ChartDataSet
         let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
-        pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+//        pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+        pieChartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
         pieChartDataSet.yValuePosition = .outsideSlice
         pieChartDataSet.xValuePosition = .outsideSlice
         self.homePieChart.holeColor = UIColor.clear
@@ -268,8 +228,6 @@ class HomeViewController: UIViewController {
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         let format = NumberFormatter()
         format.numberStyle = .none
-//        format.maximumFractionDigits = 1
-//        format.multiplier = 1.0
         let formatter = DefaultValueFormatter(formatter: format)
         pieChartData.setValueFormatter(formatter)
         // 4. Assign it to the chart’s data

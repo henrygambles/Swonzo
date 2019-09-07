@@ -44,7 +44,8 @@ class HomeViewController: UIViewController {
     func checkForSavedData() {
         if UserDefaults.standard.array(forKey: "CategoryCount") == nil {
             homePieChart.isHidden = true
-            self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!\nProcessing your transaction history now...\nHang tight."
+            homeBarChart.isHidden = true
+            self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!\n\nProcessing your transaction history now...\n\nHang tight."
             transactionsRequest()
              loadingAnimation()
         } else {
@@ -53,12 +54,11 @@ class HomeViewController: UIViewController {
             self.setBarChart(dataPoints: self.categories, values: count.map{ Double($0) })
             self.animationView.removeFromSuperview()
             self.homePieChart.isHidden = false
+            self.homeView.text =  "Swonzo Analytics\n\n\(name!)'s Data"
         }
     }
     
     func welcome() {
-    
-        self.homeView.text =  "Swonzo Analytics\n\n\(name!)'s Data"
         self.homeView.alpha = 0
         UIView.animate(withDuration: 1) {
             self.homeView.alpha = 1
@@ -166,8 +166,11 @@ class HomeViewController: UIViewController {
                         UserDefaults.standard.set(self.categoryCount, forKey: "CategoryCount")
                         
                         self.customizePieChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
+                        self.setBarChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
                         self.animationView.removeFromSuperview()
                         self.homePieChart.isHidden = false
+                        self.homeBarChart.isHidden = false
+                        self.homeView.text =  "Swonzo Analytics\n\n\(self.name!)'s Data"
                         
                         
                     } catch {

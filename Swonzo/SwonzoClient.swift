@@ -86,11 +86,11 @@ struct Transaction: Codable {
     let id, created, transactionDescription: String
     let amount: Int
     let fees: Fees
-    let currency: Currency
+    let currency: String
     let merchant: Merchant?
     let notes: String
     let metadata: [String: String]
-    let labels: [Label]?
+    let labels: [String]?
     let accountBalance: Int
     let attachments: [Attachment]
     let international: International?
@@ -98,12 +98,12 @@ struct Transaction: Codable {
     let isLoad: Bool
     let settled: String
     let localAmount: Int
-    let localCurrency: Currency
+    let localCurrency: String
     let updated: String
     let accountID: TransactionAccountID
-    let userID: UserID
+    let userID: String
     let counterparty: Counterparty
-    let scheme: Scheme
+    let scheme: String
     let dedupeID: String
     let originator, includeInSpending, canBeExcludedFromBreakdown, canBeMadeSubscription: Bool
     let canSplitTheBill, canAddToTab, amountIsPending: Bool
@@ -145,7 +145,7 @@ struct Attachment: Codable {
     let fileURL: String
     let id, type: String
     let url: String
-    let userID: UserID
+    let userID: String
     
     enum CodingKeys: String, CodingKey {
         case created
@@ -155,11 +155,6 @@ struct Attachment: Codable {
         case id, type, url
         case userID = "user_id"
     }
-}
-
-enum UserID: String, Codable {
-    case empty = ""
-    case user00009WADrdGJIXCyAbX8Bl = "user_00009WADrdGJIXCyAbX8Bl"
 }
 
 enum Category: String, Codable {
@@ -180,8 +175,8 @@ enum Category: String, Codable {
 // MARK: - Counterparty
 struct Counterparty: Codable {
     let accountNumber, name, sortCode, userID: String?
-    let accountID: CounterpartyAccountID?
-    let preferredName: PreferredName?
+    let accountID: String?
+    let preferredName: String?
     
     enum CodingKeys: String, CodingKey {
         case accountNumber = "account_number"
@@ -191,22 +186,6 @@ struct Counterparty: Codable {
         case accountID = "account_id"
         case preferredName = "preferred_name"
     }
-}
-
-enum CounterpartyAccountID: String, Codable {
-    case acc00009CER6NoigtYOpkAKMj = "acc_00009cER6noigtYOpkAKMj"
-    case acc00009Vd8JLvyJ0JAHn5FWz = "acc_00009Vd8JLvyJ0JAHn5FWz"
-}
-
-enum PreferredName: String, Codable {
-    case franklinShaw = "Franklin Shaw"
-    case kimberleyRino = "Kimberley Rino"
-}
-
-enum Currency: String, Codable {
-    case eur = "EUR"
-    case gbp = "GBP"
-    case usd = "USD"
 }
 
 enum DeclineReason: String, Codable {
@@ -232,11 +211,11 @@ struct Fees: Codable {
 struct International: Codable {
     let provider, transferID: String
     let sourceAmount: Int
-    let sourceCurrency: Currency
+    let sourceCurrency: String
     let targetAmount: Int
-    let targetCurrency: Currency
+    let targetCurrency: String
     let feeAmount: Int
-    let feeCurrency: Currency
+    let feeCurrency: String
     let rate: Double
     let status, reference: String
     let deliveryEstimate: Date
@@ -256,10 +235,6 @@ struct International: Codable {
         case transferwiseTransferID = "transferwise_transfer_id"
         case transferwisePayInReference = "transferwise_pay_in_reference"
     }
-}
-
-enum Label: String, Codable {
-    case withdrawalATMInternational = "withdrawal.atm.international"
 }
 
 // MARK: - Merchant
@@ -286,7 +261,7 @@ struct Merchant: Codable {
 struct Address: Codable {
     let shortFormatted, formatted, address, city: String
     let region: String
-    let country: Country
+    let country: String
     let postcode: String
     let latitude, longitude: Double
     let zoomLevel: Int
@@ -300,24 +275,10 @@ struct Address: Codable {
     }
 }
 
-enum Country: String, Codable {
-    case che = "CHE"
-    case deu = "DEU"
-    case empty = ""
-    case est = "EST"
-    case fra = "FRA"
-    case gb = "GB"
-    case gbr = "GBR"
-    case irl = "IRL"
-    case lux = "LUX"
-    case nld = "NLD"
-    case usa = "USA"
-}
-
 // MARK: - Metadata
 struct Metadata: Codable {
     let createdForTransaction, enrichedFromSettlement, createdForMerchant: String?
-    let provider: Provider?
+    let provider: String?
     let providerID, suggestedTags: String?
     let twitterID: String?
     let website: String?
@@ -350,20 +311,4 @@ struct Metadata: Codable {
     }
 }
 
-enum Provider: String, Codable {
-    case google = "google"
-    case user = "user"
-}
 
-enum Scheme: String, Codable {
-    case accountInterest = "account_interest"
-    case ledgerAdjustment = "ledger_adjustment"
-    case mastercard = "mastercard"
-    case overdraft = "overdraft"
-    case p2PPayment = "p2p_payment"
-    case payportFasterPayments = "payport_faster_payments"
-    case premiumSubscription = "premium_subscription"
-    case topup = "topup"
-    case ukCashDepositsPaypoint = "uk_cash_deposits_paypoint"
-    case ukRetailPot = "uk_retail_pot"
-}

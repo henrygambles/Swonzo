@@ -18,7 +18,12 @@ import Alamofire_SwiftyJSON
 
 class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    private let refreshControl = UIRefreshControl()
     
+   
+    
+    @IBOutlet weak var underView: UIView!
+    @IBOutlet weak var backdrop: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var transactionsTextView: UITextView!
     
@@ -43,6 +48,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 
         startLoadingCircleAnimation()
         transactionsRequest()
+        setHomeBlurView()
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
@@ -60,7 +66,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var largeActivityIndicator: UIActivityIndicatorView!
     
     
-    
+
     
 //    func activityIndicator() {
 //        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
@@ -79,6 +85,13 @@ let animationView = AnimationView(name: "scan-receipt")
         animationView.loopMode = .loop
         animationView.frame = CGRect(x: 64, y: 180, width: 250, height: 250)
         animationView.play()
+    }
+    
+    func setHomeBlurView() {
+        let blurView = UIVisualEffectView()
+        blurView.frame = self.view.frame
+        blurView.effect = UIBlurEffect(style: .regular)
+        self.underView.addSubview(blurView)
     }
     
     func transactionsRequest() {
@@ -192,6 +205,10 @@ let animationView = AnimationView(name: "scan-receipt")
                                     print("\nSuccess! Populated table.")
                                     self.overView.isHidden = true
                                     self.animationView.removeFromSuperview()
+                                    
+//                                    self.updateView()
+                                    self.refreshControl.endRefreshing()
+//                                    self.activityIndicatorView.stopAnimating()
                                 } catch {
                                     print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
                                     print("Also,", error)
@@ -221,6 +238,16 @@ let animationView = AnimationView(name: "scan-receipt")
         // set the text from the data model
         cell.textLabel?.text = self.transactions[indexPath.row]
         
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshTransactionData(_:)), for: .valueChanged)
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetching Transaction Data ...")
+        
         
         let price = prices[indexPath.row]
         
@@ -245,6 +272,11 @@ let animationView = AnimationView(name: "scan-receipt")
         
 
 }
+    
+    @objc private func refreshTransactionData(_ sender: Any) {
+        // Fetch Transaction Data
+        transactionsRequest()
+    }
 
 
 }

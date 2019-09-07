@@ -23,6 +23,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var balanceView: UITextView!
     @IBOutlet weak var logoutButtonView: UIButton!
     @IBOutlet weak var homePieChart: PieChartView!
+    @IBOutlet weak var homeBarChart: BarChartView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -30,13 +31,39 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 //        balanceRequest()
-        transactionsRequest()
-        homePieChart.isHidden = true
-        setHomeBlurView()
-        pieChartAnimation()
+//        transactionsRequest()
+        welcome()
+        checkForSavedData()
+//        setHomeBlurView()
+//        pieChartAnimation()
+    }
+    let name = UserDefaults.standard.string(forKey: "FirstName")
+    
+    func checkForSavedData() {
+        if UserDefaults.standard.array(forKey: "CategoryCount") == nil {
+            homePieChart.isHidden = true
+            homeBarChart.isHidden = true
+            self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!\n\nProcessing your transaction history now...\n\nHang tight."
+            transactionsRequest()
+             loadingAnimation()
+        } else {
+            let count = UserDefaults.standard.array(forKey: "CategoryCount")! as! [Int]
+            self.customizePieChart(dataPoints: self.categories, values: count.map{ Double($0) })
+            self.setBarChart(dataPoints: self.categories, values: count.map{ Double($0) })
+            self.animationView.removeFromSuperview()
+            self.homePieChart.isHidden = false
+            self.homeView.text =  "Swonzo Analytics\n\n\(name!)'s Data"
+        }
     }
     
+    func welcome() {
+        self.homeView.alpha = 0
+        UIView.animate(withDuration: 1) {
+            self.homeView.alpha = 1
+        }
+    }
 
     var instacesOfCategories : [String] = []
     var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo"]
@@ -44,19 +71,19 @@ class HomeViewController: UIViewController {
     
    let animationView = AnimationView(name: "loading-circle")
     
-func pieChartAnimation() {
-    self.view.addSubview(animationView)
-    UIView.animate(withDuration: 1.5) {
-        self.homeView.alpha = 1
+    func loadingAnimation() {
+        self.view.addSubview(animationView)
+        UIView.animate(withDuration: 1.5) {
+            self.homeView.alpha = 1
+        }
+        animationView.contentMode = .scaleAspectFill
+        animationView.animationSpeed = 0.75
+        animationView.loopMode = .loop
+        animationView.frame = CGRect(x: 64, y: 380, width: 250, height: 250)
+        self.animationView.alpha = 0
+       
+        animationView.play()
     }
-    animationView.contentMode = .scaleAspectFill
-    animationView.animationSpeed = 0.75
-    animationView.loopMode = .loop
-    animationView.frame = CGRect(x: 64, y: 380, width: 250, height: 250)
-    self.animationView.alpha = 0
-   
-    animationView.play()
-}
     
     func transactionsRequest() {
         
@@ -64,13 +91,7 @@ func pieChartAnimation() {
         
         print("GETTING CHART DATA...")
         
-        let name = UserDefaults.standard.string(forKey: "FirstName")
-        self.homeView.text =  "Hi \(name!)!\n\nWelcome to Swonzo!\n\nCheck out the tabs below to see what & where you've spent on your Monzo account!"
-        
-        self.homeView.alpha = 0
-        UIView.animate(withDuration: 1) {
-            self.homeView.alpha = 1
-        }
+        welcome()
         
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
@@ -142,9 +163,14 @@ func pieChartAnimation() {
                         print("Categories:", self.categories)
                         print("Category count:", self.categoryCount)
                         
-                        self.customizeChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
+                        UserDefaults.standard.set(self.categoryCount, forKey: "CategoryCount")
+                        
+                        self.customizePieChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
+                        self.setBarChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
                         self.animationView.removeFromSuperview()
                         self.homePieChart.isHidden = false
+                        self.homeBarChart.isHidden = false
+                        self.homeView.text =  "Swonzo Analytics\n\n\(self.name!)'s Data"
                         
                         
                     } catch {
@@ -155,8 +181,39 @@ func pieChartAnimation() {
                 }
         }
     }
+
     
-    func customizeChart(dataPoints: [String], values: [Double]) {
+    func setBarChart(dataPoints: [String], values: [Double]) {
+        var dataEntries: [BarChartDataEntry] = []
+        
+        var xStrings: [String] = categories
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(x: Double(i+2), y:values[i], data: categories)
+            dataEntries.append(dataEntry)
+        }
+        
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Categories")
+//        chartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
+        
+        let chartData = BarChartData()
+        chartData.addDataSet(chartDataSet)
+        homeBarChart.data = chartData
+        homeBarChart.noDataText = ""
+        self.homeBarChart.gridBackgroundColor = UIColor.clear
+        
+        self.homeBarChart.drawGridBackgroundEnabled = false
+//
+        self.homeBarChart.legend.enabled = false
+//        //background color
+        self.homeBarChart.backgroundColor = UIColor.clear
+//
+//        //chart animation
+        self.homeBarChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
+    }
+    
+    func customizePieChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<dataPoints.count {
             let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i], data: dataPoints[i] as AnyObject)
@@ -164,21 +221,23 @@ func pieChartAnimation() {
         }
         // 2. Set ChartDataSet
         let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
-        pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+//        pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+        pieChartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
         pieChartDataSet.yValuePosition = .outsideSlice
         pieChartDataSet.xValuePosition = .outsideSlice
         self.homePieChart.holeColor = UIColor.clear
+        self.homePieChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .easeOutCirc)
         // 3. Set ChartData
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         let format = NumberFormatter()
         format.numberStyle = .none
-//        format.maximumFractionDigits = 1
-//        format.multiplier = 1.0
         let formatter = DefaultValueFormatter(formatter: format)
         pieChartData.setValueFormatter(formatter)
         // 4. Assign it to the chart’s data
         homePieChart.data = pieChartData
     }
+    
+
     
     private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
         var colors: [UIColor] = []
@@ -214,8 +273,8 @@ func pieChartAnimation() {
     
 
     @IBAction func logoutButton(_ sender: Any) {
+        UserDefaults.standard.set(nil, forKey: "CategoryCount")
         performSegue(withIdentifier: "logoutSegue", sender: nil)
-        
     }
     
     

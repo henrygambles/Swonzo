@@ -33,7 +33,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
        
         let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fadeIn), userInfo: nil, repeats: false)
-        lookForRecentToken()
+//        lookForRecentToken()
         self.setupToHideKeyboardOnTapOnView()
         textFieldView.delegate = self
         setBlurryView()
@@ -41,6 +41,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     func lookForRecentToken() {
+        if UserDefaults.standard.string(forKey: "Token") != nil {
         swonzoClient.getAccountInfo() { response in
             if response.hasPrefix("acc") {
                 self.recentTokenButton.isHidden = false;
@@ -48,6 +49,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             else {
                 self.recentTokenButton.isHidden = true;
             }
+        }
         }
     }
     

@@ -157,6 +157,7 @@ class MapViewController: UIViewController {
                                     let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 10.5)
                                     let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
                                     
+                                    
                                     do {
                                         if let styleURL = Bundle.main.url(forResource: "nightMap", withExtension: "json") {
                                             mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)

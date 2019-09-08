@@ -7,6 +7,7 @@ def shared_pods
   pod 'SwiftyJSON'
   pod 'Alamofire-SwiftyJSON'
   pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
 end
 
 target 'Swonzo' do

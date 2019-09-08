@@ -13,7 +13,7 @@ import UIKit
 import Lottie
 import Charts
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, ChartViewDelegate {
     
     private let swonzoClient = SwonzoClient()
     private let swonzoLogic = SwonzoLogic()
@@ -36,6 +36,8 @@ class HomeViewController: UIViewController {
 //        transactionsRequest()
         welcome()
         checkForSavedData()
+        homePieChart.delegate = self
+        
 //        setHomeBlurView()
 //        pieChartAnimation()
     }
@@ -65,6 +67,7 @@ class HomeViewController: UIViewController {
         }
     }
 
+    var instancesOfMerchants : [String] = []
     var instacesOfCategories : [String] = []
     var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo"]
     var categoryCount : [Int] = []
@@ -126,6 +129,7 @@ class HomeViewController: UIViewController {
                             i = i - 1
                             
                             var category = String(root.transactions[i].category.rawValue)
+                            var merchantName = String(root.transactions[i].merchant?.name ?? "NOMERCH")
                             
                             let transactionNumber = numberOfTransactions - i
                             let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
@@ -143,6 +147,7 @@ class HomeViewController: UIViewController {
                             }
 
                             self.instacesOfCategories.append(category.capitalized)
+                            self.instancesOfMerchants.append(merchantName)
                             
                         }
                         
@@ -159,6 +164,29 @@ class HomeViewController: UIViewController {
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Monzo"}.count)
                  
                         print("\nSuccess! Populated pie chart.\n")
+                        
+//                        print(self.instancesOfMerchants)
+                        
+                        var counts = [String: Int]()
+                        self.instancesOfMerchants.removeAll { $0 == "NOMERCH" }
+                        // Count the values with using forEach
+                        self.instancesOfMerchants.forEach { counts[$0] = (counts[$0] ?? 0) + 1 }
+                        
+                        let mappedItems = self.instancesOfMerchants.map { ($0, 1) }
+                        
+                        let countDic = Dictionary(mappedItems, uniquingKeysWith: +)
+                        
+                        print(countDic.sorted { $0.1 > $1.1 })
+                        
+                        // Find the most frequent value and its count with max(by:)
+                        var m = 1
+                        while m <= 5{
+                            if let (value, count) = counts.max(by: {$0.1 < $1.1}) {
+                                print("\(value) occurs \(count) times")
+                                
+                            }
+                            m += 1
+                        }
                         
                         print("Categories:", self.categories)
                         print("Category count:", self.categoryCount)
@@ -181,7 +209,6 @@ class HomeViewController: UIViewController {
                 }
         }
     }
-
     
     func setBarChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [BarChartDataEntry] = []
@@ -193,9 +220,12 @@ class HomeViewController: UIViewController {
             dataEntries.append(dataEntry)
         }
         
+       
+            
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Categories")
 //        chartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
         chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
+//        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,gold, c1, c2, c3, c4]
         
         let chartData = BarChartData()
         chartData.addDataSet(chartDataSet)
@@ -222,10 +252,13 @@ class HomeViewController: UIViewController {
         // 2. Set ChartDataSet
         let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
 //        pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
-        pieChartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
-        pieChartDataSet.yValuePosition = .outsideSlice
-        pieChartDataSet.xValuePosition = .outsideSlice
+//        pieChartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,gold, c1, c2, c3, c4]
+                pieChartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
+//        pieChartDataSet.yValuePosition = .outsideSlice
+//        pieChartDataSet.xValuePosition = .outsideSlice
+        pieChartDataSet.valueTextColor = UIColor.clear
         self.homePieChart.holeColor = UIColor.clear
+        
         self.homePieChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .easeOutCirc)
         // 3. Set ChartData
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
@@ -235,7 +268,25 @@ class HomeViewController: UIViewController {
         pieChartData.setValueFormatter(formatter)
         // 4. Assign it to the chart’s data
         homePieChart.data = pieChartData
+        
     }
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        
+        if let dataSet = chartView.data?.dataSets[ highlight.dataSetIndex] {
+            
+            let sliceIndex: Int = dataSet.entryIndex( entry: entry)
+//            dataSet.xValuePosition = .outsideSlice
+//            dataSet.valueTextColorAt(sliceIndex) = UIColor.white
+            print( "Selected slice index: \( sliceIndex)")
+            print(categories[sliceIndex])
+            self.homeView.text = "Swonzo Analytics\n\n\(name!)'s \(categories[sliceIndex]) Data"
+//            print(categoryCount[sliceIndex])
+        }
+    }
+    
+    
+    
     
 
     
@@ -313,6 +364,8 @@ class HomeViewController: UIViewController {
     
 
 }
+
+
 
 
 

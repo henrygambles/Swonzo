@@ -77,6 +77,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     
     var merchNames : [String] = []
     var merchAmount : [Int] = []
+    var merchAmountFormatted : [String] = []
     
    let animationView = AnimationView(name: "loading-circle")
     
@@ -199,32 +200,47 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         
                        let sortedCountDic = countDic.sorted { $0.1 > $1.1 }
                         
+                        let sortedBill = self.bill.sorted { $0.1 < $1.1 }
+                        
 //                        print(sortedDic)
                         
 //                        sortedDic.
                         
-//                        let merchs = Array(Dictionary(uniqueKeysWithValues: sortedDic).keys)
+//                        let merchs = Array(Dictionary(uniqueKeysWithValues: sortedBill).keys)
                         
                         let merchs = Array(countDic.keys)
                         
                         let allTrans = merchs.count
+                        
+                        print("total titties", allTrans)
+                    
                         var k = 1
                         while k < allTrans {
                             let name = merchs[k]
                             let amount = self.totalPrice(merchant: merchs[k])
 //                            print(merchs[k], self.totalPrice(merchant: merchs[k]))
+                            if amount < 0 {
                             self.merchNames.append(name)
                             self.merchAmount.append(amount)
+                            self.merchAmountFormatted.append(self.swonzoLogic.jsonSpendTodayToMoney(spendToday: Double(amount)))
                             self.bill.updateValue(amount, forKey: name)
+                            }
                             k += 1
                         }
                         
-                        let sortedBill = self.bill.sorted { $0.1 < $1.1 }
+                        
                        
 //                        print(Dictionary(uniqueKeysWithValues: sortedBill))
-//                        print(sortedBill)
-                        print(self.merchNames)
-                        print(self.merchAmount)
+                        print(sortedBill)
+                        
+                        print("ARRAY", self.merchNames)
+                        print(self.merchAmountFormatted)
+                        print("ARRAY", self.merchAmount)
+                        
+                        for t in 0..<self.merchNames.count  {
+                            print(self.merchNames[t], self.merchAmountFormatted[t])
+                        }
+                        
                         
                         
 //                        print(countDic.sorted { $0.1 > $1.1 })
@@ -245,7 +261,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         self.customizePieChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
 //                        self.setBarChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
 
-                        self.setBarChart(dataPoints: self.merchNames, values: self.merchAmount.map{ Double($0) })
+                        self.setDripBarChart(dataPoints: self.merchNames, values: self.merchAmount.map{ Double($0) })
                         self.animationView.removeFromSuperview()
                         self.homePieChart.isHidden = false
                         self.homeBarChart.isHidden = false
@@ -277,8 +293,6 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     func setBarChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [BarChartDataEntry] = []
         
-        var xStrings: [String] = categories
-        
         for i in 0..<dataPoints.count {
             let dataEntry = BarChartDataEntry(x: Double(i+2), y:values[i], data: categories)
             dataEntries.append(dataEntry)
@@ -286,9 +300,9 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         
        
             
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Categories")
-        chartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
-//        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Merchants")
+//        chartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
 //        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,gold, c1, c2, c3, c4]
         
         let chartData = BarChartData()
@@ -296,6 +310,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         homeBarChart.data = chartData
         homeBarChart.noDataText = ""
         self.homeBarChart.gridBackgroundColor = UIColor.clear
+        self.homeBarChart.xAxis.labelTextColor = UIColor.white
         
         self.homeBarChart.drawGridBackgroundEnabled = false
 //
@@ -304,6 +319,46 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         self.homeBarChart.backgroundColor = UIColor.clear
 //
 //        //chart animation
+        self.homeBarChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
+    }
+    
+    func setDripBarChart(dataPoints: [String], values: [Double]) {
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(x: Double(i+2), y:values[i], data: categories)
+            dataEntries.append(dataEntry)
+        }
+        
+        
+        
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Merchants")
+        chartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+        //        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
+        //        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,gold, c1, c2, c3, c4]
+        
+        let chartData = BarChartData()
+        chartData.addDataSet(chartDataSet)
+        homeBarChart.data = chartData
+        homeBarChart.noDataText = ""
+        self.homeBarChart.gridBackgroundColor = UIColor.clear
+        self.homeBarChart.xAxis.labelTextColor = UIColor.white
+        self.homeBarChart.drawGridBackgroundEnabled = false
+        //
+        self.homeBarChart.legend.enabled = false
+        self.homeBarChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
+//        self.homeBarChart.leftAxis.valueFormatter = swonzoLogic.jsonBalanceToMoney(balance: values) as? IAxisValueFormatter
+        self.homeBarChart.leftAxis.valueFormatter = "£\(values)" as? IAxisValueFormatter
+        self.homeBarChart.xAxis.granularityEnabled = true
+        self.homeBarChart.xAxis.drawGridLinesEnabled = false
+        self.homeBarChart.xAxis.labelPosition = .bottom
+        self.homeBarChart.xAxis.labelCount = 30
+        self.homeBarChart.xAxis.granularity = 2
+        self.homeBarChart.leftAxis.enabled = true
+        //        //background color
+        self.homeBarChart.backgroundColor = UIColor.clear
+        //
+        //        //chart animation
         self.homeBarChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
     }
     
@@ -322,6 +377,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
 //        pieChartDataSet.xValuePosition = .outsideSlice
         pieChartDataSet.valueTextColor = UIColor.clear
         self.homePieChart.holeColor = UIColor.clear
+        self.homePieChart.legend.textColor = UIColor.white
         
         self.homePieChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .easeOutCirc)
         // 3. Set ChartData

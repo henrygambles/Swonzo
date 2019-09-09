@@ -74,7 +74,9 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     var merchantTransactions : [Int] = []
     
     var bill : [String: Int] = [:]
- 
+    
+    var merchNames : [String] = []
+    var merchAmount : [Int] = []
     
    let animationView = AnimationView(name: "loading-circle")
     
@@ -130,7 +132,17 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         
                         while i > 0 {
                             
+//                            let earlyDate = Calendar.current.date(
+//                                byAdding: .month,
+//                                value: -6,
+//                                to: Date())
+//
+//                            var created = root.transactions[i].created
+//                            var date = dateFormatter.date(from: created)
+                            
                             i = i - 1
+                            
+//                            if date! > earlyDate! {
                             
                             var category = String(root.transactions[i].category.rawValue)
                             var merchantName = String(root.transactions[i].merchant?.name ?? "NOMERCH")
@@ -156,6 +168,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                                 self.instancesOfMerchants.append(merchantName)
                                 self.merchantTransactions.append(amount)
                             }
+//                            }
                             
                         }
                         
@@ -184,7 +197,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         
                         let countDic = Dictionary(mappedItems, uniquingKeysWith: +)
                         
-                       let sortedDic = countDic.sorted { $0.1 > $1.1 }
+                       let sortedCountDic = countDic.sorted { $0.1 > $1.1 }
                         
 //                        print(sortedDic)
                         
@@ -194,30 +207,33 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         
                         let merchs = Array(countDic.keys)
                         
-                        
+                        let allTrans = merchs.count
                         var k = 1
-                        while k < merchs.count {
+                        while k < allTrans {
                             let name = merchs[k]
                             let amount = self.totalPrice(merchant: merchs[k])
 //                            print(merchs[k], self.totalPrice(merchant: merchs[k]))
+                            self.merchNames.append(name)
+                            self.merchAmount.append(amount)
                             self.bill.updateValue(amount, forKey: name)
                             k += 1
                         }
                         
                         let sortedBill = self.bill.sorted { $0.1 < $1.1 }
+                       
+//                        print(Dictionary(uniqueKeysWithValues: sortedBill))
+//                        print(sortedBill)
+                        print(self.merchNames)
+                        print(self.merchAmount)
                         
-                        print(sortedBill)
                         
 //                        print(countDic.sorted { $0.1 > $1.1 })
                         
                         // Find the most frequent value and its count with max(by:)
-                        var m = 1
-                        while m <= 5{
+                     
                             if let (value, count) = counts.max(by: {$0.1 < $1.1}) {
                                 print("\(value) occurs \(count) times. You have spent \(self.totalPrice(merchant: value)) there!")
                             }
-                            m += 1
-                        }
                         
                         print("PAUL", self.totalPrice(merchant: "Paul"))
                         
@@ -227,7 +243,9 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         UserDefaults.standard.set(self.categoryCount, forKey: "CategoryCount")
                         
                         self.customizePieChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
-                        self.setBarChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
+//                        self.setBarChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
+
+                        self.setBarChart(dataPoints: self.merchNames, values: self.merchAmount.map{ Double($0) })
                         self.animationView.removeFromSuperview()
                         self.homePieChart.isHidden = false
                         self.homeBarChart.isHidden = false
@@ -269,8 +287,8 @@ class HomeViewController: UIViewController, ChartViewDelegate {
        
             
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Categories")
-//        chartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
-        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
+        chartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+//        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
 //        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,gold, c1, c2, c3, c4]
         
         let chartData = BarChartData()

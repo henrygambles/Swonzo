@@ -72,6 +72,8 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo"]
     var categoryCount : [Int] = []
     var merchantTransactions : [Int] = []
+    
+    var bill : [String: Int] = [:]
  
     
    let animationView = AnimationView(name: "loading-circle")
@@ -182,15 +184,29 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         
                         let countDic = Dictionary(mappedItems, uniquingKeysWith: +)
                         
-//                       let sortedDic = countDic.sorted { $0.1 > $1.1 }
+                       let sortedDic = countDic.sorted { $0.1 > $1.1 }
+                        
+//                        print(sortedDic)
+                        
+//                        sortedDic.
+                        
+//                        let merchs = Array(Dictionary(uniqueKeysWithValues: sortedDic).keys)
                         
                         let merchs = Array(countDic.keys)
                         
+                        
                         var k = 1
                         while k < merchs.count {
-                            print(merchs[k], self.totalPrice(merchant: merchs[k]))
+                            let name = merchs[k]
+                            let amount = self.totalPrice(merchant: merchs[k])
+//                            print(merchs[k], self.totalPrice(merchant: merchs[k]))
+                            self.bill.updateValue(amount, forKey: name)
                             k += 1
                         }
+                        
+                        let sortedBill = self.bill.sorted { $0.1 < $1.1 }
+                        
+                        print(sortedBill)
                         
 //                        print(countDic.sorted { $0.1 > $1.1 })
                         
@@ -227,7 +243,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         }
     }
     
-    func totalPrice(merchant: String) {
+    func totalPrice(merchant: String) -> Int {
         var totalTest : Int = 0
         var p = 1
         while p < instancesOfMerchants.count {
@@ -236,7 +252,8 @@ class HomeViewController: UIViewController, ChartViewDelegate {
             }
             p += 1
         }
-        print(swonzoLogic.jsonSpendTodayToMoney(spendToday: Double(totalTest)))
+//        print(swonzoLogic.jsonSpendTodayToMoney(spendToday: Double(totalTest)))
+        return totalTest
     }
     
     func setBarChart(dataPoints: [String], values: [Double]) {

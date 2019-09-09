@@ -100,7 +100,7 @@ struct Transaction: Codable {
     let localAmount: Int
     let localCurrency: String
     let updated: String
-    let accountID: TransactionAccountID
+    let accountID: String
     let userID: String
     let counterparty: Counterparty
     let scheme: String
@@ -135,9 +135,6 @@ struct Transaction: Codable {
     }
 }
 
-enum TransactionAccountID: String, Codable {
-    case acc00009WBQ0ZTI9BSOC4I9PZ = "acc_00009WBQ0ZTI9bSOC4i9pZ"
-}
 
 // MARK: - Attachment
 struct Attachment: Codable {

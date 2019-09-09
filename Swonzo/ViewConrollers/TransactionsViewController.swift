@@ -168,6 +168,8 @@ let animationView = AnimationView(name: "scan-receipt")
                                             category = "❤️"
                                         } else if category == "mondo" {
                                             category = "🏦"
+                                        } else if category == "bills" {
+                                            category = "🧾"
                                         }
                                         
                                         

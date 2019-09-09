@@ -69,7 +69,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
 
     var instancesOfMerchants : [String] = []
     var instacesOfCategories : [String] = []
-    var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo"]
+    var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo", "Bills"]
     var categoryCount : [Int] = []
     var merchantTransactions : [Int] = []
     
@@ -184,6 +184,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Family"}.count)
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Holidays"}.count)
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Monzo"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Bills"}.count)
                  
                         print("\nSuccess! Populated pie chart.\n")
                         
@@ -195,14 +196,15 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         self.instancesOfMerchants.forEach { counts[$0] = (counts[$0] ?? 0) + 1 }
                         
                         let mappedItems = self.instancesOfMerchants.map { ($0, 1) }
-                        
+
                         let countDic = Dictionary(mappedItems, uniquingKeysWith: +)
-                        
+//
                        let sortedCountDic = countDic.sorted { $0.1 > $1.1 }
-                        
+
                         let sortedBill = self.bill.sorted { $0.1 < $1.1 }
                         
 //                        print(sortedDic)
+                        print(sortedBill)
                         
 //                        sortedDic.
                         
@@ -212,7 +214,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         
                         let allTrans = merchs.count
                         
-                        print("total titties", allTrans)
+//                        print("total titties", allTrans)
                     
                         var k = 1
                         while k < allTrans {
@@ -228,14 +230,13 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                             k += 1
                         }
                         
-                        
                        
 //                        print(Dictionary(uniqueKeysWithValues: sortedBill))
                         print(sortedBill)
                         
-                        print("ARRAY", self.merchNames)
-                        print(self.merchAmountFormatted)
-                        print("ARRAY", self.merchAmount)
+//                        print("ARRAY", self.merchNames)
+//                        print(self.merchAmountFormatted)
+//                        print("ARRAY", self.merchAmount)
                         
                         for t in 0..<self.merchNames.count  {
                             print(self.merchNames[t], self.merchAmountFormatted[t])
@@ -251,17 +252,17 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                                 print("\(value) occurs \(count) times. You have spent \(self.totalPrice(merchant: value)) there!")
                             }
                         
-                        print("PAUL", self.totalPrice(merchant: "Paul"))
-                        
-                        print("Categories:", self.categories)
-                        print("Category count:", self.categoryCount)
+//                        print("PAUL", self.totalPrice(merchant: "Paul"))
+//
+//                        print("Categories:", self.categories)
+//                        print("Category count:", self.categoryCount)
                         
                         UserDefaults.standard.set(self.categoryCount, forKey: "CategoryCount")
                         
                         self.customizePieChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
-//                        self.setBarChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
+                        self.setBarChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
 
-                        self.setDripBarChart(dataPoints: self.merchNames, values: self.merchAmount.map{ Double($0) })
+//                        self.setDripBarChart(dataPoints: self.merchNames, values: self.merchAmount.map{ Double($0) })
                         self.animationView.removeFromSuperview()
                         self.homePieChart.isHidden = false
                         self.homeBarChart.isHidden = false

@@ -71,6 +71,8 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     var instacesOfCategories : [String] = []
     var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo"]
     var categoryCount : [Int] = []
+    var merchantTransactions : [Int] = []
+ 
     
    let animationView = AnimationView(name: "loading-circle")
     
@@ -130,6 +132,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                             
                             var category = String(root.transactions[i].category.rawValue)
                             var merchantName = String(root.transactions[i].merchant?.name ?? "NOMERCH")
+                            var amount = root.transactions[i].amount
                             
                             let transactionNumber = numberOfTransactions - i
                             let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
@@ -147,7 +150,10 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                             }
 
                             self.instacesOfCategories.append(category.capitalized)
-                            self.instancesOfMerchants.append(merchantName)
+                            if merchantName != "NOMERCH" {
+                                self.instancesOfMerchants.append(merchantName)
+                                self.merchantTransactions.append(amount)
+                            }
                             
                         }
                         
@@ -176,17 +182,28 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         
                         let countDic = Dictionary(mappedItems, uniquingKeysWith: +)
                         
-                        print(countDic.sorted { $0.1 > $1.1 })
+//                       let sortedDic = countDic.sorted { $0.1 > $1.1 }
+                        
+                        let merchs = Array(countDic.keys)
+                        
+                        var k = 1
+                        while k < merchs.count {
+                            print(merchs[k], self.totalPrice(merchant: merchs[k]))
+                            k += 1
+                        }
+                        
+//                        print(countDic.sorted { $0.1 > $1.1 })
                         
                         // Find the most frequent value and its count with max(by:)
                         var m = 1
                         while m <= 5{
                             if let (value, count) = counts.max(by: {$0.1 < $1.1}) {
-                                print("\(value) occurs \(count) times")
-                                
+                                print("\(value) occurs \(count) times. You have spent \(self.totalPrice(merchant: value)) there!")
                             }
                             m += 1
                         }
+                        
+                        print("PAUL", self.totalPrice(merchant: "Paul"))
                         
                         print("Categories:", self.categories)
                         print("Category count:", self.categoryCount)
@@ -208,6 +225,18 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                     
                 }
         }
+    }
+    
+    func totalPrice(merchant: String) {
+        var totalTest : Int = 0
+        var p = 1
+        while p < instancesOfMerchants.count {
+            if instancesOfMerchants[p] == merchant {
+                totalTest += merchantTransactions[p]
+            }
+            p += 1
+        }
+        print(swonzoLogic.jsonSpendTodayToMoney(spendToday: Double(totalTest)))
     }
     
     func setBarChart(dataPoints: [String], values: [Double]) {

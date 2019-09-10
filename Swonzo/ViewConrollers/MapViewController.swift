@@ -35,13 +35,15 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\nHang tight."
-
         startMapLoadingAnimation()
-        mapsRequest()
-      
+        setMap()
     }
     
-
+    func checkForData(){
+        
+    }
+    
+    
     func startMapLoadingAnimation() {
         
         let animationView = AnimationView(name: "plotting-map")
@@ -57,7 +59,7 @@ class MapViewController: UIViewController {
     }
     
 
-    func mapsRequest() {
+    func setMap() {
         
                                 do {
                                     print("*************************")
@@ -133,9 +135,6 @@ class MapViewController: UIViewController {
                                             let merchantName = name
                                             self.MerchantNames.append(merchantName!)
                                         }
-                                        
-                                        
-                                        
                                         
                                     }
                                     print("\nSuccess! Finished Getting data.")

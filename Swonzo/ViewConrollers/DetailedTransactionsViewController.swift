@@ -14,9 +14,7 @@ class DetailedTransactionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
        
-//        print(name)
         print(number)
         setText()
         
@@ -32,21 +30,18 @@ class DetailedTransactionsViewController: UIViewController {
     @IBAction func backButton(_ sender: Any) {
         self.performSegue(withIdentifier: "backToTableSegue", sender: nil)
     }
-    //     var name : String = "Nope"
     var number : Int = 0
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "backToTableSegue" {
             let vc = segue.destination as! BaseTabBarController
             vc.selectedIndex = 2
-            //            vc.name = (sender as? String)!
         }
     }
     
     func setText() {
         
         let index = number-1
-
         
         do {
              var data = try Disk.retrieve("root.json", from: .documents, as: Root.self)
@@ -76,19 +71,8 @@ class DetailedTransactionsViewController: UIViewController {
     
     func setMap(title: String, amount: String, lat : Double, long : Double) {
         
-//        let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 10.5)
-//        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-//        let mapView = GMSMapView.map(withFrame: CGRect(x: 100, y: 100, width: 200, height: 200), camera: camera)
-        
-        //so the mapView is of width 200, height 200 and its center is same as center of the self.view
-//        mapView.center = self.view.center
-        
-//        self.view.addSubview(mapView)
-//          self.view = mapView
         let mapView = GMSMapView.map(withFrame: CGRect(x: 100, y: 200, width: 250, height: 250), camera: GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0))
-//        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withLatitude: 51.050657, longitude: 10.649514, zoom: 5.5))
         
-        //so the mapView is of width 200, height 200 and its center is same as center of the self.view
         mapView.center = self.view.center
         mapView.layer.borderWidth = 1
         mapView.layer.cornerRadius = 5
@@ -105,29 +89,15 @@ class DetailedTransactionsViewController: UIViewController {
         } catch {
             NSLog("Map style failed to load. \(error)")
         }
-        
-        
-        
-        
-      
-            var position: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
+            let position: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
             let marker = GMSMarker(position: position)
             marker.title = "\(title): \(amount)"
 //            marker.snippet = self.categories[x]
             marker.map = mapView
             marker.appearAnimation = .pop
             mapView.selectedMarker = marker
-//        self.detailedMapView.addSubview(mapView)
     }
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

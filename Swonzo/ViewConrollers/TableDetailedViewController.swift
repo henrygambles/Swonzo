@@ -27,6 +27,7 @@ class TableDetailedViewController: UIViewController {
     
     
     @IBOutlet weak var detailedTextView: UITextView!
+    @IBOutlet weak var mapView: GMSMapView?
     
     @IBAction func backButton(_ sender: Any) {
         self.performSegue(withIdentifier: "backToTableSegue", sender: nil)
@@ -73,16 +74,21 @@ class TableDetailedViewController: UIViewController {
     
     func setMap(lat : Double, long : Double) {
         
-        let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 10.5)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+//        let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 10.5)
+//        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
 //        let mapView = GMSMapView.map(withFrame: CGRect(x: 100, y: 100, width: 200, height: 200), camera: camera)
         
         //so the mapView is of width 200, height 200 and its center is same as center of the self.view
 //        mapView.center = self.view.center
         
 //        self.view.addSubview(mapView)
-          self.view = mapView
+//          self.view = mapView
+        let mapView = GMSMapView.map(withFrame: CGRect(x: 100, y: 100, width: 200, height: 200), camera: GMSCameraPosition.camera(withLatitude: 51.050657, longitude: 10.649514, zoom: 5.5))
         
+        //so the mapView is of width 200, height 200 and its center is same as center of the self.view
+        mapView.center = self.view.center
+        
+        self.view.addSubview(mapView)
         do {
             if let styleURL = Bundle.main.url(forResource: "nightMap", withExtension: "json") {
                 mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)

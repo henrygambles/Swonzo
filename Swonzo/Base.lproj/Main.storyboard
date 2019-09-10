@@ -164,6 +164,7 @@
                     </view>
                     <connections>
                         <outlet property="detailedTextView" destination="nPe-7w-XYQ" id="gpK-C2-UUW"/>
+                        <outlet property="mapView" destination="C6d-aw-chd" id="WnM-pb-zXD"/>
                         <segue destination="pAn-QE-wOf" kind="presentation" identifier="backToTableSegue" modalTransitionStyle="crossDissolve" id="5Xd-NB-fej"/>
                     </connections>
                 </viewController>

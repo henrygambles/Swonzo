@@ -283,16 +283,16 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     }
     
     func totalPrice(merchant: String) -> Int {
-        var totalTest : Int = 0
+        var totalSpent : Int = 0
         var p = 1
         while p < instancesOfMerchants.count {
             if instancesOfMerchants[p] == merchant {
-                totalTest += merchantTransactions[p]
+                totalSpent += merchantTransactions[p]
             }
             p += 1
         }
 //        print(swonzoLogic.jsonSpendTodayToMoney(spendToday: Double(totalTest)))
-        return totalTest
+        return totalSpent
     }
     
     func setBarChart(dataPoints: [String], values: [Double]) {

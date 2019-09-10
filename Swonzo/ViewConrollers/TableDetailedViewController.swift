@@ -27,6 +27,7 @@ class TableDetailedViewController: UIViewController {
     
     
     @IBOutlet weak var detailedTextView: UITextView!
+    @IBOutlet weak var detailedMapView: UIView!
     
     @IBAction func backButton(_ sender: Any) {
         self.performSegue(withIdentifier: "backToTableSegue", sender: nil)
@@ -55,15 +56,17 @@ class TableDetailedViewController: UIViewController {
              let address = data.transactions[index].merchant?.address.address
              let lat = data.transactions[index].merchant?.address.latitude
              let long = data.transactions[index].merchant?.address.longitude
+             let formattedAddress = data.transactions[index].merchant?.address.formatted
+             let amount = SwonzoLogic().jsonBalanceToMoney(balance: Double(data.transactions[index].amount))
             
             
             if address == nil {
-                self.detailedTextView.text = "\(title)\nCreated on \(created)"
+                self.detailedTextView.text = "\(title)\n\n\(amount)"
                 print(address)
             } else {
-                self.detailedTextView.text = "\(title)\nCreated on \(created) at \(address)"
+                self.detailedTextView.text = "\(title)\n\n\(formattedAddress!)\n\n\(amount)"
                 print(address)
-                setMap(lat: lat!, long: long!)
+                setMap(title: title, lat: lat!, long: long!)
             }
         } catch {
             print("Oh no")
@@ -71,7 +74,7 @@ class TableDetailedViewController: UIViewController {
         
     }
     
-    func setMap(lat : Double, long : Double) {
+    func setMap(title: String, lat : Double, long : Double) {
         
 //        let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 10.5)
 //        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
@@ -82,12 +85,16 @@ class TableDetailedViewController: UIViewController {
         
 //        self.view.addSubview(mapView)
 //          self.view = mapView
-        let mapView = GMSMapView.map(withFrame: CGRect(x: 100, y: 100, width: 200, height: 200), camera: GMSCameraPosition.camera(withLatitude: 51.050657, longitude: 10.649514, zoom: 5.5))
+        let mapView = GMSMapView.map(withFrame: CGRect(x: 100, y: 200, width: 200, height: 200), camera: GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 16.0))
+//        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withLatitude: 51.050657, longitude: 10.649514, zoom: 5.5))
         
         //so the mapView is of width 200, height 200 and its center is same as center of the self.view
         mapView.center = self.view.center
-        
+        mapView.layer.borderWidth = 1
+        mapView.layer.cornerRadius = 5
+        mapView.layer.borderColor = UIColor.white.cgColor
         self.view.addSubview(mapView)
+        
         do {
             if let styleURL = Bundle.main.url(forResource: "nightMap", withExtension: "json") {
                 mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)

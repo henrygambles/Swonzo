@@ -27,7 +27,6 @@ class TableDetailedViewController: UIViewController {
     
     
     @IBOutlet weak var detailedTextView: UITextView!
-    @IBOutlet weak var mapView: GMSMapView?
     
     @IBAction func backButton(_ sender: Any) {
         self.performSegue(withIdentifier: "backToTableSegue", sender: nil)

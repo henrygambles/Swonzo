@@ -102,7 +102,7 @@ class MapViewController: UIViewController {
 
                                         let online = root.transactions[i].merchant?.online
                                         let transDescription = root.transactions[i].transactionDescription
-                                        var category = String(root.transactions[i].category.rawValue)
+                                        var category = root.transactions[i].category
                                         
                                         let transactionNumber = numberOfTransactions - i
                                         let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)

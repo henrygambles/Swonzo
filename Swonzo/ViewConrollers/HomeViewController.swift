@@ -32,7 +32,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         
 //        balanceRequest()
 //        transactionsRequest()
-        swonzoClient.transactionsRequest()
+//        swonzoClient.transactionsRequest()
         welcome()
         checkForSavedData()
         homePieChart.delegate = self
@@ -145,7 +145,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                             
 //                            if date! > earlyDate! {
                             
-                            var category = String(root.transactions[i].category.rawValue)
+                            var category = root.transactions[i].category
                             var merchantName = String(root.transactions[i].merchant?.name ?? "NOMERCH")
                             var amount = root.transactions[i].amount
                             

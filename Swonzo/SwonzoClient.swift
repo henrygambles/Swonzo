@@ -35,10 +35,11 @@ class SwonzoClient {
     var categories: [String] = []
     var names: [String] = []
     
+    typealias CompletionHandler = (_ success:Bool) -> Void
     
-    func transactionsRequest() -> [[String]] {
+    func transactionsRequest(finished: @escaping () -> Void) {
         
-        print("GETTING TABLE DATA...")
+        print("GETTING TRANSACTION DATA...")
         
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
@@ -77,6 +78,7 @@ class SwonzoClient {
                         
                         
                         print("\nSuccess! Got Data.")
+                        finished()
 //                        print(self.transactions)
                         
                         //                                    self.activityIndicatorView.stopAnimating()
@@ -87,7 +89,6 @@ class SwonzoClient {
                     
                 }
         }
-        return[self.transactions, self.prices, self.categories, self.names]
     }
     
     
@@ -161,7 +162,7 @@ struct Transaction: Codable {
     let accountBalance: Int
     let attachments: [Attachment]
     let international: International?
-    let category: Category
+    let category: String
     let isLoad: Bool
     let settled: String
     let localAmount: Int
@@ -219,21 +220,6 @@ struct Attachment: Codable {
         case id, type, url
         case userID = "user_id"
     }
-}
-
-enum Category: String, Codable {
-    case bills = "bills"
-    case cash = "cash"
-    case eatingOut = "eating_out"
-    case entertainment = "entertainment"
-    case family = "family"
-    case general = "general"
-    case groceries = "groceries"
-    case holidays = "holidays"
-    case mondo = "mondo"
-    case personalCare = "personal_care"
-    case shopping = "shopping"
-    case transport = "transport"
 }
 
 // MARK: - Counterparty
@@ -306,7 +292,7 @@ struct Merchant: Codable {
     let id, groupID, created, name: String
     let logo: String
     let emoji: String
-    let category: Category
+    let category: String
     let online, atm: Bool
     let address: Address
     let updated: String

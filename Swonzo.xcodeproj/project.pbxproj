@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		088003A47D5F34624B5D6CA3 /* libPods-SwonzoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B920D02D25F8E355389A9EF /* libPods-SwonzoUITests.a */; };
 		39193982A429C746131AF21D /* libPods-Swonzo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0219AA58A5BE95F57D9C559 /* libPods-Swonzo.a */; };
-		BA007A562327BC3700C08086 /* TableDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA007A552327BC3700C08086 /* TableDetailedViewController.swift */; };
+		BA007A562327BC3700C08086 /* DetailedTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA007A552327BC3700C08086 /* DetailedTransactionsViewController.swift */; };
 		BA0B131E22FB8F7300CE6D6F /* DevUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0B131D22FB8F7300CE6D6F /* DevUITests.swift */; };
 		BA0B2173231C1C4500D1F6DC /* scan-receipt.json in Resources */ = {isa = PBXBuildFile; fileRef = BA0B2172231C1C4500D1F6DC /* scan-receipt.json */; };
 		BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */; };
@@ -68,7 +68,7 @@
 		67F3975239163BC8C7A96DA4 /* Pods-SwonzoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwonzoTests.release.xcconfig"; path = "Target Support Files/Pods-SwonzoTests/Pods-SwonzoTests.release.xcconfig"; sourceTree = "<group>"; };
 		9189BC07595F615A1D698994 /* Pods-SwonzoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwonzoUITests.release.xcconfig"; path = "Target Support Files/Pods-SwonzoUITests/Pods-SwonzoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B208AD81D6F2C20169D6D5D8 /* libPods-SwonzoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwonzoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA007A552327BC3700C08086 /* TableDetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDetailedViewController.swift; sourceTree = "<group>"; };
+		BA007A552327BC3700C08086 /* DetailedTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTransactionsViewController.swift; sourceTree = "<group>"; };
 		BA0B131D22FB8F7300CE6D6F /* DevUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevUITests.swift; sourceTree = "<group>"; };
 		BA0B2172231C1C4500D1F6DC /* scan-receipt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "scan-receipt.json"; sourceTree = "<group>"; };
 		BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoClient.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 				BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */,
 				BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */,
 				BAC90D9222F2E1F400827D9E /* TransactionsViewController.swift */,
-				BA007A552327BC3700C08086 /* TableDetailedViewController.swift */,
+				BA007A552327BC3700C08086 /* DetailedTransactionsViewController.swift */,
 			);
 			path = ViewConrollers;
 			sourceTree = "<group>";
@@ -580,7 +580,7 @@
 				BA7ACE4622F06A67007AAF73 /* LogInViewController.swift in Sources */,
 				BA5F2C6A22E5CC3900230C17 /* HomeViewController.swift in Sources */,
 				BA5F2C6C22E5D0E600230C17 /* MapViewController.swift in Sources */,
-				BA007A562327BC3700C08086 /* TableDetailedViewController.swift in Sources */,
+				BA007A562327BC3700C08086 /* DetailedTransactionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

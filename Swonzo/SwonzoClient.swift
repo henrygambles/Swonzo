@@ -39,14 +39,13 @@ class SwonzoClient {
     
     func transactionsRequest(finished: @escaping () -> Void) {
         
-        print("GETTING TRANSACTION DATA...")
+        print("GETTING TRANSACTION DATA FOR DISK...")
         
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
                           parameters: parameters,
                           encoding:  URLEncoding.default,
                           headers: headers).downloadProgress { progress in
-                            print("Progress: \(Float(progress.fractionCompleted))")
-                            let progressPercent = String((progress.fractionCompleted * 100).rounded())
+                            let progressPercent = (progress.fractionCompleted * 100)
                             print("\(progressPercent)%")
             }.responseJSON { response in
                 if let error = response.error {
@@ -56,7 +55,7 @@ class SwonzoClient {
                     
                     do {
                         print("***********************")
-                        print("\n  TRANSACTION TESTING\n")
+                        print("\n  CLIENT DISK TESTING\n")
                         print("***********************\n")
                         
                         let dateFormatter = DateFormatter()
@@ -72,10 +71,6 @@ class SwonzoClient {
                         
                         try Disk.save(root, to: .documents, as: "root.json")
                         var retrieved = try Disk.retrieve("root.json", from: .documents, as: Root.self)
-                        
-//                        print("INITIAL RETRIEVED", retrieved)
-                        
-                        
                         
                         print("\nSuccess! Got Data.")
                         finished()

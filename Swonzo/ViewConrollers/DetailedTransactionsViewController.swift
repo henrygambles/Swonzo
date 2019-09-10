@@ -1,5 +1,5 @@
 //
-//  TableDetailedViewController.swift
+//  DetailedTransactionsViewController.swift
 //  Swonzo
 //
 //  Created by Henry Gambles on 10/09/2019.
@@ -10,7 +10,7 @@ import UIKit
 import Disk
 import GoogleMaps
 
-class TableDetailedViewController: UIViewController {
+class DetailedTransactionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ class TableDetailedViewController: UIViewController {
              let lat = data.transactions[index].merchant?.address.latitude
              let long = data.transactions[index].merchant?.address.longitude
              let formattedAddress = data.transactions[index].merchant?.address.formatted
-             let amount = SwonzoLogic().jsonBalanceToMoney(balance: Double(data.transactions[index].amount))
+            let amount = SwonzoLogic().jsonSpendTodayToMoney(spendToday: Double(data.transactions[index].amount))
             
             
             if address == nil {
@@ -66,7 +66,7 @@ class TableDetailedViewController: UIViewController {
             } else {
                 self.detailedTextView.text = "\(title)\n\n\(formattedAddress!)\n\n\(amount)"
                 print(address)
-                setMap(title: title, lat: lat!, long: long!)
+                setMap(title: title, amount: amount, lat: lat!, long: long!)
             }
         } catch {
             print("Oh no")
@@ -74,7 +74,7 @@ class TableDetailedViewController: UIViewController {
         
     }
     
-    func setMap(title: String, lat : Double, long : Double) {
+    func setMap(title: String, amount: String, lat : Double, long : Double) {
         
 //        let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 10.5)
 //        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
@@ -85,7 +85,7 @@ class TableDetailedViewController: UIViewController {
         
 //        self.view.addSubview(mapView)
 //          self.view = mapView
-        let mapView = GMSMapView.map(withFrame: CGRect(x: 100, y: 200, width: 200, height: 200), camera: GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 16.0))
+        let mapView = GMSMapView.map(withFrame: CGRect(x: 100, y: 200, width: 250, height: 250), camera: GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0))
 //        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withLatitude: 51.050657, longitude: 10.649514, zoom: 5.5))
         
         //so the mapView is of width 200, height 200 and its center is same as center of the self.view
@@ -93,6 +93,7 @@ class TableDetailedViewController: UIViewController {
         mapView.layer.borderWidth = 1
         mapView.layer.cornerRadius = 5
         mapView.layer.borderColor = UIColor.white.cgColor
+      
         self.view.addSubview(mapView)
         
         do {
@@ -111,10 +112,11 @@ class TableDetailedViewController: UIViewController {
       
             var position: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
             let marker = GMSMarker(position: position)
-            marker.title = title
+            marker.title = "\(title): \(amount)"
 //            marker.snippet = self.categories[x]
             marker.map = mapView
             marker.appearAnimation = .pop
+            mapView.selectedMarker = marker
 //        self.detailedMapView.addSubview(mapView)
     }
 

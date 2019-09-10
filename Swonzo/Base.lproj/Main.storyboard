@@ -118,10 +118,10 @@
             </objects>
             <point key="canvasLocation" x="-983.20000000000005" y="-436.73163418290858"/>
         </scene>
-        <!--Table Detailed View Controller-->
+        <!--Detailed Transactions View Controller-->
         <scene sceneID="ReJ-BT-mHF">
             <objects>
-                <viewController id="iVb-3g-Jtt" customClass="TableDetailedViewController" customModule="Swonzo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iVb-3g-Jtt" customClass="DetailedTransactionsViewController" customModule="Swonzo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="drf-RL-h3p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

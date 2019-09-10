@@ -66,7 +66,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showTableDetailSegue" {
-            let vc = segue.destination as! TableDetailedViewController
+            let vc = segue.destination as! DetailedTransactionsViewController
             vc.number = (sender as? Int)!
 //            vc.name = (sender as? String)!
         }

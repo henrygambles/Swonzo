@@ -74,89 +74,14 @@ class SwonzoClient {
                         
 //                        print("INITIAL RETRIEVED", retrieved)
                         
-                        let numberOfTransactions = root.transactions.count
-                        var i = numberOfTransactions
                         
-//                        for i in 0..<numberOfTransactions {
-                        while i > 0 {
-                            
-                            i = i - 1
-                            
-                            let name = root.transactions[i].merchant?.name
-                            let amount = root.transactions[i].amount
-                            let transDescription = root.transactions[i].transactionDescription
-                            var category = String(Substring(root.transactions[i].category.rawValue))
-                            
-                            let transactionNumber = numberOfTransactions - i
-                            let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
-                            
-                            let latitude = root.transactions[i].merchant?.address.latitude
-                            let longitude = root.transactions[i].merchant?.address.longitude
-                            
-                            print(String(format: "%.0f", progressAsPercentage) + "%", "\n")
-                            
-                            
-                            if category == "transport" {
-                                category = "🚇"
-                            } else if category == "groceries" {
-                                category = "🛒"
-                            } else if category == "eating_out" {
-                                category = "🍽️"
-                            } else if category == "entertainment" {
-                                category = "🎉"
-                            } else if category == "general" {
-                                category = "⚙️"
-                            } else if category == "shopping" {
-                                category = "🛍️"
-                            } else if category == "cash" {
-                                category = "💵"
-                            } else if category == "personal_care" {
-                                category = "❤️"
-                            } else if category == "family" {
-                                category = "👪"
-                            } else if category == "mondo" {
-                                category = "🏦"
-                            } else if category == "bills" {
-                                category = "🧾"
-                            } else if category == "expenses" {
-                                category = "🖋️"
-                            } else if category == "finances" {
-                                category = "📈"
-                            }
-                            
-                            
-                            if name == nil {
-                                let description = transDescription
-                                self.transactions.append(description)
-                            } else {
-                                let description = name
-                                self.transactions.append(description!)
-                                self.names.append(name as! String)
-                            }
-                            
-                            
-                            //
-                            let pounds = Double(amount) / 100
-                            if pounds < 0 {
-                                let money = "£" + String(format:"%.2f",abs(pounds))
-                                self.prices.append(money)
-                            }
-                            else {
-                                let money = "+ £" + String(format:"%.2f",pounds)
-                                self.prices.append(money)
-                            }
-                            
-                            
-                            self.categories.append(category)
-                            
-                        }
                         
-                        print("\nSuccess! Populated table.")
+                        print("\nSuccess! Got Data.")
 //                        print(self.transactions)
                         
                         //                                    self.activityIndicatorView.stopAnimating()
                     } catch {
-                        print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
+                        print("\nOh no! Error fetching json. Apparently...", error.localizedDescription)
                         print("Also,", error)
                     }
                     

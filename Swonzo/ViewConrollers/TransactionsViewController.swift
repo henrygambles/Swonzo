@@ -73,15 +73,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         if self.transactions.isEmpty {
 //            print(SwonzoClient().transactionsRequest()[1])
             print("SECOND TEST")
-            do {
-            let data = try Disk.retrieve("root.json", from: .documents, as: Root.self)
-                for l in 0..<20 {
-                    print(data.transactions[l].merchant?.name ?? data.transactions[l].transactionDescription)
-                }
-            } catch {
-                print("OHHH NOOOO")
-            }
-            print("CHECKIN|g TIME")
+            
             populateTable()
             print(SwonzoClient().categories)
             print("IS NIL")
@@ -126,18 +118,103 @@ let animationView = AnimationView(name: "scan-receipt")
     }
     
     func populateTable() {
+        
+        do {
+            let data = try Disk.retrieve("root.json", from: .documents, as: Root.self)
+            
+            let numberOfTransactions = data.transactions.count
+            var i = numberOfTransactions
+            
+            //                        for i in 0..<numberOfTransactions {
+            while i > 0 {
+                
+                i = i - 1
+                
+                let name = data.transactions[i].merchant?.name
+                let amount = data.transactions[i].amount
+                let transDescription = data.transactions[i].transactionDescription
+                var category = String(Substring(data.transactions[i].category.rawValue))
+                
+                let transactionNumber = numberOfTransactions - i
+                let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
+                
+                print(String(format: "%.0f", progressAsPercentage) + "%", "\n")
+                
+                
+                if category == "transport" {
+                    category = "🚇"
+                } else if category == "groceries" {
+                    category = "🛒"
+                } else if category == "eating_out" {
+                    category = "🍽️"
+                } else if category == "entertainment" {
+                    category = "🎉"
+                } else if category == "general" {
+                    category = "⚙️"
+                } else if category == "shopping" {
+                    category = "🛍️"
+                } else if category == "cash" {
+                    category = "💵"
+                } else if category == "personal_care" {
+                    category = "❤️"
+                } else if category == "family" {
+                    category = "👪"
+                } else if category == "mondo" {
+                    category = "🏦"
+                } else if category == "bills" {
+                    category = "🧾"
+                } else if category == "expenses" {
+                    category = "🖋️"
+                } else if category == "finances" {
+                    category = "📈"
+                }
+                
+                
+                if name == nil {
+                    let description = transDescription
+                    self.transactions.append(description)
+                } else {
+                    let description = name
+                    self.transactions.append(description!)
+                    self.names.append(name as! String)
+                }
+                
+                
+                //
+                let pounds = Double(amount) / 100
+                if pounds < 0 {
+                    let money = "£" + String(format:"%.2f",abs(pounds))
+                    self.prices.append(money)
+                }
+                else {
+                    let money = "+ £" + String(format:"%.2f",pounds)
+                    self.prices.append(money)
+                }
+                
+                
+                self.categories.append(category)
+                
+            }
+            for l in 0..<20 {
+                print(data.transactions[l].merchant?.name ?? data.transactions[l].transactionDescription)
+            }
+            
+            
+            self.tableView.reloadData()
+            
+            
+            
+            print("\nSuccess! Populated table.")
+            self.overView.isHidden = true
+            self.animationView.removeFromSuperview()
+            
+            self.refreshControl.endRefreshing()
+            
+        } catch {
+            print("OHHH NOOOO")
+        }
   
-                                        self.tableView.reloadData()
-                                        
-                                    
-                                    
-                                    self.largeActivityIndicator.stopAnimating()
-                                    print("\nSuccess! Populated table.")
-                                    self.overView.isHidden = true
-                                    self.animationView.removeFromSuperview()
-                                    
-//                                    self.updateView()
-                                    self.refreshControl.endRefreshing()
+        
     
     }
     
@@ -147,7 +224,7 @@ let animationView = AnimationView(name: "scan-receipt")
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //                let count = self.transactions.count
         //                return shouldShowLoadingCell ? count + 1 : count
-        return SwonzoClient().transactions.count
+        return self.transactions.count
     }
     
     
@@ -159,7 +236,7 @@ let animationView = AnimationView(name: "scan-receipt")
         let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! UITableViewCell
         
         // set the text from the data model
-        cell.textLabel?.text = SwonzoClient().transactions[indexPath.row]
+        cell.textLabel?.text = self.transactions[indexPath.row]
         
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
@@ -172,11 +249,11 @@ let animationView = AnimationView(name: "scan-receipt")
         refreshControl.attributedTitle = NSAttributedString(string: "Fetching Transaction Data ...")
         
         
-        let price = SwonzoClient().prices[indexPath.row]
+        let price = self.prices[indexPath.row]
         
        
         
-        let category = SwonzoClient().categories[indexPath.row]
+        let category = self.categories[indexPath.row]
         cell.detailTextLabel?.text = price
         let label = UILabel.init(frame: CGRect(x:0,y:0,width:110,height:20))
         label.text = category + " " + price

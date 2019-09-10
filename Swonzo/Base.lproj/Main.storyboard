@@ -111,7 +111,7 @@
                         <outlet property="tableView" destination="MW9-xO-1f0" id="Ang-vb-bUD"/>
                         <outlet property="transactionsTextView" destination="0Yx-V2-trJ" id="Edb-Z2-lws"/>
                         <outlet property="underView" destination="GfD-8e-nqb" id="uVr-pS-22u"/>
-                        <segue destination="iVb-3g-Jtt" kind="showDetail" identifier="showTableDetailSegue" id="LdK-FW-EW1"/>
+                        <segue destination="iVb-3g-Jtt" kind="presentation" identifier="showTableDetailSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="LdK-FW-EW1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRz-4t-W9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -133,17 +133,40 @@
                                     <action selector="backButton:" destination="iVb-3g-Jtt" eventType="touchUpInside" id="TvK-8g-rtc"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nPe-7w-XYQ">
+                                <rect key="frame" x="16" y="77" width="343" height="230"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="23"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dfE-uY-94g">
+                                <rect key="frame" x="16" y="354" width="343" height="248"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="248" id="vAY-Fh-A5S"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.90196078430000004" green="0.29411764709999999" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zHc-SZ-FN5" firstAttribute="trailing" secondItem="lmm-eA-LWR" secondAttribute="trailing" constant="321" id="95U-Kq-KyB"/>
+                            <constraint firstItem="dfE-uY-94g" firstAttribute="trailing" secondItem="nPe-7w-XYQ" secondAttribute="trailing" id="Sy2-2A-THG"/>
+                            <constraint firstItem="dfE-uY-94g" firstAttribute="top" secondItem="nPe-7w-XYQ" secondAttribute="bottom" constant="47" id="UHf-Rz-Ne3"/>
+                            <constraint firstItem="nPe-7w-XYQ" firstAttribute="top" secondItem="lmm-eA-LWR" secondAttribute="bottom" constant="27" id="biu-CD-X2b"/>
+                            <constraint firstItem="dfE-uY-94g" firstAttribute="leading" secondItem="nPe-7w-XYQ" secondAttribute="leading" id="dXK-UX-2GQ"/>
                             <constraint firstItem="lmm-eA-LWR" firstAttribute="leading" secondItem="drf-RL-h3p" secondAttribute="leadingMargin" id="fUb-Aj-UGe"/>
                             <constraint firstItem="lmm-eA-LWR" firstAttribute="top" secondItem="zHc-SZ-FN5" secondAttribute="top" id="l6f-yE-nq2"/>
+                            <constraint firstItem="zHc-SZ-FN5" firstAttribute="bottom" secondItem="dfE-uY-94g" secondAttribute="bottom" constant="65" id="lJD-jg-bpT"/>
+                            <constraint firstItem="dfE-uY-94g" firstAttribute="leading" secondItem="lmm-eA-LWR" secondAttribute="leading" id="mSe-6E-zFV"/>
+                            <constraint firstItem="dfE-uY-94g" firstAttribute="trailing" secondItem="drf-RL-h3p" secondAttribute="trailingMargin" id="vHj-Af-ios"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zHc-SZ-FN5"/>
                     </view>
                     <connections>
-                        <segue destination="dIj-7C-6L1" kind="show" identifier="backToTableSegue" id="Va8-Z8-1yd"/>
+                        <outlet property="detailedTextView" destination="nPe-7w-XYQ" id="gpK-C2-UUW"/>
+                        <outlet property="staticMapView" destination="dfE-uY-94g" id="cwm-Pp-unK"/>
+                        <segue destination="pAn-QE-wOf" kind="presentation" identifier="backToTableSegue" modalTransitionStyle="crossDissolve" id="5Xd-NB-fej"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4jZ-2f-YxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -472,10 +495,8 @@
         <image name="transactions-tab-bar" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LdK-FW-EW1"/>
-        <segue reference="BLl-cc-F8T"/>
+        <segue reference="5Xd-NB-fej"/>
         <segue reference="p3Y-X9-tHq"/>
-        <segue reference="Va8-Z8-1yd"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.97254901960784312" green="0.4392156862745098" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

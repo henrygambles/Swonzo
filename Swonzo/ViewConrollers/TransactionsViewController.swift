@@ -21,8 +21,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     private let refreshControl = UIRefreshControl()
     
-   
-    
     @IBOutlet weak var underView: UIView!
     @IBOutlet weak var backdrop: UIImageView!
     @IBOutlet weak var tableView: UITableView!
@@ -49,6 +47,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
 //        transactionsRequest()
         checkForData()
         setHomeBlurView()
+        
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
@@ -60,6 +59,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         tableView.dataSource = self as UITableViewDataSource
 
     }
+    
+//    override func viewWillAppear(_: Bool) {
+//        BaseTabBarController().tabBar.isTranslucent = false
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showTableDetailSegue" {
@@ -218,141 +221,7 @@ let animationView = AnimationView(name: "scan-receipt")
     }
     
     
-    func refeshTable() {
-
-        print("REFRESHING TABLE DATA...")
-
-        Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
-                          parameters: parameters,
-                          encoding:  URLEncoding.default,
-                          headers: headers).downloadProgress { progress in
-                            print("Progress: \(Float(progress.fractionCompleted))")
-                            let progressPercent = String((progress.fractionCompleted * 100).rounded())
-                            print("\(progressPercent)%")
-            }.responseJSON { response in
-                if let error = response.error {
-
-                } else {
-
-                    do {
-                        print("***********************")
-                        print("\n  REFRESH TESTING\n")
-                        print("***********************\n")
-
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.calendar = Calendar(identifier: .iso8601)
-                        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-
-                        let decoder = JSONDecoder()
-                        decoder.dateDecodingStrategy = .formatted(dateFormatter)
-
-                         let root = try decoder.decode(Root.self, from: response.data!)
-
-                        let numberOfTransactions = root.transactions.count
-                        var i = numberOfTransactions
-
-                        while i > 0 {
-
-                            i = i - 1
-
-                            let name = root.transactions[i].merchant?.name
-                            let amount = root.transactions[i].amount
-                            let transDescription = root.transactions[i].transactionDescription
-                            var category = root.transactions[i].category
-
-                            let transactionNumber = numberOfTransactions - i
-                            let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
-
-                            print(String(format: "%.0f", progressAsPercentage) + "%", "\n")
-
-
-                            if category == "transport" {
-                                category = "🚇"
-                            } else if category == "groceries" {
-                                category = "🛒"
-                            } else if category == "eating_out" {
-                                category = "🍽️"
-                            } else if category == "entertainment" {
-                                category = "🎉"
-                            } else if category == "general" {
-                                category = "⚙️"
-                            } else if category == "shopping" {
-                                category = "🛍️"
-                            } else if category == "cash" {
-                                category = "💵"
-                            } else if category == "personal_care" {
-                                category = "❤️"
-                            } else if category == "family" {
-                                category = "👪"
-                            } else if category == "mondo" {
-                                category = "🏦"
-                            } else if category == "bills" {
-                                category = "🧾"
-                            } else if category == "expenses" {
-                                category = "🖋️"
-                            } else if category == "finances" {
-                                category = "📈"
-                            }
-
-
-                            if name == nil {
-                                let description = transDescription
-                                self.transactions.append(description)
-                            } else {
-                                let description = name
-                                self.transactions.append(description!)
-                                self.names.append(name as! String)
-                            }
-
-
-                            //
-                            let pounds = Double(amount) / 100
-                            if pounds < 0 {
-                                let money = "£" + String(format:"%.2f",abs(pounds))
-                                self.prices.append(money)
-                            }
-                            else {
-                                let money = "+ £" + String(format:"%.2f",pounds)
-                                self.prices.append(money)
-                            }
-
-
-                            self.categories.append(category)
-
-
-                        }
-
-
-
-                        self.tableView.reloadData()
-
-
-
-                        print("\nSuccess! Refreshed table.")
-                        do {
-                            let count = (root.transactions.count-1)
-                            print(root.transactions[count].transactionDescription)
-                        } catch {
-                            print("CANNE DO DAT")
-                        }
-                        self.overView.isHidden = true
-                        self.animationView.removeFromSuperview()
-
-                        self.refreshControl.endRefreshing()
-                        self.tableView.reloadData()
-                        //                        print(self.transactions)
-
-                        //                                    self.activityIndicatorView.stopAnimating()
-                    } catch {
-                        print("\nOh no! Error fetching json. Apparently...", error.localizedDescription)
-                        print("Also,", error)
-                    }
-
-                }
-        }
-
-    }
+  
     
     
     // number of rows in table view
@@ -404,7 +273,8 @@ let animationView = AnimationView(name: "scan-receipt")
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You tapped cell number \(indexPath.row).")
-        self.performSegue(withIdentifier: "showTableDetailSegue", sender: indexPath.row)
+         let tranNumber = transactions.count - indexPath.row
+        self.performSegue(withIdentifier: "showTableDetailSegue", sender: tranNumber)
         
 
 }
@@ -412,8 +282,10 @@ let animationView = AnimationView(name: "scan-receipt")
     @objc private func refreshTransactionData(_ sender: Any) {
         // Fetch Transaction Data
         print("REFRESHING...")
-        
-        refeshTable()
+        SwonzoClient().transactionsRequest {
+            self.populateTable()
+            print("TABLE REFREHED")
+        }
         
     }
 

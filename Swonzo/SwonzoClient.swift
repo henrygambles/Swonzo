@@ -71,7 +71,7 @@ class SwonzoClient {
                         let root = try decoder.decode(Root.self, from: response.data!)
                         
                         try Disk.save(root, to: .documents, as: "root.json")
-                        let retrieved = try Disk.retrieve("root.json", from: .documents, as: Root.self)
+                        var retrieved = try Disk.retrieve("root.json", from: .documents, as: Root.self)
                         
 //                        print("INITIAL RETRIEVED", retrieved)
                         

@@ -20,12 +20,12 @@ class DetailedTransactionsViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
-    
-    
-    
     @IBOutlet weak var detailedTextView: UITextView!
-    @IBOutlet weak var detailedMapView: UIView!
+    @IBOutlet weak var detailedMapview: UIView!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     @IBAction func backButton(_ sender: Any) {
         self.performSegue(withIdentifier: "backToTableSegue", sender: nil)
@@ -71,9 +71,9 @@ class DetailedTransactionsViewController: UIViewController {
     
     func setMap(title: String, amount: String, lat : Double, long : Double) {
         
-        let mapView = GMSMapView.map(withFrame: CGRect(x: 100, y: 200, width: 250, height: 250), camera: GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0))
+        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 250, height: 250), camera: GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0))
         
-        mapView.center = self.view.center
+        mapView.center = self.detailedMapview.center
         mapView.layer.borderWidth = 1
         mapView.layer.cornerRadius = 5
         mapView.layer.borderColor = UIColor.white.cgColor

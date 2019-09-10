@@ -74,14 +74,9 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     func checkForData() {
         if self.transactions.isEmpty {
-//            print(SwonzoClient().transactionsRequest()[1])
-            print("SECOND TEST")
-            
             populateTable()
             print(SwonzoClient().categories)
-            print("IS NIL")
         } else {
-            print("IS NOT NIL")
             self.overView.isHidden = true
             self.animationView.removeFromSuperview()
         }
@@ -138,9 +133,9 @@ let animationView = AnimationView(name: "scan-receipt")
                 var category = data.transactions[i].category
                 
                 let transactionNumber = numberOfTransactions - i
-                let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
-                
-                print(String(format: "%.0f", progressAsPercentage) + "%", "\n")
+//                let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
+//
+//                print(String(format: "%.0f", progressAsPercentage) + "%", "\n")
                 
                 
                 if category == "transport" {
@@ -197,9 +192,9 @@ let animationView = AnimationView(name: "scan-receipt")
                 self.categories.append(category)
                 
             }
-            for l in 0..<20 {
-                print(data.transactions[l].merchant?.name ?? data.transactions[l].transactionDescription)
-            }
+//            for l in 0..<20 {
+//                print(data.transactions[l].merchant?.name ?? data.transactions[l].transactionDescription)
+//            }
             
             
             self.tableView.reloadData()

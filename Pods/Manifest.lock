@@ -6,6 +6,7 @@ PODS:
   - Charts (3.3.0):
     - Charts/Core (= 3.3.0)
   - Charts/Core (3.3.0)
+  - Disk (0.6.3)
   - Google-Maps-iOS-Utils (2.1.0):
     - Google-Maps-iOS-Utils/Clustering (= 2.1.0)
     - Google-Maps-iOS-Utils/Geometry (= 2.1.0)
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - Alamofire
   - Alamofire-SwiftyJSON
   - Charts
+  - Disk
   - Google-Maps-iOS-Utils
   - GoogleMaps
   - lottie-ios
@@ -44,6 +46,7 @@ SPEC REPOS:
     - Alamofire
     - Alamofire-SwiftyJSON
     - Charts
+    - Disk
     - Google-Maps-iOS-Utils
     - GoogleMaps
     - lottie-ios
@@ -53,11 +56,12 @@ SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
   Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
+  Disk: 76cccb6fed1c27cd661bbdea7b117d887c2f72e5
   Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
   GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
   lottie-ios: 55a2de40418f8de2b155efaba4d4d1a025a5c570
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 9c11eda59d62cd1eb70e830dd5c714abf8b39a2b
+PODFILE CHECKSUM: f059eac05408087f2195786f05befdfbd9374be6
 
 COCOAPODS: 1.6.1

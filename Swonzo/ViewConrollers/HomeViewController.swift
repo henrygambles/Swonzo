@@ -32,6 +32,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         
 //        balanceRequest()
 //        transactionsRequest()
+        swonzoClient.transactionsRequest()
         welcome()
         checkForSavedData()
         homePieChart.delegate = self
@@ -205,7 +206,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         let sortedBill = self.bill.sorted { $0.1 < $1.1 }
                         
 //                        print(sortedDic)
-                        print(sortedBill)
+//                        print(sortedBill)
                         
 //                        sortedDic.
                         
@@ -233,7 +234,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         
                        
 //                        print(Dictionary(uniqueKeysWithValues: sortedBill))
-                        print(sortedBill)
+//                        print(sortedBill)
                         
 //                        print("ARRAY", self.merchNames)
 //                        print(self.merchAmountFormatted)

@@ -15,6 +15,7 @@ import Alamofire
 import Lottie
 import SwiftyJSON
 import Alamofire_SwiftyJSON
+import Disk
 
 class TransactionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -35,8 +36,6 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     var prices: [String] = []
     var categories: [String] = []
     var names: [String] = []
-    var latitudes: [Double] = []
-    var longitudes: [Double] = []
     
     
     let cellReuseIdentifier = "cell"
@@ -72,7 +71,19 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     
     func checkForData() {
         if self.transactions.isEmpty {
-            transactionsRequest()
+//            print(SwonzoClient().transactionsRequest()[1])
+            print("SECOND TEST")
+            do {
+            let data = try Disk.retrieve("root.json", from: .documents, as: Root.self)
+                for l in 0..<20 {
+                    print(data.transactions[l].merchant?.name ?? data.transactions[l].transactionDescription)
+                }
+            } catch {
+                print("OHHH NOOOO")
+            }
+            print("CHECKIN|g TIME")
+            populateTable()
+            print(SwonzoClient().categories)
             print("IS NIL")
         } else {
             print("IS NOT NIL")
@@ -114,118 +125,11 @@ let animationView = AnimationView(name: "scan-receipt")
         self.underView.addSubview(blurView)
     }
     
-    func transactionsRequest() {
-        
-        print("GETTING TABLE DATA...")
-       
-        Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
-                          parameters: parameters,
-                          encoding:  URLEncoding.default,
-                          headers: headers).downloadProgress { progress in
-                            print("Progress: \(Float(progress.fractionCompleted))")
-                            let progressPercent = String((progress.fractionCompleted * 100).rounded())
-                            print("OI\(progressPercent)%")
-                            }.responseJSON { response in
-                                if let error = response.error {
-                                    self.transactionsTextView.text = error.localizedDescription
-                                } else {
-                                
-                                
-                                do {
-                                    print("***********************")
-                                    print("\n  TRANSACTION TESTING\n")
-                                    print("***********************\n")
-                                    
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.calendar = Calendar(identifier: .iso8601)
-                                    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-                                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-                                    
-                                    let decoder = JSONDecoder()
-                                    decoder.dateDecodingStrategy = .formatted(dateFormatter)
-                                    
-                                    
-                                    let root = try decoder.decode(Root.self, from: response.data!)
-                                    
-                                    let numberOfTransactions = root.transactions.count
-                                    var i = numberOfTransactions
-                                  
-                                    while i > 0 {
-                                        
-                                        i = i - 1
-                                        
-                                        let name = root.transactions[i].merchant?.name
-                                        let amount = root.transactions[i].amount
-                                        let transDescription = root.transactions[i].transactionDescription
-                                        var category = String(Substring(root.transactions[i].category.rawValue))
-                                        
-                                        let transactionNumber = numberOfTransactions - i
-                                        let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
-                                        
-                                        let latitude = root.transactions[i].merchant?.address.latitude
-                                        let longitude = root.transactions[i].merchant?.address.longitude
-                                        
-                                        print(String(format: "%.0f", progressAsPercentage) + "%", "\n")
-                                        
-                                        
-                                        if category == "transport" {
-                                            category = "🚇"
-                                        } else if category == "groceries" {
-                                            category = "🛒"
-                                        } else if category == "eating_out" {
-                                            category = "🍽️"
-                                        } else if category == "entertainment" {
-                                            category = "🎉"
-                                        } else if category == "general" {
-                                            category = "⚙️"
-                                        } else if category == "shopping" {
-                                            category = "🛍️"
-                                        } else if category == "cash" {
-                                            category = "💵"
-                                        } else if category == "personal_care" {
-                                            category = "❤️"
-                                        } else if category == "family" {
-                                            category = "👪"
-                                        } else if category == "mondo" {
-                                            category = "🏦"
-                                        } else if category == "bills" {
-                                            category = "🧾"
-                                        } else if category == "expenses" {
-                                            category = "🖋️"
-                                        } else if category == "finances" {
-                                            category = "📈"
-                                        }
-                                        
-                                        
-                                        if name == nil {
-                                            let description = transDescription
-                                            self.transactions.append(description)
-                                        } else {
-                                            let description = name
-                                            self.transactions.append(description!)
-                                            self.names.append(name as! String)
-                                            self.longitudes.append(longitude as! Double)
-                                            self.latitudes.append(latitude as! Double)
-                                        }
-                                        
-                                        
-                                        //
-                                        let pounds = Double(amount) / 100
-                                        if pounds < 0 {
-                                            let money = "£" + String(format:"%.2f",abs(pounds))
-                                            self.prices.append(money)
-                                        }
-                                        else {
-                                            let money = "+ £" + String(format:"%.2f",pounds)
-                                            self.prices.append(money)
-                                        }
-                                        
-                                        
-                                        self.categories.append(category)
-                                        //                                        print(self.tableView.dataSource)
+    func populateTable() {
+  
                                         self.tableView.reloadData()
                                         
-                                    }
+                                    
                                     
                                     self.largeActivityIndicator.stopAnimating()
                                     print("\nSuccess! Populated table.")
@@ -234,14 +138,7 @@ let animationView = AnimationView(name: "scan-receipt")
                                     
 //                                    self.updateView()
                                     self.refreshControl.endRefreshing()
-//                                    self.activityIndicatorView.stopAnimating()
-                                } catch {
-                                    print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
-                                    print("Also,", error)
-                                }
-                                
-                            }
-        }
+    
     }
     
     
@@ -250,7 +147,7 @@ let animationView = AnimationView(name: "scan-receipt")
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //                let count = self.transactions.count
         //                return shouldShowLoadingCell ? count + 1 : count
-        return self.transactions.count
+        return SwonzoClient().transactions.count
     }
     
     
@@ -262,7 +159,7 @@ let animationView = AnimationView(name: "scan-receipt")
         let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! UITableViewCell
         
         // set the text from the data model
-        cell.textLabel?.text = self.transactions[indexPath.row]
+        cell.textLabel?.text = SwonzoClient().transactions[indexPath.row]
         
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refreshControl
@@ -275,11 +172,11 @@ let animationView = AnimationView(name: "scan-receipt")
         refreshControl.attributedTitle = NSAttributedString(string: "Fetching Transaction Data ...")
         
         
-        let price = prices[indexPath.row]
+        let price = SwonzoClient().prices[indexPath.row]
         
        
         
-        let category = categories[indexPath.row]
+        let category = SwonzoClient().categories[indexPath.row]
         cell.detailTextLabel?.text = price
         let label = UILabel.init(frame: CGRect(x:0,y:0,width:110,height:20))
         label.text = category + " " + price
@@ -302,7 +199,7 @@ let animationView = AnimationView(name: "scan-receipt")
     
     @objc private func refreshTransactionData(_ sender: Any) {
         // Fetch Transaction Data
-        transactionsRequest()
+        populateTable()
     }
 
 

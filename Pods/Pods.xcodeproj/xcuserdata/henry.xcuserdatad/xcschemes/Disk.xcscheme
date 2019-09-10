@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D0A200FD8D33A3B05074C9D903E2222F"
-               BuildableName = "libPods-SwonzoUITests.a"
-               BlueprintName = "Pods-SwonzoUITests"
+               BlueprintIdentifier = "E4E54FED22A8C2A634066C364AB7EFB0"
+               BuildableName = "libDisk.a"
+               BlueprintName = "Disk"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

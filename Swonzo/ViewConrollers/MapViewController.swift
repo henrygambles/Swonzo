@@ -11,6 +11,7 @@ import Alamofire_SwiftyJSON
 import UIKit
 import GoogleMaps
 import Lottie
+import Disk
 
 class MapViewController: UIViewController {
     
@@ -58,20 +59,6 @@ class MapViewController: UIViewController {
 
     func mapsRequest() {
         
-        SwonzoClient().tryToken()
-        
-        print("GETTING MAP DATA...")
-        
-        Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
-                          parameters: parameters,
-                          encoding:  URLEncoding.default,
-                          headers: headers).downloadProgress { progress in
-                            print("Progress: \(Float(progress.fractionCompleted))")
-                            self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\n\((progress.fractionCompleted * 100))%"
-                          }.responseJSON { response in
-                            if let error = response.error {
-                                self.fetchingDataTextView.text = error.localizedDescription
-                            } else {
                                 do {
                                     print("*************************")
                                     print("\n  MAP TESTING \n")
@@ -85,8 +72,8 @@ class MapViewController: UIViewController {
                                     decoder.dateDecodingStrategy = .formatted(dateFormatter)
                                     
                                     
-                                    let root = try decoder.decode(Root.self, from: response.data!)
-
+                                    let root = try Disk.retrieve("root.json", from: .documents, as: Root.self)
+                                    
                                     let numberOfTransactions = root.transactions.count
                    
                                     var i = numberOfTransactions
@@ -182,11 +169,7 @@ class MapViewController: UIViewController {
                                     
 
                                 } catch {
-                                    print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
-                                    print("Also,", error)
-                                }
-                                
-                            }
+                                    print("Error", error.localizedDescription)
         }
     }
     

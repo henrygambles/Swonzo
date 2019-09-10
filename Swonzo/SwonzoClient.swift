@@ -74,9 +74,7 @@ class SwonzoClient {
                         
                         print("\nSuccess! Got Data.")
                         finished()
-//                        print(self.transactions)
                         
-                        //                                    self.activityIndicatorView.stopAnimating()
                     } catch {
                         print("\nOh no! Error fetching json. Apparently...", error.localizedDescription)
                         print("Also,", error)

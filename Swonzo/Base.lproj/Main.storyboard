@@ -133,11 +133,7 @@
                                     <action selector="backButton:" destination="iVb-3g-Jtt" eventType="touchUpInside" id="TvK-8g-rtc"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GaM-ih-OH1">
-                                <rect key="frame" x="24" y="333" width="326" height="296"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nPe-7w-XYQ">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPe-7w-XYQ">
                                 <rect key="frame" x="16" y="54" width="343" height="288"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -148,22 +144,16 @@
                         <color key="backgroundColor" red="0.90196078430000004" green="0.29411764709999999" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="GaM-ih-OH1" firstAttribute="centerX" secondItem="drf-RL-h3p" secondAttribute="centerX" id="1rJ-AM-qd3"/>
                             <constraint firstItem="zHc-SZ-FN5" firstAttribute="trailing" secondItem="lmm-eA-LWR" secondAttribute="trailing" constant="321" id="95U-Kq-KyB"/>
-                            <constraint firstItem="GaM-ih-OH1" firstAttribute="top" secondItem="drf-RL-h3p" secondAttribute="top" constant="333" id="KNm-41-nFe"/>
-                            <constraint firstItem="zHc-SZ-FN5" firstAttribute="bottom" secondItem="GaM-ih-OH1" secondAttribute="bottom" constant="38" id="OCb-7B-xKv"/>
                             <constraint firstItem="nPe-7w-XYQ" firstAttribute="leading" secondItem="lmm-eA-LWR" secondAttribute="leading" id="ayZ-VS-BMN"/>
                             <constraint firstItem="nPe-7w-XYQ" firstAttribute="top" secondItem="lmm-eA-LWR" secondAttribute="bottom" constant="4" id="c0e-oK-2WZ"/>
                             <constraint firstItem="lmm-eA-LWR" firstAttribute="leading" secondItem="drf-RL-h3p" secondAttribute="leadingMargin" id="fUb-Aj-UGe"/>
                             <constraint firstItem="lmm-eA-LWR" firstAttribute="top" secondItem="zHc-SZ-FN5" secondAttribute="top" id="l6f-yE-nq2"/>
-                            <constraint firstItem="GaM-ih-OH1" firstAttribute="leading" secondItem="zHc-SZ-FN5" secondAttribute="leading" constant="24" id="oik-q5-cXz"/>
                             <constraint firstItem="zHc-SZ-FN5" firstAttribute="bottom" secondItem="nPe-7w-XYQ" secondAttribute="bottom" constant="325" id="vd8-0n-lCq"/>
-                            <constraint firstItem="nPe-7w-XYQ" firstAttribute="centerX" secondItem="GaM-ih-OH1" secondAttribute="centerX" id="xUR-gf-xDY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zHc-SZ-FN5"/>
                     </view>
                     <connections>
-                        <outlet property="detailedMapView" destination="GaM-ih-OH1" id="XBo-9J-bAB"/>
                         <outlet property="detailedTextView" destination="nPe-7w-XYQ" id="gpK-C2-UUW"/>
                         <segue destination="pAn-QE-wOf" kind="presentation" identifier="backToTableSegue" modalTransitionStyle="crossDissolve" id="5Xd-NB-fej"/>
                     </connections>

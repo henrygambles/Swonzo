@@ -22,6 +22,7 @@ class DetailedTransactionsViewController: UIViewController {
     }
     @IBOutlet weak var detailedTextView: UITextView!
     @IBOutlet weak var detailedMapview: UIView!
+    @IBOutlet weak var detailedTitleView: UITextView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -56,10 +57,12 @@ class DetailedTransactionsViewController: UIViewController {
             
             
             if address == nil {
-                self.detailedTextView.text = "\(title)\n\n\(amount)"
+                self.detailedTitleView.text = title
+                self.detailedTextView.text = "\(amount)"
                 print(address)
             } else {
-                self.detailedTextView.text = "\(title)\n\n\(formattedAddress!)\n\n\(amount)"
+                self.detailedTitleView.text = title
+                self.detailedTextView.text = "\(title)\(formattedAddress!)\n\n\(amount)"
                 print(address)
                 setMap(title: title, amount: amount, lat: lat!, long: long!)
             }
@@ -71,12 +74,12 @@ class DetailedTransactionsViewController: UIViewController {
     
     func setMap(title: String, amount: String, lat : Double, long : Double) {
         
-        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 250, height: 250), camera: GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0))
+        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 377, height: 460), camera: GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0))
         
         mapView.center = self.detailedMapview.center
-        mapView.layer.borderWidth = 1
-        mapView.layer.cornerRadius = 5
-        mapView.layer.borderColor = UIColor.white.cgColor
+//        mapView.layer.borderWidth = 1
+//        mapView.layer.cornerRadius = 5
+//        mapView.layer.borderColor = UIColor.white.cgColor
       
         self.view.addSubview(mapView)
         
@@ -91,7 +94,7 @@ class DetailedTransactionsViewController: UIViewController {
         }
             let position: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
             let marker = GMSMarker(position: position)
-            marker.title = "\(title): \(amount)"
+            marker.title = title
 //            marker.snippet = self.categories[x]
             marker.map = mapView
             marker.appearAnimation = .pop

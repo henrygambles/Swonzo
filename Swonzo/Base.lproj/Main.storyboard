@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="night-sky" translatesAutoresizingMaskIntoConstraints="NO" id="wyw-tO-m8l">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="251"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="720"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfD-8e-nqb">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -71,9 +71,6 @@
                                     <constraint firstItem="0Yx-V2-trJ" firstAttribute="leading" secondItem="oVu-kr-874" secondAttribute="leading" constant="30" id="fpA-W5-Emb"/>
                                 </constraints>
                             </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0yi-A6-3J9">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.078431372549019607" green="0.13725490196078433" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -94,11 +91,8 @@
                             <constraint firstItem="3sc-a9-XZo" firstAttribute="centerX" secondItem="MW9-xO-1f0" secondAttribute="centerX" id="gqz-9w-79L"/>
                             <constraint firstItem="oVu-kr-874" firstAttribute="top" secondItem="bWA-9F-NmD" secondAttribute="top" id="kGG-Zh-f3m"/>
                             <constraint firstItem="MW9-xO-1f0" firstAttribute="bottom" secondItem="Lnu-oI-u7x" secondAttribute="bottom" id="oUg-B3-mQk"/>
-                            <constraint firstItem="oVu-kr-874" firstAttribute="centerX" secondItem="0yi-A6-3J9" secondAttribute="centerX" id="t7c-xg-JW3"/>
-                            <constraint firstItem="0yi-A6-3J9" firstAttribute="top" secondItem="wyw-tO-m8l" secondAttribute="bottom" constant="64" id="ulb-sc-b8e"/>
                             <constraint firstItem="wyw-tO-m8l" firstAttribute="leading" secondItem="MW9-xO-1f0" secondAttribute="leading" id="wEE-Xg-99N"/>
                             <constraint firstAttribute="trailing" secondItem="MW9-xO-1f0" secondAttribute="trailing" id="xij-2L-OcD"/>
-                            <constraint firstItem="oVu-kr-874" firstAttribute="centerY" secondItem="0yi-A6-3J9" secondAttribute="centerY" id="zkg-2d-eDf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lnu-oI-u7x"/>
                     </view>
@@ -106,7 +100,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backdrop" destination="3sc-a9-XZo" id="4b4-cs-hcz"/>
-                        <outlet property="largeActivityIndicator" destination="0yi-A6-3J9" id="ZP8-u6-7ru"/>
                         <outlet property="overView" destination="oVu-kr-874" id="j06-Qq-O1v"/>
                         <outlet property="tableView" destination="MW9-xO-1f0" id="Ang-vb-bUD"/>
                         <outlet property="transactionsTextView" destination="0Yx-V2-trJ" id="Edb-Z2-lws"/>
@@ -134,29 +127,37 @@
                                     <action selector="backButton:" destination="iVb-3g-Jtt" eventType="touchUpInside" id="TvK-8g-rtc"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPe-7w-XYQ">
-                                <rect key="frame" x="16" y="68" width="343" height="274"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPe-7w-XYQ">
+                                <rect key="frame" x="16" y="133" width="343" height="209"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="23"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dRq-dc-AlO">
-                                <rect key="frame" x="67" y="368" width="240" height="218"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRq-dc-AlO">
+                                <rect key="frame" x="107" y="503" width="161" height="161"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="20e-er-UMQ">
+                                <rect key="frame" x="16" y="60" width="317" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="40"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.90196078430000004" green="0.29411764709999999" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dRq-dc-AlO" firstAttribute="top" secondItem="nPe-7w-XYQ" secondAttribute="bottom" constant="26" id="0Ax-tv-YI4"/>
+                            <constraint firstItem="dRq-dc-AlO" firstAttribute="top" secondItem="nPe-7w-XYQ" secondAttribute="bottom" constant="161" id="0Ax-tv-YI4"/>
                             <constraint firstItem="dRq-dc-AlO" firstAttribute="centerX" secondItem="nPe-7w-XYQ" secondAttribute="centerX" id="73K-BF-9EB"/>
                             <constraint firstItem="zHc-SZ-FN5" firstAttribute="trailing" secondItem="lmm-eA-LWR" secondAttribute="trailing" constant="304" id="95U-Kq-KyB"/>
-                            <constraint firstItem="zHc-SZ-FN5" firstAttribute="bottom" secondItem="dRq-dc-AlO" secondAttribute="bottom" constant="81" id="AO4-QX-GLb"/>
+                            <constraint firstItem="zHc-SZ-FN5" firstAttribute="bottom" secondItem="dRq-dc-AlO" secondAttribute="bottom" constant="3" id="AO4-QX-GLb"/>
                             <constraint firstItem="nPe-7w-XYQ" firstAttribute="leading" secondItem="lmm-eA-LWR" secondAttribute="leading" id="ayZ-VS-BMN"/>
-                            <constraint firstItem="nPe-7w-XYQ" firstAttribute="top" secondItem="lmm-eA-LWR" secondAttribute="bottom" constant="8" id="c0e-oK-2WZ"/>
+                            <constraint firstItem="nPe-7w-XYQ" firstAttribute="top" secondItem="lmm-eA-LWR" secondAttribute="bottom" constant="75" id="c0e-oK-2WZ"/>
                             <constraint firstItem="lmm-eA-LWR" firstAttribute="leading" secondItem="drf-RL-h3p" secondAttribute="leadingMargin" id="fUb-Aj-UGe"/>
-                            <constraint firstItem="dRq-dc-AlO" firstAttribute="leading" secondItem="zHc-SZ-FN5" secondAttribute="leading" constant="67" id="h4d-JG-6JG"/>
+                            <constraint firstItem="dRq-dc-AlO" firstAttribute="leading" secondItem="zHc-SZ-FN5" secondAttribute="leading" constant="107" id="h4d-JG-6JG"/>
                             <constraint firstItem="lmm-eA-LWR" firstAttribute="top" secondItem="zHc-SZ-FN5" secondAttribute="top" id="l6f-yE-nq2"/>
                             <constraint firstItem="zHc-SZ-FN5" firstAttribute="bottom" secondItem="nPe-7w-XYQ" secondAttribute="bottom" constant="325" id="vd8-0n-lCq"/>
                             <constraint firstItem="nPe-7w-XYQ" firstAttribute="trailing" secondItem="drf-RL-h3p" secondAttribute="trailingMargin" id="xsD-K5-yFh"/>
@@ -166,6 +167,7 @@
                     <connections>
                         <outlet property="detailedMapview" destination="dRq-dc-AlO" id="YgC-kK-6vb"/>
                         <outlet property="detailedTextView" destination="nPe-7w-XYQ" id="gpK-C2-UUW"/>
+                        <outlet property="detailedTitleView" destination="20e-er-UMQ" id="kr4-cz-e0I"/>
                         <segue destination="pAn-QE-wOf" kind="presentation" identifier="backToTableSegue" modalTransitionStyle="crossDissolve" id="5Xd-NB-fej"/>
                     </connections>
                 </viewController>

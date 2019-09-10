@@ -32,7 +32,9 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         
 //        balanceRequest()
 //        transactionsRequest()
-//        swonzoClient.transactionsRequest()
+        swonzoClient.transactionsRequest(){
+            print("GOT DATA")
+        }
         welcome()
         checkForSavedData()
         homePieChart.delegate = self

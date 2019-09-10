@@ -18,9 +18,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     private let swonzoClient = SwonzoClient()
     private let swonzoLogic = SwonzoLogic()
 
-    @IBOutlet weak var thirdBlurView: UIView!
     @IBOutlet weak var homeView: UITextView!
-    @IBOutlet weak var balanceView: UITextView!
     @IBOutlet weak var logoutButtonView: UIButton!
     @IBOutlet weak var homePieChart: PieChartView!
     @IBOutlet weak var homeBarChart: BarChartView!
@@ -41,6 +39,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
 //        setHomeBlurView()
 //        pieChartAnimation()
     }
+    
     let name = UserDefaults.standard.string(forKey: "FirstName")
     
     func checkForSavedData() {
@@ -69,7 +68,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
 
     var instancesOfMerchants : [String] = []
     var instacesOfCategories : [String] = []
-    var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo", "Bills"]
+    var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo", "Bills", "Expenses", "Finances"]
     var categoryCount : [Int] = []
     var merchantTransactions : [Int] = []
     
@@ -185,6 +184,8 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Holidays"}.count)
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Monzo"}.count)
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Bills"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Expenses"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Finances"}.count)
                  
                         print("\nSuccess! Populated pie chart.\n")
                         
@@ -436,14 +437,6 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     
     typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
     
-    func setHomeBlurView() {
-        let blurView = UIVisualEffectView()
-        blurView.frame = view.frame
-        blurView.effect = UIBlurEffect(style: .regular)
-        thirdBlurView.addSubview(blurView)
-    }
-    
-
     @IBAction func logoutButton(_ sender: Any) {
         UserDefaults.standard.set(nil, forKey: "CategoryCount")
         performSegue(withIdentifier: "logoutSegue", sender: nil)

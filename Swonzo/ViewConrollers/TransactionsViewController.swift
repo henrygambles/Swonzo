@@ -47,7 +47,8 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
 
         startLoadingCircleAnimation()
-        transactionsRequest()
+//        transactionsRequest()
+        checkForData()
         setHomeBlurView()
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
@@ -59,6 +60,25 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self as UITableViewDelegate
         tableView.dataSource = self as UITableViewDataSource
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showTableDetailSegue" {
+            let vc = segue.destination as! TableDetailedViewController
+            vc.number = (sender as? Int)!
+//            vc.name = (sender as? String)!
+        }
+    }
+    
+    func checkForData() {
+        if self.transactions.isEmpty {
+            transactionsRequest()
+            print("IS NIL")
+        } else {
+            print("IS NOT NIL")
+            self.overView.isHidden = true
+            self.animationView.removeFromSuperview()
+        }
     }
     
 
@@ -153,9 +173,9 @@ let animationView = AnimationView(name: "scan-receipt")
                                         } else if category == "groceries" {
                                             category = "🛒"
                                         } else if category == "eating_out" {
-                                            category = "🍔"
+                                            category = "🍽️"
                                         } else if category == "entertainment" {
-                                            category = "🎥"
+                                            category = "🎉"
                                         } else if category == "general" {
                                             category = "⚙️"
                                         } else if category == "shopping" {
@@ -165,11 +185,15 @@ let animationView = AnimationView(name: "scan-receipt")
                                         } else if category == "personal_care" {
                                             category = "❤️"
                                         } else if category == "family" {
-                                            category = "❤️"
+                                            category = "👪"
                                         } else if category == "mondo" {
                                             category = "🏦"
                                         } else if category == "bills" {
                                             category = "🧾"
+                                        } else if category == "expenses" {
+                                            category = "🖋️"
+                                        } else if category == "finances" {
+                                            category = "📈"
                                         }
                                         
                                         
@@ -271,6 +295,7 @@ let animationView = AnimationView(name: "scan-receipt")
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You tapped cell number \(indexPath.row).")
+        self.performSegue(withIdentifier: "showTableDetailSegue", sender: indexPath.row)
         
 
 }

@@ -111,11 +111,44 @@
                         <outlet property="tableView" destination="MW9-xO-1f0" id="Ang-vb-bUD"/>
                         <outlet property="transactionsTextView" destination="0Yx-V2-trJ" id="Edb-Z2-lws"/>
                         <outlet property="underView" destination="GfD-8e-nqb" id="uVr-pS-22u"/>
+                        <segue destination="iVb-3g-Jtt" kind="showDetail" identifier="showTableDetailSegue" id="LdK-FW-EW1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRz-4t-W9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-983.20000000000005" y="-436.73163418290858"/>
+        </scene>
+        <!--Table Detailed View Controller-->
+        <scene sceneID="ReJ-BT-mHF">
+            <objects>
+                <viewController id="iVb-3g-Jtt" customClass="TableDetailedViewController" customModule="Swonzo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="drf-RL-h3p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmm-eA-LWR">
+                                <rect key="frame" x="16" y="20" width="38" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="iVb-3g-Jtt" eventType="touchUpInside" id="TvK-8g-rtc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zHc-SZ-FN5" firstAttribute="trailing" secondItem="lmm-eA-LWR" secondAttribute="trailing" constant="321" id="95U-Kq-KyB"/>
+                            <constraint firstItem="lmm-eA-LWR" firstAttribute="leading" secondItem="drf-RL-h3p" secondAttribute="leadingMargin" id="fUb-Aj-UGe"/>
+                            <constraint firstItem="lmm-eA-LWR" firstAttribute="top" secondItem="zHc-SZ-FN5" secondAttribute="top" id="l6f-yE-nq2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zHc-SZ-FN5"/>
+                    </view>
+                    <connections>
+                        <segue destination="dIj-7C-6L1" kind="show" identifier="backToTableSegue" id="Va8-Z8-1yd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4jZ-2f-YxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-170.40000000000001" y="-437.63118440779613"/>
         </scene>
         <!--Maps-->
         <scene sceneID="G5o-6u-FvL">
@@ -439,8 +472,10 @@
         <image name="transactions-tab-bar" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="LdK-FW-EW1"/>
         <segue reference="BLl-cc-F8T"/>
         <segue reference="p3Y-X9-tHq"/>
+        <segue reference="Va8-Z8-1yd"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.97254901960784312" green="0.4392156862745098" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -62,7 +62,7 @@ class DetailedTransactionsViewController: UIViewController {
                 print(address)
             } else {
                 self.detailedTitleView.text = title
-                self.detailedTextView.text = "\(title)\(formattedAddress!)\n\n\(amount)"
+                self.detailedTextView.text = "\(formattedAddress!)\n\n\(amount)"
                 print(address)
                 setMap(title: title, amount: amount, lat: lat!, long: long!)
             }

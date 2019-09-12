@@ -306,6 +306,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Merchants")
 //        chartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
         chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
+        chartDataSet.valueColors = [UIColor.white]
 //        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,gold, c1, c2, c3, c4]
         
         let chartData = BarChartData()
@@ -319,7 +320,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         self.homeBarChart.xAxis.labelTextColor = UIColor.white
         
         self.homeBarChart.drawGridBackgroundEnabled = false
-        self.homeBarChart.drawValueAboveBarEnabled = false
+//        self.homeBarChart.drawValueAboveBarEnabled = false
         self.homeBarChart.legend.enabled = false
 //        //background color
         self.homeBarChart.backgroundColor = UIColor.clear

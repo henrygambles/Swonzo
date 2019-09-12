@@ -312,11 +312,14 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         chartData.addDataSet(chartDataSet)
         homeBarChart.data = chartData
         homeBarChart.noDataText = ""
+        homeBarChart.leftAxis.labelTextColor = UIColor.white
+        homeBarChart.rightAxis.labelTextColor = UIColor.white
+        homeBarChart.tintColor = UIColor.white
         self.homeBarChart.gridBackgroundColor = UIColor.clear
         self.homeBarChart.xAxis.labelTextColor = UIColor.white
         
         self.homeBarChart.drawGridBackgroundEnabled = false
-//
+        self.homeBarChart.drawValueAboveBarEnabled = false
         self.homeBarChart.legend.enabled = false
 //        //background color
         self.homeBarChart.backgroundColor = UIColor.clear

@@ -39,7 +39,7 @@ class DetailedTransactionsViewController: UIViewController {
     
     func setText() {
         
-        let index = tableNumber-1
+        let index = tableNumber
         
         do {
              var data = try Disk.retrieve("root.json", from: .documents, as: Root.self)

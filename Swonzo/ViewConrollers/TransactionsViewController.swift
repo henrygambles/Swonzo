@@ -97,8 +97,10 @@ let animationView = AnimationView(name: "scan-receipt")
         do {
             var data = try Disk.retrieve("root.json", from: .documents, as: Root.self)
             
-            var numberOfTransactions = data.transactions.count
+            let numberOfTransactions = data.transactions.count-1
             var i = numberOfTransactions
+            print("TESSSST")
+            print(data.transactions[numberOfTransactions].transactionDescription)
             
             while i > 0 {
                 

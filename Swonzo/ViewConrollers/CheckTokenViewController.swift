@@ -34,6 +34,9 @@ class CheckTokenViewController: UIViewController {
             if response.hasPrefix("acc") {
                 UserDefaults.standard.set(response, forKey: "AccountID")
                 print("Account ID \(response) saved.")
+                SwonzoClient().transactionsRequest {
+                    print("FINISHED MAKING DISK REQUEST FROM TOKEN CHECK")
+                }
                 self.performSegue(withIdentifier: "goodTokenSegue", sender: nil)
             }
             else {

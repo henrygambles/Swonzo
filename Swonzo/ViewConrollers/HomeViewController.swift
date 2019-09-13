@@ -31,7 +31,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         super.viewDidLoad()
         
 //        balanceRequest()
-        transactionsRequest()
+//        transactionsRequest()
         swonzoClient.transactionsRequest(){}
         welcome()
         checkForSavedData()

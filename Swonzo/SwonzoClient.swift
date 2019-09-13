@@ -57,18 +57,28 @@ class SwonzoClient {
                         let decoder = JSONDecoder()
                         decoder.dateDecodingStrategy = .formatted(dateFormatter)
                         
+//                        print(response)
                         
                         let root = try decoder.decode(Root.self, from: response.data!)
                         
+                        print(root.transactions[93].transactionDescription)
+                        
+                        do {
                         try Disk.save(root, to: .documents, as: "root.json")
                         var retrieved = try Disk.retrieve("root.json", from: .documents, as: Root.self)
                         
+                        } catch {
+                            print("\nERROR SAVING TO DISK ->", error.localizedDescription)
+                            print("\nERROR SAVING TO DISK ->", error)
+                        }
                         print("\nSuccess! Saved Data to Disk.")
                         finished()
                         
+                    
+                        
                     } catch {
-                        print("\nOh no! Error fetching json. Apparently...", error.localizedDescription)
-                        print("Also,", error)
+                        print("\nERROR FETCHING JSON ->", error.localizedDescription)
+                        print("\nERROR FETCHING JSON ->", error)
                     }
                     
                 }

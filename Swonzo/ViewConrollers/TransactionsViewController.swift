@@ -25,6 +25,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var backdrop: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var transactionsTextView: UITextView!
+    @IBOutlet weak var overView: UIView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -44,20 +45,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
 
         startLoadingCircleAnimation()
-//        transactionsRequest()
         checkForData()
         setHomeBlurView()
         
-        // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-        
-        // (optional) include this line if you want to remove the extra empty cell divider lines
-        // self.tableView.tableFooterView = UIView()
-        
-        // This view controller itself will provide the delegate methods and row data for the table view.
         tableView.delegate = self as UITableViewDelegate
         tableView.dataSource = self as UITableViewDataSource
-
     }
     
 //    override func viewWillAppear(_: Bool) {
@@ -67,7 +60,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showTableDetailSegue" {
             let vc = segue.destination as! DetailedTransactionsViewController
-            vc.number = (sender as? Int)!
+            vc.tableNumber = (sender as? Int)!
 //            vc.name = (sender as? String)!
         }
     }
@@ -75,28 +68,12 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     func checkForData() {
         if self.transactions.isEmpty {
             populateTable()
-            print(SwonzoClient().categories)
         } else {
             self.overView.isHidden = true
             self.animationView.removeFromSuperview()
         }
     }
-    
 
-    @IBOutlet weak var overView: UIView!
-    @IBOutlet weak var largeActivityIndicator: UIActivityIndicatorView!
-    
-    
-
-    
-//    func activityIndicator() {
-//        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-//        indicator.style = UIActivityIndicatorView.Style.gray
-//        indicator.center = self.overView.center
-////        self.view.superview!.addSubview(indicator)
-//        self.tableView.bringSubviewToFront(indicator)
-//    }
-    
 let animationView = AnimationView(name: "scan-receipt")
     
     func startLoadingCircleAnimation() {
@@ -120,7 +97,7 @@ let animationView = AnimationView(name: "scan-receipt")
         do {
             var data = try Disk.retrieve("root.json", from: .documents, as: Root.self)
             
-            let numberOfTransactions = data.transactions.count
+            var numberOfTransactions = data.transactions.count
             var i = numberOfTransactions
             
             while i > 0 {
@@ -132,11 +109,7 @@ let animationView = AnimationView(name: "scan-receipt")
                 let transDescription = data.transactions[i].transactionDescription
                 var category = data.transactions[i].category
                 
-                let transactionNumber = numberOfTransactions - i
-//                let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
-//
-//                print(String(format: "%.0f", progressAsPercentage) + "%", "\n")
-                
+                var transactionNumber = numberOfTransactions - i
                 
                 if category == "transport" {
                     category = "🚇"
@@ -166,7 +139,6 @@ let animationView = AnimationView(name: "scan-receipt")
                     category = "📈"
                 }
                 
-                
                 if name == nil {
                     let description = transDescription
                     self.transactions.append(description)
@@ -177,7 +149,6 @@ let animationView = AnimationView(name: "scan-receipt")
                 }
                 
                 
-                //
                 let pounds = Double(amount) / 100
                 if pounds < 0 {
                     let money = "£" + String(format:"%.2f",abs(pounds))
@@ -199,8 +170,6 @@ let animationView = AnimationView(name: "scan-receipt")
             
             self.tableView.reloadData()
             
-            
-            
             print("\nSuccess! Populated table.")
             self.overView.isHidden = true
             self.animationView.removeFromSuperview()
@@ -221,8 +190,6 @@ let animationView = AnimationView(name: "scan-receipt")
     
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //                let count = self.transactions.count
-        //                return shouldShowLoadingCell ? count + 1 : count
         return self.transactions.count
     }
     
@@ -258,9 +225,9 @@ let animationView = AnimationView(name: "scan-receipt")
         label.text = category + " " + price
         cell.accessoryView = label
         
-//        if label.text("+") {
-//            cell.label?.textColor = UIColor.green
-//        }
+        if label.text?.contains("+") == true {
+            label.textColor = UIColor.green
+        }
         
         return cell
     }

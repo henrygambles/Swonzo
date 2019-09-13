@@ -105,9 +105,9 @@ class MapViewController: UIViewController {
                                         } else if category == "groceries" {
                                             category = "🛒"
                                         } else if category == "eating_out" {
-                                            category = "🍔"
+                                            category = "🍽️"
                                         } else if category == "entertainment" {
-                                            category = "🎥"
+                                            category = "🎉"
                                         } else if category == "general" {
                                             category = "⚙️"
                                         } else if category == "shopping" {
@@ -118,8 +118,14 @@ class MapViewController: UIViewController {
                                             category = "❤️"
                                         } else if category == "family" {
                                             category = "👪"
-                                        } else if category == "holidays" {
-                                            category = "🧳"
+                                        } else if category == "mondo" {
+                                            category = "🏦"
+                                        } else if category == "bills" {
+                                            category = "🧾"
+                                        } else if category == "expenses" {
+                                            category = "🖋️"
+                                        } else if category == "finances" {
+                                            category = "📈"
                                         }
                                         
                                         if name == nil {

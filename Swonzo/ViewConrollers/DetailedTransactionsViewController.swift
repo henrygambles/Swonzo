@@ -14,12 +14,9 @@ class DetailedTransactionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        print(number)
         setText()
-        
-        // Do any additional setup after loading the view.
     }
+    
     @IBOutlet weak var detailedTextView: UITextView!
     @IBOutlet weak var detailedMapview: UIView!
     @IBOutlet weak var detailedTitleView: UITextView!
@@ -31,7 +28,7 @@ class DetailedTransactionsViewController: UIViewController {
     @IBAction func backButton(_ sender: Any) {
         self.performSegue(withIdentifier: "backToTableSegue", sender: nil)
     }
-    var number : Int = 0
+    var tableNumber : Int = 0
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "backToTableSegue" {
@@ -42,7 +39,7 @@ class DetailedTransactionsViewController: UIViewController {
     
     func setText() {
         
-        let index = number-1
+        let index = tableNumber-1
         
         do {
              var data = try Disk.retrieve("root.json", from: .documents, as: Root.self)
@@ -75,12 +72,7 @@ class DetailedTransactionsViewController: UIViewController {
     func setMap(title: String, amount: String, lat : Double, long : Double) {
         
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 377, height: 460), camera: GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0))
-        
         mapView.center = self.detailedMapview.center
-//        mapView.layer.borderWidth = 1
-//        mapView.layer.cornerRadius = 5
-//        mapView.layer.borderColor = UIColor.white.cgColor
-      
         self.view.addSubview(mapView)
         
         do {
@@ -95,7 +87,6 @@ class DetailedTransactionsViewController: UIViewController {
             let position: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
             let marker = GMSMarker(position: position)
             marker.title = title
-//            marker.snippet = self.categories[x]
             marker.map = mapView
             marker.appearAnimation = .pop
             mapView.selectedMarker = marker

@@ -26,9 +26,6 @@ class SwonzoLogic {
         let moneyAsString = "£" + String(format:"%.2f", abs(pounds))
         return moneyAsString
     }
-    
-    
-    
 }
 
 

@@ -15,7 +15,6 @@ import Disk
 var token : String = UserDefaults.standard.string(forKey: "Token") ?? "No Token"
 var accountId : String = UserDefaults.standard.string(forKey: "AccountID") ?? "No ID"
 
-
 var headers: HTTPHeaders = [
     "Authorization": "Bearer " + token
 ]
@@ -27,14 +26,6 @@ var parameters: Parameters = [
 class SwonzoClient {
 
     typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
- 
-    
-    
-    var transactions: [String] = []
-    var prices: [String] = []
-    var categories: [String] = []
-    var names: [String] = []
-    
     typealias CompletionHandler = (_ success:Bool) -> Void
     
     func transactionsRequest(finished: @escaping () -> Void) {
@@ -72,7 +63,7 @@ class SwonzoClient {
                         try Disk.save(root, to: .documents, as: "root.json")
                         var retrieved = try Disk.retrieve("root.json", from: .documents, as: Root.self)
                         
-                        print("\nSuccess! Got Data.")
+                        print("\nSuccess! Saved Data to Disk.")
                         finished()
                         
                     } catch {
@@ -83,11 +74,6 @@ class SwonzoClient {
                 }
         }
     }
-    
-    
-    
-    
-    
     
     func tryToken() {
         getAccountInfo() { response in

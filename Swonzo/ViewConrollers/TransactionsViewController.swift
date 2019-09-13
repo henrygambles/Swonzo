@@ -36,10 +36,7 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
     var categories: [String] = []
     var names: [String] = []
     
-    
     let cellReuseIdentifier = "cell"
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,15 +50,10 @@ class TransactionsViewController: UIViewController, UITableViewDelegate, UITable
         tableView.dataSource = self as UITableViewDataSource
     }
     
-//    override func viewWillAppear(_: Bool) {
-//        BaseTabBarController().tabBar.isTranslucent = false
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showTableDetailSegue" {
             let vc = segue.destination as! DetailedTransactionsViewController
             vc.tableNumber = (sender as? Int)!
-//            vc.name = (sender as? String)!
         }
     }
     
@@ -97,21 +89,18 @@ let animationView = AnimationView(name: "scan-receipt")
         do {
             var data = try Disk.retrieve("root.json", from: .documents, as: Root.self)
             
-            let numberOfTransactions = data.transactions.count-1
-            var i = numberOfTransactions
+            var indexOfTransactions = data.transactions.count-1
+            var i = indexOfTransactions
             print("TESSSST")
-            print(data.transactions[numberOfTransactions].transactionDescription)
+            print(data.transactions[indexOfTransactions].amount)
+            print(data.transactions[indexOfTransactions].notes)
             
-            while i > 0 {
-                
-                i = i - 1
+            while i >= 0 {
                 
                 let name = data.transactions[i].merchant?.name
                 let amount = data.transactions[i].amount
                 let transDescription = data.transactions[i].transactionDescription
                 var category = data.transactions[i].category
-                
-                var transactionNumber = numberOfTransactions - i
                 
                 if category == "transport" {
                     category = "🚇"
@@ -164,6 +153,8 @@ let animationView = AnimationView(name: "scan-receipt")
                 
                 self.categories.append(category)
                 
+                i = i - 1
+                
             }
 //            for l in 0..<20 {
 //                print(data.transactions[l].merchant?.name ?? data.transactions[l].transactionDescription)
@@ -186,16 +177,10 @@ let animationView = AnimationView(name: "scan-receipt")
     
     }
     
-    
-  
-    
-    
     // number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.transactions.count
     }
-    
-    
     
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -248,6 +233,7 @@ let animationView = AnimationView(name: "scan-receipt")
         print("REFRESHING...")
         SwonzoClient().transactionsRequest {
             self.populateTable()
+            DispatchQueue.main.async { self.tableView.reloadData() }
             print("TABLE REFREHED")
         }
         

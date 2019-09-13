@@ -30,6 +30,9 @@ class SwonzoClient {
     
     func transactionsRequest(finished: @escaping () -> Void) {
         
+        print("***********************")
+        print("\n  CLIENT DISK TESTING\n")
+        print("***********************\n")
         print("GETTING TRANSACTION DATA FOR DISK...")
         
         Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
@@ -37,17 +40,14 @@ class SwonzoClient {
                           encoding:  URLEncoding.default,
                           headers: headers).downloadProgress { progress in
                             let progressPercent = (progress.fractionCompleted * 100)
-                            print("\(progressPercent)%")
+//                            print("\(progressPercent)%")
             }.responseJSON { response in
                 if let error = response.error {
-                    
+                    print("ALAMOFIRE ERROR ->", error, error.localizedDescription)
                 } else {
                     
                     
                     do {
-                        print("***********************")
-                        print("\n  CLIENT DISK TESTING\n")
-                        print("***********************\n")
                         
                         let dateFormatter = DateFormatter()
                         dateFormatter.calendar = Calendar(identifier: .iso8601)
@@ -59,22 +59,18 @@ class SwonzoClient {
                         
 //                        print(response)
                         
-                        let root = try decoder.decode(Root.self, from: response.data!)
-                        
-                        print(root.transactions[93].transactionDescription)
-                        
-                        do {
-                        try Disk.save(root, to: .documents, as: "root.json")
-                        var retrieved = try Disk.retrieve("root.json", from: .documents, as: Root.self)
-                        
-                        } catch {
-                            print("\nERROR SAVING TO DISK ->", error.localizedDescription)
-                            print("\nERROR SAVING TO DISK ->", error)
+                        if response.description.contains("transactions") {
+                            let root = try decoder.decode(Root.self, from: response.data!)
+                            try Disk.save(root, to: .documents, as: "root.json")
+                            var retrieved = try Disk.retrieve("root.json", from: .documents, as: Root.self)
+                            print("\nSUCCESS - SAVED DATA TO DISK")
+                            finished()
+                        } else {
+                             print("\nERROR SAVING TO DISK!")
+                            print("JSON RESPONSE ->", response)
+                           
                         }
-                        print("\nSuccess! Saved Data to Disk.")
-                        finished()
                         
-                    
                         
                     } catch {
                         print("\nERROR FETCHING JSON ->", error.localizedDescription)

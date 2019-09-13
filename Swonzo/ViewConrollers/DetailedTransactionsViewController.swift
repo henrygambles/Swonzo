@@ -14,7 +14,7 @@ class DetailedTransactionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setText()
+        showDetail()
     }
     
     @IBOutlet weak var detailedTextView: UITextView!
@@ -37,7 +37,7 @@ class DetailedTransactionsViewController: UIViewController {
         }
     }
     
-    func setText() {
+    func showDetail() {
         
         let index = tableNumber
         
@@ -50,18 +50,16 @@ class DetailedTransactionsViewController: UIViewController {
              let lat = data.transactions[index].merchant?.address.latitude
              let long = data.transactions[index].merchant?.address.longitude
              let formattedAddress = data.transactions[index].merchant?.address.formatted
-            let amount = SwonzoLogic().jsonSpendTodayToMoney(spendToday: Double(data.transactions[index].amount))
+             let amount = SwonzoLogic().jsonSpendTodayToMoney(spendToday: Double(data.transactions[index].amount))
             
             
             if address == nil {
                 self.detailedTitleView.text = title
                 self.detailedTextView.text = "\(amount)"
-                print(address)
             } else {
                 self.detailedTitleView.text = title
                 self.detailedTextView.text = "\(formattedAddress!)\n\n\(amount)"
-                print(address)
-                setMap(title: title, amount: amount, lat: lat!, long: long!)
+                setMap(title: title, lat: lat!, long: long!)
             }
         } catch {
             print("Oh no")
@@ -69,7 +67,7 @@ class DetailedTransactionsViewController: UIViewController {
         
     }
     
-    func setMap(title: String, amount: String, lat : Double, long : Double) {
+    func setMap(title: String, lat : Double, long : Double) {
         
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 377, height: 460), camera: GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0))
         mapView.center = self.detailedMapview.center

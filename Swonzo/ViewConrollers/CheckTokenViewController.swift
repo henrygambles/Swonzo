@@ -9,7 +9,6 @@
 import UIKit
 import Lottie
 
-
 class CheckTokenViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -28,10 +27,25 @@ class CheckTokenViewController: UIViewController {
     
     
     
-    
-    
-    
-    
+//    @objc func lol() {
+//        NSString.self *customURL = "iOSDevTips://";
+//        
+//        if ([[UIApplication, SecTrustedApplication]
+//            canOpenURL:[NSURL URLWithString:customURL]])
+//        {
+//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:customURL]];
+//        }
+//        else
+//        {
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"URL error"
+//                message:[NSString stringWithFormat:
+//                @"No custom URL defined for %@", customURL]
+//                delegate:self cancelButtonTitle:@"Ok"
+//                otherButtonTitles:nil];
+//            [alert show];
+//        }
+//    }
+//    
     
     
     
@@ -77,3 +91,4 @@ class BaseTabBarController: UITabBarController {
         selectedIndex = defaultIndex
     }
 }
+

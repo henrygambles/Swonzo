@@ -54,10 +54,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Loading Transaction Data" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yx-V2-trJ">
-                                        <rect key="frame" x="30" y="436" width="323" height="153"/>
+                                        <rect key="frame" x="30" y="436" width="323" height="72"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="153" id="WWi-Qc-fDv"/>
+                                            <constraint firstAttribute="height" constant="72" id="WWi-Qc-fDv"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="25"/>
@@ -67,7 +67,7 @@
                                 <color key="backgroundColor" red="0.90196078431372551" green="0.29411764705882354" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="0Yx-V2-trJ" secondAttribute="trailing" constant="22" id="b9w-e4-vw2"/>
-                                    <constraint firstAttribute="bottom" secondItem="0Yx-V2-trJ" secondAttribute="bottom" constant="78" id="dm7-40-X0e"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Yx-V2-trJ" secondAttribute="bottom" constant="159" id="dm7-40-X0e"/>
                                     <constraint firstItem="0Yx-V2-trJ" firstAttribute="leading" secondItem="oVu-kr-874" secondAttribute="leading" constant="30" id="fpA-W5-Emb"/>
                                 </constraints>
                             </view>
@@ -128,7 +128,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPe-7w-XYQ">
-                                <rect key="frame" x="16" y="133" width="343" height="209"/>
+                                <rect key="frame" x="16" y="192" width="343" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="23"/>
@@ -138,8 +138,8 @@
                                 <rect key="frame" x="107" y="503" width="161" height="161"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="20e-er-UMQ">
-                                <rect key="frame" x="16" y="71" width="317" height="84"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Title" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20e-er-UMQ">
+                                <rect key="frame" x="16" y="71" width="317" height="113"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -155,7 +155,7 @@
                             <constraint firstItem="zHc-SZ-FN5" firstAttribute="trailing" secondItem="lmm-eA-LWR" secondAttribute="trailing" constant="304" id="95U-Kq-KyB"/>
                             <constraint firstItem="zHc-SZ-FN5" firstAttribute="bottom" secondItem="dRq-dc-AlO" secondAttribute="bottom" constant="3" id="AO4-QX-GLb"/>
                             <constraint firstItem="nPe-7w-XYQ" firstAttribute="leading" secondItem="lmm-eA-LWR" secondAttribute="leading" id="ayZ-VS-BMN"/>
-                            <constraint firstItem="nPe-7w-XYQ" firstAttribute="top" secondItem="lmm-eA-LWR" secondAttribute="bottom" constant="74" id="c0e-oK-2WZ"/>
+                            <constraint firstItem="nPe-7w-XYQ" firstAttribute="top" secondItem="lmm-eA-LWR" secondAttribute="bottom" constant="133" id="c0e-oK-2WZ"/>
                             <constraint firstItem="lmm-eA-LWR" firstAttribute="leading" secondItem="drf-RL-h3p" secondAttribute="leadingMargin" id="fUb-Aj-UGe"/>
                             <constraint firstItem="dRq-dc-AlO" firstAttribute="leading" secondItem="zHc-SZ-FN5" secondAttribute="leading" constant="107" id="h4d-JG-6JG"/>
                             <constraint firstItem="lmm-eA-LWR" firstAttribute="top" secondItem="zHc-SZ-FN5" secondAttribute="top" constant="-1" id="l6f-yE-nq2"/>
@@ -497,7 +497,7 @@
         <image name="transactions-tab-bar" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BLl-cc-F8T"/>
+        <segue reference="5Xd-NB-fej"/>
         <segue reference="p3Y-X9-tHq"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.97254901960784312" green="0.4392156862745098" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

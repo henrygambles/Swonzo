@@ -69,7 +69,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
 
     var instancesOfMerchants : [String] = []
     var instacesOfCategories : [String] = []
-    var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo", "Bills", "Expenses", "Finances"]
+    var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo", "Bills", "Expenses", "Finances", "Holidays"]
     var categoryCount : [Int] = []
     var merchantTransactions : [Int] = []
     
@@ -133,17 +133,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         
                         while i > 0 {
                             
-//                            let earlyDate = Calendar.current.date(
-//                                byAdding: .month,
-//                                value: -6,
-//                                to: Date())
-//
-//                            var created = root.transactions[i].created
-//                            var date = dateFormatter.date(from: created)
-                            
                             i = i - 1
-                            
-//                            if date! > earlyDate! {
                             
                             var category = root.transactions[i].category
                             var merchantName = String(root.transactions[i].merchant?.name ?? "NOMERCH")
@@ -169,7 +159,6 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                                 self.instancesOfMerchants.append(merchantName)
                                 self.merchantTransactions.append(amount)
                             }
-//                            }
                             
                         }
                         
@@ -187,6 +176,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Bills"}.count)
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Expenses"}.count)
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Finances"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Holidays"}.count)
                  
                         print("\nSuccess! Populated pie chart.\n")
                         

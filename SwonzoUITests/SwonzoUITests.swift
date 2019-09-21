@@ -31,47 +31,47 @@ class SwonzoUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    
-    func testLogIn() {
-        app.buttons["Log In"].tap()
-        sleep(1)
-    }
-    
-    func testTapHomeTab() {
-        //        app.textFields["tokenTextField"].typeText("xyztwh4ththwt")
-        app.buttons["Log In"].tap()
-        app.tabBars.buttons["Home"].tap()
-        sleep(2)
-        //        XCTAssert(app.navigationBars["Home"].exists)
-    }
-    
-    func testTapMapsTab() {
-        app.buttons["Log In"].tap()
-        app.tabBars.buttons["Maps"].tap()
-        sleep(1)
-        app.swipeLeft()
-        app.swipeRight()
-        sleep(2)
-    }
-    
-    func testTapTransactionsTab() {
-        app.buttons["Log In"].tap()
-        app.tabBars.buttons["Transactions"].tap()
-        sleep(3)
-    }
-    
-    func testTapDevTab() {
-        app.buttons["Log In"].tap()
-        app.tabBars.buttons["Dev"].tap()
-        sleep(3)
-    }
-    
-    func testLoadTransactions() {
-        app.buttons["Log In"].tap()
-        app.tabBars.buttons["Transactions"].tap()
-        sleep(20)
-        app.swipeUp()
-        app.swipeUp()
-        app.swipeUp()
-    }
+//    
+//    func testLogIn() {
+//        app.buttons["Log In"].tap()
+//        sleep(1)
+//    }
+//    
+//    func testTapHomeTab() {
+//        //        app.textFields["tokenTextField"].typeText("xyztwh4ththwt")
+//        app.buttons["Log In"].tap()
+//        app.tabBars.buttons["Home"].tap()
+//        sleep(2)
+//        //        XCTAssert(app.navigationBars["Home"].exists)
+//    }
+//    
+//    func testTapMapsTab() {
+//        app.buttons["Log In"].tap()
+//        app.tabBars.buttons["Maps"].tap()
+//        sleep(1)
+//        app.swipeLeft()
+//        app.swipeRight()
+//        sleep(2)
+//    }
+//    
+//    func testTapTransactionsTab() {
+//        app.buttons["Log In"].tap()
+//        app.tabBars.buttons["Transactions"].tap()
+//        sleep(3)
+//    }
+//    
+//    func testTapDevTab() {
+//        app.buttons["Log In"].tap()
+//        app.tabBars.buttons["Dev"].tap()
+//        sleep(3)
+//    }
+//    
+//    func testLoadTransactions() {
+//        app.buttons["Log In"].tap()
+//        app.tabBars.buttons["Transactions"].tap()
+//        sleep(20)
+//        app.swipeUp()
+//        app.swipeUp()
+//        app.swipeUp()
+//    }
 }

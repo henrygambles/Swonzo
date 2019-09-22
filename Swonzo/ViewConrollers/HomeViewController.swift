@@ -73,11 +73,6 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     var categoryCount : [Int] = []
     var merchantTransactions : [Int] = []
     
-    var bill : [String: Int] = [:]
-    
-    var merchNames : [String] = []
-    var merchAmount : [Int] = []
-    var merchAmountFormatted : [String] = []
     
    let animationView = AnimationView(name: "loading-circle")
     
@@ -185,84 +180,10 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Expenses"}.count)
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Finances"}.count)
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Holidays"}.count)
-                 
-                        print("\nSuccess! Populated pie chart.\n")
-                        
-//                        print(self.instancesOfMerchants)
-                        
-                        var counts = [String: Int]()
-                        self.instancesOfMerchants.removeAll { $0 == "NOMERCH" }
-                        // Count the values with using forEach
-                        self.instancesOfMerchants.forEach { counts[$0] = (counts[$0] ?? 0) + 1 }
-                        
-                        let mappedItems = self.instancesOfMerchants.map { ($0, 1) }
-
-                        let countDic = Dictionary(mappedItems, uniquingKeysWith: +)
-//
-                       let sortedCountDic = countDic.sorted { $0.1 > $1.1 }
-
-                        let sortedBill = self.bill.sorted { $0.1 < $1.1 }
-                        
-//                        print(sortedDic)
-//                        print(sortedBill)
-                        
-//                        sortedDic.
-                        
-//                        let merchs = Array(Dictionary(uniqueKeysWithValues: sortedBill).keys)
-                        
-                        let merchs = Array(countDic.keys)
-                        
-                        let allTrans = merchs.count
-                        
-//                        print("total titties", allTrans)
-                    
-                        var k = 1
-                        while k < allTrans {
-                            let name = merchs[k]
-                            let amount = self.totalPrice(merchant: merchs[k])
-//                            print(merchs[k], self.totalPrice(merchant: merchs[k]))
-                            if amount < 0 {
-                            self.merchNames.append(name)
-                            self.merchAmount.append(amount)
-                            self.merchAmountFormatted.append(self.swonzoLogic.jsonSpendTodayToMoney(spendToday: Double(amount)))
-                            self.bill.updateValue(amount, forKey: name)
-                            }
-                            k += 1
-                        }
-                        
-                       
-//                        print(Dictionary(uniqueKeysWithValues: sortedBill))
-//                        print(sortedBill)
-                        
-//                        print("ARRAY", self.merchNames)
-//                        print(self.merchAmountFormatted)
-//                        print("ARRAY", self.merchAmount)
-                        
-                        for t in 0..<self.merchNames.count  {
-                            print(self.merchNames[t], self.merchAmountFormatted[t])
-                        }
-                        
-                        
-                        
-//                        print(countDic.sorted { $0.1 > $1.1 })
-                        
-                        // Find the most frequent value and its count with max(by:)
-                     
-                            if let (value, count) = counts.max(by: {$0.1 < $1.1}) {
-                                print("\(value) occurs \(count) times. You have spent \(self.totalPrice(merchant: value)) there!")
-                            }
-                        
-//                        print("PAUL", self.totalPrice(merchant: "Paul"))
-//
-//                        print("Categories:", self.categories)
-//                        print("Category count:", self.categoryCount)
-                        
-                        UserDefaults.standard.set(self.categoryCount, forKey: "CategoryCount")
                         
                         self.customizePieChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
                         self.setBarChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
-
-//                        self.setDripBarChart(dataPoints: self.merchNames, values: self.merchAmount.map{ Double($0) })
+                        
                         self.animationView.removeFromSuperview()
                         self.homePieChart.isHidden = false
                         self.homeBarChart.isHidden = false
@@ -276,19 +197,6 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                     
                 }
         }
-    }
-    
-    func totalPrice(merchant: String) -> Int {
-        var totalSpent : Int = 0
-        var p = 1
-        while p < instancesOfMerchants.count {
-            if instancesOfMerchants[p] == merchant {
-                totalSpent += merchantTransactions[p]
-            }
-            p += 1
-        }
-//        print(swonzoLogic.jsonSpendTodayToMoney(spendToday: Double(totalTest)))
-        return totalSpent
     }
     
     func setBarChart(dataPoints: [String], values: [Double]) {

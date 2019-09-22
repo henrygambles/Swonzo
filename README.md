@@ -9,10 +9,8 @@ This is an iOS client for connecting with the Monzo API!
 Go ahead and grab your token over at https://developers.monzo.com/!
 
 ![login_png](../Home-refactoring/Swonzo/Mockups/login.png)
-![home_png](../Home-refactoring/Swonzo/Mockups/home.png)
-![map_png](../Home-refactoring/Swonzo/Mockups/map.png)
-![transactions_png](../Home-refactoring/Swonzo/Mockups/transactions.png)
-![detailedTransactions_png](../Home-refactoring/Swonzo/Mockups/detailedTransactions.png)
+![home_png](../Home-refactoring/Swonzo/Mockups/home.png) ![map_png](../Home-refactoring/Swonzo/Mockups/map.png)
+![transactions_png](../Home-refactoring/Swonzo/Mockups/transactions.png) ![detailedTransactions_png](../Home-refactoring/Swonzo/Mockups/detailedTransactions.png)
 
 
 

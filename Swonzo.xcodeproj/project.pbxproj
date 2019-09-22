@@ -28,6 +28,8 @@
 		BA7ACE4622F06A67007AAF73 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */; };
 		BA7C952F2337E05E008A6BE1 /* SwonzoOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7C952E2337E05E008A6BE1 /* SwonzoOAuth.swift */; };
 		BA7C95312337E662008A6BE1 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7C95302337E662008A6BE1 /* OAuthViewController.swift */; };
+		BA7C95352337F508008A6BE1 /* SwonzoDemo.json in Sources */ = {isa = PBXBuildFile; fileRef = BA7C95342337F508008A6BE1 /* SwonzoDemo.json */; };
+		BA7C953823380588008A6BE1 /* demoData.json in Resources */ = {isa = PBXBuildFile; fileRef = BA7C953723380588008A6BE1 /* demoData.json */; };
 		BA7D5E3822D631BB00D7C0BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */; };
 		BA7D5E3D22D631BB00D7C0BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5E3B22D631BB00D7C0BE /* Main.storyboard */; };
 		BA7D5E3F22D631BD00D7C0BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5E3E22D631BD00D7C0BE /* Assets.xcassets */; };
@@ -89,6 +91,8 @@
 		BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BA7C952E2337E05E008A6BE1 /* SwonzoOAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoOAuth.swift; sourceTree = "<group>"; };
 		BA7C95302337E662008A6BE1 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		BA7C95342337F508008A6BE1 /* SwonzoDemo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SwonzoDemo.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		BA7C953723380588008A6BE1 /* demoData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demoData.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		BA7D5E3422D631BB00D7C0BE /* Swonzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swonzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA7D5E3C22D631BB00D7C0BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -179,6 +183,14 @@
 			path = ViewConrollers;
 			sourceTree = "<group>";
 		};
+		BA7C95362338030A008A6BE1 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				BA7C953723380588008A6BE1 /* demoData.json */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		BA7D5E2B22D631BB00D7C0BE = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +217,7 @@
 		BA7D5E3622D631BB00D7C0BE /* Swonzo */ = {
 			isa = PBXGroup;
 			children = (
+				BA7C95362338030A008A6BE1 /* Demo */,
 				BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */,
 				BA39A3012304469E004A1531 /* SwonzoLogic.swift */,
 				BA7C952E2337E05E008A6BE1 /* SwonzoOAuth.swift */,
@@ -218,6 +231,7 @@
 				BA7D5E4022D631BD00D7C0BE /* LaunchScreen.storyboard */,
 				BA4A64CC22FE5499003208B6 /* swonzo_ring.imageset */,
 				BA7D5E4322D631BD00D7C0BE /* Info.plist */,
+				BA7C95342337F508008A6BE1 /* SwonzoDemo.json */,
 			);
 			path = Swonzo;
 			sourceTree = "<group>";
@@ -407,6 +421,7 @@
 				BA3C8E02231D74CD00D1241B /* pie-chart.json in Resources */,
 				BA7D5E3F22D631BD00D7C0BE /* Assets.xcassets in Resources */,
 				BAC4D28D22E21814009891C0 /* nightMap.json in Resources */,
+				BA7C953823380588008A6BE1 /* demoData.json in Resources */,
 				BA4A64CF22FE5499003208B6 /* swonzo_ring.png in Resources */,
 				BA104F2A23184FAE00174DA0 /* plotting-map.json in Resources */,
 				BABE7DFF2308B5D300BED520 /* rainbow-wave-loading.json in Resources */,
@@ -589,6 +604,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA7C95352337F508008A6BE1 /* SwonzoDemo.json in Sources */,
 				BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */,
 				BABE7DFD23088E6900BED520 /* CheckTokenViewController.swift in Sources */,
 				BA39A3022304469E004A1531 /* SwonzoLogic.swift in Sources */,

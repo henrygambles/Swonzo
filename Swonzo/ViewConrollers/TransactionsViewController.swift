@@ -87,7 +87,38 @@ let animationView = AnimationView(name: "scan-receipt")
     func populateTable() {
         
         do {
-            var data = try Disk.retrieve("root.json", from: .documents, as: Root.self)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.calendar = Calendar(identifier: .iso8601)
+            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+            
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .formatted(dateFormatter)
+            
+//            let demoUrl = Bundle.main.url(forResource: "DemoData", withExtension: "json")
+//            let demoData = try? Data(contentsOf: demoUrl!)
+//            print(demoUrl ?? "NADA")
+//            print(demoData ?? "NOPE")
+            
+//            var data : Root
+            
+//            do {
+            let demoURL = Bundle.main.url(forResource: "demoData", withExtension: "json")!
+                    print("Found Demo URL")
+                    let demoData = try? Data(contentsOf: demoURL)
+                    print(demoData ?? "NADA")
+                    let data = try decoder.decode(Root.self, from: demoData!)
+//                } else {
+//                    print("Unable to find Demo Data")
+//                }
+//            } catch {
+//                print("Demo data failed to load. \(error)")
+//            }
+            
+            
+            
+//            var data = try Disk.retrieve("root.json", from: .documents, as: Root.self)
             
             var indexOfTransactions = data.transactions.count-1
             var i = indexOfTransactions
@@ -172,7 +203,7 @@ let animationView = AnimationView(name: "scan-receipt")
             self.refreshControl.endRefreshing()
             
         } catch {
-            print("OHHH NOOOO")
+            print("OHHH NOOOO", error, "\n", error.localizedDescription )
         }
   
         

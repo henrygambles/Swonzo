@@ -125,7 +125,15 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         
                         let decoder = JSONDecoder()
                         decoder.dateDecodingStrategy = .formatted(dateFormatter)
-                        let root = try decoder.decode(Root.self, from: response.data!)
+                        
+                        let demoURL = Bundle.main.url(forResource: "demoData", withExtension: "json")!
+                        print("Found Demo URL")
+                        let demoData = try? Data(contentsOf: demoURL)
+                        print(demoData ?? "NADA")
+                        let root = try decoder.decode(Root.self, from: demoData!)
+                        
+                        
+//                        let root = try decoder.decode(Root.self, from: response.data!)
                         
                         let numberOfTransactions = root.transactions.count
                         

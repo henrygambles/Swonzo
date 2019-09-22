@@ -42,7 +42,12 @@ class DetailedTransactionsViewController: UIViewController {
         let index = tableNumber-1
         
         do {
-             var data = try Disk.retrieve("root.json", from: .documents, as: Root.self)
+            let demoURL = Bundle.main.url(forResource: "demoData", withExtension: "json")!
+            print("Found Demo URL")
+            let demoData = try? Data(contentsOf: demoURL)
+            print(demoData ?? "NADA")
+            let data = try JSONDecoder().decode(Root.self, from: demoData!)
+//             var data = try Disk.retrieve("root.json", from: .documents, as: Root.self)
             
              let title = data.transactions[index].merchant?.name ?? data.transactions[index].transactionDescription
              let created = data.transactions[index].created

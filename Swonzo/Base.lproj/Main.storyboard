@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pAn-QE-wOf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aoR-rs-6sb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -302,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mR2-4l-w7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4300" y="251"/>
+            <point key="canvasLocation" x="-3836" y="251"/>
         </scene>
         <!--Auth View Controller-->
         <scene sceneID="nX0-He-64w">
@@ -367,6 +367,7 @@
                         <viewLayoutGuide key="safeArea" id="onq-TC-cdW"/>
                     </view>
                     <connections>
+                        <outlet property="buttonView" destination="oIz-Yc-XxG" id="WTK-qe-xti"/>
                         <outlet property="result" destination="FFE-pi-ghu" id="gbw-dB-qvN"/>
                         <segue destination="pAn-QE-wOf" kind="show" identifier="goodTokenSegue" id="BLl-cc-F8T"/>
                         <segue destination="sg1-Fo-LOa" kind="show" identifier="badTokenSegue" id="YAq-7E-JW4"/>
@@ -449,6 +450,17 @@
                                     <action selector="recentToken:" destination="sg1-Fo-LOa" eventType="touchUpInside" id="M4u-8b-ETe"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tim-qV-LYw">
+                                <rect key="frame" x="163" y="385" width="49" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="20"/>
+                                <state key="normal" title="Demo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="demoMode:" destination="sg1-Fo-LOa" eventType="touchUpInside" id="9lU-jM-fDV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.078431372549019607" green="0.13725490196078433" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -485,6 +497,7 @@
                     <navigationItem key="navigationItem" id="5Te-vg-htg"/>
                     <connections>
                         <outlet property="blurryView" destination="yh6-mF-bL5" id="2aG-gR-upI"/>
+                        <outlet property="demoButtonView" destination="tim-qV-LYw" id="1gH-95-nhs"/>
                         <outlet property="errorTextView" destination="yWk-Jp-Znr" id="QWJ-md-rOg"/>
                         <outlet property="logInButtonView" destination="XIJ-qL-0Lf" id="Bie-B7-HoF"/>
                         <outlet property="logInTextView" destination="Nkh-95-dQv" id="5qC-Aq-zf2"/>
@@ -535,7 +548,7 @@
         <image name="transactions-tab-bar" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BLl-cc-F8T"/>
+        <segue reference="NcQ-k1-tJ0"/>
         <segue reference="Ed5-JZ-osv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.97254901960784312" green="0.4392156862745098" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -29,16 +29,9 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        balanceRequest()
-//        transactionsRequest()
         swonzoClient.transactionsRequest(){}
         welcome()
         checkForSavedData()
-        homePieChart.delegate = self
-        
-//        setHomeBlurView()
-//        pieChartAnimation()
     }
     
     let name = UserDefaults.standard.string(forKey: "FirstName")
@@ -92,22 +85,10 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     
     func transactionsRequest() {
         
-        swonzoClient.tryToken()
-        
         print("GETTING CHART DATA...")
         
         welcome()
-        
-        Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
-                          parameters: parameters,
-                          encoding:  URLEncoding.default,
-                          headers: headers).downloadProgress { progress in
-                            print("Progress: \(progress.fractionCompleted)")
-                            //                            self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\n\((progress.fractionCompleted * 100))%"
-                            }.responseJSON { response in
-                            if let error = response.error {
-                                self.homeView.text = error.localizedDescription
-                            } else {
+      
                     
                     do {
                         print("*************************")
@@ -122,15 +103,20 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         decoder.dateDecodingStrategy = .formatted(dateFormatter)
                         
                         let demoURL = Bundle.main.url(forResource: "demoData", withExtension: "json")!
-                        print("Found Demo URL")
                         let demoData = try? Data(contentsOf: demoURL)
-                        print(demoData ?? "NADA")
-                        let root = try decoder.decode(Root.self, from: demoData!)
+                        
+                 
+//                        if UserDefaults.standard.bool(forKey: "DEMO") == true {
+                            let data = try decoder.decode(Root.self, from: demoData!)
+//                            return data
+//                        } else if UserDefaults.standard.string(forKey: "Token") != nil {
+//                            let data = try decoder.decode(Root.self, from: response.data!)
+//                        }
                         
                         
-//                        let root = try decoder.decode(Root.self, from: response.data!)
-                        
-                        let numberOfTransactions = root.transactions.count
+//                        let data = try decoder.decode(Root.self, from: response.data!)
+//
+                        let numberOfTransactions = data.transactions.count
                         
                         var i = numberOfTransactions
                         
@@ -138,9 +124,9 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                             
                             i = i - 1
                             
-                            var category = root.transactions[i].category
-                            var merchantName = String(root.transactions[i].merchant?.name ?? "NOMERCH")
-                            var amount = root.transactions[i].amount
+                            var category = data.transactions[i].category
+                            var merchantName = String(data.transactions[i].merchant?.name ?? "NOMERCH")
+                            var amount = data.transactions[i].amount
                             
                             let transactionNumber = numberOfTransactions - i
                             let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
@@ -180,10 +166,14 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Expenses"}.count)
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Finances"}.count)
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Holidays"}.count)
+                 
+                        
+                        UserDefaults.standard.set(self.categoryCount, forKey: "CategoryCount")
                         
                         self.customizePieChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
                         self.setBarChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
-                        
+
+//                        self.setDripBarChart(dataPoints: self.merchNames, values: self.merchAmount.map{ Double($0) })
                         self.animationView.removeFromSuperview()
                         self.homePieChart.isHidden = false
                         self.homeBarChart.isHidden = false
@@ -195,8 +185,8 @@ class HomeViewController: UIViewController, ChartViewDelegate {
                         print("Also,", error)
                     }
                     
-                }
-        }
+        
+        
     }
     
     func setBarChart(dataPoints: [String], values: [Double]) {

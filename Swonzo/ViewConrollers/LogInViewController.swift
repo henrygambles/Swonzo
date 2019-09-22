@@ -40,6 +40,16 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         hide()
     }
     
+    @IBOutlet weak var demoButtonView: UIButton!
+    
+    @IBAction func demoMode(_ sender: Any) {
+        UserDefaults.standard.set(true, forKey: "DEMO")
+        self.performSegue(withIdentifier: "loginSegue", sender: nil)
+    }
+    
+    
+    
+    
     func lookForRecentToken() {
         if UserDefaults.standard.string(forKey: "Token") != nil {
         swonzoClient.getAccountInfo() { response in

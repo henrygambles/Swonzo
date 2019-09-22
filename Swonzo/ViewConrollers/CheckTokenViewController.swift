@@ -16,6 +16,7 @@ class CheckTokenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        buttonView.isHidden = true
         if UserDefaults.standard.string(forKey: "Token") != nil {
             tryToken()
         } else {
@@ -39,6 +40,8 @@ class CheckTokenViewController: UIViewController {
   
     @IBOutlet weak var result: UITextView!
     
+    
+    @IBOutlet weak var buttonView: UIButton!
     
     @IBAction func hitIt(_ sender: Any) {
         self.result.text = ""

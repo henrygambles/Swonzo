@@ -450,9 +450,8 @@
                                     <action selector="recentToken:" destination="sg1-Fo-LOa" eventType="touchUpInside" id="M4u-8b-ETe"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tim-qV-LYw">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tim-qV-LYw">
                                 <rect key="frame" x="163" y="385" width="49" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SlatePro" family="Slate Pro" pointSize="20"/>
                                 <state key="normal" title="Demo">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -483,11 +482,13 @@
                             <constraint firstItem="Qh9-Kf-CJw" firstAttribute="trailing" secondItem="8Jg-mw-ytx" secondAttribute="trailing" constant="121" id="gR3-4e-o7L"/>
                             <constraint firstItem="XIJ-qL-0Lf" firstAttribute="top" secondItem="rDy-6E-Php" secondAttribute="bottom" constant="8" symbolic="YES" id="iGJ-t9-ykG"/>
                             <constraint firstItem="XIJ-qL-0Lf" firstAttribute="leading" secondItem="Qh9-Kf-CJw" secondAttribute="leading" constant="147" id="jnD-Vo-E3d"/>
+                            <constraint firstItem="tim-qV-LYw" firstAttribute="centerX" secondItem="Egr-U4-2nk" secondAttribute="centerX" id="k1P-4G-NtJ"/>
                             <constraint firstItem="8Jg-mw-ytx" firstAttribute="leading" secondItem="Qh9-Kf-CJw" secondAttribute="leading" constant="119" id="mpB-KE-NhD"/>
                             <constraint firstItem="8Jg-mw-ytx" firstAttribute="top" secondItem="yWk-Jp-Znr" secondAttribute="bottom" constant="21" id="nNK-p6-iA5"/>
                             <constraint firstItem="Egr-U4-2nk" firstAttribute="top" secondItem="XIJ-qL-0Lf" secondAttribute="bottom" constant="8" symbolic="YES" id="olK-wf-GYc"/>
                             <constraint firstItem="yh6-mF-bL5" firstAttribute="centerX" secondItem="XIJ-qL-0Lf" secondAttribute="centerX" id="pPg-hy-snc"/>
                             <constraint firstItem="yWk-Jp-Znr" firstAttribute="centerX" secondItem="rDy-6E-Php" secondAttribute="centerX" id="psh-Oy-lbW"/>
+                            <constraint firstItem="tim-qV-LYw" firstAttribute="top" secondItem="XIJ-qL-0Lf" secondAttribute="bottom" constant="37" id="r16-kf-IYN"/>
                             <constraint firstItem="rDy-6E-Php" firstAttribute="leading" secondItem="Qh9-Kf-CJw" secondAttribute="leading" constant="71" id="va5-bJ-ToN"/>
                             <constraint firstItem="Nkh-95-dQv" firstAttribute="leading" secondItem="Qh9-Kf-CJw" secondAttribute="leading" constant="53" id="w7B-RV-GvL"/>
                             <constraint firstAttribute="trailing" secondItem="P98-cy-W5a" secondAttribute="trailing" constant="-22" id="w9O-ih-TLy"/>

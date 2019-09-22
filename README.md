@@ -1,7 +1,5 @@
 ## Swonzo
 
-<img src="https://media.giphy.com/media/kjjRGpezebjaw/giphy.gif" width=50%>
-
 [What's This?](#whats-this) | [Getting started](#getting-started) | [Testing](#Testing)  | [Credit](#Credit) 
 
 ## What's This?
@@ -11,6 +9,10 @@ This is an iOS client for connecting with the Monzo API!
 Go ahead and grab your token over at https://developers.monzo.com/!
 
  ![login_png](https://github.com/henrygambles/swonzo_test/blob/Home-refactoring/Swonzo/Mockups/login.png)
+  ![maps_png](https://github.com/henrygambles/swonzo_test/blob/Home-refactoring/Swonzo/Mockups/maps.png)
+    ![transactions_png](https://github.com/henrygambles/swonzo_test/blob/Home-refactoring/Swonzo/Mockups/transactions.png)
+    ![detailedTransactions_png](https://github.com/henrygambles/swonzo_test/blob/Home-refactoring/Swonzo/Mockups/detailedTransactions.png)
+    
 
 ## Getting started
 

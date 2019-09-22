@@ -3,7 +3,8 @@
 **🚧 Please note: This project is currently awaiting an update in accordance with the FCA's introduction of Strong Customer Authentication. Swonzo is SCA compliant though this update will be released once Monzo's SCA have finsihed taking place. 🚧**
 
 *From Monzo's API docs*
-![sca_png](../Home-refactoring/Swonzo/Mockups/SCA.png)
+<!--![sca_png](../Home-refactoring/Swonzo/Mockups/SCA.png)-->
+<img src="../Home-refactoring/Swonzo/Mockups/SCA.png" alt="drawing" width="200"/>
 
 [What's This?](#whats-this) | [Getting started](#getting-started) | [Testing](#Testing)  | [Credit](#Credit) 
 

@@ -13,13 +13,15 @@ This is an iOS client for connecting with the Monzo API!
 
 Go ahead and grab your token over at https://developers.monzo.com/!
 
-<p align="center">
-<img align="left" src="../Home-refactoring/Swonzo/Mockups/login.png" alt="login"/> **Login**
-<img align="left" src="../Home-refactoring/Swonzo/Mockups/home.png" alt="home" width="75%"/> **Analytics**
-<img align="left" src="../Home-refactoring/Swonzo/Mockups/map.png" alt="map" width="75%"/> **Maps**
-<img align="left" src="../Home-refactoring/Swonzo/Mockups/transactions.png" alt="transactions" width="75%"/> **Transactions**
-<img align="left" src="../Home-refactoring/Swonzo/Mockups/detailedTransactions.png" alt="details2" width="75%"/> **Look at each purchase**
-</p>
+![left-aligned-image](../Home-refactoring/Swonzo/Mockups/login.png){: .align-left}  **Login**
+![left-aligned-image](../Home-refactoring/Swonzo/Mockups/home.png){: .align-left}  **Home**
+
+
+<!--<img align="left" src="../Home-refactoring/Swonzo/Mockups/login.png" alt="login"/> **Login**-->
+<!--<img align="left" src="../Home-refactoring/Swonzo/Mockups/home.png" alt="home" width="75%"/> **Analytics**-->
+<!--<img align="left" src="../Home-refactoring/Swonzo/Mockups/map.png" alt="map" width="75%"/> **Maps**-->
+<!--<img align="left" src="../Home-refactoring/Swonzo/Mockups/transactions.png" alt="transactions" width="75%"/> **Transactions**-->
+<!--<img align="left" src="../Home-refactoring/Swonzo/Mockups/detailedTransactions.png" alt="details2" width="75%"/> **Look at each purchase**-->
 
 
 

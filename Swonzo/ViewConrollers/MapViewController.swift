@@ -11,6 +11,7 @@ import Alamofire_SwiftyJSON
 import UIKit
 import GoogleMaps
 import Lottie
+import Disk
 
 class MapViewController: UIViewController {
     
@@ -34,13 +35,15 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\nHang tight."
-
         startMapLoadingAnimation()
-        mapsRequest()
-      
+        setMap()
     }
     
-
+    func checkForData(){
+        
+    }
+    
+    
     func startMapLoadingAnimation() {
         
         let animationView = AnimationView(name: "plotting-map")
@@ -56,22 +59,8 @@ class MapViewController: UIViewController {
     }
     
 
-    func mapsRequest() {
+    func setMap() {
         
-        SwonzoClient().tryToken()
-        
-        print("GETTING MAP DATA...")
-        
-        Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
-                          parameters: parameters,
-                          encoding:  URLEncoding.default,
-                          headers: headers).downloadProgress { progress in
-                            print("Progress: \(Float(progress.fractionCompleted))")
-                            self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\n\((progress.fractionCompleted * 100))%"
-                          }.responseJSON { response in
-                            if let error = response.error {
-                                self.fetchingDataTextView.text = error.localizedDescription
-                            } else {
                                 do {
                                     print("*************************")
                                     print("\n  MAP TESTING \n")
@@ -84,9 +73,13 @@ class MapViewController: UIViewController {
                                     let decoder = JSONDecoder()
                                     decoder.dateDecodingStrategy = .formatted(dateFormatter)
                                     
+                                    let demoURL = Bundle.main.url(forResource: "demoData", withExtension: "json")!
+                                    print("Found Demo URL")
+                                    let demoData = try? Data(contentsOf: demoURL)
+                                    print(demoData ?? "NADA")
+                                    let root = try decoder.decode(Root.self, from: demoData!)
+//                                    let root = try Disk.retrieve("root.json", from: .documents, as: Root.self)
                                     
-                                    let root = try decoder.decode(Root.self, from: response.data!)
-
                                     let numberOfTransactions = root.transactions.count
                    
                                     var i = numberOfTransactions
@@ -102,7 +95,7 @@ class MapViewController: UIViewController {
 
                                         let online = root.transactions[i].merchant?.online
                                         let transDescription = root.transactions[i].transactionDescription
-                                        var category = String(root.transactions[i].category.rawValue)
+                                        var category = root.transactions[i].category
                                         
                                         let transactionNumber = numberOfTransactions - i
                                         let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
@@ -116,9 +109,9 @@ class MapViewController: UIViewController {
                                         } else if category == "groceries" {
                                             category = "🛒"
                                         } else if category == "eating_out" {
-                                            category = "🍔"
+                                            category = "🍽️"
                                         } else if category == "entertainment" {
-                                            category = "🎥"
+                                            category = "🎉"
                                         } else if category == "general" {
                                             category = "⚙️"
                                         } else if category == "shopping" {
@@ -129,8 +122,16 @@ class MapViewController: UIViewController {
                                             category = "❤️"
                                         } else if category == "family" {
                                             category = "👪"
+                                        } else if category == "mondo" {
+                                            category = "🏦"
+                                        } else if category == "bills" {
+                                            category = "🧾"
+                                        } else if category == "expenses" {
+                                            category = "🖋️"
+                                        } else if category == "finances" {
+                                            category = "📈"
                                         } else if category == "holidays" {
-                                            category = "🧳"
+                                            category = "🏖️"
                                         }
                                         
                                         if name == nil {
@@ -147,15 +148,13 @@ class MapViewController: UIViewController {
                                             self.MerchantNames.append(merchantName!)
                                         }
                                         
-                                        
-                                        
-                                        
                                     }
                                     print("\nSuccess! Finished Getting data.")
 
 
                                     let camera = GMSCameraPosition.camera(withLatitude: 51.50, longitude: -0.12, zoom: 10.5)
                                     let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+                                    
                                     
                                     do {
                                         if let styleURL = Bundle.main.url(forResource: "nightMap", withExtension: "json") {
@@ -181,11 +180,7 @@ class MapViewController: UIViewController {
                                     
 
                                 } catch {
-                                    print("\nOh no! Error populating table. Apparently...", error.localizedDescription)
-                                    print("Also,", error)
-                                }
-                                
-                            }
+                                    print("Error", error.localizedDescription)
         }
     }
     

@@ -10,10 +10,10 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
+import Disk
 
 var token : String = UserDefaults.standard.string(forKey: "Token") ?? "No Token"
 var accountId : String = UserDefaults.standard.string(forKey: "AccountID") ?? "No ID"
-
 
 var headers: HTTPHeaders = [
     "Authorization": "Bearer " + token
@@ -26,7 +26,60 @@ var parameters: Parameters = [
 class SwonzoClient {
 
     typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
- 
+    typealias CompletionHandler = (_ success:Bool) -> Void
+    
+    func transactionsRequest(finished: @escaping () -> Void) {
+        
+        print("***********************")
+        print("\n  CLIENT DISK TESTING\n")
+        print("***********************\n")
+        print("GETTING TRANSACTION DATA FOR DISK...")
+        
+        Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
+                          parameters: parameters,
+                          encoding:  URLEncoding.default,
+                          headers: headers).downloadProgress { progress in
+                            let progressPercent = (progress.fractionCompleted * 100)
+//                            print("\(progressPercent)%")
+            }.responseJSON { response in
+                if let error = response.error {
+                    print("ALAMOFIRE ERROR ->", error, error.localizedDescription)
+                } else {
+                    
+                    
+                    do {
+                        
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.calendar = Calendar(identifier: .iso8601)
+                        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                        
+                        let decoder = JSONDecoder()
+                        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                        
+//                        print(response)
+                        
+                        if response.description.contains("transactions") {
+                            let root = try decoder.decode(Root.self, from: response.data!)
+                            try Disk.save(root, to: .documents, as: "root.json")
+                            var retrieved = try Disk.retrieve("root.json", from: .documents, as: Root.self)
+                            print("\nSUCCESS - SAVED DATA TO DISK")
+                            finished()
+                        } else {
+                             print("\nERROR SAVING TO DISK!")
+                            print("JSON RESPONSE ->", response)
+                           
+                        }
+                        
+                        
+                    } catch {
+                        print("\nERROR FETCHING JSON ->", error.localizedDescription)
+                        print("\nERROR FETCHING JSON ->", error)
+                    }
+                    
+                }
+        }
+    }
     
     func tryToken() {
         getAccountInfo() { response in
@@ -94,13 +147,13 @@ struct Transaction: Codable {
     let accountBalance: Int
     let attachments: [Attachment]
     let international: International?
-    let category: Category
+    let category: String
     let isLoad: Bool
     let settled: String
     let localAmount: Int
     let localCurrency: String
     let updated: String
-    let accountID: TransactionAccountID
+    let accountID: String
     let userID: String
     let counterparty: Counterparty
     let scheme: String
@@ -135,9 +188,6 @@ struct Transaction: Codable {
     }
 }
 
-enum TransactionAccountID: String, Codable {
-    case acc00009WBQ0ZTI9BSOC4I9PZ = "acc_00009WBQ0ZTI9bSOC4i9pZ"
-}
 
 // MARK: - Attachment
 struct Attachment: Codable {
@@ -155,21 +205,6 @@ struct Attachment: Codable {
         case id, type, url
         case userID = "user_id"
     }
-}
-
-enum Category: String, Codable {
-    case bills = "bills"
-    case cash = "cash"
-    case eatingOut = "eating_out"
-    case entertainment = "entertainment"
-    case family = "family"
-    case general = "general"
-    case groceries = "groceries"
-    case holidays = "holidays"
-    case mondo = "mondo"
-    case personalCare = "personal_care"
-    case shopping = "shopping"
-    case transport = "transport"
 }
 
 // MARK: - Counterparty
@@ -242,7 +277,7 @@ struct Merchant: Codable {
     let id, groupID, created, name: String
     let logo: String
     let emoji: String
-    let category: Category
+    let category: String
     let online, atm: Bool
     let address: Address
     let updated: String

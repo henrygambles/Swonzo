@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9D8F26EB3D7465CA101C100FAF03DA9B"
+               BlueprintIdentifier = "4B723B7846241C04FE87D9716FD550CD"
                BuildableName = "libPods-SwonzoUITests.a"
                BlueprintName = "Pods-SwonzoUITests"
                ReferencedContainer = "container:Pods.xcodeproj">

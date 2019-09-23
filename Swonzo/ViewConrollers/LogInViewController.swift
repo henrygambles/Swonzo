@@ -33,12 +33,22 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
        
         let timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(fadeIn), userInfo: nil, repeats: false)
-//        lookForRecentToken()
+        lookForRecentToken()
         self.setupToHideKeyboardOnTapOnView()
         textFieldView.delegate = self
         setBlurryView()
         hide()
     }
+    
+    @IBOutlet weak var demoButtonView: UIButton!
+    
+    @IBAction func demoMode(_ sender: Any) {
+        UserDefaults.standard.set(true, forKey: "DEMO")
+        self.performSegue(withIdentifier: "loginSegue", sender: nil)
+    }
+    
+    
+    
     
     func lookForRecentToken() {
         if UserDefaults.standard.string(forKey: "Token") != nil {
@@ -50,6 +60,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 self.recentTokenButton.isHidden = true;
             }
         }
+        } else {
+            self.recentTokenButton.isHidden = true;
         }
     }
     
@@ -120,7 +132,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func recentToken(_ sender: Any) {
-        print(UserDefaults.standard.string(forKey: "FirstName")!)
         checkAccountId() { response in
             if response == true {
                self.performSegue(withIdentifier: "loginSegue", sender: nil)

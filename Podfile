@@ -3,10 +3,14 @@ platform :ios, '12.0'
 def shared_pods
   pod 'Alamofire'
   pod 'Charts'
+  pod 'Disk'
   pod 'lottie-ios'
   pod 'SwiftyJSON'
   pod 'Alamofire-SwiftyJSON'
   pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
+  pod 'p2.OAuth2'
+  pod 'OAuth2'
 end
 
 target 'Swonzo' do

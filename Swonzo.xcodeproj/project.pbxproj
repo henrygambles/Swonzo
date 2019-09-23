@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		088003A47D5F34624B5D6CA3 /* libPods-SwonzoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B920D02D25F8E355389A9EF /* libPods-SwonzoUITests.a */; };
 		39193982A429C746131AF21D /* libPods-Swonzo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0219AA58A5BE95F57D9C559 /* libPods-Swonzo.a */; };
+		BA007A562327BC3700C08086 /* DetailedTransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA007A552327BC3700C08086 /* DetailedTransactionsViewController.swift */; };
 		BA0B131E22FB8F7300CE6D6F /* DevUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0B131D22FB8F7300CE6D6F /* DevUITests.swift */; };
 		BA0B2173231C1C4500D1F6DC /* scan-receipt.json in Resources */ = {isa = PBXBuildFile; fileRef = BA0B2172231C1C4500D1F6DC /* scan-receipt.json */; };
 		BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */; };
@@ -25,6 +26,10 @@
 		BA5F2C6A22E5CC3900230C17 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */; };
 		BA5F2C6C22E5D0E600230C17 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */; };
 		BA7ACE4622F06A67007AAF73 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */; };
+		BA7C952F2337E05E008A6BE1 /* SwonzoOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7C952E2337E05E008A6BE1 /* SwonzoOAuth.swift */; };
+		BA7C95312337E662008A6BE1 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7C95302337E662008A6BE1 /* OAuthViewController.swift */; };
+		BA7C95352337F508008A6BE1 /* SwonzoDemo.json in Sources */ = {isa = PBXBuildFile; fileRef = BA7C95342337F508008A6BE1 /* SwonzoDemo.json */; };
+		BA7C953823380588008A6BE1 /* demoData.json in Resources */ = {isa = PBXBuildFile; fileRef = BA7C953723380588008A6BE1 /* demoData.json */; };
 		BA7D5E3822D631BB00D7C0BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */; };
 		BA7D5E3D22D631BB00D7C0BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5E3B22D631BB00D7C0BE /* Main.storyboard */; };
 		BA7D5E3F22D631BD00D7C0BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5E3E22D631BD00D7C0BE /* Assets.xcassets */; };
@@ -67,6 +72,7 @@
 		67F3975239163BC8C7A96DA4 /* Pods-SwonzoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwonzoTests.release.xcconfig"; path = "Target Support Files/Pods-SwonzoTests/Pods-SwonzoTests.release.xcconfig"; sourceTree = "<group>"; };
 		9189BC07595F615A1D698994 /* Pods-SwonzoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwonzoUITests.release.xcconfig"; path = "Target Support Files/Pods-SwonzoUITests/Pods-SwonzoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B208AD81D6F2C20169D6D5D8 /* libPods-SwonzoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwonzoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA007A552327BC3700C08086 /* DetailedTransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTransactionsViewController.swift; sourceTree = "<group>"; };
 		BA0B131D22FB8F7300CE6D6F /* DevUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevUITests.swift; sourceTree = "<group>"; };
 		BA0B2172231C1C4500D1F6DC /* scan-receipt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "scan-receipt.json"; sourceTree = "<group>"; };
 		BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoClient.swift; sourceTree = "<group>"; };
@@ -83,6 +89,10 @@
 		BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		BA7C952E2337E05E008A6BE1 /* SwonzoOAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoOAuth.swift; sourceTree = "<group>"; };
+		BA7C95302337E662008A6BE1 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		BA7C95342337F508008A6BE1 /* SwonzoDemo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SwonzoDemo.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		BA7C953723380588008A6BE1 /* demoData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demoData.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		BA7D5E3422D631BB00D7C0BE /* Swonzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swonzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA7D5E3C22D631BB00D7C0BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -161,14 +171,24 @@
 		BA5F2C6D22E5DC8E00230C17 /* ViewConrollers */ = {
 			isa = PBXGroup;
 			children = (
+				BA7C95302337E662008A6BE1 /* OAuthViewController.swift */,
 				BAC90D8E22F26EB900827D9E /* SplashScreenViewController.swift */,
 				BABE7DFC23088E6900BED520 /* CheckTokenViewController.swift */,
 				BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */,
 				BA5F2C6922E5CC3900230C17 /* HomeViewController.swift */,
 				BA5F2C6B22E5D0E600230C17 /* MapViewController.swift */,
 				BAC90D9222F2E1F400827D9E /* TransactionsViewController.swift */,
+				BA007A552327BC3700C08086 /* DetailedTransactionsViewController.swift */,
 			);
 			path = ViewConrollers;
+			sourceTree = "<group>";
+		};
+		BA7C95362338030A008A6BE1 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				BA7C953723380588008A6BE1 /* demoData.json */,
+			);
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		BA7D5E2B22D631BB00D7C0BE = {
@@ -197,8 +217,10 @@
 		BA7D5E3622D631BB00D7C0BE /* Swonzo */ = {
 			isa = PBXGroup;
 			children = (
+				BA7C95362338030A008A6BE1 /* Demo */,
 				BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */,
 				BA39A3012304469E004A1531 /* SwonzoLogic.swift */,
+				BA7C952E2337E05E008A6BE1 /* SwonzoOAuth.swift */,
 				BAC85F0022FB68F20096B113 /* Fonts */,
 				BAC90D8D22F246D900827D9E /* Styling */,
 				BA5F2C6D22E5DC8E00230C17 /* ViewConrollers */,
@@ -209,6 +231,7 @@
 				BA7D5E4022D631BD00D7C0BE /* LaunchScreen.storyboard */,
 				BA4A64CC22FE5499003208B6 /* swonzo_ring.imageset */,
 				BA7D5E4322D631BD00D7C0BE /* Info.plist */,
+				BA7C95342337F508008A6BE1 /* SwonzoDemo.json */,
 			);
 			path = Swonzo;
 			sourceTree = "<group>";
@@ -350,6 +373,11 @@
 				TargetAttributes = {
 					BA7D5E3322D631BB00D7C0BE = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					BA7D5E4722D631BD00D7C0BE = {
 						CreatedOnToolsVersion = 10.1;
@@ -393,6 +421,7 @@
 				BA3C8E02231D74CD00D1241B /* pie-chart.json in Resources */,
 				BA7D5E3F22D631BD00D7C0BE /* Assets.xcassets in Resources */,
 				BAC4D28D22E21814009891C0 /* nightMap.json in Resources */,
+				BA7C953823380588008A6BE1 /* demoData.json in Resources */,
 				BA4A64CF22FE5499003208B6 /* swonzo_ring.png in Resources */,
 				BA104F2A23184FAE00174DA0 /* plotting-map.json in Resources */,
 				BABE7DFF2308B5D300BED520 /* rainbow-wave-loading.json in Resources */,
@@ -456,12 +485,16 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Swonzo/Pods-Swonzo-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/OAuth2/Pod/Classes/OAuthRequestController.xib",
+				"${PODS_CONFIGURATION_BUILD_DIR}/OAuth2/OAuth2.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/OAuthRequestController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/OAuth2.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -478,12 +511,16 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SwonzoTests/Pods-SwonzoTests-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/OAuth2/Pod/Classes/OAuthRequestController.xib",
+				"${PODS_CONFIGURATION_BUILD_DIR}/OAuth2/OAuth2.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/OAuthRequestController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/OAuth2.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -522,12 +559,16 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SwonzoUITests/Pods-SwonzoUITests-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/OAuth2/Pod/Classes/OAuthRequestController.xib",
+				"${PODS_CONFIGURATION_BUILD_DIR}/OAuth2/OAuth2.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/OAuthRequestController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/OAuth2.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -563,15 +604,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA7C95352337F508008A6BE1 /* SwonzoDemo.json in Sources */,
 				BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */,
 				BABE7DFD23088E6900BED520 /* CheckTokenViewController.swift in Sources */,
 				BA39A3022304469E004A1531 /* SwonzoLogic.swift in Sources */,
 				BAC90D9322F2E1F400827D9E /* TransactionsViewController.swift in Sources */,
+				BA7C95312337E662008A6BE1 /* OAuthViewController.swift in Sources */,
 				BAC90D8F22F26EB900827D9E /* SplashScreenViewController.swift in Sources */,
 				BA7D5E3822D631BB00D7C0BE /* AppDelegate.swift in Sources */,
 				BA7ACE4622F06A67007AAF73 /* LogInViewController.swift in Sources */,
 				BA5F2C6A22E5CC3900230C17 /* HomeViewController.swift in Sources */,
 				BA5F2C6C22E5D0E600230C17 /* MapViewController.swift in Sources */,
+				BA007A562327BC3700C08086 /* DetailedTransactionsViewController.swift in Sources */,
+				BA7C952F2337E05E008A6BE1 /* SwonzoOAuth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +796,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 57W6BJZJA6;
 				INFOPLIST_FILE = Swonzo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -758,7 +804,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Henry-Gambles.Swonzo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -770,6 +816,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 57W6BJZJA6;
 				INFOPLIST_FILE = Swonzo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -777,7 +824,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Henry-Gambles.Swonzo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

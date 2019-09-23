@@ -13,14 +13,12 @@ import UIKit
 import Lottie
 import Charts
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, ChartViewDelegate {
     
     private let swonzoClient = SwonzoClient()
     private let swonzoLogic = SwonzoLogic()
 
-    @IBOutlet weak var thirdBlurView: UIView!
     @IBOutlet weak var homeView: UITextView!
-    @IBOutlet weak var balanceView: UITextView!
     @IBOutlet weak var logoutButtonView: UIButton!
     @IBOutlet weak var homePieChart: PieChartView!
     @IBOutlet weak var homeBarChart: BarChartView!
@@ -31,14 +29,11 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        balanceRequest()
-//        transactionsRequest()
+        swonzoClient.transactionsRequest(){}
         welcome()
         checkForSavedData()
-//        setHomeBlurView()
-//        pieChartAnimation()
     }
+    
     let name = UserDefaults.standard.string(forKey: "FirstName")
     
     func checkForSavedData() {
@@ -65,9 +60,12 @@ class HomeViewController: UIViewController {
         }
     }
 
+    var instancesOfMerchants : [String] = []
     var instacesOfCategories : [String] = []
-    var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo"]
+    var categories = ["Transport", "Groceries", "Eating Out", "Entertainment", "General", "Shopping", "Cash", "Personal Care", "Family", "Holidays", "Monzo", "Bills", "Expenses", "Finances", "Holidays"]
     var categoryCount : [Int] = []
+    var merchantTransactions : [Int] = []
+    
     
    let animationView = AnimationView(name: "loading-circle")
     
@@ -87,22 +85,10 @@ class HomeViewController: UIViewController {
     
     func transactionsRequest() {
         
-        swonzoClient.tryToken()
-        
         print("GETTING CHART DATA...")
         
         welcome()
-        
-        Alamofire.request("https://api.monzo.com/transactions?expand[]=merchant",
-                          parameters: parameters,
-                          encoding:  URLEncoding.default,
-                          headers: headers).downloadProgress { progress in
-                            print("Progress: \(progress.fractionCompleted)")
-                            //                            self.fetchingDataTextView.text = "Fetching \(UserDefaults.standard.string(forKey: "FirstName")!)'s Merchant Data.\n\n\((progress.fractionCompleted * 100))%"
-                            }.responseJSON { response in
-                            if let error = response.error {
-                                self.homeView.text = error.localizedDescription
-                            } else {
+      
                     
                     do {
                         print("*************************")
@@ -115,9 +101,22 @@ class HomeViewController: UIViewController {
                         
                         let decoder = JSONDecoder()
                         decoder.dateDecodingStrategy = .formatted(dateFormatter)
-                        let root = try decoder.decode(Root.self, from: response.data!)
                         
-                        let numberOfTransactions = root.transactions.count
+                        let demoURL = Bundle.main.url(forResource: "demoData", withExtension: "json")!
+                        let demoData = try? Data(contentsOf: demoURL)
+                        
+                 
+//                        if UserDefaults.standard.bool(forKey: "DEMO") == true {
+                            let data = try decoder.decode(Root.self, from: demoData!)
+//                            return data
+//                        } else if UserDefaults.standard.string(forKey: "Token") != nil {
+//                            let data = try decoder.decode(Root.self, from: response.data!)
+//                        }
+                        
+                        
+//                        let data = try decoder.decode(Root.self, from: response.data!)
+//
+                        let numberOfTransactions = data.transactions.count
                         
                         var i = numberOfTransactions
                         
@@ -125,7 +124,9 @@ class HomeViewController: UIViewController {
                             
                             i = i - 1
                             
-                            var category = String(root.transactions[i].category.rawValue)
+                            var category = data.transactions[i].category
+                            var merchantName = String(data.transactions[i].merchant?.name ?? "NOMERCH")
+                            var amount = data.transactions[i].amount
                             
                             let transactionNumber = numberOfTransactions - i
                             let progressAsPercentage = (Double(transactionNumber) / Double(numberOfTransactions) * 100)
@@ -143,6 +144,10 @@ class HomeViewController: UIViewController {
                             }
 
                             self.instacesOfCategories.append(category.capitalized)
+                            if merchantName != "NOMERCH" {
+                                self.instancesOfMerchants.append(merchantName)
+                                self.merchantTransactions.append(amount)
+                            }
                             
                         }
                         
@@ -157,16 +162,18 @@ class HomeViewController: UIViewController {
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Family"}.count)
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Holidays"}.count)
                         self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Monzo"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Bills"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Expenses"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Finances"}.count)
+                        self.categoryCount.append(self.instacesOfCategories.filter{$0 == "Holidays"}.count)
                  
-                        print("\nSuccess! Populated pie chart.\n")
-                        
-                        print("Categories:", self.categories)
-                        print("Category count:", self.categoryCount)
                         
                         UserDefaults.standard.set(self.categoryCount, forKey: "CategoryCount")
                         
                         self.customizePieChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
                         self.setBarChart(dataPoints: self.categories, values: self.categoryCount.map{ Double($0) })
+
+//                        self.setDripBarChart(dataPoints: self.merchNames, values: self.merchAmount.map{ Double($0) })
                         self.animationView.removeFromSuperview()
                         self.homePieChart.isHidden = false
                         self.homeBarChart.isHidden = false
@@ -178,38 +185,83 @@ class HomeViewController: UIViewController {
                         print("Also,", error)
                     }
                     
-                }
-        }
+        
+        
     }
-
     
     func setBarChart(dataPoints: [String], values: [Double]) {
         var dataEntries: [BarChartDataEntry] = []
-        
-        var xStrings: [String] = categories
         
         for i in 0..<dataPoints.count {
             let dataEntry = BarChartDataEntry(x: Double(i+2), y:values[i], data: categories)
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Categories")
+       
+            
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Merchants")
 //        chartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
         chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
+        chartDataSet.valueColors = [UIColor.white]
+//        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,gold, c1, c2, c3, c4]
+        
+        let chartData = BarChartData()
+        chartData.addDataSet(chartDataSet)
+        homeBarChart.data = chartData
+        homeBarChart.noDataText = ""
+        homeBarChart.leftAxis.labelTextColor = UIColor.white
+        homeBarChart.rightAxis.labelTextColor = UIColor.white
+        homeBarChart.tintColor = UIColor.white
+        self.homeBarChart.gridBackgroundColor = UIColor.clear
+        self.homeBarChart.xAxis.labelTextColor = UIColor.white
+        
+        self.homeBarChart.drawGridBackgroundEnabled = false
+//        self.homeBarChart.drawValueAboveBarEnabled = false
+        self.homeBarChart.legend.enabled = false
+//        //background color
+        self.homeBarChart.backgroundColor = UIColor.clear
+//
+//        //chart animation
+        self.homeBarChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
+    }
+    
+    func setDripBarChart(dataPoints: [String], values: [Double]) {
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(x: Double(i+2), y:values[i], data: categories)
+            dataEntries.append(dataEntry)
+        }
+        
+        
+        
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Merchants")
+        chartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+        //        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
+        //        chartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,gold, c1, c2, c3, c4]
         
         let chartData = BarChartData()
         chartData.addDataSet(chartDataSet)
         homeBarChart.data = chartData
         homeBarChart.noDataText = ""
         self.homeBarChart.gridBackgroundColor = UIColor.clear
-        
+        self.homeBarChart.xAxis.labelTextColor = UIColor.white
         self.homeBarChart.drawGridBackgroundEnabled = false
-//
+        //
         self.homeBarChart.legend.enabled = false
-//        //background color
+        self.homeBarChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
+//        self.homeBarChart.leftAxis.valueFormatter = swonzoLogic.jsonBalanceToMoney(balance: values) as? IAxisValueFormatter
+        self.homeBarChart.leftAxis.valueFormatter = "£\(values)" as? IAxisValueFormatter
+        self.homeBarChart.xAxis.granularityEnabled = true
+        self.homeBarChart.xAxis.drawGridLinesEnabled = false
+        self.homeBarChart.xAxis.labelPosition = .bottom
+        self.homeBarChart.xAxis.labelCount = 30
+        self.homeBarChart.xAxis.granularity = 2
+        self.homeBarChart.leftAxis.enabled = true
+        //        //background color
         self.homeBarChart.backgroundColor = UIColor.clear
-//
-//        //chart animation
+        //
+        //        //chart animation
         self.homeBarChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
     }
     
@@ -222,10 +274,14 @@ class HomeViewController: UIViewController {
         // 2. Set ChartDataSet
         let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: nil)
 //        pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
-        pieChartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
-        pieChartDataSet.yValuePosition = .outsideSlice
-        pieChartDataSet.xValuePosition = .outsideSlice
+//        pieChartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,gold, c1, c2, c3, c4]
+                pieChartDataSet.colors = [UIColor.red,UIColor.orange,UIColor.yellow,UIColor.green,UIColor.blue,UIColor.magenta,UIColor.cyan,UIColor.purple, UIColor.brown,UIColor.lightGray,UIColor.black]
+//        pieChartDataSet.yValuePosition = .outsideSlice
+//        pieChartDataSet.xValuePosition = .outsideSlice
+        pieChartDataSet.valueTextColor = UIColor.clear
         self.homePieChart.holeColor = UIColor.clear
+        self.homePieChart.legend.textColor = UIColor.white
+        
         self.homePieChart.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .easeOutCirc)
         // 3. Set ChartData
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
@@ -235,7 +291,25 @@ class HomeViewController: UIViewController {
         pieChartData.setValueFormatter(formatter)
         // 4. Assign it to the chart’s data
         homePieChart.data = pieChartData
+        
     }
+    
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        
+        if let dataSet = chartView.data?.dataSets[ highlight.dataSetIndex] {
+            
+            let sliceIndex: Int = dataSet.entryIndex( entry: entry)
+//            dataSet.xValuePosition = .outsideSlice
+//            dataSet.valueTextColorAt(sliceIndex) = UIColor.white
+            print( "Selected slice index: \( sliceIndex)")
+            print(categories[sliceIndex])
+            self.homeView.text = "Swonzo Analytics\n\n\(name!)'s \(categories[sliceIndex]) Data"
+//            print(categoryCount[sliceIndex])
+        }
+    }
+    
+    
+    
     
 
     
@@ -264,14 +338,6 @@ class HomeViewController: UIViewController {
     
     typealias WebServiceResponse = ([[String: Any]]?, Error?) -> Void
     
-    func setHomeBlurView() {
-        let blurView = UIVisualEffectView()
-        blurView.frame = view.frame
-        blurView.effect = UIBlurEffect(style: .regular)
-        thirdBlurView.addSubview(blurView)
-    }
-    
-
     @IBAction func logoutButton(_ sender: Any) {
         UserDefaults.standard.set(nil, forKey: "CategoryCount")
         performSegue(withIdentifier: "logoutSegue", sender: nil)
@@ -313,6 +379,8 @@ class HomeViewController: UIViewController {
     
 
 }
+
+
 
 
 

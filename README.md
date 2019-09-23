@@ -13,19 +13,19 @@ This is an iOS client for connecting with the Monzo API! Built in Swift & Xcode 
 *From Monzo's API docs:*
 <img src="../master/Swonzo/Mockups/SCA.png" alt="monzo-sca"/>
 
-**Analytics**
-<img align="left" src="../master/Swonzo/Mockups/home.png" alt="home"/>
+# Analytics
+<img align="left" src="../master/Swonzo/Mockups/home.png" alt="home">
 
 - Interrogate your spending habits with Swonzo Analytics.
-**Maps** 
-<img align="left" src="../master/Swonzo/Mockups/map.png" alt="map"/>
+# Maps 
+<img align="left" src="../master/Swonzo/Mockups/map.png" alt="map">
 
 - See where you've been with your Monzo card by using the Swonzo Map.
-**Transactions Table**
-<img align="left" src="../master/Swonzo/Mockups/transactions.png" alt="transactions"/>
+# Transactions Table
+<img align="left" src="../master/Swonzo/Mockups/transactions.png" alt="transactions">
 
 - View your transactions chronologically in the same format they appear in the app.
-**Detailed View**
-<img align="left" src="../master/Swonzo/Mockups/detailedTransactions.png" alt="detailed-transactions"/>
+# Detailed View
+<img align="left" src="../master/Swonzo/Mockups/detailedTransactions.png" alt="detailed-transactions">
 
  - Tap on a transaction to find more details.

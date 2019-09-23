@@ -4,7 +4,9 @@
 
 ## What's This? -->
 
-This is an iOS client for connecting with the Monzo API! Built in Swift & Xcode with Alamofire, Charts, Disk, Google Maps & Lottie.
+An iOS client for connecting with the Monzo API! Built in Swift & Xcode with Alamofire, Charts, Disk, Google Maps & Lottie.
+
+I wanted to build a proper app with the Monzo API - 
 
 <img src="../master/Swonzo/Mockups/login.png" alt="login"/>
 
@@ -22,10 +24,10 @@ This is an iOS client for connecting with the Monzo API! Built in Swift & Xcode 
 <img align="left" src="../master/Swonzo/Mockups/map.png" alt="map">
 
 ## Transactions Table
-*View your transactions chronologically in the same format they appear in the app.*
+*View your transactions chronologically in the same format they appear within the Monzo app.*
 <img align="left" src="../master/Swonzo/Mockups/transactions.png" alt="transactions">
 
 ## Detailed View
-*Tap on a transaction to find more details.*
+*Tap on an item in the table to see more details about that transaction.*
 <img align="left" src="../master/Swonzo/Mockups/detailedTransactions.png" alt="detailed-transactions">
 

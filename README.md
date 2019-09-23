@@ -1,8 +1,8 @@
 # Swonzo
 
-[What's This?](#whats-this) | [Getting started](#getting-started) | [Testing](#Testing)  | [Credit](#Credit) 
+<!-- [What's This?](#whats-this) | [Getting started](#getting-started) | [Testing](#Testing)  | [Credit](#Credit) 
 
-## What's This?
+## What's This? -->
 
 This is an iOS client for connecting with the Monzo API! Built in Swift & Xcode with Alamofire, Charts, Disk, Google Maps & Lottie.
 
@@ -13,19 +13,19 @@ This is an iOS client for connecting with the Monzo API! Built in Swift & Xcode 
 *From Monzo's API docs:*
 <img src="../master/Swonzo/Mockups/SCA.png" alt="monzo-sca"/>
 
-# Analytics
+## Analytics
 Interrogate your spending habits with Swonzo Analytics.
 <img align="left" src="../master/Swonzo/Mockups/home.png" alt="home">
 
-# Maps 
+## Maps 
 See where you've been with your Monzo card by using the Swonzo Map.
 <img align="left" src="../master/Swonzo/Mockups/map.png" alt="map">
 
-# Transactions Table
+## Transactions Table
 View your transactions chronologically in the same format they appear in the app.
 <img align="left" src="../master/Swonzo/Mockups/transactions.png" alt="transactions">
 
-# Detailed View
+## Detailed View
 Tap on a transaction to find more details.
 <img align="left" src="../master/Swonzo/Mockups/detailedTransactions.png" alt="detailed-transactions">
 

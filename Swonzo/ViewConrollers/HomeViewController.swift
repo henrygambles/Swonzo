@@ -31,7 +31,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         super.viewDidLoad()
         swonzoClient.transactionsRequest(){}
         welcome()
-        checkForSavedData()
+        transactionsRequest()
     }
     
     let name = UserDefaults.standard.string(forKey: "FirstName")

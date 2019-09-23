@@ -1,21 +1,31 @@
-## Swonzo
+# Swonzo
 
-**🚧 Please note: This project is currently awaiting an update in accordance with the FCA's introduction of Strong Customer Authentication. Swonzo is SCA compliant though this update will be released once Monzo's SCA have finsihed taking place. 🚧**
+<!-- [What's This?](#whats-this) | [Getting started](#getting-started) | [Testing](#Testing)  | [Credit](#Credit) 
 
-*From Monzo's API docs*
-<img src="../master/Swonzo/Mockups/SCA.png" alt="sca"/>
+## What's This? -->
 
-[What's This?](#whats-this) | [Getting started](#getting-started) | [Testing](#Testing)  | [Credit](#Credit) 
+This is an iOS client for connecting with the Monzo API! Built in Swift & Xcode with Alamofire, Charts, Disk, Google Maps & Lottie.
 
-## What's This?
+<img src="../master/Swonzo/Mockups/login.png" alt="login"/>
 
-This is an iOS client for connecting with the Monzo API! Built using Swift, Xcode & Cocoapods.
+**🚧 Please note: This project is currently awaiting an update in accordance with Monzo's bringing in Strong Customer Authentication. Swonzo is SCA compliant though this update will be released once Monzo's SCA have finsihed taking place. 🚧**
 
-<img align="left" src="../master/Swonzo/Mockups/login.png" alt="login"/>
-<img align="left" src="../master/Swonzo/Mockups/home.png" alt="home" width="75%"/>
-<img align="left" src="../master/Swonzo/Mockups/map.png" alt="map" width="75%"/> 
-<img align="left" src="../master/Swonzo/Mockups/transactions.png" alt="transactions" width="75%"/> 
-<img align="left" src="../master/Swonzo/Mockups/detailedTransactions.png" alt="details2" width="75%"/>
+*From Monzo's API docs:*
+<img src="../master/Swonzo/Mockups/SCA.png" alt="monzo-sca"/>
 
+## Analytics
+*Interrogate your spending habits with Swonzo Analytics.*
+<img align="left" src="../master/Swonzo/Mockups/home.png" alt="home">
 
+## Maps 
+*See where you've been with your Monzo card by using the Swonzo Map.*
+<img align="left" src="../master/Swonzo/Mockups/map.png" alt="map">
+
+## Transactions Table
+*View your transactions chronologically in the same format they appear in the app.*
+<img align="left" src="../master/Swonzo/Mockups/transactions.png" alt="transactions">
+
+## Detailed View
+*Tap on a transaction to find more details.*
+<img align="left" src="../master/Swonzo/Mockups/detailedTransactions.png" alt="detailed-transactions">
 

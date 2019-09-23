@@ -238,7 +238,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkB-Yc-PkS" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="154" width="375" height="296"/>
+                                <rect key="frame" x="0.0" y="154" width="375" height="315"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -255,7 +255,7 @@
                             <constraint firstItem="6CI-OR-5Cu" firstAttribute="top" secondItem="9Oh-Su-PVp" secondAttribute="top" constant="488" id="d3n-SG-aFX"/>
                             <constraint firstItem="NkB-Yc-PkS" firstAttribute="top" secondItem="h4w-AP-N0H" secondAttribute="bottom" constant="-151" id="mr2-hX-98r"/>
                             <constraint firstItem="NkB-Yc-PkS" firstAttribute="trailing" secondItem="6CI-OR-5Cu" secondAttribute="trailing" id="nqC-fU-jkU"/>
-                            <constraint firstItem="6CI-OR-5Cu" firstAttribute="top" secondItem="NkB-Yc-PkS" secondAttribute="bottom" constant="38" id="qlQ-Dx-AMN"/>
+                            <constraint firstItem="6CI-OR-5Cu" firstAttribute="top" secondItem="NkB-Yc-PkS" secondAttribute="bottom" constant="19" id="qlQ-Dx-AMN"/>
                             <constraint firstItem="h4w-AP-N0H" firstAttribute="leading" secondItem="9Oh-Su-PVp" secondAttribute="leadingMargin" id="xnQ-4c-Sar"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JUs-NW-vH9"/>
@@ -550,7 +550,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NcQ-k1-tJ0"/>
-        <segue reference="Ed5-JZ-osv"/>
+        <segue reference="p3Y-X9-tHq"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.97254901960784312" green="0.4392156862745098" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

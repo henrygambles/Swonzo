@@ -33,19 +33,35 @@ Built in Xcode using Alamofire, Charts, Disk, Google Maps & Lottie.
 
 ## Learning Documentation
 
+**Overview**
+
+This project was built as an exercise to learn more about creating complex iOS apps, handling data from an API and what makes for a great UX.
+
+Swonzo was never explicitly devleoped for public use (Monzo states at the top of its API documentation that the "Monzo Developer API is not suitable for building public applications") - though I was keen to make Swonzo capable of handling data from any Monzo account.
+
 **Login**
 
 When looking at how best to implement login for users - there were some decisions needed to be made.
 
 Data from Monzo's API can be accessed by either:
-a) Requesting a token from https://developers.monzo.com, and using this token as parameters to request further information about that account.
-b) Implementing the OAuth authorisation process whereby a user opens the app to login, then are redirected to Monzo to sign in to their account 
 
-  to build my own login functionality rather than using OAuth.
-<img align="left" src="../readme-refactor/Swonzo/Mockups/oauth-tradeoff.png" alt="oauth">
-Presented its own set of challenges - as in order to get a user's balance or transactions - the API first needs to know what the account ID is.
-- The moment a token is entered into Swonzo, 3 requests are made in quick succession:
-- A user inputs their token
-- OAuth
+a) Requesting a token from https://developers.monzo.com, and using this token as parameters to request further information about that account.
+b) Implementing the OAuth authorisation process where a user opens the app to login, are redirected to Monzo to sign in to their account, then redirected back to the app with their API credentials stored. 
+
+Knowing this, I decided to build my own login functionality following the process described in option a) - rather than using the OAuth cycle. This presented its own set of challenges, as in order to any information about a user's transactions or balance - the API first needs more information about the account. To do this, the moment a token is entered into Swonzo, 3 requests are made in the backend in quick succession:
+- Swonzo requests info about the account from https://api.monzo.com/accounts, primarily to fetch the account ID needed for further requests.
+- Sw
+
+Since the introduction of Strong Customer Authentication however - it is now the case that third-party applications such as Swonzo need to be authorised in the manner outined in option b).
+
+<img src="../readme-refactor/Swonzo/Mockups/oauth-tradeoff.png" alt="oauth">
 
 **UX**
+
+## Testing
+
+Where possible, I wanted to build Swonzo using TDD.
+
+## Credit
+
+Henry Gambles

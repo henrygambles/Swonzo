@@ -17,7 +17,7 @@ Built in Xcode using Alamofire, Charts, Disk, Google Maps & Lottie.
 
 ## Analytics
 *Interrogate your spending habits with Swonzo Analytics.*
-<img align="left" src="../master/Swonzo/Mockups/home.png" alt="home">
+<img align="left" src="../readme-refactor/Swonzo/Mockups/home-data.png" alt="home">
 
 ## Maps 
 *See where you've been with your Monzo card by using the Swonzo Map.*
@@ -39,11 +39,13 @@ This project was built as an exercise to learn more about creating complex iOS a
 
 Swonzo was never explicitly devleoped for public use (Monzo states at the top of its API documentation that the "Monzo Developer API is not suitable for building public applications") - though I was keen to make Swonzo capable of handling data from any Monzo account.
 
+I really enjoyed and learnt a lot from building Swonzo...
+
 **UX**
 
 When I started building Swonzo - I didn't think it would be nessecary to persist data within the app using a database or otherise, as it only took about 20 seconds to load & render a user's entire transaction history. Instead, I placed relevent loading animations in the Home, Maps, & Transactions Tab - letting the user know that Swonzo was loading their data.
 
-Whilst animations which keep the user informed of what is happening behind the scenes whilst they wait are a good way to account for this - I found that in the context of mobile applications - any wait-time <10 seconds tends to frustrate the user, and so I set out to fix this.
+Whilst animations which keep the user informed of what is happening behind the scenes whilst they wait are a good way to account for this - I found that in the context of mobile applications - any waiting time over 10 seconds tends to frustrate the user, and so I set out to fix this.
 
 **Login**
 

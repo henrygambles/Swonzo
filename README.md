@@ -17,7 +17,7 @@ Built in Xcode using Alamofire, Charts, Disk, Google Maps & Lottie.
 
 ## Analytics
 *Interrogate your spending habits with Swonzo Analytics.*
-<img align="left" src="../readme-refactor/Swonzo/Mockups/home-data.png" alt="home">
+<img align="left" src="../master/Swonzo/Mockups/home-data.png" alt="home">
 
 ## Maps 
 *See where you've been with your Monzo card by using the Swonzo Map.*
@@ -39,7 +39,7 @@ This project was built as an exercise to learn more about creating complex iOS a
 
 Swonzo was never explicitly devleoped for public use (Monzo states at the top of its API documentation that the "Monzo Developer API is not suitable for building public applications") - though I was keen to make Swonzo capable of handling data from any Monzo account.
 
-I really enjoyed and learnt a lot from building Swonzo...
+I really enjoyed and learnt a lot from building Swonzo. 
 
 **UX**
 
@@ -64,7 +64,7 @@ Originally, this would all happen in the backend whilst presenting a seamless se
 
 Considering the obviously sensitive nature of personal banking information - it makes sense to use the OAuth flow. The tradeoff between these two options can be seen in the cartoon below:
 
-<img align="center" src="../readme-refactor/Swonzo/Mockups/oauth-tradeoff.png" alt="oauth">
+<img align="center" src="../master/Swonzo/Mockups/oauth-tradeoff.png" alt="oauth">
 
 ## Testing
 

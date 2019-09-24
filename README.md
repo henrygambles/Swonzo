@@ -45,7 +45,7 @@ When looking at how best to implement login for users - there were some decision
 
 Data from Monzo's API can be accessed by either:
 
-a) Requesting a token from https://developers.monzo.com, and using this token as parameters to request further information about that account.
+a) Requesting a token from https://developers.monzo.com, and using this token as parameters to request further information about that account.<br>
 b) Implementing the OAuth authorisation process where a user opens the app to login, are redirected to Monzo to sign in to their account, then redirected back to the app with their API credentials stored. 
 
 Knowing this, I decided to build my own login functionality following the process described in option a) - rather than using the OAuth cycle. This presented its own set of challenges, as in order to any information about a user's transactions or balance - the API first needs more information about the account. To do this, the moment a token is entered into Swonzo, 3 requests are made in quick succession to fetch all the data:

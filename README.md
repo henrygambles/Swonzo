@@ -48,15 +48,23 @@ Data from Monzo's API can be accessed by either:
 a) Requesting a token from https://developers.monzo.com, and using this token as parameters to request further information about that account.
 b) Implementing the OAuth authorisation process where a user opens the app to login, are redirected to Monzo to sign in to their account, then redirected back to the app with their API credentials stored. 
 
-Knowing this, I decided to build my own login functionality following the process described in option a) - rather than using the OAuth cycle. This presented its own set of challenges, as in order to any information about a user's transactions or balance - the API first needs more information about the account. To do this, the moment a token is entered into Swonzo, 3 requests are made in the backend in quick succession:
-- Swonzo requests info about the account from https://api.monzo.com/accounts, primarily to fetch the account ID needed for further requests.
-- Sw
+Knowing this, I decided to build my own login functionality following the process described in option a) - rather than using the OAuth cycle. This presented its own set of challenges, as in order to any information about a user's transactions or balance - the API first needs more information about the account. To do this, the moment a token is entered into Swonzo, 3 requests are made in quick succession to fetch all the data:
 
-Since the introduction of Strong Customer Authentication however - it is now the case that third-party applications such as Swonzo need to be authorised in the manner outined in option b).
+- Firstly - Swonzo makes a request to https://api.monzo.com/accounts to fetch the account ID needed for further requests.
+- Then, a request is made with these updatec parameters to https://api.monzo.com/transactions to fetch all data associated with transactions made by the user.
+- Simultaneously, a request is made to https://api.monzo.com/balance to fetch data around user's balance.
+
+Originally, this would all happen in the backend whilst presenting a seamless segue to the user; though, since the introduction of Strong Customer Authentication - it is now the case that third-party applications such as Swonzo need to be authorised in the manner outined above in option b).
+
+Considering the obviously sensitive nature of personal banking information - it makes sense to use the OAuth flow.
 
 <img src="../readme-refactor/Swonzo/Mockups/oauth-tradeoff.png" alt="oauth">
 
 **UX**
+
+When I started building Swonzo - I didn't think it would be nessecary to persist data within the app using a database or otherise, as it only took about 20 seconds to load & render a user's entire transaction history. Instead, I placed relevent loading animations in the Home, Maps, & Transactions Tab - letting the user know that Swonzo was loading their data.
+
+Whilst animations which keep the user informed of what is happening behind the scenes whilst they wait are a good way to account for this - I found that in the context of mobile applications - any wait-time <10 seconds tends to frustrate the user, and so I set out to fix this.
 
 ## Testing
 

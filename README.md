@@ -34,8 +34,15 @@ Built in Xcode using Alamofire, Charts, Disk, Google Maps & Lottie.
 ## Learning Documentation
 
 **Login**
-Decided to build my own login functionality rather than using OAuth.
-<img align="left" src="../master/Swonzo/Mockups/oauth-tradeoff.png" alt="oauth">
+
+When looking at how best to implement login for users - there were some decisions needed to be made.
+
+Data from Monzo's API can be accessed by either:
+a) Requesting a token from https://developers.monzo.com, and using this token as parameters to request further information about that account.
+b) Implementing the OAuth authorisation process whereby a user opens the app to login, then are redirected to Monzo to sign in to their account 
+
+  to build my own login functionality rather than using OAuth.
+<img align="left" src="../readme-refactor/Swonzo/Mockups/oauth-tradeoff.png" alt="oauth">
 Presented its own set of challenges - as in order to get a user's balance or transactions - the API first needs to know what the account ID is.
 - The moment a token is entered into Swonzo, 3 requests are made in quick succession:
 - A user inputs their token

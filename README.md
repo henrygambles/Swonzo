@@ -34,11 +34,10 @@ Built in Xcode using Alamofire, Charts, Disk, Google Maps & Lottie.
 ## Learning Documentation
 
 **Login**
-- Decided to build my own login functionality rather than using OAuth.
-<img align="left" src="../master/Swonzo/Mockups/ouath-tradeoff.png" alt="oauth">
-- Presented its own set of challenges - as in order to get a user's balance or transactions - the API first needs to know what the account ID is.
-- The moment a token is presented, 3 requests are made in quick succession:
-
+Decided to build my own login functionality rather than using OAuth.
+<img align="left" src="../master/Swonzo/Mockups/oauth-tradeoff.png" alt="oauth">
+Presented its own set of challenges - as in order to get a user's balance or transactions - the API first needs to know what the account ID is.
+- The moment a token is entered into Swonzo, 3 requests are made in quick succession:
 - A user inputs their token
 - OAuth
 

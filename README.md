@@ -4,9 +4,9 @@
 
 ## What's This? -->
 
-An iOS client for connecting with the Monzo API! Built in Swift & Xcode with Alamofire, Charts, Disk, Google Maps & Lottie.
+An iOS client for the Monzo API! Built in Swift & Xcode using Alamofire, Charts, Disk, Google Maps & Lottie.
 
-I wanted to build a proper app with the Monzo API - 
+
 
 <img src="../master/Swonzo/Mockups/login.png" alt="login"/>
 

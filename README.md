@@ -4,13 +4,13 @@
 
 ## What's This? -->
 
-An iOS client for the Monzo API! Built in Swift & Xcode using Alamofire, Charts, Disk, Google Maps & Lottie.
+Swonzo is an iOS client for the Monzo API writen in Swift!
 
-
+Built in Xcode using Alamofire, Charts, Disk, Google Maps & Lottie.
 
 <img src="../master/Swonzo/Mockups/login.png" alt="login"/>
 
-**🚧 Please note: This project is currently awaiting an update in accordance with Monzo's bringing in Strong Customer Authentication. Swonzo is SCA compliant though this update will be released once Monzo's SCA have finsihed taking place. 🚧**
+**🚧 Please note: As Monzo is currently making its API compliant with FCA Strong Customer Authentication - the protcols around third-party applications are currently in flux. Swonzo will be releasing an update once these changes have finsihed taking place. Thank you! 🚧**
 
 *From Monzo's API docs:*
 <img src="../master/Swonzo/Mockups/SCA.png" alt="monzo-sca"/>

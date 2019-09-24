@@ -62,10 +62,10 @@ Knowing this, I decided to build my own login functionality following the proces
 
 Originally, this would all happen in the backend whilst presenting a seamless segue to the user; though, since the introduction of Strong Customer Authentication - it is now the case that third-party applications such as Swonzo need to be authorised in the manner outined above in option b).
 
-Considering the obviously sensitive nature of personal banking information - it makes sense to use the OAuth flow. The tradeoff between these two options can be seen in the cartoon below:
-
-<img align="center" src="../master/Swonzo/Mockups/oauth-tradeoff.png" alt="oauth">
-
+Considering the obviously sensitive nature of personal banking information - it makes sense to use the OAuth flow. The tradeoff between these two options can be seen in the cartoon below 👇
+<p align="center">
+<img src="../master/Swonzo/Mockups/oauth-tradeoff.png" alt="oauth">
+</p>
 ## Testing
 
 Where possible, I wanted to build Swonzo using TDD.

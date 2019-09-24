@@ -69,14 +69,11 @@ class CheckTokenViewController: UIViewController {
 //        ] as OAuth2JSON)
     
     var oauth2 = OAuth2CodeGrant(settings: [
-        "client_id": "oauth2client_00009n9UfL4TOdk2efNW4n",                         // yes, this client-id and secret will work!
-//        "client_secret": "mnzconf.iZcs4Ye+bRMOFCo9Dwu+OR+GpO/z5oMwh2+d9E2GiuuxS/hekL9iXuCfi61linCe50fdlV0SlIFxqVMJkIDn",
+        "client_id": "oauth2client_00009n9UfL4TOdk2efNW4n",
         "authorize_uri": "https://developers.monzo.com",
         "response_type": "code",
-//        "token_uri": "https://github.com/login/oauth/access_token",
-//        "scope": "user repo:status",
-        "redirect_uris": ["swonzoApp://"],            // app has registered this scheme
-        "secret_in_body": false,                                      // GitHub does not accept client secret in the Authorization header
+        "redirect_uris": ["swonzoApp://"],
+        "secret_in_body": false,
         "verbose": true,
         ] as OAuth2JSON)
     

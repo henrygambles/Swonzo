@@ -59,7 +59,7 @@ b) Implementing the OAuth authorisation process where a user opens the app to lo
 Knowing this, I decided to build my own login functionality following the process described in option a) - rather than using the OAuth cycle. This presented its own set of challenges, as in order to any information about a user's transactions or balance - the API first needs more information about the account. To do this, the moment a token is entered into Swonzo, 3 requests are made in quick succession to fetch all the data:
 
 - Firstly - Swonzo makes a request to https://api.monzo.com/accounts to fetch the account ID needed for further requests.
-- Then, a request is made with these updatec parameters to https://api.monzo.com/transactions to fetch all data associated with transactions made by the user.
+- Then, a request is made with these updated parameters to https://api.monzo.com/transactions to fetch all data associated with transactions made by the user.
 - Simultaneously, a request is made to https://api.monzo.com/balance to fetch data around user's balance.
 
 Originally, this would all happen in the backend whilst presenting a seamless segue to the user; though, since the introduction of Strong Customer Authentication - it is now the case that third-party applications such as Swonzo need to be authorised in the manner outined above in option b).

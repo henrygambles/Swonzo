@@ -35,17 +35,17 @@ Built in Xcode using Alamofire, Charts, Disk, Google Maps & Lottie.
 
 **Overview**
 
-This project was built as an exercise to learn more about creating complex iOS apps, handling data from an API and what makes for a great UX.
+This project was built in order to learn more about creating complex iOS apps, handling data from an API and what makes for great UX.
 
 Swonzo was never explicitly devleoped for public use (Monzo states at the top of its API documentation that the "Monzo Developer API is not suitable for building public applications") - though I was keen to make Swonzo capable of handling data from any Monzo account.
 
-I really enjoyed and learnt a lot from building Swonzo. 
+I really enjoyed and learnt a lot from building Swonzo.
 
 **UX**
 
 When I started building Swonzo - I didn't think it would be nessecary to persist data within the app using a database or otherise, as it only took about 20 seconds to load & render a user's entire transaction history. Instead, I placed relevent loading animations in the Home, Maps, & Transactions Tab - letting the user know that Swonzo was loading their data.
 
-Whilst animations which keep the user informed of what is happening behind the scenes whilst they wait are a good way to account for this - I found that in the context of mobile applications - any waiting time over 10 seconds tends to frustrate the user, and so I set out to fix this.
+Whilst animations which keep the user informed of what is happening behind the scenes whilst they wait are a good way to account for this - I found that in the context of mobile applications - any waiting time over 10 seconds tends to frustrate the user, and so I set out to fix this by saving the transaction history to the device using Disk.
 
 **Login**
 
@@ -63,12 +63,19 @@ Knowing this, I decided to build my own login functionality following the proces
 Originally, this would all happen in the backend whilst presenting a seamless segue to the user; though, since the introduction of Strong Customer Authentication - it is now the case that third-party applications such as Swonzo need to be authorised in the manner outined above in option b).
 
 Considering the obviously sensitive nature of personal banking information - it makes sense to use the OAuth flow. The tradeoff between these two options can be seen in the cartoon below 👇
+
 <p align="center">
 <img src="../master/Swonzo/Mockups/oauth-tradeoff.png" alt="oauth">
 </p>
+
 ## Testing
 
-Where possible, I wanted to build Swonzo using TDD.
+Where possible, I wanted to build Swonzo using TDD, and used Xcode's own XCTest functionality to do this.
+
+To run the tests, hit:
+```
+⌘ + U
+```
 
 ## Credit
 

@@ -14,6 +14,7 @@
 		BA0B2173231C1C4500D1F6DC /* scan-receipt.json in Resources */ = {isa = PBXBuildFile; fileRef = BA0B2172231C1C4500D1F6DC /* scan-receipt.json */; };
 		BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */; };
 		BA104F2A23184FAE00174DA0 /* plotting-map.json in Resources */ = {isa = PBXBuildFile; fileRef = BA104F2923184FAE00174DA0 /* plotting-map.json */; };
+		BA23A54D233B7B9600FC8CB4 /* SwonzoCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA23A54C233B7B9600FC8CB4 /* SwonzoCredentials.swift */; };
 		BA39A3022304469E004A1531 /* SwonzoLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39A3012304469E004A1531 /* SwonzoLogic.swift */; };
 		BA3C8E02231D74CD00D1241B /* pie-chart.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3C8E01231D74CD00D1241B /* pie-chart.json */; };
 		BA3C8E05231D773E00D1241B /* coral-pie.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3C8E03231D773E00D1241B /* coral-pie.json */; };
@@ -77,6 +78,7 @@
 		BA0B2172231C1C4500D1F6DC /* scan-receipt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "scan-receipt.json"; sourceTree = "<group>"; };
 		BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoClient.swift; sourceTree = "<group>"; };
 		BA104F2923184FAE00174DA0 /* plotting-map.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "plotting-map.json"; sourceTree = "<group>"; };
+		BA23A54C233B7B9600FC8CB4 /* SwonzoCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoCredentials.swift; sourceTree = "<group>"; };
 		BA39A3012304469E004A1531 /* SwonzoLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoLogic.swift; sourceTree = "<group>"; };
 		BA3C8E01231D74CD00D1241B /* pie-chart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pie-chart.json"; sourceTree = "<group>"; };
 		BA3C8E03231D773E00D1241B /* coral-pie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "coral-pie.json"; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */,
 				BA39A3012304469E004A1531 /* SwonzoLogic.swift */,
 				BA7C952E2337E05E008A6BE1 /* SwonzoOAuth.swift */,
+				BA23A54C233B7B9600FC8CB4 /* SwonzoCredentials.swift */,
 				BAC85F0022FB68F20096B113 /* Fonts */,
 				BAC90D8D22F246D900827D9E /* Styling */,
 				BA5F2C6D22E5DC8E00230C17 /* ViewConrollers */,
@@ -604,6 +607,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA23A54D233B7B9600FC8CB4 /* SwonzoCredentials.swift in Sources */,
 				BA7C95352337F508008A6BE1 /* SwonzoDemo.json in Sources */,
 				BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */,
 				BABE7DFD23088E6900BED520 /* CheckTokenViewController.swift in Sources */,

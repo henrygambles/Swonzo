@@ -15,6 +15,7 @@
 		BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */; };
 		BA104F2A23184FAE00174DA0 /* plotting-map.json in Resources */ = {isa = PBXBuildFile; fileRef = BA104F2923184FAE00174DA0 /* plotting-map.json */; };
 		BA23A54D233B7B9600FC8CB4 /* SwonzoCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA23A54C233B7B9600FC8CB4 /* SwonzoCredentials.swift */; };
+		BA23A54F233B804A00FC8CB4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BA23A54E233B804A00FC8CB4 /* .gitignore */; };
 		BA39A3022304469E004A1531 /* SwonzoLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39A3012304469E004A1531 /* SwonzoLogic.swift */; };
 		BA3C8E02231D74CD00D1241B /* pie-chart.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3C8E01231D74CD00D1241B /* pie-chart.json */; };
 		BA3C8E05231D773E00D1241B /* coral-pie.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3C8E03231D773E00D1241B /* coral-pie.json */; };
@@ -29,7 +30,6 @@
 		BA7ACE4622F06A67007AAF73 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */; };
 		BA7C952F2337E05E008A6BE1 /* SwonzoOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7C952E2337E05E008A6BE1 /* SwonzoOAuth.swift */; };
 		BA7C95312337E662008A6BE1 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7C95302337E662008A6BE1 /* OAuthViewController.swift */; };
-		BA7C95352337F508008A6BE1 /* SwonzoDemo.json in Sources */ = {isa = PBXBuildFile; fileRef = BA7C95342337F508008A6BE1 /* SwonzoDemo.json */; };
 		BA7C953823380588008A6BE1 /* demoData.json in Resources */ = {isa = PBXBuildFile; fileRef = BA7C953723380588008A6BE1 /* demoData.json */; };
 		BA7D5E3822D631BB00D7C0BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */; };
 		BA7D5E3D22D631BB00D7C0BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5E3B22D631BB00D7C0BE /* Main.storyboard */; };
@@ -79,6 +79,7 @@
 		BA0CA64022E7093D003EC8ED /* SwonzoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoClient.swift; sourceTree = "<group>"; };
 		BA104F2923184FAE00174DA0 /* plotting-map.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "plotting-map.json"; sourceTree = "<group>"; };
 		BA23A54C233B7B9600FC8CB4 /* SwonzoCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoCredentials.swift; sourceTree = "<group>"; };
+		BA23A54E233B804A00FC8CB4 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		BA39A3012304469E004A1531 /* SwonzoLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoLogic.swift; sourceTree = "<group>"; };
 		BA3C8E01231D74CD00D1241B /* pie-chart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "pie-chart.json"; sourceTree = "<group>"; };
 		BA3C8E03231D773E00D1241B /* coral-pie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "coral-pie.json"; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		BA7ACE4522F06A67007AAF73 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BA7C952E2337E05E008A6BE1 /* SwonzoOAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwonzoOAuth.swift; sourceTree = "<group>"; };
 		BA7C95302337E662008A6BE1 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
-		BA7C95342337F508008A6BE1 /* SwonzoDemo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SwonzoDemo.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		BA7C953723380588008A6BE1 /* demoData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demoData.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		BA7D5E3422D631BB00D7C0BE /* Swonzo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swonzo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D5E3722D631BB00D7C0BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -234,7 +234,7 @@
 				BA7D5E4022D631BD00D7C0BE /* LaunchScreen.storyboard */,
 				BA4A64CC22FE5499003208B6 /* swonzo_ring.imageset */,
 				BA7D5E4322D631BD00D7C0BE /* Info.plist */,
-				BA7C95342337F508008A6BE1 /* SwonzoDemo.json */,
+				BA23A54E233B804A00FC8CB4 /* .gitignore */,
 			);
 			path = Swonzo;
 			sourceTree = "<group>";
@@ -417,6 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA23A54F233B804A00FC8CB4 /* .gitignore in Resources */,
 				BA7D5E4222D631BD00D7C0BE /* LaunchScreen.storyboard in Resources */,
 				BA3C8E08231D855E00D1241B /* loading-circle.json in Resources */,
 				BAC85F0622FB691F0096B113 /* SlatePro.ttf in Resources */,
@@ -608,7 +609,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA23A54D233B7B9600FC8CB4 /* SwonzoCredentials.swift in Sources */,
-				BA7C95352337F508008A6BE1 /* SwonzoDemo.json in Sources */,
 				BA0CA64122E7093D003EC8ED /* SwonzoClient.swift in Sources */,
 				BABE7DFD23088E6900BED520 /* CheckTokenViewController.swift in Sources */,
 				BA39A3022304469E004A1531 /* SwonzoLogic.swift in Sources */,

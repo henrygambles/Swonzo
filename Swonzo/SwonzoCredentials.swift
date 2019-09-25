@@ -8,4 +8,4 @@
 
 import Foundation
 
-let GoogleMapsAPIKey = "AIzaSyBY-WpLZlZp4ppUcbLLwlA6g_w8hevjrZk"
+let GoogleMapsAPIKey = "AIzaSyC0PWrwfWgSrJFpRBwMecrFr_k0V6jianc"

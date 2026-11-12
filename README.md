@@ -80,3 +80,7 @@ To run the tests, hit:
 ## Credit
 
 Henry Gambles
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=henrygambles/Swonzo&type=Date)](https://star-history.com/#henrygambles/Swonzo&Date)
